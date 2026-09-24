@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "NEXT_PUBLIC_SERVER_URL=https://jarkabi.ca CARE_INQUIRY_EMAIL=care@jarkabi.ca npm run build",
+  "env": {
+    "NEXT_PUBLIC_SERVER_URL": "https://jarkabi.ca",
+    "CARE_INQUIRY_EMAIL": "care@jarkabi.ca",
+    "CANONICAL_SITE_HOST": "jarkabi.ca"
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "jarkabi.com" }],
+      "destination": "https://jarkabi.ca/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.jarkabi.com" }],
+      "destination": "https://jarkabi.ca/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+/**
+ * Jarkabi Home Care — design tokens (source of truth for public site)
+ * See docs/design-system.md
+ */
+:root {
+  /* Brand colours */
+  --color-navy: #1a2b4a;
+  --color-navy-dark: #121e33;
+  --color-navy-soft: #2a3f66;
+  --color-teal: #5e8a7d;
+  --color-teal-dark: #4a7064;
+  --color-teal-light: #7d9b8a;
+  --color-gold: #c9a96e;
+  --color-gold-muted: #e8d5b5;
+  --color-ivory: #f8f5f0;
+  --color-stone: #ede9e3;
+  --color-charcoal: #1c1c1c;
+  --color-slate: #5c6670;
+  --color-line: #e2ddd4;
+  --color-success: #4a7c59;
+  --color-error: #b42318;
+
+  /* Semantic aliases (used across globals.css) */
+  --color-primary: var(--color-navy);
+  --color-primary-dark: var(--color-navy-dark);
+  --color-primary-light: var(--color-navy-soft);
+  --color-secondary: var(--color-teal);
+  --color-secondary-dark: var(--color-teal-dark);
+  --color-secondary-light: var(--color-teal-light);
+  --color-accent: var(--color-gold);
+  --color-accent-muted: var(--color-gold-muted);
+  --color-bg: var(--color-ivory);
+  --color-bg-alt: var(--color-stone);
+  --color-surface: #ffffff;
+  --color-text: var(--color-charcoal);
+  --color-muted: var(--color-slate);
+
+  /* Elevation */
+  --shadow-soft: 0 8px 30px rgba(26, 43, 74, 0.08);
+  --shadow-card: 0 4px 20px rgba(26, 43, 74, 0.08);
+  --shadow-elevated: 0 20px 50px rgba(26, 43, 74, 0.12);
+
+  /* Layout */
+  --header-height: 4.75rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+
+  /* shadcn-compatible HSL tokens */
+  --background: 40 33% 97%;
+  --foreground: 210 10% 11%;
+  --primary: 215 48% 20%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 158 18% 45%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 38 45% 61%;
+  --accent-foreground: 215 48% 20%;
+  --muted: 40 20% 93%;
+  --muted-foreground: 210 8% 40%;
+  --border: 35 15% 86%;
+  --ring: 158 18% 45%;
+  --radius: 0.375rem;
+}

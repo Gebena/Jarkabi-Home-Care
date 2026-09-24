@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: jarkabi
+      POSTGRES_PASSWORD: jarkabi
+      POSTGRES_DB: jarkabi_home_care
+    volumes:
+      - jarkabi_pg_data:/data
+
+volumes:
+  jarkabi_pg_data:
