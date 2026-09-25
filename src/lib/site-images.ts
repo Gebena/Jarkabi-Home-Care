@@ -156,6 +156,11 @@ export const aboutImages = {
 /** Contact page office panel — Care Giver `contact.html`. */
 export const contactPageImage: Photo = library.contactOffice;
 
+/** Careers page — team photograph for intro panel. */
+export const careersPageImages = {
+  intro: licensed("resource/team-1.jpg", "Jarkabi care team member supporting a client at home"),
+} as const;
+
 /** Why Jarkabi — intro + featured alternating bands. */
 export const whyPageImages = {
   intro: library.whyPanel,

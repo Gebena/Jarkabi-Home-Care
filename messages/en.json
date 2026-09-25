@@ -677,7 +677,9 @@
     "crumb": "Testimonials",
     "title": "What families say about Jarkabi",
     "lead": "Stories from Ottawa-area families who trusted us with care at home.",
-    "sectionTitle": "What our clients say"
+    "featuredTitle": "Featured stories",
+    "featuredLead": "Families share what consistent, coordinator-led home care meant for them.",
+    "sectionTitle": "More client stories"
   },
   "careersPage": {
     "metaTitle": "Careers",
@@ -685,6 +687,17 @@
     "crumb": "Careers",
     "title": "Join a team built on dignity and professionalism",
     "lead": "We hire for consistency. If you want to see the same clients each week and be supported by a coordinator who knows them, we would like to hear from you.",
+    "introTitle": "Work that matters, with a team that has your back",
+    "introBody": "Jarkabi Home Care is built for caregivers who want steady schedules, clear communication, and the time to do excellent work — not rushed visits between strangers.",
+    "introBenefits": [
+      "Consistent client assignments when possible",
+      "Coordinator support who knows your clients",
+      "Professional development and clinical oversight",
+      "Respectful, family-first culture"
+    ],
+    "sidebarTitle": "Learn more",
+    "sidebarWidgetTitle": "Ready to join our team?",
+    "sidebarWidgetButton": "Contact us",
     "rolesTitle": "Roles we hire for",
     "emptyTitle": "No positions are advertised right now",
     "emptyBody": "We keep applications on file and contact people when a matching role opens. Send a résumé and tell us which communities you can work in.",
@@ -733,6 +746,9 @@
     "privacyBody": "Send only what is needed to start the conversation. We contact the client or their substitute decision-maker for consent before collecting anything further."
   },
   "legalPages": {
+    "sidebarTitle": "Legal information",
+    "sidebarWidgetTitle": "Questions about our policies?",
+    "sidebarWidgetButton": "Contact us",
     "draftNotice": "This page is being finalised with legal counsel and is not yet approved for publication.",
     "privacyLead": "How Jarkabi Home Care collects, uses and protects personal information.",
     "privacyBody": "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate. Until the full policy is published, contact our care team with any question about how your information is handled.",

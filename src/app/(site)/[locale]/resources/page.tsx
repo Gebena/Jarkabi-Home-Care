@@ -1,3 +1,4 @@
+import { BlogPostCard } from "@/components/blog/blog-post-card";
 import { PageHero } from "@/components/layout/page-hero";
 import { ResourcesSidebar } from "@/components/resources/resources-sidebar";
 import { PageSection } from "@/components/ui/page-section";
@@ -6,8 +7,6 @@ import { caregiverBlogImages } from "@/lib/caregiver-assets";
 import { getBlogPosts } from "@/lib/cms";
 import { blogFallbackImages } from "@/lib/site-images";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -48,56 +47,17 @@ export default async function ResourcesPage({ params }: Props) {
 
                   return (
                     <li key={post.slug}>
-                      <article className="group overflow-hidden bg-white">
-                        <Link
-                          href={`/${locale}/resources/${post.slug}`}
-                          className="relative block aspect-[16/7] overflow-hidden"
-                        >
-                          <Image
-                            src={imageSrc}
-                            alt=""
-                            fill
-                            sizes="(max-width: 1024px) 92vw, 65vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </Link>
-
-                        <div className="border border-line border-t-0 p-7">
-                          <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.14em] text-body">
-                            {post.publishedAt ? (
-                              <time dateTime={post.publishedAt}>
-                                {new Date(post.publishedAt).toLocaleDateString(locale, {
-                                  year: "numeric",
-                                  month: "short",
-                                  day: "numeric",
-                                })}
-                              </time>
-                            ) : (
-                              <span>{t("recent")}</span>
-                            )}
-                            {post.category ? <span>{post.category}</span> : null}
-                          </div>
-
-                          <h2 className="mt-4 font-display text-xl text-ink">
-                            <Link
-                              href={`/${locale}/resources/${post.slug}`}
-                              className="transition-colors hover:text-tan-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
-                            >
-                              {post.title}
-                            </Link>
-                          </h2>
-
-                          <p className="mt-4 text-sm leading-relaxed text-body">{post.excerpt}</p>
-
-                          <Link
-                            href={`/${locale}/resources/${post.slug}`}
-                            className="mt-5 inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-coral transition-colors hover:text-tan-ink"
-                          >
-                            {t("read")}
-                            <ArrowRight size={14} aria-hidden="true" />
-                          </Link>
-                        </div>
-                      </article>
+                      <BlogPostCard
+                        locale={locale}
+                        slug={post.slug}
+                        title={post.title}
+                        excerpt={post.excerpt}
+                        imageSrc={imageSrc}
+                        readLabel={t("read")}
+                        category={post.category}
+                        publishedAt={post.publishedAt}
+                        variant="list"
+                      />
                     </li>
                   );
                 })}

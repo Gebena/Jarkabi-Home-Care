@@ -124,6 +124,9 @@ Legend: `[x]` done · `[ ]` needs work · `[~]` partial
 | `/nursing` [x] | started.jpg | alternating photo sections | [x] |
 | `/dementia-care` [x] | started.jpg | alternating photo sections | [x] |
 | `/caregivers` [x] | started.jpg | alternating photo sections | [x] |
+| `/careers` [x] | started.jpg | plum intro + team photo + sidebar widget | [x] |
+| `/testimonials` [x] | started.jpg | featured carousel + full grid | [x] |
+| `/legal/*` [x] | started.jpg | policy sidebar nav + contact widget | [x] |
 
 ---
 
@@ -147,3 +150,4 @@ Legend: `[x]` done · `[ ]` needs work · `[~]` partial
 | 2026-09-25 | Cloud Agent | Hero dual-layer glide implemented; AboutPreview restored; asset registry + QA doc created |
 | 2026-09-25 | Cloud Agent | Inner banners use started.jpg; testimonial carousel; specialty + contact photo layouts |
 | 2026-09-25 | Cloud Agent | Pass 3: Why Jarkabi photo bands; services category bands; FAQ/resources sidebar widget; hero/pillar pixel tuning |
+| 2026-09-25 | Cloud Agent | Pass 4: BlogPostCard polish; careers intro; testimonials carousel; legal sidebar nav |

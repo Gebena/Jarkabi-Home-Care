@@ -2,6 +2,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
+import { TestimonialCarousel } from "@/components/ui/testimonial-carousel";
 import { TestimonialsGrid } from "@/components/testimonials/testimonials-grid";
 import type { Locale } from "@/i18n/routing";
 import { getTestimonials } from "@/lib/cms";
@@ -37,7 +38,14 @@ export default async function TestimonialsPage({ params }: Props) {
       />
 
       <PageSection tone="blush">
-        <SectionTitle align="center" tone="blush" title={t("sectionTitle")} />
+        <SectionTitle align="center" tone="blush" title={t("featuredTitle")} subtitle={t("featuredLead")} />
+        <div className="mt-10">
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </PageSection>
+
+      <PageSection>
+        <SectionTitle align="center" title={t("sectionTitle")} />
         <div className="mt-12">
           <TestimonialsGrid testimonials={testimonials} />
         </div>

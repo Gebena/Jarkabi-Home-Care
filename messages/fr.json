@@ -599,12 +599,32 @@
     "title": "Un chemin clair et rassurant vers les soins à domicile",
     "lead": "De la première conversation au suivi continu, chaque étape est rédigée pour être comprise autant par les familles que par les partenaires de référence."
   },
+  "testimonialsPage": {
+    "metaTitle": "Témoignages",
+    "crumb": "Témoignages",
+    "title": "Ce que les familles disent de Jarkabi",
+    "lead": "Des histoires de familles de la région d'Ottawa qui nous ont confié des soins à domicile.",
+    "featuredTitle": "Témoignages en vedette",
+    "featuredLead": "Des familles partagent ce que des soins à domicile constants et coordonnés ont signifié pour elles.",
+    "sectionTitle": "D'autres histoires de clients"
+  },
   "careersPage": {
     "metaTitle": "Carrières",
     "eyebrow": "Carrières",
     "crumb": "Carrières",
     "title": "Joignez-vous à une équipe fondée sur la dignité et le professionnalisme",
     "lead": "Nous embauchons pour la continuité. Si vous souhaitez revoir les mêmes clients chaque semaine et être appuyé par un coordonnateur qui les connaît, écrivez-nous.",
+    "introTitle": "Un travail qui compte, avec une équipe qui vous soutient",
+    "introBody": "Jarkabi Home Care est conçu pour les soignants qui veulent des horaires stables, une communication claire et le temps de faire un excellent travail — pas des visites précipitées entre des inconnus.",
+    "introBenefits": [
+      "Affectations de clients régulières lorsque c'est possible",
+      "Soutien d'un coordonnateur qui connaît vos clients",
+      "Perfectionnement professionnel et supervision clinique",
+      "Culture respectueuse, centrée sur les familles"
+    ],
+    "sidebarTitle": "En savoir plus",
+    "sidebarWidgetTitle": "Prêt à joindre notre équipe?",
+    "sidebarWidgetButton": "Communiquez avec nous",
     "rolesTitle": "Postes que nous recrutons",
     "emptyTitle": "Aucun poste n'est affiché pour le moment",
     "emptyBody": "Nous conservons les candidatures et communiquons avec les personnes lorsqu'un poste correspondant s'ouvre. Envoyez un curriculum vitæ en précisant les communautés où vous pouvez travailler.",
@@ -664,6 +684,9 @@
     "privacyBody": "N'envoyez que ce qui est nécessaire pour amorcer la conversation. Nous obtenons le consentement du client ou de son mandataire avant de recueillir davantage."
   },
   "legalPages": {
+    "sidebarTitle": "Renseignements juridiques",
+    "sidebarWidgetTitle": "Des questions sur nos politiques?",
+    "sidebarWidgetButton": "Communiquez avec nous",
     "draftNotice": "Cette page est en cours de finalisation avec un conseiller juridique et n'est pas encore approuvée pour publication.",
     "privacyLead": "Comment Jarkabi Home Care recueille, utilise et protège les renseignements personnels.",
     "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons. D'ici la publication de la politique complète, communiquez avec notre équipe pour toute question.",

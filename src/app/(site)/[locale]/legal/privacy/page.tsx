@@ -1,6 +1,6 @@
+import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import { PageHero } from "@/components/layout/page-hero";
 import { DraftNotice } from "@/components/ui/draft-notice";
-import { PageSection } from "@/components/ui/page-section";
 import type { Locale } from "@/i18n/routing";
 import { getLegalPage } from "@/lib/cms";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,6 +18,11 @@ export default async function PrivacyPage({ params }: Props) {
   const legal = await getLegalPage("privacy", locale as Locale);
 
   const title = legal?.title ? String(legal.title) : tFooter("privacy");
+  const legalLinks = [
+    { label: tFooter("privacy"), href: `/${locale}/legal/privacy`, active: true },
+    { label: tFooter("terms"), href: `/${locale}/legal/terms` },
+    { label: tFooter("accessibility"), href: `/${locale}/legal/accessibility` },
+  ];
 
   return (
     <>
@@ -28,12 +33,16 @@ export default async function PrivacyPage({ params }: Props) {
         crumbLabel={tFooter("privacy")}
       />
 
-      <PageSection>
-        <div className="mx-auto max-w-3xl">
-          {legal?.reviewRequired === false ? null : <DraftNotice>{t("draftNotice")}</DraftNotice>}
-          <p className="mt-8 text-base leading-relaxed text-body">{t("privacyBody")}</p>
-        </div>
-      </PageSection>
+      <LegalPageLayout
+        locale={locale}
+        navTitle={t("sidebarTitle")}
+        links={legalLinks}
+        widgetTitle={t("sidebarWidgetTitle")}
+        widgetButton={t("sidebarWidgetButton")}
+      >
+        {legal?.reviewRequired === false ? null : <DraftNotice>{t("draftNotice")}</DraftNotice>}
+        <p className="mt-8 text-base leading-relaxed text-body">{t("privacyBody")}</p>
+      </LegalPageLayout>
     </>
   );
 }
