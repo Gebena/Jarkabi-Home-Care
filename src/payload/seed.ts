@@ -1,7 +1,10 @@
 import type { Payload } from "payload";
 import { defaultBrand, defaultServices, ottawaCities, provincesSeed } from "@/lib/brand";
+import { seedEditorialContent } from "@/payload/seed-content";
 
 export async function seedDatabase(payload: Payload) {
+  await seedEditorialContent(payload);
+
   const { totalDocs: provinceCount } = await payload.count({
     collection: "provinces",
   });
@@ -142,31 +145,6 @@ export async function seedDatabase(payload: Payload) {
       },
     });
   }
-
-  await payload.create({
-    collection: "blog-posts",
-    data: {
-      title: "Choosing Home Care in Ottawa",
-      slug: "choosing-home-care-ottawa",
-      excerpt: "A practical guide for families exploring home care options in the National Capital Region.",
-      category: "Choosing Home Care",
-      published: true,
-      publishedAt: new Date().toISOString(),
-    },
-  });
-
-  await payload.create({
-    collection: "careers",
-    data: {
-      title: "Personal Support Worker — Ottawa",
-      slug: "psw-ottawa",
-      summary:
-        "Support clients across Ottawa with personal care, companionship and help around the home. Consistent client assignments and coordinator support.",
-      profession: "Personal Support Worker",
-      employmentType: "Part-time",
-      published: false,
-    },
-  });
 
   await payload.create({
     collection: "legal-pages",

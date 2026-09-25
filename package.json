@@ -23,6 +23,7 @@
     "vercel:set-database-uri": "node scripts/set-vercel-database-uri.mjs",
     "sync:github": "node ../scripts/sync-jarkabi-github.mjs",
     "verify:images": "node scripts/verify-images.mjs",
+    "sync:locales": "node scripts/sync-partial-locales.mjs",
     "verify:go-live": "node scripts/verify-go-live.mjs"
   },
   "dependencies": {

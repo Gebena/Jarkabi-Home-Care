@@ -81,7 +81,9 @@
 - [x] `next/image` on service cards
 - [x] Font subsetting via `next/font`
 - [ ] `globals.css` cleanup (still ~2.7k lines)
-- [x] Replace Unsplash with licensed production photography (`caregiver-licensed/`; 22 legacy `photography/` files unreferenced)
+- [x] Replace Unsplash with licensed production photography (`caregiver-licensed/`; legacy `photography/` removed)
+- [x] CMS editorial seed (FAQs, blog, team, testimonials, careers) via `seedEditorialContent`
+- [x] Partial locale sync (`npm run sync:locales`) — ti/tig/byn/ar/am merged from en + patches
 
 ### Phase 19 — Testing ✅ (foundation)
 - [x] Vitest + form schema tests (`npm run test`)

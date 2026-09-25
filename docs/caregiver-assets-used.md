@@ -69,7 +69,7 @@ Do not delete or replace an asset listed here without updating this file and run
 
 | Path | Status |
 |---|---|
-| `public/images/photography/` | AI placeholders — **not referenced** by production code |
+| ~~`public/images/photography/`~~ | Removed — all production photography uses `caregiver-licensed/` |
 | `resource/care-4.jpg`, `contact-1.jpg`, `mission.jpg`, `quality-2.jpg` | Copied but not yet assigned — available for About / Mission bands |
 
 ---
