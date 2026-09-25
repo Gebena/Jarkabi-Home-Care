@@ -26,13 +26,38 @@ if (!process.env.PAYLOAD_SECRET?.trim()) {
   process.exit(1);
 }
 
-Object.assign(process.env, {
-  NODE_ENV: "development",
-  PAYLOAD_FORCE_DRIZZLE_PUSH: "true",
-  CI: "true",
-});
+async function schemaAlreadyExists() {
+  const { default: pg } = await import("pg");
+  const client = new pg.Client({
+    connectionString: databaseUri,
+    ssl: databaseUri.includes("supabase.com")
+      ? { rejectUnauthorized: false }
+      : undefined,
+  });
+
+  try {
+    await client.connect();
+    const result = await client.query(
+      `SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'provinces' LIMIT 1`,
+    );
+    return result.rowCount > 0;
+  } finally {
+    await client.end().catch(() => undefined);
+  }
+}
 
 async function main() {
+  if (await schemaAlreadyExists()) {
+    console.log("[ensure-schema] Schema already exists — skipping push.");
+    return;
+  }
+
+  Object.assign(process.env, {
+    NODE_ENV: "development",
+    PAYLOAD_FORCE_DRIZZLE_PUSH: "true",
+    CI: "true",
+  });
+
   const { getPayload } = await import("payload");
   const { default: config } = await import("../src/payload.config.ts");
 
