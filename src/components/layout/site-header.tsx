@@ -54,7 +54,7 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
             <BrandWordmark size="md" />
           </Link>
 
-          <nav aria-label="Main">
+          <nav aria-label="Main" className="min-w-0 flex-1 justify-center lg:flex">
             <MainNav locale={locale} />
           </nav>
 

@@ -35,7 +35,7 @@ export function MobileNav({ locale }: { locale: string }) {
   }
 
   return (
-    <div className="xl:hidden">
+    <div className="lg:hidden">
       <Sheet>
         <SheetTrigger
           render={

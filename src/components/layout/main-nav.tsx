@@ -25,8 +25,8 @@ function entryActive(pathname: string, base: string, entry: NavEntry): boolean {
 }
 
 /**
- * Care Giver desktop navigation — hover dropdowns for About, Types Of Care,
- * and Knowledge Center with white panel + bordered list items.
+ * Care Giver desktop navigation — dropdown parents toggle open (demo uses href="#"),
+ * submenu links navigate. Visible from lg (1024px), not only xl.
  */
 export function MainNav({ locale }: MainNavProps) {
   const t = useTranslations("nav");
@@ -34,6 +34,7 @@ export function MainNav({ locale }: MainNavProps) {
   const base = `/${locale}`;
   const [openKey, setOpenKey] = useState<string | null>(null);
   const closeTimer = useRef<number | null>(null);
+  const navRef = useRef<HTMLUListElement>(null);
 
   const clearCloseTimer = useCallback(() => {
     if (closeTimer.current) {
@@ -44,13 +45,30 @@ export function MainNav({ locale }: MainNavProps) {
 
   const scheduleClose = useCallback(() => {
     clearCloseTimer();
-    closeTimer.current = window.setTimeout(() => setOpenKey(null), 120);
+    closeTimer.current = window.setTimeout(() => setOpenKey(null), 280);
   }, [clearCloseTimer]);
 
   useEffect(() => () => clearCloseTimer(), [clearCloseTimer]);
 
+  useEffect(() => {
+    function onDocClick(event: MouseEvent) {
+      if (!navRef.current?.contains(event.target as Node)) {
+        setOpenKey(null);
+      }
+    }
+    function onEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpenKey(null);
+    }
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("keydown", onEscape);
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("keydown", onEscape);
+    };
+  }, []);
+
   return (
-    <ul className="hidden items-center gap-1 xl:flex xl:gap-2">
+    <ul ref={navRef} className="hidden items-center gap-1 lg:flex lg:gap-2">
       {mainNavEntries.map((entry) => {
         if (entry.kind === "link") {
           const href = `${base}${entry.href}`;
@@ -83,21 +101,13 @@ export function MainNav({ locale }: MainNavProps) {
               setOpenKey(entry.key);
             }}
             onMouseLeave={scheduleClose}
-            onFocus={() => {
-              clearCloseTimer();
-              setOpenKey(entry.key);
-            }}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                scheduleClose();
-              }
-            }}
           >
-            <Link
-              href={`${base}${entry.href}`}
-              aria-current={active ? "page" : undefined}
+            <button
+              type="button"
               aria-haspopup="true"
               aria-expanded={open}
+              aria-current={active ? "page" : undefined}
+              onClick={() => setOpenKey((current) => (current === entry.key ? null : entry.key))}
               className={cn(
                 "inline-flex items-center gap-1 whitespace-nowrap px-2 py-2 text-[0.9rem] font-semibold transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink lg:px-3",
                 active || open ? "text-coral" : "text-ink",
@@ -109,11 +119,17 @@ export function MainNav({ locale }: MainNavProps) {
                 aria-hidden="true"
                 className={cn("transition-transform duration-200", open && "rotate-180")}
               />
-            </Link>
+            </button>
+
+            {/* Invisible bridge so the pointer can reach the panel without closing */}
+            <div
+              aria-hidden="true"
+              className={cn("absolute start-0 top-full z-40 h-2 w-full", open ? "block" : "hidden")}
+            />
 
             <div
               className={cn(
-                "absolute start-0 top-full z-50 min-w-[15.5rem] pt-2 transition-all duration-200",
+                "absolute start-0 top-[calc(100%+0.5rem)] z-50 min-w-[15.5rem] transition-all duration-200",
                 open
                   ? "pointer-events-auto translate-y-0 opacity-100"
                   : "pointer-events-none -translate-y-1 opacity-0",
@@ -127,6 +143,7 @@ export function MainNav({ locale }: MainNavProps) {
                     <li key={item.key} className="border-b border-line/80 last:border-b-0">
                       <Link
                         href={href}
+                        onClick={() => setOpenKey(null)}
                         aria-current={itemActive ? "page" : undefined}
                         className={cn(
                           "block px-5 py-3 text-[0.88rem] font-medium transition-colors hover:bg-mist hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-plum",
