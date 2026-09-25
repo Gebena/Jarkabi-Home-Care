@@ -45,7 +45,7 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
 
       <header
         className={cn(
-          "sticky top-0 z-[100] border-b border-line/70 bg-white transition-shadow duration-300",
+          "sticky top-0 z-[100] overflow-visible border-b border-line/70 bg-white transition-shadow duration-300",
           scrolled && "shadow-[0_2px_18px_rgba(67,38,58,0.10)]",
         )}
       >
