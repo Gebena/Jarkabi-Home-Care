@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Frank_Ruhl_Libre, Quicksand } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ const display = Frank_Ruhl_Libre({
   display: "swap",
 });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={cn(sans.variable, display.variable, "font-sans")} suppressHydrationWarning>
       <body>{children}</body>
