@@ -57,8 +57,8 @@ export default async function AboutPage({ params }: Props) {
         <div className="mt-14 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-14">
           <div className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden lg:mx-0">
             <Image
-              src={aboutImages.main.src}
-              alt={aboutImages.main.alt}
+              src={aboutImages.mission.src}
+              alt={aboutImages.mission.alt}
               fill
               sizes="(max-width: 1024px) 80vw, 20vw"
               className="object-cover"

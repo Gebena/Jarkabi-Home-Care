@@ -1,4 +1,5 @@
 import { SpecialtyPage } from "@/components/pages/specialty-page";
+import { specialtyPageImages } from "@/lib/site-images";
 import { buildPageMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
@@ -20,6 +21,7 @@ export default async function NursingPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "specialtyPages.nursing" });
+  const images = specialtyPageImages.nursing;
 
   return (
     <SpecialtyPage
@@ -28,9 +30,9 @@ export default async function NursingPage({ params }: Props) {
       title={t("title")}
       lead={t("lead")}
       sections={[
-        { title: t("section1Title"), body: t("section1Body") },
-        { title: t("section2Title"), body: t("section2Body") },
-        { title: t("section3Title"), body: t("section3Body") },
+        { title: t("section1Title"), body: t("section1Body"), image: images[0].src },
+        { title: t("section2Title"), body: t("section2Body"), image: images[1].src },
+        { title: t("section3Title"), body: t("section3Body"), image: images[2].src },
       ]}
     />
   );

@@ -1,4 +1,5 @@
 import { SpecialtyPage } from "@/components/pages/specialty-page";
+import { specialtyPageImages } from "@/lib/site-images";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
@@ -16,6 +17,8 @@ export default async function CaregiversPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "caregiversPage" });
+  const rawSections = t.raw("sections") as Section[];
+  const images = specialtyPageImages.caregivers;
 
   return (
     <SpecialtyPage
@@ -24,7 +27,10 @@ export default async function CaregiversPage({ params }: Props) {
       title={t("title")}
       lead={t("lead")}
       crumbLabel={t("crumb")}
-      sections={t.raw("sections") as Section[]}
+      sections={rawSections.map((section, index) => ({
+        ...section,
+        image: images[index]?.src ?? images[0].src,
+      }))}
     />
   );
 }

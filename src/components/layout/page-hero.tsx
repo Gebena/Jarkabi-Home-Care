@@ -31,9 +31,8 @@ type PageHeroProps = {
 };
 
 /**
- * Care Giver's inner-page banner: a photograph under a plum wash, a serif title
- * and the breadcrumb trail beneath it. Every page below the homepage opens with
- * this, which is what makes the inner pages feel like the homepage.
+ * Care Giver inner-page banner — licensed `started.jpg` under a plum wash, serif
+ * title, breadcrumb trail, and subtle texture overlay.
  */
 export async function PageHero({
   locale,
@@ -54,29 +53,47 @@ export async function PageHero({
   ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-plum py-16 text-center md:py-24">
+    <section className="relative isolate overflow-hidden bg-plum py-16 text-center md:py-24 lg:py-28">
       <ParallaxBackground
-        src={caregiverBackgrounds.pageBanner}
+        src={pageBannerImage.src}
         alt=""
         priority
         strength={0.14}
         objectPosition={position}
         flip={Boolean(pageBannerImage.flip) !== rtl}
       />
-      {/* Opaque enough that white type clears AA over every part of the frame. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-plum/90" />
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-0 -z-10 bg-no-repeat opacity-[0.18]",
+          rtl ? "bg-right" : "bg-left",
+        )}
+        style={{
+          backgroundImage: `url(${caregiverBackgrounds.pageBanner})`,
+          backgroundSize: "cover",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 -z-10 from-plum/94 via-plum/88 to-plum/72",
+          rtl ? "bg-gradient-to-l" : "bg-gradient-to-r",
+        )}
+      />
 
       <div className="mx-auto w-[min(1240px,calc(100%-2rem))]">
         {eyebrow ? (
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-tan">{eyebrow}</p>
         ) : null}
 
-        <h1 className="mx-auto mt-3 max-w-4xl font-display text-3xl text-white md:text-4xl lg:text-5xl">
+        <h1 className="mx-auto mt-3 max-w-4xl font-display text-3xl text-white md:text-4xl lg:text-[2.75rem]">
           {title}
         </h1>
 
         {lead ? (
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">{lead}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
+            {lead}
+          </p>
         ) : null}
 
         <nav aria-label="Breadcrumb" className="mt-6">

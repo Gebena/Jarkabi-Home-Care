@@ -1,7 +1,7 @@
 "use client";
 
-import { ParallaxBackground } from "@/components/ui/parallax-background";
-import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
+import { GlidingHeroBackground } from "@/components/ui/gliding-hero-background";
+import { isRtlLocale } from "@/lib/direction";
 import { heroSlides } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,8 +12,8 @@ import { useCallback, useEffect, useState } from "react";
 const AUTOPLAY_MS = 7000;
 
 /**
- * Care Giver Home Page 01 hero — licensed slider photos with cross-fading layers,
- * scroll parallax, and a plum wash that leaves the photograph visible on the right.
+ * Care Giver Home Page 01 hero — licensed dual-layer gliding photographs, plum
+ * left wash, serif headline stack, tan primary CTA, square nav arrows, dots.
  */
 export function HeroSection({ locale }: { locale: string }) {
   const t = useTranslations("hero");
@@ -44,45 +44,35 @@ export function HeroSection({ locale }: { locale: string }) {
     <section
       aria-roledescription="carousel"
       aria-label={t("headline")}
-      className="relative isolate min-h-[36rem] overflow-hidden bg-plum lg:min-h-[44rem]"
+      className="relative isolate min-h-[36rem] overflow-hidden bg-plum sm:min-h-[40rem] lg:min-h-[46rem]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      {heroSlides.slice(0, count).map((slide, i) => {
-        const active = i === index;
-        return (
-          <div
-            key={slide.src}
-            aria-hidden={active ? undefined : true}
-            className={cn(
-              "absolute inset-0 transition-[opacity,transform] duration-[1400ms] ease-out",
-              active ? "z-0 scale-100 opacity-100" : "z-0 scale-[1.06] opacity-0",
-            )}
-          >
-            <ParallaxBackground
-              src={slide.src}
-              alt={active ? slide.alt : ""}
-              priority={i === 0}
-              strength={0.22}
-              objectPosition={rtl ? mirrorObjectPosition(slide.position) : slide.position}
-              flip={Boolean(slide.flip) !== rtl}
-            />
-          </div>
-        );
-      })}
+      <GlidingHeroBackground
+        slides={heroSlides.slice(0, count).map((slide, i) => ({
+          src: slide.src,
+          alt: slide.alt,
+          position: slide.position,
+          flip: slide.flip,
+        }))}
+        activeIndex={index}
+        rtl={rtl}
+      />
 
       <div
         aria-hidden="true"
         className={cn(
-          "pointer-events-none absolute inset-0 z-[1] from-plum/95 from-25% via-plum/80 via-55% to-plum/25 to-90%",
-          "lg:from-38% lg:via-plum/75 lg:via-50% lg:to-transparent lg:to-72%",
+          "pointer-events-none absolute inset-0 z-[1]",
+          "from-plum/97 from-0% via-plum/90 via-42% to-plum/12 to-100%",
+          "sm:from-plum/96 sm:from-18% sm:via-plum/84 sm:via-48% sm:to-plum/18 sm:to-88%",
+          "lg:from-[34%] lg:via-plum/80 lg:via-46% lg:to-transparent lg:to-[68%]",
           rtl ? "bg-gradient-to-l" : "bg-gradient-to-r",
         )}
       />
 
-      <div className="relative z-[2] mx-auto flex w-[min(1240px,calc(100%-2rem))] items-center py-24 md:min-h-[36rem] md:py-28 lg:min-h-[44rem]">
+      <div className="relative z-[2] mx-auto flex w-[min(1240px,calc(100%-2rem))] items-center py-20 sm:py-24 md:min-h-[40rem] md:py-28 lg:min-h-[46rem]">
         <div className="max-w-2xl">
           <div
             role="group"
@@ -90,29 +80,29 @@ export function HeroSection({ locale }: { locale: string }) {
             aria-label={`${index + 1} of ${count}`}
             aria-live="polite"
           >
-            <p className="font-display text-xl text-white/90 md:text-2xl lg:text-3xl">
+            <p className="font-display text-lg text-white/90 sm:text-xl md:text-2xl lg:text-3xl">
               {slides[index].script}
             </p>
-            <h1 className="mt-1 font-display text-3xl text-white sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-1 font-display text-[1.85rem] leading-tight text-white sm:text-4xl md:text-5xl lg:text-[3.4rem]">
               {slides[index].title}
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/85 sm:text-base md:text-lg">
               {slides[index].body}
             </p>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
-              href={`/${locale}/services`}
+              href={`/${locale}/contact`}
               className="bg-tan px-8 py-4 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              {t("secondaryCta")}
+              {t("primaryCta")}
             </Link>
             <Link
-              href={`/${locale}/contact`}
+              href={`/${locale}/services`}
               className="border border-white/70 px-8 py-4 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-white hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              {t("primaryCta")}
+              {t("secondaryCta")}
             </Link>
           </div>
 

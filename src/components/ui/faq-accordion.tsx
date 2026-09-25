@@ -62,16 +62,21 @@ export function FaqAccordion({
         {columnsData.map((columnItems, columnIndex) => (
           <div key={columnIndex} className="space-y-0">
             {columnItems.map((item) => (
-              <details key={item.question} className="group border-b border-line bg-white">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 font-display text-base text-ink marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink">
+              <details
+                key={item.question}
+                className="group mb-px border border-demo-sidebar-border bg-white open:border-demo-navy"
+              >
+                <summary className="flex cursor-pointer items-center justify-between gap-4 bg-demo-sidebar-bg px-6 py-5 font-display text-base text-demo-navy marker:content-none transition-colors group-open:bg-demo-navy group-open:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-demo-navy">
                   {item.question}
                   <ChevronDown
                     size={18}
                     aria-hidden="true"
-                    className="shrink-0 text-tan-ink transition-transform group-open:rotate-180"
+                    className="shrink-0 text-tan-ink transition-transform group-open:rotate-180 group-open:text-white"
                   />
                 </summary>
-                <p className="px-6 pb-6 text-sm leading-relaxed text-body">{item.answer}</p>
+                <p className="border-t border-demo-sidebar-border px-6 py-5 text-sm leading-relaxed text-body">
+                  {item.answer}
+                </p>
               </details>
             ))}
           </div>

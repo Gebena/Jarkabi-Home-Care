@@ -51,7 +51,7 @@
       "resources": "Nouvelles de l'entreprise",
       "gallery": "Notre galerie",
       "howCareWorks": "Comment commencer",
-      "careers": "Emplois de soignant"
+      "careers": "Carrières"
     },
     "serviceLabels": {
       "elderly-care": "Soins aux personnes âgées",
@@ -512,6 +512,9 @@
     "crumb": "Pourquoi Jarkabi",
     "title": "Des soins fondés sur la confiance, la compassion et des normes professionnelles",
     "lead": "Douze questions que les familles posent avant de choisir un fournisseur de soins à domicile, avec des réponses claires.",
+    "introTitle": "Pourquoi les familles choisissent Jarkabi Home Care",
+    "introBody": "Les soins à domicile doivent être personnels, professionnels et prévisibles. Jarkabi combine des soignants qualifiés, des plans revus par des infirmières et des coordonnateurs joignables — pour que la dignité reste au centre de chaque visite.",
+    "gridTitle": "D'autres raisons de faire confiance à Jarkabi",
     "items": [
       {
         "title": "Des soins qui commencent par l'écoute",
@@ -620,7 +623,32 @@
     "read": "Lire l'article",
     "emptyTitle": "Les premiers guides sont en rédaction",
     "emptyBody": "D'ici leur publication, notre équipe de soins répondra par téléphone ou par courriel à toute question sur les soins à domicile — y compris sur d'autres fournisseurs que nous.",
-    "emptyCta": "Posez votre question"
+    "emptyCta": "Posez votre question",
+    "recent": "Récent",
+    "sidebarCategories": "Catégories",
+    "sidebarRecent": "Articles récents",
+    "sidebarSearch": "Rechercher des articles",
+    "sidebarWidgetTitle": "Besoin d'aide pour trouver les bons soins?",
+    "sidebarWidgetButton": "Demander des soins",
+    "sidebarCategoryList": [
+      "Choisir les soins à domicile",
+      "Soutien aux proches aidants",
+      "Santé et bien-être des aînés",
+      "Soins après l'hôpital",
+      "Soins et démence"
+    ]
+  },
+  "faqPage": {
+    "metaTitle": "Foire aux questions",
+    "crumb": "FAQ",
+    "title": "Les questions que les familles nous posent",
+    "lead": "Des réponses claires sur le début des soins, la sécurité, les langues et ce qu'il faut attendre de Jarkabi Home Care.",
+    "sectionTitle": "Foire aux questions",
+    "sectionLead": "Recherchez ci-dessous ou parcourez les sujets courants. Si votre question n'y figure pas, appelez notre équipe de soins.",
+    "searchPlaceholder": "Rechercher une question",
+    "sidebarTitle": "Liens utiles",
+    "widgetTitle": "Besoin d'aide pour trouver les bons soins?",
+    "widgetButton": "Parler à Jarkabi"
   },
   "referralsPage": {
     "metaTitle": "Références professionnelles",

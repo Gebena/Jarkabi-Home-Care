@@ -1,3 +1,4 @@
+import { FaqPageSidebar } from "@/components/faq/faq-page-sidebar";
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { PageSection } from "@/components/ui/page-section";
@@ -35,14 +36,31 @@ export default async function FaqPage({ params }: Props) {
         crumbLabel={t("crumb")}
       />
 
-      <PageSection>
-        <SectionTitle align="center" title={t("sectionTitle")} subtitle={t("sectionLead")} />
-        <div className="mt-12">
-          <FaqAccordion
-            items={faqs}
-            columns={2}
-            searchable
-            searchPlaceholder={t("searchPlaceholder")}
+      <PageSection tone="mist">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12">
+          <div className="min-w-0">
+            <SectionTitle title={t("sectionTitle")} subtitle={t("sectionLead")} />
+            <div className="mt-10">
+              <FaqAccordion
+                items={faqs}
+                columns={1}
+                searchable
+                searchPlaceholder={t("searchPlaceholder")}
+              />
+            </div>
+          </div>
+
+          <FaqPageSidebar
+            locale={locale}
+            quickLinksTitle={t("sidebarTitle")}
+            widgetTitle={t("widgetTitle")}
+            widgetButton={t("widgetButton")}
+            links={[
+              { label: tNav("howCareWorks"), href: `/${locale}/how-care-works` },
+              { label: tNav("services"), href: `/${locale}/services` },
+              { label: tNav("contact"), href: `/${locale}/contact` },
+              { label: tNav("whyJarkabi"), href: `/${locale}/why-jarkabi` },
+            ]}
           />
         </div>
       </PageSection>

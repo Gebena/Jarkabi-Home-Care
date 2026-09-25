@@ -7,7 +7,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { getBrand } from "@/lib/cms";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo";
-import { aboutImages } from "@/lib/site-images";
+import { contactPageImage } from "@/lib/site-images";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -54,29 +54,30 @@ export default async function ContactPage({ params }: Props) {
             <ContactForm locale={locale} />
           </div>
 
-          <div>
+          <div className="relative overflow-hidden bg-plum px-6 py-8 text-white sm:px-8 sm:py-10">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src={aboutImages.main.src}
-                alt={aboutImages.main.alt}
+                src={contactPageImage.src}
+                alt={contactPageImage.alt}
                 fill
                 sizes="(max-width: 1024px) 92vw, 45vw"
                 className="object-cover"
               />
+              <div aria-hidden="true" className="absolute inset-0 bg-plum/25" />
             </div>
 
-            <h2 className="mt-8 font-display text-xl text-plum">{t("officeTitle")}</h2>
-            <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-body">
+            <h2 className="mt-8 font-display text-xl text-white">{t("officeTitle")}</h2>
+            <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-white/85">
               {brand.ottawaOfficeAddress}
             </p>
 
-            <ul className="mt-6 space-y-2 text-base text-body">
+            <ul className="mt-6 space-y-2 text-base text-white/90">
               <li>
                 {t("phoneLabel")}:{" "}
                 {phoneDigits.length > 3 ? (
                   <a
                     href={`tel:${phoneDigits}`}
-                    className="text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                    className="text-white transition-colors hover:text-tan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {brand.primaryPhone}
                   </a>
@@ -88,7 +89,7 @@ export default async function ContactPage({ params }: Props) {
                 {t("emailLabel")}:{" "}
                 <a
                   href={`mailto:${brand.email}`}
-                  className="text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                  className="text-white transition-colors hover:text-tan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   {brand.email}
                 </a>

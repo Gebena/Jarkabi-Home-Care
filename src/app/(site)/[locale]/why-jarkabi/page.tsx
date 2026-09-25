@@ -1,7 +1,6 @@
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
-import { FeatureCard } from "@/components/ui/feature-card";
-import { PageSection } from "@/components/ui/page-section";
+import { WhyJarkabiSections } from "@/components/why/why-jarkabi-sections";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
@@ -31,15 +30,12 @@ export default async function WhyJarkabiPage({ params }: Props) {
         crumbLabel={t("crumb")}
       />
 
-      <PageSection tone="mist">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, index) => (
-            <li key={item.title}>
-              <FeatureCard headingLevel={2} index={index + 1} title={item.title} body={item.body} />
-            </li>
-          ))}
-        </ul>
-      </PageSection>
+      <WhyJarkabiSections
+        introTitle={t("introTitle")}
+        introBody={t("introBody")}
+        gridTitle={t("gridTitle")}
+        items={items}
+      />
 
       <CallToAction locale={locale} />
     </>

@@ -63,6 +63,8 @@ const library = {
   aboutCare1: licensed("resource/care-1.jpg", "Care team member with a client at home"),
   aboutCare2: licensed("resource/care-2.jpg", ""),
   aboutCare3: licensed("resource/care-3.jpg", ""),
+  mission: licensed("resource/mission.jpg", "Care coordinator meeting with a family at home"),
+  contactOffice: licensed("resource/contact-1.jpg", "Jarkabi care team ready to help"),
   serviceElderly: licensed("resource/service-4.jpg", ""),
   serviceDaySupport: licensed("resource/service-5.jpg", ""),
   serviceRespite: licensed("resource/service-6.jpg", ""),
@@ -148,4 +150,38 @@ export const aboutImages = {
   main: library.aboutCare1,
   small1: library.aboutCare2,
   small2: library.aboutCare3,
+  mission: library.mission,
 };
+
+/** Contact page office panel — Care Giver `contact.html`. */
+export const contactPageImage: Photo = library.contactOffice;
+
+/** Why Jarkabi — intro + featured alternating bands. */
+export const whyPageImages = {
+  intro: library.whyPanel,
+  featured: [
+    library.aboutCare1,
+    library.servicePersonal,
+    library.serviceElderly,
+  ],
+} as const;
+
+/** Specialty narrative pages — licensed frames per Care Giver demo pages. */
+export const specialtyPageImages = {
+  nursing: [
+    library.serviceSkilledNursing,
+    library.serviceElderly,
+    licensed("resource/meeting.jpg", ""),
+  ],
+  dementia: [
+    library.serviceSpecialNeeds,
+    library.serviceChronic,
+    library.aboutCare2,
+  ],
+  caregivers: [
+    library.aboutCare1,
+    library.aboutCare3,
+    licensed("resource/team-1.jpg", ""),
+    licensed("resource/team-2.jpg", ""),
+  ],
+} as const;

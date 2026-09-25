@@ -1,4 +1,4 @@
-import { caregiverContactWidgetImage } from "@/lib/caregiver-assets";
+import { ContactSidebarWidget } from "@/components/ui/contact-sidebar-widget";
 import { careGiverServiceMenu } from "@/lib/service-menu";
 import Link from "next/link";
 
@@ -44,22 +44,11 @@ export function ServiceSidebar({
         </ul>
       </nav>
 
-      <div
-        className="relative overflow-hidden px-7 py-12 text-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(50,159,130,0.90), rgba(50,159,130,0.90)), url(${caregiverContactWidgetImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <h3 className="relative font-display text-4xl font-bold text-white">Find Care Today</h3>
-        <Link
-          href={`/${locale}/contact`}
-          className="relative mt-6 inline-block bg-demo-gold px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#242424] transition-colors hover:bg-demo-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-        >
-          {contactLabel}
-        </Link>
-      </div>
+      <ContactSidebarWidget
+        locale={locale}
+        title="Find Care Today"
+        buttonLabel={contactLabel}
+      />
     </aside>
   );
 }

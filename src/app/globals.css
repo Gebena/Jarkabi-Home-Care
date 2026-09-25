@@ -412,6 +412,76 @@ body { padding-bottom: 5rem; }
 html { scroll-behavior: auto; }
 .button:hover { transform: none; }
 }
+
+/* Care Giver Home Page 01 — dual-layer hero glide transitions */
+@keyframes hero-glide-in {
+  from {
+    opacity: 0;
+    transform: translateX(11%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-glide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-9%);
+  }
+}
+
+@keyframes hero-glide-in-rtl {
+  from {
+    opacity: 0;
+    transform: translateX(-11%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-glide-out-rtl {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(9%);
+  }
+}
+
+.animate-hero-glide-in {
+  animation: hero-glide-in 1.4s ease-out forwards;
+}
+
+.animate-hero-glide-out {
+  animation: hero-glide-out 1.4s ease-out forwards;
+}
+
+.animate-hero-glide-in-rtl {
+  animation: hero-glide-in-rtl 1.4s ease-out forwards;
+}
+
+.animate-hero-glide-out-rtl {
+  animation: hero-glide-out-rtl 1.4s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-glide-in,
+  .animate-hero-glide-out,
+  .animate-hero-glide-in-rtl,
+  .animate-hero-glide-out-rtl {
+    animation: none;
+  }
+}
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

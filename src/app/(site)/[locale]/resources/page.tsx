@@ -123,6 +123,8 @@ export default async function ResourcesPage({ params }: Props) {
               categoriesTitle: t("sidebarCategories"),
               recentTitle: t("sidebarRecent"),
               searchPlaceholder: t("sidebarSearch"),
+              widgetTitle: t("sidebarWidgetTitle"),
+              widgetButton: t("sidebarWidgetButton"),
               categories: t.raw("sidebarCategoryList") as string[],
             }}
           />

@@ -31,7 +31,7 @@
     "resources": "Resources",
     "careers": "Careers",
     "contact": "Contact",
-    "requestCare": "Ask a Question",
+    "requestCare": "Request Care",
     "contactUs": "Contact Us",
     "callUs": "Call Us",
     "search": "Search",
@@ -55,7 +55,7 @@
       "resources": "Company News",
       "gallery": "Our Gallery",
       "howCareWorks": "How do I get started",
-      "careers": "CareGiver Jobs"
+      "careers": "Careers"
     },
     "serviceLabels": {
       "elderly-care": "Elderly Care Service",
@@ -166,7 +166,7 @@
   },
   "team": {
     "eyebrow": "Our team",
-    "title": "Our CareGivers",
+    "title": "Our Caregivers",
     "subtitle": "Our caregivers are trained specifically to provide in-home care.",
     "placeholder": "Leadership profiles will be published here once verified. Credentials are never invented on this site.",
     "profilePending": "Profile and biography coming soon.",
@@ -366,8 +366,8 @@
   },
   "testimonials": {
     "eyebrow": "Testimonials",
-    "title": "Family stories",
-    "subtitle": "Hear from families who have experienced the Jarkabi difference.",
+    "title": "What Our Clients Say",
+    "subtitle": "Families across Ottawa share how thoughtful home care made a difference for them.",
     "placeholder": "Verified family testimonials will appear here after launch. We do not publish placeholder or fabricated reviews.",
     "viewAll": "Read all testimonials"
   },
@@ -543,6 +543,9 @@
     "crumb": "Why Jarkabi",
     "title": "Care built on trust, compassion, and professional standards",
     "lead": "Twelve things families ask about before choosing a home care provider, answered plainly.",
+    "introTitle": "Why families choose Jarkabi Home Care",
+    "introBody": "Home care should feel personal, professional, and predictable. Jarkabi combines licensed caregivers, nurse-reviewed plans, and coordinators who stay reachable — so dignity stays at the centre of every visit.",
+    "gridTitle": "More reasons families trust Jarkabi",
     "items": [
       {
         "title": "Care that starts with listening",
@@ -645,7 +648,10 @@
     "lead": "Straight answers about starting care, safety, languages, and what to expect from Jarkabi Home Care.",
     "sectionTitle": "Frequently asked questions",
     "sectionLead": "Search below or browse common topics. If your question is not listed, call our care team.",
-    "searchPlaceholder": "Search your question"
+    "searchPlaceholder": "Search your question",
+    "sidebarTitle": "Helpful links",
+    "widgetTitle": "Need Help Finding the Right Care?",
+    "widgetButton": "Speak With Jarkabi"
   },
   "galleryPage": {
     "metaTitle": "Gallery",
@@ -654,7 +660,7 @@
     "title": "Moments of care and connection",
     "lead": "A glimpse of the warmth, dignity, and companionship that define home care.",
     "sectionTitle": "Our gallery",
-    "sectionLead": "Licensed photography from the Care Giver template, adapted for Jarkabi until client photography is available.",
+    "sectionLead": "Warm, dignified moments from the Jarkabi home care experience.",
     "imageAlt": "Home care gallery"
   },
   "teamPage": {
@@ -702,6 +708,8 @@
     "sidebarCategories": "Categories",
     "sidebarRecent": "Recent articles",
     "sidebarSearch": "Search articles",
+    "sidebarWidgetTitle": "Need Help Finding the Right Care?",
+    "sidebarWidgetButton": "Request Care",
     "sidebarCategoryList": [
       "Choosing Home Care",
       "Why In-Home Care",
