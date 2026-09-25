@@ -1,8 +1,18 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
 /**
  * Push Payload/Drizzle schema during Vercel production builds.
  * Skips when DATABASE_URI is SQLite (local CI) or unset.
  */
+import Module from "node:module";
+
+const originalLoad = Module._load;
+Module._load = function patchedLoad(request, parent, isMain) {
+  const exports = originalLoad.apply(this, arguments);
+  if (request === "@next/env" && exports && !exports.default) {
+    exports.default = exports;
+  }
+  return exports;
+};
 
 const databaseUri = process.env.DATABASE_URI?.trim();
 
@@ -24,7 +34,7 @@ Object.assign(process.env, {
 
 async function main() {
   const { getPayload } = await import("payload");
-  const { default: config } = await import("../src/payload.config");
+  const { default: config } = await import("../src/payload.config.ts");
 
   console.log("[ensure-schema] Pushing Payload schema to Supabase…");
 
