@@ -1,23 +1,24 @@
 export type NavLink = { key: string; href: string };
 
 /**
- * Header navigation. Care Giver Home Page 01 carries five top-level items, so the
- * bar stays on one line; the fuller set of pages is reachable from the footer and
- * from the relevant landing pages.
+ * Primary header navigation — spec §32.
+ * Care Giver Home Page 01 uses a compact inline bar; these eight items map to
+ * Jarkabi's information architecture while preserving the same visual density.
  */
 export const mainNav: NavLink[] = [
   { key: "home", href: "" },
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
-  { key: "locations", href: "/locations" },
+  { key: "howCareWorks", href: "/how-care-works" },
+  { key: "whyJarkabi", href: "/why-jarkabi" },
   { key: "resources", href: "/resources" },
+  { key: "careers", href: "/careers" },
   { key: "contact", href: "/contact" },
 ];
 
-/** Full set, used by the mobile drawer and the footer. */
+/** Supplementary links — footer columns, mobile overflow, and location SEO pages. */
 export const secondaryNav: NavLink[] = [
-  { key: "howCareWorks", href: "/how-care-works" },
-  { key: "whyJarkabi", href: "/why-jarkabi" },
+  { key: "locations", href: "/locations" },
   { key: "caregivers", href: "/caregivers" },
-  { key: "careers", href: "/careers" },
+  { key: "referrals", href: "/referrals" },
 ];

@@ -1,6 +1,12 @@
 # Jarkabi Home Care — Progress Log
 
-## Status: Phases 8–19 implemented in codebase — launch blockers remain
+## Status: Care Giver Home Page 01 rebuilt — inner pages & licensed asset ingest in progress
+
+**Master brief (2026-09-25):** Faithful Care Giver visual experience on Seniar/Next.js architecture. See `docs/caregiver-page-map.md`, `docs/caregiver-section-map.md`, `docs/licensed-assets.md`.
+
+**Blocker:** Unpack licensed Care Giver + Seniar zips into `/templates/` for file-level audit and photo migration.
+
+### Previous phases (8–19) — launch blockers remain
 
 ### Production deployment ✅
 - [x] `Gebena/Jarkabi-Home-Care` standalone repo synced

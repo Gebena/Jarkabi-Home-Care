@@ -32,11 +32,28 @@ reusable-section component approach, and the responsive breakpoint strategy.
 Not reused: no Seniar branding, copy, imagery or Bootstrap 5 stylesheet ships. Seniar's own
 homepage layout was replaced by the Care Giver Home Page 01 layout.
 
-## Photography
+## Licensed template files (local — not in Git)
 
-The Care Giver demo photographs are supplied for preview purposes and are **not
-redistributable** under the Envato licence — templates ship them as placeholders precisely
-because the end user is expected to substitute their own. Jarkabi therefore has its own set,
+| Path | Status | Action |
+|---|---|---|
+| `/templates/caregiver/` | **Empty** on Cloud Agent VM | Owner: unzip purchased Care Giver HTML package here (see `/templates/README.md`) |
+| `/templates/seniar/` | **Empty** | Owner: unzip Seniar React package here |
+| `/templates/licenses/caregiver-envato-elements.pdf` | Present | Envato Elements licence `KVZ473J956` |
+
+When `/templates/caregiver/` is populated, the agent will:
+
+1. Inventory every `.html` demo page and update `docs/caregiver-page-map.md`.
+2. Copy **permitted** images, icons, and fonts into `jarkabi-home-care/public/` subfolders.
+3. Register each copied file in the table below (original filename → final path → pages used).
+4. Replace AI placeholder photography where licensed demo photos are cleared for end-product use.
+
+Until the package is unpacked, production uses the Jarkabi placeholder set below (same visual direction, not the original demo files).
+
+---
+
+## Photography (current production placeholders)
+
+The Care Giver demo photographs in ThemeForest previews are often preview-only; **your purchased package may include production-usable images** — verify against your Envato licence terms when unpacking. Until those files are ingested, Jarkabi uses its own set,
 composed to match Care Giver's direction: warm, naturally lit, candid senior care.
 
 > **These are AI-generated photographs, not photographs of real people.** Nobody in them is a

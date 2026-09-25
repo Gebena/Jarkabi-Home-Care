@@ -56,7 +56,7 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
             <BrandWordmark size="md" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+          <nav className="hidden items-center gap-5 xl:flex xl:gap-6" aria-label="Main">
             {mainNav.map((item) => {
               const href = `${base}${item.href}`;
               const active =
