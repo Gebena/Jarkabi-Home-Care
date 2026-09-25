@@ -1,13 +1,14 @@
+import { ServiceDetailContactPanel } from "@/components/services/service-detail-contact-panel";
 import { caregiverServiceDetailImages } from "@/lib/caregiver-assets";
 import { getDemoServiceDetail } from "@/lib/caregiver-demo-fallbacks";
 import Image from "next/image";
-import Link from "next/link";
 
 type ServiceDetailBodyProps = {
   locale: string;
   slug: string;
   title: string;
   contactLabel: string;
+  contactPanelTitle: string;
 };
 
 /**
@@ -19,6 +20,7 @@ export function ServiceDetailBody({
   slug,
   title,
   contactLabel,
+  contactPanelTitle,
 }: ServiceDetailBodyProps) {
   const demo = getDemoServiceDetail(slug);
   if (!demo) return null;
@@ -28,14 +30,18 @@ export function ServiceDetailBody({
   return (
     <article className="space-y-8 border-b border-line pb-10">
       {images?.hero ? (
-        <div className="relative aspect-[16/7] overflow-hidden">
+        <div className="group relative aspect-[16/7] overflow-hidden">
           <Image
             src={images.hero}
             alt=""
             fill
             priority
             sizes="(max-width: 1024px) 92vw, 65vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-plum/35 via-transparent to-transparent"
           />
         </div>
       ) : null}
@@ -85,18 +91,12 @@ export function ServiceDetailBody({
         <p className="mt-4 text-base leading-relaxed text-body">{demo.closingBody}</p>
       </div>
 
-      <div className="border border-line bg-mist px-6 py-8 text-center">
-        <p className="text-base leading-relaxed text-ink">
-          {demo.contactPrompt}
-          <br />
-          <Link
-            href={`/${locale}/contact`}
-            className="mt-3 inline-block font-display text-lg text-plum underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"
-          >
-            {contactLabel}
-          </Link>
-        </p>
-      </div>
+      <ServiceDetailContactPanel
+        locale={locale}
+        prompt={demo.contactPrompt}
+        title={contactPanelTitle}
+        buttonLabel={contactLabel}
+      />
     </article>
   );
 }

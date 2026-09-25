@@ -127,6 +127,18 @@ Legend: `[x]` done · `[ ]` needs work · `[~]` partial
 | `/careers` [x] | started.jpg | plum intro + team photo + sidebar widget | [x] |
 | `/testimonials` [x] | started.jpg | featured carousel + full grid | [x] |
 | `/legal/*` [x] | started.jpg | policy sidebar nav + contact widget | [x] |
+| `/referrals` [x] | started.jpg | plum intro + partner sidebar + form | [x] |
+| `/how-care-works` [x] | started.jpg | process steps + alternating photo bands | [x] |
+| `/gallery` [x] | started.jpg | grid + lightbox prev/next counter | [x] |
+| `/locations` [x] | started.jpg | ocean intro band + tilted prints + map | [x] |
+| `/growing-across-canada` [x] | started.jpg | plum intro + feature cards | [x] |
+| `/team` [x] | started.jpg | plum intro + team grid hover cards | [x] |
+| `/services/[slug]` [x] | per-service | hero gradient + teal contact panel + sidebar | [x] |
+| `/careers/[slug]` [x] | started.jpg | role sidebar + application form | [x] |
+| `/locations/[province]` [x] | started.jpg | city list + sidebar widget | [x] |
+| `/locations/[province]/[city]` [x] | started.jpg | ocean city band + service cards + sidebar | [x] |
+| `/[province]/[city]/[service]` [x] | per-service | full service detail layout + sidebar | [x] |
+| Homepage trust/contact/stats [x] | — | mist trust bar, patterned plum contact, stats borders | [x] |
 
 ---
 
@@ -151,3 +163,6 @@ Legend: `[x]` done · `[ ]` needs work · `[~]` partial
 | 2026-09-25 | Cloud Agent | Inner banners use started.jpg; testimonial carousel; specialty + contact photo layouts |
 | 2026-09-25 | Cloud Agent | Pass 3: Why Jarkabi photo bands; services category bands; FAQ/resources sidebar widget; hero/pillar pixel tuning |
 | 2026-09-25 | Cloud Agent | Pass 4: BlogPostCard polish; careers intro; testimonials carousel; legal sidebar nav |
+| 2026-09-25 | Cloud Agent | Pass 5: Referrals intro; how-care-works photo bands; gallery lightbox; locations/growing intros |
+| 2026-09-25 | Cloud Agent | Pass 6: Team intro; service detail contact panel; career/province sidebars |
+| 2026-09-25 | Cloud Agent | Pass 7: City pages; local SEO service layout; homepage trust/contact/stats polish |

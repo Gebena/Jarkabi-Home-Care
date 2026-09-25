@@ -49,6 +49,11 @@ Do not delete or replace an asset listed here without updating this file and run
 | `resource/service-8–21.jpg` | Service detail heroes/inline | `/services/[slug]` | per slug in `caregiverServiceDetailImages` |
 | `resource/news-4–7.jpg` | Blog listing extras | `/resources` | `/images/caregiver-licensed/resource/news-*.jpg` |
 | `resource/post-thumb-1–4.jpg` | Blog sidebar | `/resources/[slug]` | `/images/caregiver-licensed/resource/post-thumb-*.jpg` |
+| `resource/team-1.jpg` | Careers intro | `/careers` | `/images/caregiver-licensed/resource/team-1.jpg` |
+| `resource/team-2.jpg` | Team intro | `/team` | `/images/caregiver-licensed/resource/team-2.jpg` |
+| `resource/meeting.jpg` | Referrals intro | `/referrals` | `/images/caregiver-licensed/resource/meeting.jpg` |
+| `resource/post-1.jpg` | City location band | `/locations/[province]/[city]` | `/images/caregiver-licensed/resource/post-1.jpg` |
+| `backgrounds/pattern-1.png` | Contact + stats bands | homepage `ContactSection`, `StatisticsSection` | `/images/caregiver-licensed/backgrounds/pattern-1.png` |
 
 ---
 

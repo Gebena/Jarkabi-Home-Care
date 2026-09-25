@@ -92,6 +92,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             slug={service.slug}
             title={service.title}
             contactLabel={t("contactCta")}
+            contactPanelTitle={t("contactPanelTitle")}
           />
           <BlockRenderer
             blocks={service.blocks as never}
@@ -124,6 +125,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           locale={locale}
           activeSlug={service.slug}
           contactLabel={t("contactCta")}
+          widgetTitle={t("sidebarWidgetTitle")}
           itemLabels={serviceLabels}
         />
       </div>

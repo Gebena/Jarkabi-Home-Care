@@ -1,3 +1,4 @@
+import { GrowingIntroSection } from "@/components/growing/growing-intro-section";
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { FeatureCard } from "@/components/ui/feature-card";
@@ -28,6 +29,8 @@ export default async function GrowingAcrossCanadaPage({ params }: Props) {
         lead={t("lead")}
         crumbLabel={t("crumb")}
       />
+
+      <GrowingIntroSection introTitle={t("introTitle")} introBody={t("introBody")} />
 
       <PageSection tone="mist">
         <div className="grid gap-6 md:grid-cols-3">

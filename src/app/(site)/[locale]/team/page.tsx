@@ -2,6 +2,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
+import { TeamIntroSection } from "@/components/team/team-intro-section";
 import { TeamGrid } from "@/components/team/team-grid";
 import type { Locale } from "@/i18n/routing";
 import { getTeamMembers } from "@/lib/cms";
@@ -36,7 +37,13 @@ export default async function TeamPage({ params }: Props) {
         breadcrumbs={[{ label: tNav("about"), href: `/${locale}/about` }]}
       />
 
-      <PageSection>
+      <TeamIntroSection
+        introTitle={t("introTitle")}
+        introBody={t("introBody")}
+        highlights={t.raw("introHighlights") as string[]}
+      />
+
+      <PageSection tone="mist">
         <SectionTitle align="center" title={t("sectionTitle")} subtitle={t("sectionLead")} />
         <div className="mt-12">
           <TeamGrid members={members} />

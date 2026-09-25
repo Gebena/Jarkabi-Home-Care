@@ -6,6 +6,7 @@ type ServiceSidebarProps = {
   locale: string;
   activeSlug: string;
   contactLabel: string;
+  widgetTitle: string;
   itemLabels: Record<string, string>;
 };
 
@@ -16,6 +17,7 @@ export function ServiceSidebar({
   locale,
   activeSlug,
   contactLabel,
+  widgetTitle,
   itemLabels,
 }: ServiceSidebarProps) {
   return (
@@ -46,7 +48,7 @@ export function ServiceSidebar({
 
       <ContactSidebarWidget
         locale={locale}
-        title="Find Care Today"
+        title={widgetTitle}
         buttonLabel={contactLabel}
       />
     </aside>

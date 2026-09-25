@@ -37,7 +37,13 @@ export default async function GalleryPage({ params }: Props) {
       <PageSection tone="mist">
         <SectionTitle align="center" title={t("sectionTitle")} subtitle={t("sectionLead")} />
         <div className="mt-12">
-          <GalleryGrid images={[...caregiverGalleryImages]} altPrefix={t("imageAlt")} />
+          <GalleryGrid
+            images={[...caregiverGalleryImages]}
+            altPrefix={t("imageAlt")}
+            closeLabel={t("lightboxClose")}
+            previousLabel={t("lightboxPrevious")}
+            nextLabel={t("lightboxNext")}
+          />
         </div>
       </PageSection>
 

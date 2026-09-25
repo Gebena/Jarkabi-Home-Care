@@ -2,9 +2,8 @@
 
 import type { ProvinceData } from "@/lib/cms";
 import { caregiverBackgrounds } from "@/lib/caregiver-assets";
-import { locationImages } from "@/lib/site-images";
+import { LocationPhotoCollage } from "@/components/locations/location-photo-collage";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 
@@ -39,25 +38,8 @@ export function LocationFinder({ locale, provinces }: LocationFinderProps) {
         className="pointer-events-none absolute inset-0 bg-care-ocean/90"
       />
       <div className="relative mx-auto grid w-[min(1240px,calc(100%-2rem))] items-center gap-12 lg:grid-cols-2">
-        <div aria-hidden="true" className="relative hidden h-80 lg:block">
-          <div className="absolute left-4 top-0 h-64 w-52 rotate-[-6deg] border-[10px] border-white shadow-elevated">
-            <Image
-              src={locationImages[0].src}
-              alt=""
-              fill
-              sizes="13rem"
-              className="object-cover"
-            />
-          </div>
-          <div className="absolute left-52 top-12 h-64 w-52 rotate-[5deg] border-[10px] border-white shadow-elevated">
-            <Image
-              src={locationImages[1].src}
-              alt=""
-              fill
-              sizes="13rem"
-              className="object-cover"
-            />
-          </div>
+        <div className="hidden lg:block">
+          <LocationPhotoCollage />
         </div>
 
         <div className="bg-blush-soft p-8 lg:p-10">

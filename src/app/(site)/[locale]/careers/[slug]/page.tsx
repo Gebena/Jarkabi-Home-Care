@@ -1,3 +1,4 @@
+import { CareerDetailSidebar } from "@/components/careers/career-detail-sidebar";
 import { JobApplicationForm } from "@/components/forms/job-application-form";
 import { PageHero } from "@/components/layout/page-hero";
 import { JsonLd, jobPostingJsonLd } from "@/components/seo/json-ld";
@@ -45,24 +46,19 @@ export default async function CareerDetailPage({ params }: Props) {
         breadcrumbs={[{ label: tCareers("crumb"), href: `/${locale}/careers` }]}
       />
       <PageSection tone="mist">
-        <div className="grid gap-10 lg:grid-cols-[20rem_1fr] lg:gap-14">
-          <aside className="space-y-6 border-s-2 border-tan ps-6">
-            <div>
-              <h2 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
-                {tCareers("professionLabel")}
-              </h2>
-              <p className="mt-1 text-base text-ink">{String(job.profession ?? "—")}</p>
-            </div>
-            <div>
-              <h2 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
-                {tCareers("employmentTypeLabel")}
-              </h2>
-              <p className="mt-1 text-base text-ink">{String(job.employmentType ?? "—")}</p>
-            </div>
-            <p className="text-sm leading-relaxed text-body">{tCareers("applicationPrivacy")}</p>
-          </aside>
+        <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-12">
+          <CareerDetailSidebar
+            locale={locale}
+            professionLabel={tCareers("professionLabel")}
+            profession={String(job.profession ?? "—")}
+            employmentTypeLabel={tCareers("employmentTypeLabel")}
+            employmentType={String(job.employmentType ?? "—")}
+            privacyNote={tCareers("applicationPrivacy")}
+            widgetTitle={tCareers("sidebarWidgetTitle")}
+            widgetButton={tCareers("sidebarWidgetButton")}
+          />
 
-          <div className="bg-white p-8 lg:p-10">
+          <div className="min-w-0 border border-line bg-white p-8 lg:p-10">
             <JobApplicationForm locale={locale} jobTitle={title} />
           </div>
         </div>

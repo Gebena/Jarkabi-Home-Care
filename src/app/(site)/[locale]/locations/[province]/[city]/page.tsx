@@ -1,4 +1,6 @@
 import { PageHero } from "@/components/layout/page-hero";
+import { CityIntroBand } from "@/components/locations/city-intro-band";
+import { ProvincePageSidebar } from "@/components/locations/province-page-sidebar";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -30,12 +32,19 @@ export default async function CityLocationPage({ params }: Props) {
   const cityData = cities.find((c) => c.slug === city);
   if (!cityData || cityData.status !== "active") notFound();
 
-  const [services, t, tCity, tNav] = await Promise.all([
+  const [services, t, tCity, tNav, tLocations] = await Promise.all([
     getServicesForLocation(lang, province, city),
     getTranslations({ locale, namespace: "servicesPage" }),
     getTranslations({ locale, namespace: "cityPage" }),
     getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "locationsPage" }),
   ]);
+
+  const sidebarLinks = [
+    { label: provinceData.name, href: `/${locale}/locations/${province}` },
+    { label: tNav("howCareWorks"), href: `/${locale}/how-care-works` },
+    { label: tNav("contact"), href: `/${locale}/contact` },
+  ];
 
   return (
     <>
@@ -51,16 +60,35 @@ export default async function CityLocationPage({ params }: Props) {
         ]}
       />
 
+      <CityIntroBand
+        cityName={cityData.name}
+        title={tCity("introTitle", { city: cityData.name })}
+        lead={tCity("introLead", { city: cityData.name })}
+      />
+
       <PageSection tone="mist">
-        <SectionTitle align="center" title={tCity("servicesTitle")} />
-        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <li key={service.slug}>
-              <ServiceCard service={service} locale={locale} ctaLabel={t("learnMore")} />
-            </li>
-          ))}
-        </ul>
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12">
+          <div className="min-w-0">
+            <SectionTitle align="left" title={tCity("servicesTitle")} />
+            <ul className="mt-10 grid gap-8 sm:grid-cols-2">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <ServiceCard service={service} locale={locale} ctaLabel={t("learnMore")} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <ProvincePageSidebar
+            locale={locale}
+            quickLinksTitle={tLocations("sidebarTitle")}
+            links={sidebarLinks}
+            widgetTitle={tLocations("sidebarWidgetTitle")}
+            widgetButton={tLocations("sidebarWidgetButton")}
+          />
+        </div>
       </PageSection>
+
       <CallToAction locale={locale} />
     </>
   );

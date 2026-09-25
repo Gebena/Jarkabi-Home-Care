@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/layout/page-hero";
 import { CanadaMap } from "@/components/locations/canada-map";
+import { LocationsIntroBand } from "@/components/locations/locations-intro-band";
 import { PageSection } from "@/components/ui/page-section";
 import { ottawaCities } from "@/lib/brand";
 import type { Locale } from "@/i18n/routing";
@@ -34,6 +35,9 @@ export default async function LocationsPage({ params }: Props) {
         lead={t("lead")}
         crumbLabel={tNav("locations")}
       />
+
+      <LocationsIntroBand title={t("introTitle")} lead={t("introLead")} />
+
       <PageSection>
         <CanadaMap provinces={provinces} locale={locale} />
       </PageSection>

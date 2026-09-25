@@ -323,7 +323,9 @@
     "related": "Related services",
     "learnMore": "View details",
     "requestCare": "Request care",
-    "contactCta": "Contact us"
+    "contactCta": "Contact us",
+    "contactPanelTitle": "Find Care Today",
+    "sidebarWidgetTitle": "Need Help Finding the Right Care?"
   },
   "process": {
     "eyebrow": "How care works",
@@ -661,7 +663,10 @@
     "lead": "A glimpse of the warmth, dignity, and companionship that define home care.",
     "sectionTitle": "Our gallery",
     "sectionLead": "Warm, dignified moments from the Jarkabi home care experience.",
-    "imageAlt": "Home care gallery"
+    "imageAlt": "Home care gallery",
+    "lightboxClose": "Close",
+    "lightboxPrevious": "Previous image",
+    "lightboxNext": "Next image"
   },
   "teamPage": {
     "metaTitle": "Our Team",
@@ -669,6 +674,13 @@
     "crumb": "Team",
     "title": "Caregivers and coordinators who know Ottawa",
     "lead": "Experienced professionals committed to respectful, person-centred home care.",
+    "introTitle": "People who show up — and stay",
+    "introBody": "Our team is built for continuity: coordinators who know your family, caregivers matched for fit, and clinical oversight when needs change.",
+    "introHighlights": [
+      "Screened, trained, and supported caregivers",
+      "Local coordinators for Ottawa communities",
+      "Respectful, person-centred care every visit"
+    ],
     "sectionTitle": "Our caregivers",
     "sectionLead": "Demo profiles shown until verified team photography and biographies are published."
   },
@@ -738,6 +750,16 @@
     "crumb": "Referrals",
     "title": "Refer a client with confidence",
     "lead": "For hospitals, physicians, nurses, social workers, case managers and community partners.",
+    "introTitle": "A referral partner you can trust",
+    "introBody": "We built Jarkabi for the professionals who need a reliable home care partner — clear communication, same-day acknowledgement, and consent before we collect health information.",
+    "introHighlights": [
+      "Same-business-day referral acknowledgement",
+      "Coordinator confirms staffing before contacting the client",
+      "Consent-first approach to health information"
+    ],
+    "sidebarTitle": "Helpful links",
+    "sidebarWidgetTitle": "Questions about a referral?",
+    "sidebarWidgetButton": "Contact us",
     "partnersTitle": "Who refers to us",
     "partnersBody": "Hospital discharge planners, rehabilitation teams, retirement residences, community support agencies and family physicians across Ottawa and the surrounding communities.",
     "responseTitle": "What happens next",
@@ -773,6 +795,11 @@
     "accessibilityContactBody": "If any part of this site prevents you from finding or requesting care, email our care team and tell us what happened. We treat access barriers as service failures and respond to them the same way."
   },
   "locationsPage": {
+    "introTitle": "Local care, honestly listed",
+    "introLead": "We show only the provinces and communities we can actually staff today — no placeholder listings, no implied coverage.",
+    "sidebarTitle": "Helpful links",
+    "sidebarWidgetTitle": "Need Help Finding the Right Care?",
+    "sidebarWidgetButton": "Request Care",
     "mapTitle": "Where we work today",
     "mapLead": "Every province below shows its real status. We list a community only once we can staff it, so a province marked as not yet served is exactly that.",
     "ottawaTitle": "Ottawa launch communities",
@@ -787,6 +814,8 @@
   "cityPage": {
     "title": "Home care in {city}",
     "lead": "The services we currently deliver in {city}, and the team that coordinates them.",
+    "introTitle": "Local care in {city}",
+    "introLead": "Coordinators and caregivers who know {city} — consistent visits, clear communication, and support when needs change.",
     "servicesTitle": "Available services"
   },
   "provincePage": {
@@ -812,6 +841,8 @@
     "crumb": "Growing across Canada",
     "title": "Growing across Canada — without compromising quality",
     "lead": "We began locally in Ottawa, and we open a new community only once we can staff it to the same standard.",
+    "introTitle": "National reach, local accountability",
+    "introBody": "Every community we list is staffed to the same standard as Ottawa — local coordinators, local caregivers, and honest availability on our locations page.",
     "localTitle": "Local heart, national capability",
     "localBody": "Each community shows its own leadership, caregivers, phone number and resources, while sharing one brand and one quality framework.",
     "opensTitle": "How a new community opens",

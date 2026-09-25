@@ -3,6 +3,8 @@ import { PageHero } from "@/components/layout/page-hero";
 import { ServiceDetailSections } from "@/components/sections/service-detail-sections";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { BlockRenderer } from "@/components/blocks/block-renderer";
+import { ServiceDetailBody } from "@/components/services/service-detail-body";
+import { ServiceSidebar } from "@/components/services/service-sidebar";
 import type { Locale } from "@/i18n/routing";
 import { provincesSeed } from "@/lib/brand";
 import {
@@ -70,11 +72,12 @@ export default async function LocalServicePage({ params }: Props) {
   const cityData = cities.find((c) => c.slug === city);
   if (!cityData || cityData.status !== "active") notFound();
 
-  const [service, availability, allServices, t] = await Promise.all([
+  const [service, availability, allServices, t, tNav] = await Promise.all([
     getService(serviceSlug, lang),
     getServiceAvailability(),
     getServices(lang),
     getTranslations({ locale, namespace: "serviceDetail" }),
+    getTranslations({ locale, namespace: "nav" }),
   ]);
 
   if (!service) notFound();
@@ -92,6 +95,7 @@ export default async function LocalServicePage({ params }: Props) {
   const relatedServices = await getRelatedServices(lang, service.slug, service.category);
   const cityLabel = cityData.name;
   const path = `/${province}/${city}/${serviceSlug}`;
+  const serviceLabels = tNav.raw("serviceLabels") as Record<string, string>;
 
   return (
     <>
@@ -110,32 +114,57 @@ export default async function LocalServicePage({ params }: Props) {
         eyebrow={`${cityLabel}, Ontario`}
         title={`${service.title} in ${cityLabel}`}
         lead={service.summary}
-        breadcrumbs={[{ label: cityLabel, href: `/${locale}/locations/${province}/${city}` }]}
+        breadcrumbs={[
+          { label: cityLabel, href: `/${locale}/locations/${province}/${city}` },
+          { label: tNav("services"), href: `/${locale}/services` },
+        ]}
       />
-      <BlockRenderer
-        blocks={service.blocks as never}
-        locale={locale}
-        services={allServices}
-        learnMoreLabel={t("learnMore")}
-      />
-      <ServiceDetailSections
-        locale={locale}
-        service={service}
-        availability={availability}
-        relatedServices={relatedServices}
-        labels={{
-          whoFor: t("whoFor"),
-          whoForBody: t("whoForBody"),
-          howWeHelp: t("howWeHelp"),
-          howWeHelpBody: t("howWeHelpBody"),
-          howCareBegins: t("howCareBegins"),
-          howCareBeginsBody: t("howCareBeginsBody"),
-          locations: t("locations"),
-          locationsEmpty: t("locationsEmpty"),
-          related: t("related"),
-          learnMore: t("learnMore"),
-        }}
-      />
+
+      <div className="mx-auto w-[min(1240px,calc(100%-2rem))] py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12 lg:py-20">
+        <div className="min-w-0">
+          <ServiceDetailBody
+            locale={locale}
+            slug={service.slug}
+            title={service.title}
+            contactLabel={t("contactCta")}
+            contactPanelTitle={t("contactPanelTitle")}
+          />
+          <BlockRenderer
+            blocks={service.blocks as never}
+            locale={locale}
+            services={allServices}
+            learnMoreLabel={t("learnMore")}
+          />
+          <ServiceDetailSections
+            locale={locale}
+            service={service}
+            availability={availability}
+            relatedServices={relatedServices}
+            labels={{
+              whoFor: t("whoFor"),
+              whoForBody: t("whoForBody"),
+              howWeHelp: t("howWeHelp"),
+              howWeHelpBody: t("howWeHelpBody"),
+              howCareBegins: t("howCareBegins"),
+              howCareBeginsBody: t("howCareBeginsBody"),
+              locations: t("locations"),
+              locationsEmpty: t("locationsEmpty"),
+              related: t("related"),
+              learnMore: t("learnMore"),
+            }}
+            embedded
+          />
+        </div>
+
+        <ServiceSidebar
+          locale={locale}
+          activeSlug={service.slug}
+          contactLabel={t("contactCta")}
+          widgetTitle={t("sidebarWidgetTitle")}
+          itemLabels={serviceLabels}
+        />
+      </div>
+
       <CallToAction locale={locale} />
     </>
   );

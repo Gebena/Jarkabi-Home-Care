@@ -161,6 +161,31 @@ export const careersPageImages = {
   intro: licensed("resource/team-1.jpg", "Jarkabi care team member supporting a client at home"),
 } as const;
 
+/** Referrals page — coordinator meeting photograph. */
+export const referralsPageImages = {
+  intro: licensed(
+    "resource/meeting.jpg",
+    "Care coordinator meeting with a family about home care",
+  ),
+} as const;
+
+/** How care works — alternating narrative bands. */
+export const howCareWorksImages = {
+  meeting: library.mission,
+  communication: library.aboutCare2,
+  supervision: library.serviceSkilledNursing,
+} as const;
+
+/** Growing across Canada — intro landscape photograph. */
+export const growingPageImages = {
+  intro: library.ctaBackground,
+} as const;
+
+/** Team page — caregiver portrait for intro panel. */
+export const teamPageImages = {
+  intro: licensed("resource/team-2.jpg", "Jarkabi caregiver supporting a client at home"),
+} as const;
+
 /** Why Jarkabi — intro + featured alternating bands. */
 export const whyPageImages = {
   intro: library.whyPanel,
