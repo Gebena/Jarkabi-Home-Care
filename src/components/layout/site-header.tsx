@@ -2,6 +2,7 @@
 
 import { SearchModal } from "@/components/ui/search-modal";
 import type { BrandData } from "@/lib/cms";
+import { telHref } from "@/lib/brand-nap";
 import { MainNav } from "@/components/layout/main-nav";
 import { cn } from "@/lib/utils";
 import { Phone, Search } from "lucide-react";
@@ -24,8 +25,7 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const base = `/${locale}`;
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
-  const hasPhone = phoneDigits.length > 3;
+  const phoneLink = telHref(brand.primaryPhone);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -70,9 +70,9 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
 
             <LocaleSwitcher />
 
-            {hasPhone ? (
+            {phoneLink ? (
               <a
-                href={`tel:${phoneDigits}`}
+                href={phoneLink}
                 className="hidden items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink lg:flex"
               >
                 <Phone size={15} aria-hidden="true" />

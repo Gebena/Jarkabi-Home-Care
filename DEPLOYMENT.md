@@ -77,6 +77,7 @@ Verify locally before deploy:
 
 ```bash
 DATABASE_URI="postgresql://..." npm run verify:supabase
+npm run go-live:database
 ```
 
 Payload seeds provinces, services, and admin user on first boot (`onInit` in `payload.config.ts`).
@@ -102,6 +103,11 @@ Media uploads on Vercel use **Vercel Blob** (`BLOB_READ_WRITE_TOKEN`) by default
 | `SMTP_USER` | Recommended | Sender email |
 | `SMTP_PASS` | Recommended | App password |
 | `BLOB_READ_WRITE_TOKEN` | Yes (Vercel) | Auto-set when you add **Blob** storage in Vercel → Storage |
+| `JARKABI_PRIMARY_PHONE` | Optional | Overrides Payload Brand Settings until admin NAP is entered |
+| `JARKABI_TOLL_FREE_PHONE` | Optional | Toll-free line override |
+| `JARKABI_OTTAWA_OFFICE_ADDRESS` | Optional | Street address for footer, contact page, and JSON-LD |
+
+Placeholder NAP (`[PRIMARY PHONE]`, etc.) is hidden from `tel:` links and JSON-LD until real values are set in Payload **Brand Settings** or the env vars above.
 
 Sync non-secret defaults from `vercel.json`:
 

@@ -4,6 +4,7 @@
 
 **Merged:** [PR #229](https://github.com/Gebena/Ketet/pull/229) → `main` (2026-09-25).  
 **CMS/locale/cleanup:** [PR #231](https://github.com/Gebena/Ketet/pull/231) → `main` (2026-09-25).  
+**Launch polish:** [PR #232](https://github.com/Gebena/Ketet/pull/232) → `main` (2026-09-25).  
 **Production verified:** https://jarkabi.ca/en (sync to `Gebena/Jarkabi-Home-Care` succeeded).  
 **Handoff:** `docs/caregiver-fidelity-summary.md`, `docs/jarkabi-caregiver-visual-qa.md`, `docs/caregiver-assets-used.md`.
 
@@ -76,7 +77,7 @@
 - [x] Skip link, reduced motion, form `aria-invalid` on contact form
 - [x] Per-locale `lang`/`dir`
 - [x] Gallery lightbox focus trap + body scroll lock
-- [ ] Focus traps on remaining dialogs (mobile nav, install prompt)
+- [x] Mobile nav sheet, search modal, and install prompt focus traps
 - [ ] Formal WCAG 2.2 AA audit
 
 ### Phase 18 — Performance ⏳
@@ -95,7 +96,7 @@
 ### Phase 20 — Launch checklist ⏳
 - [x] Vercel deploy pipeline working
 - [x] DNS on `jarkabi.ca`
-- [ ] Real phone + Ottawa address in Brand Settings
+- [ ] Real phone + Ottawa address in Brand Settings (or `JARKABI_*` env vars — wiring shipped)
 - [ ] Supabase production database
 - [ ] Admin password rotated after deploy
 - [ ] Legal pages reviewed

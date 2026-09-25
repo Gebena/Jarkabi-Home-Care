@@ -1,4 +1,5 @@
 import type { BrandData, ProvinceData } from "@/lib/cms";
+import { hasRealAddress, telHref } from "@/lib/brand-nap";
 import { secondaryNav } from "@/lib/nav-config";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -60,7 +61,10 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
   const nav = await getTranslations("nav");
   const base = `/${locale}`;
   const activeProvinces = provinces.filter((province) => province.status === "active");
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const phoneLink = telHref(brand.primaryPhone);
+  const officeAddress = hasRealAddress(brand.ottawaOfficeAddress)
+    ? brand.ottawaOfficeAddress
+    : t("coverageNote");
 
   const quickLinks = [
     { href: `${base}/about`, label: nav("about") },
@@ -116,10 +120,10 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           <h2 className="font-display text-lg text-white">{t("contact")}</h2>
           <span aria-hidden="true" className="mt-3 block h-0.5 w-9 bg-tan" />
           <ul className="mt-5 space-y-3 text-sm">
-            {phoneDigits.length > 3 ? (
+            {phoneLink ? (
               <li>
                 <a
-                  href={`tel:${phoneDigits}`}
+                  href={phoneLink}
                   className="flex items-start gap-2.5 font-display text-lg text-white transition-colors hover:text-tan"
                 >
                   <Phone size={15} aria-hidden="true" className="mt-1.5 shrink-0" />
@@ -129,7 +133,7 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
             ) : null}
             <li className="flex items-start gap-2.5 text-white/70">
               <MapPin size={15} aria-hidden="true" className="mt-0.5 shrink-0" />
-              <span>{brand.ottawaOfficeAddress}</span>
+              <span>{officeAddress}</span>
             </li>
             <li>
               <a

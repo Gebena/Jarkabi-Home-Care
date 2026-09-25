@@ -1,4 +1,5 @@
 import { defaultBrand, defaultServices, provincesSeed } from "@/lib/brand";
+import { applyBrandEnvOverrides } from "@/lib/brand-nap";
 import {
   demoBlogPosts,
   demoFaqs,
@@ -82,8 +83,8 @@ export async function getBrand(locale: Locale): Promise<BrandData> {
     };
   });
 
-  if (!result.ok) return { ...defaultBrand };
-  return result.data;
+  if (!result.ok) return applyBrandEnvOverrides({ ...defaultBrand });
+  return applyBrandEnvOverrides(result.data);
 }
 
 export async function getProvinces(locale: Locale): Promise<ProvinceData[]> {

@@ -1,4 +1,5 @@
 import type { BrandData } from "@/lib/cms";
+import { hasRealAddress, telHref } from "@/lib/brand-nap";
 import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -15,15 +16,18 @@ type ContactSectionProps = {
 export function ContactSection({ locale, brand }: ContactSectionProps) {
   const t = useTranslations("contactCta");
   const tFooter = useTranslations("footer");
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const phoneLink = telHref(brand.primaryPhone);
+  const locationValue = hasRealAddress(brand.ottawaOfficeAddress)
+    ? brand.ottawaOfficeAddress
+    : t("locationValue");
 
   const rows = [
-    { Icon: MapPin, label: t("locationLabel"), value: brand.ottawaOfficeAddress },
+    { Icon: MapPin, label: t("locationLabel"), value: locationValue },
     {
       Icon: Phone,
       label: t("phoneLabel"),
-      value: brand.primaryPhone,
-      href: phoneDigits.length > 3 ? `tel:${phoneDigits}` : undefined,
+      value: phoneLink ? brand.primaryPhone : t("phonePlaceholder"),
+      href: phoneLink ?? undefined,
     },
     { Icon: Mail, label: t("emailLabel"), value: brand.email, href: `mailto:${brand.email}` },
     { Icon: Clock, label: tFooter("hoursLabel"), value: brand.businessHours },

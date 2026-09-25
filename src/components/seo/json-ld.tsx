@@ -1,3 +1,5 @@
+import { isBrandPlaceholder } from "@/lib/brand-nap";
+
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
 };
@@ -11,13 +13,8 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-/**
- * Brand fields we do not know yet are held as bracketed placeholders so they are
- * obvious on the page. Structured data has no reader to notice the brackets, so
- * a placeholder is dropped rather than published as a real phone or address.
- */
-const isPlaceholder = (value: string) => /^\s*\[.*\]\s*$/.test(value);
-const real = (value: string) => (isPlaceholder(value) ? undefined : value);
+/** Placeholder NAP is omitted from JSON-LD rather than published as fact. */
+const real = (value: string) => (isBrandPlaceholder(value) ? undefined : value);
 
 function postalAddress(streetAddress: string) {
   return {

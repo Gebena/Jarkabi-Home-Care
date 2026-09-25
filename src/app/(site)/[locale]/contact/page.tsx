@@ -5,6 +5,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
 import { getBrand } from "@/lib/cms";
+import { hasRealAddress, telHref } from "@/lib/brand-nap";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo";
 import { contactPageImage } from "@/lib/site-images";
@@ -30,7 +31,11 @@ export default async function ContactPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "contactPage" });
   const brand = await getBrand(locale as Locale);
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const tCta = await getTranslations({ locale, namespace: "contactCta" });
+  const phoneLink = telHref(brand.primaryPhone);
+  const officeAddress = hasRealAddress(brand.ottawaOfficeAddress)
+    ? brand.ottawaOfficeAddress
+    : tCta("locationValue");
 
   return (
     <>
@@ -68,21 +73,21 @@ export default async function ContactPage({ params }: Props) {
 
             <h2 className="mt-8 font-display text-xl text-white">{t("officeTitle")}</h2>
             <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-white/85">
-              {brand.ottawaOfficeAddress}
+              {officeAddress}
             </p>
 
             <ul className="mt-6 space-y-2 text-base text-white/90">
               <li>
                 {t("phoneLabel")}:{" "}
-                {phoneDigits.length > 3 ? (
+                {phoneLink ? (
                   <a
-                    href={`tel:${phoneDigits}`}
+                    href={phoneLink}
                     className="text-white transition-colors hover:text-tan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {brand.primaryPhone}
                   </a>
                 ) : (
-                  brand.primaryPhone
+                  tCta("phonePlaceholder")
                 )}
               </li>
               <li>

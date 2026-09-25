@@ -7,8 +7,23 @@ export const BrandSettings: GlobalConfig = {
   fields: [
     { name: "agencyName", type: "text", defaultValue: "Jarkabi Home Care" },
     { name: "tagline", type: "text", localized: true, defaultValue: "Exceptional Care. Right at Home." },
-    { name: "primaryPhone", type: "text", defaultValue: "[PRIMARY PHONE]" },
-    { name: "tollFreePhone", type: "text", defaultValue: "[TOLL-FREE PHONE]" },
+    {
+      name: "primaryPhone",
+      type: "text",
+      defaultValue: "[PRIMARY PHONE]",
+      admin: {
+        description:
+          "Local Ottawa line. Override at deploy with JARKABI_PRIMARY_PHONE env var until CMS is edited.",
+      },
+    },
+    {
+      name: "tollFreePhone",
+      type: "text",
+      defaultValue: "[TOLL-FREE PHONE]",
+      admin: {
+        description: "Optional toll-free line. Override with JARKABI_TOLL_FREE_PHONE.",
+      },
+    },
     { name: "email", type: "email", defaultValue: "care@jarkabi.ca" },
     { name: "websiteUrl", type: "text", defaultValue: "https://jarkabi.ca" },
     {
@@ -19,7 +34,15 @@ export const BrandSettings: GlobalConfig = {
       // unset field would contradict copy the site already shows.
       defaultValue: defaultBrand.businessHours,
     },
-    { name: "ottawaOfficeAddress", type: "textarea", defaultValue: "[OTTAWA OFFICE ADDRESS]" },
+    {
+      name: "ottawaOfficeAddress",
+      type: "textarea",
+      defaultValue: "[OTTAWA OFFICE ADDRESS]",
+      admin: {
+        description:
+          "Street address for footer, contact page, and JSON-LD. Override with JARKABI_OTTAWA_OFFICE_ADDRESS.",
+      },
+    },
     { name: "yearsOfExperience", type: "text", defaultValue: "[YEARS OF EXPERIENCE]" },
     { name: "registrations", type: "textarea", defaultValue: "[REGISTRATIONS]" },
     { name: "memberships", type: "textarea", defaultValue: "[MEMBERSHIPS]" },
