@@ -3,6 +3,7 @@ import { BlockRenderer } from "@/components/blocks/block-renderer";
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { ServiceDetailSections } from "@/components/sections/service-detail-sections";
+import { ServiceDetailBody } from "@/components/services/service-detail-body";
 import { ServiceSidebar } from "@/components/services/service-sidebar";
 import type { Locale } from "@/i18n/routing";
 import {
@@ -12,6 +13,7 @@ import {
   getServices,
 } from "@/lib/cms";
 import { buildPageMetadata } from "@/lib/seo";
+import { careGiverServiceSlugs } from "@/lib/service-menu";
 import { resolveServiceSlug, serviceSlugRedirects } from "@/lib/services-config";
 import { notFound, redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -21,9 +23,11 @@ import type { Metadata } from "next";
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateStaticParams() {
-  const services = await getServices("en");
+  const cmsServices = await getServices("en");
   const legacy = Object.keys(serviceSlugRedirects).map((slug) => ({ slug }));
-  return [...services.map((service) => ({ slug: service.slug })), ...legacy];
+  const demoSlugs = careGiverServiceSlugs.map((slug) => ({ slug }));
+  const cmsSlugs = cmsServices.map((service) => ({ slug: service.slug }));
+  return [...demoSlugs, ...cmsSlugs, ...legacy];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,6 +58,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     getTranslations({ locale, namespace: "serviceDetail" }),
     getTranslations({ locale, namespace: "nav" }),
   ]);
+  const serviceLabels = tNav.raw("serviceLabels") as Record<string, string>;
 
   if (!service) notFound();
 
@@ -82,6 +87,12 @@ export default async function ServiceDetailPage({ params }: Props) {
       />
       <div className="mx-auto w-[min(1240px,calc(100%-2rem))] py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12 lg:py-20">
         <div className="min-w-0">
+          <ServiceDetailBody
+            locale={locale}
+            slug={service.slug}
+            title={service.title}
+            contactLabel={t("contactCta")}
+          />
           <BlockRenderer
             blocks={service.blocks as never}
             locale={locale}
@@ -111,9 +122,9 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         <ServiceSidebar
           locale={locale}
-          services={allServices}
           activeSlug={service.slug}
           contactLabel={t("contactCta")}
+          itemLabels={serviceLabels}
         />
       </div>
       <CallToAction locale={locale} />

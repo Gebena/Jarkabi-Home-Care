@@ -1,9 +1,10 @@
+import { ParallaxBackground } from "@/components/ui/parallax-background";
 import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
+import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { pageBannerImage } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 import Link from "next/link";
 
 export type BreadcrumbItem = {
@@ -54,17 +55,13 @@ export async function PageHero({
 
   return (
     <section className="relative isolate overflow-hidden bg-plum py-16 text-center md:py-24">
-      <Image
-        src={pageBannerImage.src}
+      <ParallaxBackground
+        src={caregiverBackgrounds.pageBanner}
         alt=""
-        fill
         priority
-        sizes="100vw"
-        style={{ objectPosition: position }}
-        className={cn(
-          "absolute inset-0 -z-10 object-cover",
-          Boolean(pageBannerImage.flip) !== rtl && "scale-x-[-1]",
-        )}
+        strength={0.14}
+        objectPosition={position}
+        flip={Boolean(pageBannerImage.flip) !== rtl}
       />
       {/* Opaque enough that white type clears AA over every part of the frame. */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-plum/90" />

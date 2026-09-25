@@ -1,5 +1,6 @@
 import type { TeamMemberData } from "@/lib/cms";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import { SectionTitle } from "@/components/ui/section-title";
 
@@ -39,12 +40,24 @@ export function TeamSection({ locale, members }: TeamSectionProps) {
               <li key={member.name} className="overflow-hidden">
                 {/* A stock face over a real colleague's name would misrepresent
                     them, so unphotographed members get a monogram instead. */}
-                <div
-                  aria-hidden="true"
-                  className="grid aspect-[3/4] place-items-center bg-blush-soft font-display text-5xl text-plum"
-                >
-                  {initials(member.name)}
-                </div>
+                {member.photo ? (
+                  <div className="relative aspect-[3/4]">
+                    <Image
+                      src={member.photo}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 45vw, 22vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="grid aspect-[3/4] place-items-center bg-blush-soft font-display text-5xl text-plum"
+                  >
+                    {initials(member.name)}
+                  </div>
+                )}
                 <div className="bg-care-ocean px-5 py-4 text-center">
                   <p className="font-display text-lg text-white">{member.name}</p>
                   <p className="mt-0.5 text-xs uppercase tracking-[0.14em] text-white/80">
@@ -58,7 +71,7 @@ export function TeamSection({ locale, members }: TeamSectionProps) {
 
         <div className="mt-10 text-center">
           <Link
-            href={`/${locale}/about`}
+            href={`/${locale}/team`}
             className="inline-block border border-tan px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-tan-ink transition-colors hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
           >
             {t("viewAll")}

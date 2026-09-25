@@ -1,11 +1,11 @@
 "use client";
 
+import { ParallaxBackground } from "@/components/ui/parallax-background";
 import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
 import { heroSlides } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
@@ -54,25 +54,23 @@ export function HeroSection({ locale }: { locale: string }) {
       onBlurCapture={() => setPaused(false)}
     >
       {heroSlides.slice(0, count).map((slide, i) => (
-        <Image
+        <div
           key={slide.src}
-          src={slide.src}
-          alt={i === index ? slide.alt : ""}
           aria-hidden={i === index ? undefined : true}
-          fill
-          priority={i === 0}
-          sizes="100vw"
-          style={{
-            objectPosition: rtl ? mirrorObjectPosition(slide.position) : slide.position,
-          }}
           className={cn(
-            "absolute inset-0 -z-10 object-cover transition-opacity duration-[1200ms]",
+            "absolute inset-0 -z-10 transition-opacity duration-[1200ms]",
             i === index ? "opacity-100" : "opacity-0",
-            // Mirrored so the subject lands opposite the wash, whichever side
-            // the copy is on.
-            Boolean(slide.flip) !== rtl && "scale-x-[-1]",
           )}
-        />
+        >
+          <ParallaxBackground
+            src={slide.src}
+            alt={i === index ? slide.alt : ""}
+            priority={i === 0}
+            strength={0.18}
+            objectPosition={rtl ? mirrorObjectPosition(slide.position) : slide.position}
+            flip={Boolean(slide.flip) !== rtl}
+          />
+        </div>
       ))}
 
       {/* Plum wash behind the copy, as in the Care Giver demo. Only at `lg` is

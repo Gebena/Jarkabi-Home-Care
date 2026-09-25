@@ -32,12 +32,24 @@ export type DefaultService = {
   reviewRequired?: true;
 };
 
+/** Eleven services — one slug per Care Giver demo HTML file (`Types Of Care` menu). */
 export const defaultServices: DefaultService[] = [
+  {
+    slug: "elderly-care",
+    category: "daily-living",
+    featured: true,
+    sortOrder: 10,
+    title: { en: "Elderly Care Service", fr: "Soins aux personnes âgées" },
+    summary: {
+      en: "Support that helps seniors live safely, comfortably and independently at home.",
+      fr: "Soutien pour aider les personnes âgées à vivre en sécurité et en confort à domicile.",
+    },
+  },
   {
     slug: "personal-care",
     category: "daily-living",
     featured: true,
-    sortOrder: 10,
+    sortOrder: 20,
     title: { en: "Personal Care", fr: "Soins personnels" },
     summary: {
       en: "Respectful assistance with bathing, dressing, grooming and mobility.",
@@ -45,55 +57,10 @@ export const defaultServices: DefaultService[] = [
     },
   },
   {
-    slug: "senior-home-care",
-    category: "daily-living",
-    featured: true,
-    sortOrder: 20,
-    title: { en: "Senior Home Care", fr: "Soins à domicile pour personnes âgées" },
-    summary: {
-      en: "Support that helps seniors live safely and independently at home.",
-      fr: "Soutien pour aider les personnes âgées à vivre en sécurité et en toute indépendance à domicile.",
-    },
-  },
-  {
-    slug: "companion-care",
-    category: "daily-living",
-    featured: false,
-    sortOrder: 30,
-    title: { en: "Companion Care", fr: "Soins de compagnie" },
-    summary: {
-      en: "Meaningful companionship, conversation and shared activities.",
-      fr: "Compagnie significative, conversation et activités partagées.",
-    },
-  },
-  {
-    slug: "registered-nursing",
-    category: "clinical",
-    featured: true,
-    sortOrder: 40,
-    title: { en: "Registered Nursing", fr: "Soins infirmiers autorisés" },
-    reviewRequired: true,
-    summary: {
-      en: "Skilled nursing support at home, coordinated with your healthcare team.",
-      fr: "Soins infirmiers qualifiés à domicile, coordonnés avec votre équipe de santé.",
-    },
-  },
-  {
-    slug: "dementia-support",
-    category: "specialty",
-    featured: true,
-    sortOrder: 50,
-    title: { en: "Dementia Support", fr: "Soutien à la démence" },
-    summary: {
-      en: "Routine, familiarity and caregiver consistency for cognitive support.",
-      fr: "Routine, familiarité et continuité des soignants pour le soutien cognitif.",
-    },
-  },
-  {
     slug: "respite-care",
     category: "specialty",
     featured: false,
-    sortOrder: 60,
+    sortOrder: 30,
     title: { en: "Respite Care", fr: "Soins de répit" },
     summary: {
       en: "Temporary relief for family caregivers who need rest and peace of mind.",
@@ -101,27 +68,95 @@ export const defaultServices: DefaultService[] = [
     },
   },
   {
-    slug: "post-hospital-care",
-    category: "specialty",
-    featured: false,
-    sortOrder: 70,
-    title: { en: "Post-Hospital Care", fr: "Soins post-hospitalisation" },
+    slug: "skilled-nursing",
+    category: "clinical",
+    featured: true,
+    sortOrder: 40,
+    title: { en: "Skilled Nursing", fr: "Soins infirmiers spécialisés" },
     reviewRequired: true,
     summary: {
-      en: "Support after surgery, hospitalization or illness while recovering at home.",
-      fr: "Soutien après une chirurgie, une hospitalisation ou une maladie pendant la récupération à domicile.",
+      en: "Professional nursing care at home, coordinated with your healthcare team.",
+      fr: "Soins infirmiers professionnels à domicile, coordonnés avec votre équipe de santé.",
     },
   },
   {
-    slug: "palliative-care",
+    slug: "day-support",
+    category: "daily-living",
+    featured: false,
+    sortOrder: 50,
+    title: { en: "24/7 Day Support", fr: "Soutien de jour 24/7" },
+    summary: {
+      en: "Reliable daytime and overnight presence so your loved one is never alone when needs are highest.",
+      fr: "Présence fiable de jour et de nuit pour que votre proche ne soit jamais seul.",
+    },
+  },
+  {
+    slug: "hospital-discharge",
+    category: "specialty",
+    featured: false,
+    sortOrder: 60,
+    title: { en: "Hospital Discharge", fr: "Sortie d'hospitalisation" },
+    reviewRequired: true,
+    summary: {
+      en: "Coordinated support from hospital bed to home, following discharge instructions closely.",
+      fr: "Soutien coordonné du lit d'hôpital au domicile, en suivant les consignes de sortie.",
+    },
+  },
+  {
+    slug: "companion-care",
+    category: "daily-living",
+    featured: false,
+    sortOrder: 70,
+    title: { en: "Companion Care", fr: "Soins de compagnie" },
+    summary: {
+      en: "Meaningful companionship, conversation and shared activities.",
+      fr: "Compagnie significative, conversation et activités partagées.",
+    },
+  },
+  {
+    slug: "chronic-condition-care",
     category: "specialty",
     featured: false,
     sortOrder: 80,
-    title: { en: "Palliative & Comfort Support", fr: "Soins palliatifs et de confort" },
+    title: { en: "Chronic Condition Care", fr: "Soins pour maladies chroniques" },
+    summary: {
+      en: "Steady support for diabetes, COPD, heart failure and other long-term conditions at home.",
+      fr: "Soutien continu pour le diabète, la MPOC, l'insuffisance cardiaque et autres maladies chroniques.",
+    },
+  },
+  {
+    slug: "after-surgery-care",
+    category: "specialty",
+    featured: false,
+    sortOrder: 90,
+    title: { en: "After Surgery Care", fr: "Soins postopératoires" },
+    reviewRequired: true,
+    summary: {
+      en: "Recovery support after surgery — mobility, personal care, meals and medication reminders.",
+      fr: "Soutien à la récupération après une chirurgie — mobilité, soins personnels et médicaments.",
+    },
+  },
+  {
+    slug: "end-of-life-care",
+    category: "specialty",
+    featured: false,
+    sortOrder: 100,
+    title: { en: "End of Life Care", fr: "Soins de fin de vie" },
     reviewRequired: true,
     summary: {
       en: "Comfort-focused support with dignity, companionship and family coordination.",
       fr: "Soutien axé sur le confort, la dignité, la compagnie et la coordination familiale.",
+    },
+  },
+  {
+    slug: "special-needs-care",
+    category: "specialty",
+    featured: true,
+    sortOrder: 110,
+    title: { en: "Special Needs Care", fr: "Soins spécialisés" },
+    summary: {
+      en: "Focused support for dementia, cognitive change, and complex daily living needs.",
+      fr: "Soutien ciblé pour la démence, les changements cognitifs et les besoins complexes.",
     },
   },
 ];

@@ -186,12 +186,21 @@ export const locationImages: Photo[] = [library.doorstepWelcome, library.coupleA
  * photograph so no two cards in a row repeat.
  */
 export const serviceImages: Record<string, Photo> = {
+  "elderly-care": library.serviceSeniorHomeCare,
   "personal-care": library.servicePersonalCare,
-  "senior-home-care": library.serviceSeniorHomeCare,
+  "respite-care": library.serviceRespiteCare,
+  "skilled-nursing": library.serviceRegisteredNursing,
+  "day-support": library.serviceSeniorHomeCare,
+  "hospital-discharge": library.servicePostHospitalCare,
   "companion-care": library.serviceCompanionCare,
+  "chronic-condition-care": library.servicePostHospitalCare,
+  "after-surgery-care": library.servicePostHospitalCare,
+  "end-of-life-care": library.servicePalliativeCare,
+  "special-needs-care": library.serviceDementiaSupport,
+  /** Legacy slugs */
+  "senior-home-care": library.serviceSeniorHomeCare,
   "registered-nursing": library.serviceRegisteredNursing,
   "dementia-support": library.serviceDementiaSupport,
-  "respite-care": library.serviceRespiteCare,
   "post-hospital-care": library.servicePostHospitalCare,
   "palliative-care": library.servicePalliativeCare,
 };

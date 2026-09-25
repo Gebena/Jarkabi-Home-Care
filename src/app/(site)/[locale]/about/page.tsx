@@ -140,7 +140,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </PageSection>
 
-      <TestimonialSection testimonials={testimonials} />
+      <TestimonialSection locale={locale} testimonials={testimonials} />
 
       <PageSection tone="mist">
         <SectionTitle align="center" title={t("valuesTitle")} subtitle={t("valuesSubtitle")} />

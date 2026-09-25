@@ -13,10 +13,15 @@
     "projects": "Locations",
     "blog": "Resources",
     "about": "About",
+    "aboutMenu": "About us",
+    "typesOfCare": "Types Of Care",
+    "knowledgeCenter": "Knowledge Center",
     "services": "Services",
     "servicesGrid": "All Services",
     "referrals": "Referrals",
     "caregivers": "Our Caregivers",
+    "team": "Our Team",
+    "gallery": "Gallery",
     "testimonials": "Testimonials",
     "faq": "FAQ",
     "howCareWorks": "How Care Works",
@@ -26,11 +31,45 @@
     "resources": "Resources",
     "careers": "Careers",
     "contact": "Contact",
-    "requestCare": "Request Care",
+    "requestCare": "Ask a Question",
     "contactUs": "Contact Us",
     "callUs": "Call Us",
     "search": "Search",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "menuItems": {
+      "about": "About Us",
+      "team": "Our Team",
+      "faq": "Faq's",
+      "testimonials": "Testimonial",
+      "elderlyCare": "Elderly Care Service",
+      "personalCare": "Personal Care",
+      "respiteCare": "Respite Care",
+      "skilledNursing": "Skilled Nursing",
+      "daySupport": "24/7 Day Support",
+      "hospitalDischarge": "Hospital Discharge",
+      "companionCare": "Companion Care",
+      "chronicCondition": "Chronical Condition Care",
+      "afterSurgery": "After Surgery Care",
+      "endOfLife": "End of Life Care",
+      "specialNeeds": "Special Need Care",
+      "resources": "Company News",
+      "gallery": "Our Gallery",
+      "howCareWorks": "How do I get started",
+      "careers": "CareGiver Jobs"
+    },
+    "serviceLabels": {
+      "elderly-care": "Elderly Care Service",
+      "personal-care": "Personal Care",
+      "respite-care": "Respite Care",
+      "skilled-nursing": "Skilled Nursing",
+      "day-support": "24/7 Day Support",
+      "hospital-discharge": "Hospital Discharge",
+      "companion-care": "Companion Care",
+      "chronic-condition-care": "Chronical Condition Care",
+      "after-surgery-care": "After Surgery Care",
+      "end-of-life-care": "End of Life Care",
+      "special-needs-care": "Special Need Care"
+    }
   },
   "search": {
     "title": "Search",
@@ -131,7 +170,7 @@
     "subtitle": "Dedicated caregivers and clinical professionals committed to exceptional home care.",
     "placeholder": "Leadership profiles will be published here once verified. Credentials are never invented on this site.",
     "profilePending": "Profile and biography coming soon.",
-    "viewAll": "About Jarkabi"
+    "viewAll": "Meet the team"
   },
   "intro": {
     "eyebrow": "Who we are",
@@ -329,7 +368,8 @@
     "eyebrow": "Testimonials",
     "title": "Family stories",
     "subtitle": "Hear from families who have experienced the Jarkabi difference.",
-    "placeholder": "Verified family testimonials will appear here after launch. We do not publish placeholder or fabricated reviews."
+    "placeholder": "Verified family testimonials will appear here after launch. We do not publish placeholder or fabricated reviews.",
+    "viewAll": "Read all testimonials"
   },
   "blog": {
     "eyebrow": "Resources",
@@ -439,7 +479,8 @@
     "twoTitle": "Empower",
     "twoBody": "Practical support that protects independence, so your loved one keeps doing what they can.",
     "threeTitle": "Engage",
-    "threeBody": "Conversation, activity and connection — because attentive company is part of good care."
+    "threeBody": "Conversation, activity and connection — because attentive company is part of good care.",
+    "typeOfCareCta": "Type of care"
   },
   "aboutPage": {
     "metaTitle": "About",
@@ -584,7 +625,53 @@
     "supervisionTitle": "Supervision and review",
     "supervisionBody": "Caregivers escalate concerns to a coordinator rather than leaving them with the family. Care plans are reviewed on a regular schedule and immediately after any hospital stay, fall or change in medication.",
     "title": "A clear, reassuring path to care at home",
-    "lead": "From the first conversation through ongoing review — every step is written to be understandable for families and referral partners alike."
+    "lead": "From the first conversation through ongoing review — every step is written to be understandable for families and referral partners alike.",
+    "meetingTitle": "How to get started with Jarkabi",
+    "meetingTagline": "Learn how home care begins with a single conversation",
+    "meetingIntro": "The best care plans start with a meeting where family and client talk with a Jarkabi care coordinator. We review health needs, routines, language preferences, and goals — and answer every question before the first visit.",
+    "meetingTopicsTitle": "Topics we commonly cover in the first meeting",
+    "meetingTopics": [
+      "Physical needs — bathing, dressing, meals, mobility, and continence support.",
+      "Daily rhythms — sleep, eating, medications, social interaction, and appointments.",
+      "Homemaking help — meal preparation, groceries, laundry, and light housekeeping.",
+      "Schedules, home access, documentation, and how to request changes.",
+      "If you proceed, we confirm the schedule, finalize the plan, and introduce your care team."
+    ]
+  },
+  "faqPage": {
+    "metaTitle": "Frequently Asked Questions",
+    "crumb": "FAQ",
+    "title": "Questions families ask us",
+    "lead": "Straight answers about starting care, safety, languages, and what to expect from Jarkabi Home Care.",
+    "sectionTitle": "Frequently asked questions",
+    "sectionLead": "Search below or browse common topics. If your question is not listed, call our care team.",
+    "searchPlaceholder": "Search your question"
+  },
+  "galleryPage": {
+    "metaTitle": "Gallery",
+    "eyebrow": "Gallery",
+    "crumb": "Gallery",
+    "title": "Moments of care and connection",
+    "lead": "A glimpse of the warmth, dignity, and companionship that define home care.",
+    "sectionTitle": "Our gallery",
+    "sectionLead": "Licensed photography from the Care Giver template, adapted for Jarkabi until client photography is available.",
+    "imageAlt": "Home care gallery"
+  },
+  "teamPage": {
+    "metaTitle": "Our Team",
+    "eyebrow": "Our team",
+    "crumb": "Team",
+    "title": "Caregivers and coordinators who know Ottawa",
+    "lead": "Experienced professionals committed to respectful, person-centred home care.",
+    "sectionTitle": "Our caregivers",
+    "sectionLead": "Demo profiles shown until verified team photography and biographies are published."
+  },
+  "testimonialsPage": {
+    "metaTitle": "Testimonials",
+    "crumb": "Testimonials",
+    "title": "What families say about Jarkabi",
+    "lead": "Stories from Ottawa-area families who trusted us with care at home.",
+    "sectionTitle": "What our clients say"
   },
   "careersPage": {
     "metaTitle": "Careers",
@@ -610,7 +697,19 @@
     "read": "Read article",
     "emptyTitle": "The first guides are being written",
     "emptyBody": "Until they are published, our care team will answer any question about home care by phone or email — including questions about providers other than us.",
-    "emptyCta": "Ask our care team"
+    "emptyCta": "Ask our care team",
+    "recent": "Recent",
+    "sidebarCategories": "Categories",
+    "sidebarRecent": "Recent articles",
+    "sidebarSearch": "Search articles",
+    "sidebarCategoryList": [
+      "Choosing Home Care",
+      "Why In-Home Care",
+      "Senior Health & Well-Being",
+      "Selecting Care",
+      "Family Caregiver Support",
+      "Medical Care Services"
+    ]
   },
   "referralsPage": {
     "metaTitle": "Professional Referrals",

@@ -2,12 +2,11 @@
 
 import { SearchModal } from "@/components/ui/search-modal";
 import type { BrandData } from "@/lib/cms";
-import { mainNav } from "@/lib/nav-config";
+import { MainNav } from "@/components/layout/main-nav";
 import { cn } from "@/lib/utils";
 import { Phone, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BrandWordmark } from "./brand-wordmark";
 import { LocaleSwitcher } from "./locale-switcher";
@@ -21,7 +20,6 @@ type SiteHeaderProps = {
 /** Care Giver Home Page 01 header: white, sticky, serif wordmark, inline nav, tan CTA. */
 export function SiteHeader({ locale, brand }: SiteHeaderProps) {
   const t = useTranslations("nav");
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -56,28 +54,8 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
             <BrandWordmark size="md" />
           </Link>
 
-          <nav className="hidden items-center gap-5 xl:flex xl:gap-6" aria-label="Main">
-            {mainNav.map((item) => {
-              const href = `${base}${item.href}`;
-              const active =
-                item.href === ""
-                  ? pathname === base || pathname === `${base}/`
-                  : pathname === href || pathname.startsWith(`${href}/`);
-
-              return (
-                <Link
-                  key={item.key}
-                  href={href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "whitespace-nowrap text-[0.9rem] font-semibold transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
-                    active ? "text-coral" : "text-ink",
-                  )}
-                >
-                  {t(item.key)}
-                </Link>
-              );
-            })}
+          <nav aria-label="Main">
+            <MainNav locale={locale} />
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">

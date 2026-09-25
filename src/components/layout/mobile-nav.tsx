@@ -9,18 +9,30 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { mainNav, secondaryNav } from "@/lib/nav-config";
+import { mainNavEntries, secondaryNav } from "@/lib/nav-config";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { BrandWordmark } from "./brand-wordmark";
 
 export function MobileNav({ locale }: { locale: string }) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const base = `/${locale}`;
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  function isActive(href: string): boolean {
+    const target = `${base}${href}`;
+    if (href === "") return pathname === base || pathname === `${base}/`;
+    return pathname === target || pathname.startsWith(`${target}/`);
+  }
+
+  function toggle(key: string) {
+    setExpanded((current) => (current === key ? null : key));
+  }
 
   return (
     <div className="xl:hidden">
@@ -37,7 +49,7 @@ export function MobileNav({ locale }: { locale: string }) {
         >
           <Menu size={20} />
         </SheetTrigger>
-        <SheetContent side="right" className="w-[min(100%,20rem)] bg-white p-0">
+        <SheetContent side="right" className="w-[min(100%,20rem)] overflow-y-auto bg-white p-0">
           <SheetHeader className="border-b border-line px-5 py-4">
             <SheetTitle className="text-left">
               <BrandWordmark size="sm" />
@@ -45,32 +57,95 @@ export function MobileNav({ locale }: { locale: string }) {
           </SheetHeader>
           <nav id="mobile-menu" className="flex flex-col p-5" aria-label="Mobile">
             <ul className="flex flex-col">
-              {[...mainNav, ...secondaryNav].map((item) => {
-                const href = `${base}${item.href}`;
-                const active =
-                  item.href === ""
-                    ? pathname === base || pathname === `${base}/`
-                    : pathname === href || pathname.startsWith(`${href}/`);
+              {mainNavEntries.map((entry) => {
+                if (entry.kind === "link") {
+                  const href = `${base}${entry.href}`;
+                  return (
+                    <li key={entry.key} className="border-b border-line/70">
+                      <SheetClose
+                        render={
+                          <Link
+                            href={href}
+                            aria-current={isActive(entry.href) ? "page" : undefined}
+                            className={cn(
+                              "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
+                              isActive(entry.href) ? "text-coral" : "text-ink",
+                            )}
+                          />
+                        }
+                      >
+                        {t(entry.key)}
+                      </SheetClose>
+                    </li>
+                  );
+                }
+
+                const open = expanded === entry.key;
+                const sectionActive =
+                  isActive(entry.href) || entry.items.some((item) => isActive(item.href));
 
                 return (
-                  <li key={item.key} className="border-b border-line/70">
-                    <SheetClose
-                      render={
-                        <Link
-                          href={href}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
-                            active ? "text-coral" : "text-ink",
-                          )}
-                        />
-                      }
+                  <li key={entry.key} className="border-b border-line/70">
+                    <button
+                      type="button"
+                      onClick={() => toggle(entry.key)}
+                      aria-expanded={open}
+                      className={cn(
+                        "flex w-full items-center justify-between py-3 text-start text-[0.95rem] font-semibold transition-colors hover:text-coral",
+                        sectionActive ? "text-coral" : "text-ink",
+                      )}
                     >
-                      {t(item.key)}
-                    </SheetClose>
+                      {t(entry.key)}
+                      <ChevronDown
+                        size={16}
+                        aria-hidden="true"
+                        className={cn("transition-transform", open && "rotate-180")}
+                      />
+                    </button>
+                    {open ? (
+                      <ul className="mb-2 ms-3 border-s border-line/80 ps-3">
+                        {entry.items.map((item) => (
+                          <li key={item.key}>
+                            <SheetClose
+                              render={
+                                <Link
+                                  href={`${base}${item.href}`}
+                                  aria-current={isActive(item.href) ? "page" : undefined}
+                                  className={cn(
+                                    "block py-2.5 text-sm font-medium transition-colors hover:text-coral",
+                                    isActive(item.href) ? "text-coral" : "text-body",
+                                  )}
+                                />
+                              }
+                            >
+                              {t(`menuItems.${item.key}`)}
+                            </SheetClose>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </li>
                 );
               })}
+
+              {secondaryNav.map((item) => (
+                <li key={item.key} className="border-b border-line/70">
+                  <SheetClose
+                    render={
+                      <Link
+                        href={`${base}${item.href}`}
+                        aria-current={isActive(item.href) ? "page" : undefined}
+                        className={cn(
+                          "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
+                          isActive(item.href) ? "text-coral" : "text-ink",
+                        )}
+                      />
+                    }
+                  >
+                    {t(item.key)}
+                  </SheetClose>
+                </li>
+              ))}
             </ul>
             <SheetClose
               render={

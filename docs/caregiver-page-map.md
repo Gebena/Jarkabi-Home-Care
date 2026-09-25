@@ -26,14 +26,14 @@
 |---|---|---|---|---|---|
 | About Us | `/[locale]/about` | `PageHero`, mission band, `CallToAction`, healthcare collage, `TestimonialSection`, values | page banner + about photography | CMS + `messages` | **partial** — Care Giver section order matched |
 | Services listing | `/[locale]/services` | `PageHero`, listing intro, category grids, `CallToAction` | service photography set | `getServices()` Payload | **partial** — left-aligned category bands |
-| Service Details | `/[locale]/services/[slug]` | `BlockRenderer`, `ServiceDetailSections`, `ServiceSidebar` | per-service images | Payload `Services` | **partial** — 8/4 sidebar layout added |
-| Team | `/[locale]/about` (team band) + future `/team` | `TeamSection`, `TeamCard` | monogram placeholders until real photos | `getTeamMembers()` | **partial** |
-| Team Details | — | — | — | — | **planned** — map to `/about` anchor or `/careers` |
-| Testimonials | homepage band + `/why-jarkabi` | `TestimonialSection` | avatar placeholders | `getTestimonials()` | **partial** — empty until CMS records |
-| FAQ | `/[locale]/resources` + service pages | `FAQAccordion` (where used) | — | Payload `FAQs` | **partial** |
-| Gallery | — | — | licensed gallery images when template unpacked | — | **planned** |
-| Blog listing | `/[locale]/resources` | `BlogPreview`, resources grid | blog photography set | `getBlogPosts()` | **completed** |
-| Blog Details | `/[locale]/resources/[slug]` | article template | featured image | Payload `BlogPosts` | **partial** |
+| Service Details | `/[locale]/services/[slug]` | `ServiceDetailBody`, `ServiceDetailSections`, `ServiceSidebar` | licensed per-service images | Payload + demo copy | **completed** — Care Giver sidebar + detail layout |
+| Team | `/[locale]/team` + homepage band | `TeamSection`, `TeamGrid` | licensed team portraits + CMS | `getTeamMembers()` | **completed** |
+| Team Details | `/[locale]/team` | `TeamGrid` | licensed portraits | demo fallbacks until CMS | **completed** |
+| Testimonials | `/[locale]/testimonials` + homepage band | `TestimonialSection`, `TestimonialsGrid` | licensed author avatars | `getTestimonials()` | **completed** |
+| FAQ | `/[locale]/faq` | `FaqAccordion` | — | Payload `FAQs` + demo fallbacks | **completed** |
+| Gallery | `/[locale]/gallery` | `GalleryGrid` | 19 licensed gallery images | static registry | **completed** |
+| Blog listing | `/[locale]/resources` | blog list + `ResourcesSidebar` | licensed news images | `getBlogPosts()` | **completed** |
+| Blog Details | `/[locale]/resources/[slug]` | article + sidebar | licensed hero images | Payload `BlogPosts` + demo | **completed** |
 | Contact | `/[locale]/contact` | form + office panel, care request, `ContactSection` | about photography placeholder | Brand Settings + form API | **partial** — Care Giver two-column form layout |
 | Appointment / Request Care | `/[locale]/contact` (primary CTA) | `ContactForm`, `/api/care-request` | — | Zod + RHF | **completed** |
 
@@ -57,7 +57,7 @@
 
 | Jarkabi route | Purpose | Status |
 |---|---|---|
-| `/[locale]/how-care-works` | Process / onboarding | **completed** |
+| `/[locale]/how-care-works` | Process / onboarding (`started.html` meeting section) | **completed** |
 | `/[locale]/why-jarkabi` | Differentiators | **completed** |
 | `/[locale]/why-choose-us` | Legacy alias → redirect or merge | **partial** |
 | `/[locale]/locations` | National coverage hub | **completed** |

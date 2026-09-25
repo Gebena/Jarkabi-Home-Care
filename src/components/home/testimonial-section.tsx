@@ -1,9 +1,12 @@
 import type { TestimonialData } from "@/lib/cms";
 import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
 import { SectionTitle } from "@/components/ui/section-title";
 
 type TestimonialSectionProps = {
+  locale: string;
   testimonials: TestimonialData[];
 };
 
@@ -13,7 +16,7 @@ type TestimonialSectionProps = {
  *
  * The empty state is deliberate — no placeholder or invented reviews ship.
  */
-export function TestimonialSection({ testimonials }: TestimonialSectionProps) {
+export function TestimonialSection({ locale, testimonials }: TestimonialSectionProps) {
   const t = useTranslations("testimonials");
 
   return (
@@ -39,12 +42,18 @@ export function TestimonialSection({ testimonials }: TestimonialSectionProps) {
                   </blockquote>
 
                   <figcaption className="mt-7 flex items-center gap-4 px-2">
-                    <span
-                      aria-hidden="true"
-                      className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-plum font-display text-lg text-white"
-                    >
-                      {item.attribution.trim().charAt(0).toUpperCase()}
-                    </span>
+                    {item.photo ? (
+                      <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                        <Image src={item.photo} alt="" fill sizes="48px" className="object-cover" />
+                      </span>
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-plum font-display text-lg text-white"
+                      >
+                        {item.attribution.trim().charAt(0).toUpperCase()}
+                      </span>
+                    )}
                     <span>
                       <span className="block font-display text-base text-plum">
                         {item.attribution}
@@ -67,6 +76,15 @@ export function TestimonialSection({ testimonials }: TestimonialSectionProps) {
             ))}
           </ul>
         )}
+
+        <div className="mt-10 text-center">
+          <Link
+            href={`/${locale}/testimonials`}
+            className="inline-block border border-plum/30 px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"
+          >
+            {t("viewAll")}
+          </Link>
+        </div>
       </div>
     </section>
   );

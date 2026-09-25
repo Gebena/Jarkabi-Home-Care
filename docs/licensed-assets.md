@@ -68,6 +68,18 @@ Production still uses the Jarkabi placeholder photography set below for faces an
 
 Wiring: `src/lib/caregiver-assets.ts`.
 
+### Bulk copy (2026-09-25 — full demo pass)
+
+| Source folder | Production path | Used on |
+|---|---|---|
+| `images/background/*` | `public/images/caregiver-licensed/backgrounds/` | Page banners, CTA textures |
+| `images/gallery/*` (19 files) | `public/images/caregiver-licensed/gallery/` | `/gallery` |
+| `images/resource/*` (52 files) | `public/images/caregiver-licensed/resource/` | Team, testimonials, blog, service detail, how-care-works |
+
+Registry: `src/lib/caregiver-assets.ts`, demo copy: `src/lib/caregiver-demo-fallbacks.ts`.
+
+**Home Page 02–05:** intentionally **not** implemented — spec §32 uses Home Page 01 only. Variants remain reference-only in `/templates/caregiver/index-2.html` … `index-5.html`.
+
 ---
 
 ## Photography (current production placeholders)

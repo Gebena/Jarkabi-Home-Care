@@ -54,7 +54,7 @@ export default async function HomePage({ params }: Props) {
       <CareProcess locale={locale} />
       <StatisticsSection />
       <CallToAction locale={locale} />
-      <TestimonialSection testimonials={testimonials} />
+      <TestimonialSection locale={locale} testimonials={testimonials} />
       <TeamSection locale={locale} members={team} />
       <LocationFinder locale={locale} provinces={provinces} />
       <BlogPreview locale={locale} posts={posts} />
