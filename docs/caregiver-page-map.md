@@ -24,9 +24,9 @@
 
 | Care Giver page | Jarkabi route | React components | Assets | Content source | Status |
 |---|---|---|---|---|---|
-| About Us | `/[locale]/about` | `PageHero`, `AboutPreview`, `PillarsSection`, `StatisticsSection`, `TeamSection` | `jarkabi-pillar-*`, page banner | CMS + `messages` | **partial** — layout matches; copy review pending |
-| Services listing | `/[locale]/services` | `PageHero`, `ServicesGrid`, `CallToAction` | service photography set | `getServices()` Payload | **completed** |
-| Service Details | `/[locale]/services/[slug]` | service detail template | per-service images | Payload `Services` | **partial** — structure done; Care Giver detail layout pass pending |
+| About Us | `/[locale]/about` | `PageHero`, mission band, `CallToAction`, healthcare collage, `TestimonialSection`, values | page banner + about photography | CMS + `messages` | **partial** — Care Giver section order matched |
+| Services listing | `/[locale]/services` | `PageHero`, listing intro, category grids, `CallToAction` | service photography set | `getServices()` Payload | **partial** — left-aligned category bands |
+| Service Details | `/[locale]/services/[slug]` | `BlockRenderer`, `ServiceDetailSections`, `ServiceSidebar` | per-service images | Payload `Services` | **partial** — 8/4 sidebar layout added |
 | Team | `/[locale]/about` (team band) + future `/team` | `TeamSection`, `TeamCard` | monogram placeholders until real photos | `getTeamMembers()` | **partial** |
 | Team Details | — | — | — | — | **planned** — map to `/about` anchor or `/careers` |
 | Testimonials | homepage band + `/why-jarkabi` | `TestimonialSection` | avatar placeholders | `getTestimonials()` | **partial** — empty until CMS records |
@@ -34,7 +34,7 @@
 | Gallery | — | — | licensed gallery images when template unpacked | — | **planned** |
 | Blog listing | `/[locale]/resources` | `BlogPreview`, resources grid | blog photography set | `getBlogPosts()` | **completed** |
 | Blog Details | `/[locale]/resources/[slug]` | article template | featured image | Payload `BlogPosts` | **partial** |
-| Contact | `/[locale]/contact` | contact form + map band | — | Brand Settings + form API | **completed** |
+| Contact | `/[locale]/contact` | form + office panel, care request, `ContactSection` | about photography placeholder | Brand Settings + form API | **partial** — Care Giver two-column form layout |
 | Appointment / Request Care | `/[locale]/contact` (primary CTA) | `ContactForm`, `/api/care-request` | — | Zod + RHF | **completed** |
 
 ---

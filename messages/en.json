@@ -206,6 +206,8 @@
     "eyebrow": "Services",
     "title": "Home care that adapts to your family",
     "lead": "Every service is delivered by screened caregivers, coordinated by our care team, and adjusted as your family's needs change.",
+    "listingTitle": "What services we offer",
+    "listingSubtitle": "A dependable, compassionate presence you can trust.",
     "learnMore": "View service details",
     "specialtyTitle": "Specialty care",
     "caregiversLink": "Our Caregivers"
@@ -215,6 +217,10 @@
     "eyebrow": "Contact",
     "title": "We are here to help",
     "lead": "Reach our care team for questions, or submit a care request when you are ready to begin.",
+    "getInTouchTitle": "Get in touch",
+    "formIntro": "Fill in the form and our care team will get back to you.",
+    "requiredNote": "Fields marked with * are required.",
+    "officeTitle": "Head office",
     "sidebarTitle": "Reach our care team",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
@@ -277,7 +283,8 @@
     "locationsEmpty": "Ottawa and its surrounding communities are our current service area. Tell us where you are and we will say plainly whether we can help.",
     "related": "Related services",
     "learnMore": "View details",
-    "requestCare": "Request care"
+    "requestCare": "Request care",
+    "contactCta": "Contact us"
   },
   "process": {
     "eyebrow": "How care works",
@@ -440,12 +447,24 @@
     "crumb": "About",
     "title": "Rooted in respect, built for Canadian families",
     "lead": "Jarkabi Home Care began in Ottawa with one idea: care should fit the person, not the schedule.",
+    "differenceTitle": "The Jarkabi in-home care difference",
+    "differenceLead": "Our team of registered nurses and skilled caregivers provide coordinated home care to help families manage recovery, ageing and daily life at home.",
+    "differenceBody": "We are a home care organisation built around the person — not a staffing agency rotating unfamiliar faces. The safety and wellbeing of every client comes first in how we match caregivers, write plans and communicate with families.",
     "storyTitle": "Our story",
     "storyBody": "Jarkabi Home Care was founded for families who wanted something better than a rota of unfamiliar faces. We started with a small team and a rule we still keep — the same caregivers, every visit, for as long as the family wants them. The organisation is built to serve more Canadian communities over time, but only where we can staff them to the same standard.",
-    "missionTitle": "Our mission",
-    "missionBody": "To help people live safely, independently and with dignity in the comfort of home — with professional care and personal connection.",
-    "visionTitle": "Our vision",
+    "missionTitle": "Our company mission",
+    "missionLead": "Everything we do is driven by one aim: to help people live safely, independently and with dignity at home.",
+    "missionBody": "When Jarkabi began, the goal was simple — care that fits the person, not a schedule on a wall. That vision still guides every plan we write and every caregiver we match.",
+    "visionTitle": "Changing how families experience care",
+    "visionPoints": [
+      "Care that respects how someone has always lived at home.",
+      "Hope and practical support for the whole family — not just the person receiving care."
+    ],
     "visionBody": "A Canadian home-care organisation that combines local heart with national capability, cultural responsiveness and clinical professionalism.",
+    "healthcareTitle": "How do home care and nursing support work together?",
+    "healthcareBody": "We often work alongside nurses, therapists and family doctors. When a prescription changes or a therapist sets a new routine, our caregivers are in the home day after day to help your loved one follow that plan safely and consistently.",
+    "healthcareCallout": "If you or a loved one needs support at home, we encourage you to reach out for a complimentary conversation so we can suggest an appropriate plan of care.",
+    "healthcareLink": "Contact us for more information.",
     "valuesTitle": "What we hold ourselves to",
     "valuesSubtitle": "Six commitments that shape how every care plan is written and every visit is staffed.",
     "values": [

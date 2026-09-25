@@ -36,6 +36,16 @@ export default async function ServicesPage({ params }: Props) {
     <>
       <PageHero locale={locale} eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
 
+      <section className="bg-mist py-16 lg:py-20">
+        <div className="mx-auto w-[min(1240px,calc(100%-2rem))]">
+          <SectionTitle
+            align="center"
+            title={t("listingTitle")}
+            subtitle={t("listingSubtitle")}
+          />
+        </div>
+      </section>
+
       {grouped.map(({ category, items }, index) => (
         <section
           key={category}
@@ -43,7 +53,6 @@ export default async function ServicesPage({ params }: Props) {
         >
           <div className="mx-auto w-[min(1240px,calc(100%-2rem))]">
             <SectionTitle
-              align="center"
               title={getCategoryLabel(category, locale)}
               subtitle={serviceCategories[category].description[locale === "fr" ? "fr" : "en"]}
             />

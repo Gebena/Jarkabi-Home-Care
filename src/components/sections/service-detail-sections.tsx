@@ -10,6 +10,8 @@ type ServiceDetailSectionsProps = {
   service: ServiceData;
   availability: ServiceAvailabilityData[];
   relatedServices: ServiceData[];
+  /** When true, sections flow inside a service-detail grid column (no extra page width). */
+  embedded?: boolean;
   labels: {
     whoFor: string;
     whoForBody: string;
@@ -33,6 +35,7 @@ export function ServiceDetailSections({
   service,
   availability,
   relatedServices,
+  embedded = false,
   labels,
 }: ServiceDetailSectionsProps) {
   const activeLocations = availability.filter(
@@ -45,9 +48,8 @@ export function ServiceDetailSections({
     { icon: Route, title: labels.howCareBegins, body: labels.howCareBeginsBody },
   ];
 
-  return (
+  const mainSection = (
     <>
-      <PageSection>
         <div className="grid gap-8 md:grid-cols-3">
           {panels.map(({ icon: Icon, title, body }) => (
             <article key={title}>
@@ -88,20 +90,36 @@ export function ServiceDetailSections({
             <p className="mt-4 text-sm leading-relaxed text-body">{labels.locationsEmpty}</p>
           )}
         </div>
-      </PageSection>
+    </>
+  );
 
-      {relatedServices.length > 0 ? (
-        <PageSection tone="mist">
+  const relatedSection =
+    relatedServices.length > 0 ? (
+      <>
           <SectionTitle align="center" title={labels.related} />
-          <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
             {relatedServices.map((related) => (
               <li key={related.slug}>
                 <ServiceCard service={related} locale={locale} ctaLabel={labels.learnMore} />
               </li>
             ))}
           </ul>
-        </PageSection>
-      ) : null}
+      </>
+    ) : null;
+
+  if (embedded) {
+    return (
+      <>
+        <section className="pt-8">{mainSection}</section>
+        {relatedSection ? <section className="mt-12 border-t border-line pt-10">{relatedSection}</section> : null}
+      </>
+    );
+  }
+
+  return (
+    <>
+      <PageSection>{mainSection}</PageSection>
+      {relatedSection ? <PageSection tone="mist">{relatedSection}</PageSection> : null}
     </>
   );
 }

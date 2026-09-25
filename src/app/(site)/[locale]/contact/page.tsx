@@ -1,13 +1,15 @@
 import { CareRequestForm } from "@/components/forms/care-request-form";
 import { ContactForm } from "@/components/forms/contact-form";
+import { ContactSection } from "@/components/home/contact-section";
 import { PageHero } from "@/components/layout/page-hero";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
 import { getBrand } from "@/lib/cms";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { aboutImages } from "@/lib/site-images";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -28,13 +30,7 @@ export default async function ContactPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "contactPage" });
   const brand = await getBrand(locale as Locale);
-
-  const details = [
-    { icon: Mail, label: t("emailLabel"), value: brand.email, href: `mailto:${brand.email}` },
-    { icon: Phone, label: t("phoneLabel"), value: brand.primaryPhone },
-    { icon: MapPin, label: t("officeLabel"), value: brand.ottawaOfficeAddress },
-    { icon: Clock, label: t("hoursLabel"), value: brand.businessHours },
-  ];
+  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
 
   return (
     <>
@@ -46,58 +42,61 @@ export default async function ContactPage({ params }: Props) {
         crumbLabel={t("eyebrow")}
       />
 
+      {/* Care Giver contact-form-section: centred title, form left, office right */}
       <PageSection>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {details.map(({ icon: Icon, label, value, href }) => (
-            <li key={label} className="border border-line p-7">
-              <span
-                aria-hidden="true"
-                className="grid h-11 w-11 place-items-center bg-blush-soft text-tan-ink"
-              >
-                <Icon size={20} strokeWidth={1.5} />
-              </span>
-              <h2 className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
-                {label}
-              </h2>
-              {href ? (
-                <a
-                  href={href}
-                  className="mt-2 block text-base break-words text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
-                >
-                  {value}
-                </a>
-              ) : (
-                <p className="mt-2 text-base break-words text-ink">{value}</p>
-              )}
-            </li>
-          ))}
-        </ul>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionTitle align="center" title={t("getInTouchTitle")} subtitle={t("formIntro")} />
+          <p className="mt-4 text-sm text-body">{t("requiredNote")}</p>
+        </div>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionTitle title={t("sidebarTitle")} />
-            <ol className="mt-8 space-y-6">
-              {(t.raw("expectations") as string[]).map((step, index) => (
-                <li key={step} className="flex gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 font-display text-xl text-tan-ink"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-sm leading-relaxed text-body">{step}</p>
-                </li>
-              ))}
-            </ol>
+            <ContactForm locale={locale} />
           </div>
 
           <div>
-            <h2 id="general-contact" className="font-display text-xl text-ink">
-              {t("contactFormTitle")}
-            </h2>
-            <div className="mt-6">
-              <ContactForm locale={locale} />
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={aboutImages.main.src}
+                alt={aboutImages.main.alt}
+                fill
+                sizes="(max-width: 1024px) 92vw, 45vw"
+                className="object-cover"
+              />
             </div>
+
+            <h2 className="mt-8 font-display text-xl text-plum">{t("officeTitle")}</h2>
+            <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-body">
+              {brand.ottawaOfficeAddress}
+            </p>
+
+            <ul className="mt-6 space-y-2 text-base text-body">
+              <li>
+                {t("phoneLabel")}:{" "}
+                {phoneDigits.length > 3 ? (
+                  <a
+                    href={`tel:${phoneDigits}`}
+                    className="text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                  >
+                    {brand.primaryPhone}
+                  </a>
+                ) : (
+                  brand.primaryPhone
+                )}
+              </li>
+              <li>
+                {t("emailLabel")}:{" "}
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                >
+                  {brand.email}
+                </a>
+              </li>
+              <li>
+                {t("hoursLabel")}: {brand.businessHours}
+              </li>
+            </ul>
           </div>
         </div>
       </PageSection>
@@ -108,10 +107,12 @@ export default async function ContactPage({ params }: Props) {
           title={t("requestCareTitle")}
           subtitle={t("requestCareLead")}
         />
-        <div className="mx-auto mt-10 max-w-4xl bg-white p-8 lg:p-10">
+        <div className="mx-auto mt-10 max-w-4xl border border-line bg-white p-8 lg:p-10">
           <CareRequestForm locale={locale} />
         </div>
       </PageSection>
+
+      <ContactSection locale={locale} brand={brand} />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { BlockRenderer } from "@/components/blocks/block-renderer";
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { ServiceDetailSections } from "@/components/sections/service-detail-sections";
+import { ServiceSidebar } from "@/components/services/service-sidebar";
 import type { Locale } from "@/i18n/routing";
 import {
   getRelatedServices,
@@ -79,30 +80,42 @@ export default async function ServiceDetailPage({ params }: Props) {
         lead={service.summary}
         breadcrumbs={[{ label: tNav("services"), href: `/${locale}/services` }]}
       />
-      <BlockRenderer
-        blocks={service.blocks as never}
-        locale={locale}
-        services={allServices}
-        learnMoreLabel={t("learnMore")}
-      />
-      <ServiceDetailSections
-        locale={locale}
-        service={service}
-        availability={availability}
-        relatedServices={relatedServices}
-        labels={{
-          whoFor: t("whoFor"),
-          whoForBody: t("whoForBody"),
-          howWeHelp: t("howWeHelp"),
-          howWeHelpBody: t("howWeHelpBody"),
-          howCareBegins: t("howCareBegins"),
-          howCareBeginsBody: t("howCareBeginsBody"),
-          locations: t("locations"),
-          locationsEmpty: t("locationsEmpty"),
-          related: t("related"),
-          learnMore: t("learnMore"),
-        }}
-      />
+      <div className="mx-auto w-[min(1240px,calc(100%-2rem))] py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-12 lg:py-20">
+        <div className="min-w-0">
+          <BlockRenderer
+            blocks={service.blocks as never}
+            locale={locale}
+            services={allServices}
+            learnMoreLabel={t("learnMore")}
+          />
+          <ServiceDetailSections
+            locale={locale}
+            service={service}
+            availability={availability}
+            relatedServices={relatedServices}
+            labels={{
+              whoFor: t("whoFor"),
+              whoForBody: t("whoForBody"),
+              howWeHelp: t("howWeHelp"),
+              howWeHelpBody: t("howWeHelpBody"),
+              howCareBegins: t("howCareBegins"),
+              howCareBeginsBody: t("howCareBeginsBody"),
+              locations: t("locations"),
+              locationsEmpty: t("locationsEmpty"),
+              related: t("related"),
+              learnMore: t("learnMore"),
+            }}
+            embedded
+          />
+        </div>
+
+        <ServiceSidebar
+          locale={locale}
+          services={allServices}
+          activeSlug={service.slug}
+          contactLabel={t("contactCta")}
+        />
+      </div>
       <CallToAction locale={locale} />
     </>
   );
