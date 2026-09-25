@@ -62,6 +62,7 @@ const plugins: Plugin[] = hasValidBlobToken
   : [];
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
   admin: {
     user: Users.slug,
     meta: {

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:vercel": "tsx scripts/ensure-schema-at-build.mjs && next build",
+    "build": "next build --webpack",
+    "build:vercel": "tsx scripts/ensure-schema-at-build.mjs && next build --webpack",
     "ensure-schema": "tsx scripts/ensure-schema-at-build.mjs",
     "start": "next start",
     "lint": "eslint",
