@@ -1,10 +1,12 @@
 # Jarkabi Home Care — Progress Log
 
-## Status: Care Giver Home Page 01 rebuilt — inner pages & licensed asset ingest in progress
+## Status: Care Giver Home Page 01 visual fidelity — passes 1–7 shipped ✅
 
-**Master brief (2026-09-25):** Faithful Care Giver visual experience on Seniar/Next.js architecture. See `docs/caregiver-page-map.md`, `docs/caregiver-section-map.md`, `docs/licensed-assets.md`.
+**Merged:** [PR #229](https://github.com/Gebena/Ketet/pull/229) → `main` (2026-09-25).  
+**Production verified:** https://jarkabi.ca/en (sync to `Gebena/Jarkabi-Home-Care` succeeded).  
+**Handoff:** `docs/caregiver-fidelity-summary.md`, `docs/jarkabi-caregiver-visual-qa.md`, `docs/caregiver-assets-used.md`.
 
-**Blocker:** Unpack licensed Care Giver + Seniar zips into `/templates/` for file-level audit and photo migration.
+**Optional follow-up:** Unpack `/templates/caregiver/` for pixel-level diff against demo HTML.
 
 ### Previous phases (8–19) — launch blockers remain
 
@@ -79,7 +81,7 @@
 - [x] `next/image` on service cards
 - [x] Font subsetting via `next/font`
 - [ ] `globals.css` cleanup (still ~2.7k lines)
-- [ ] Replace Unsplash with licensed production photography
+- [x] Replace Unsplash with licensed production photography (`caregiver-licensed/`; 22 legacy `photography/` files unreferenced)
 
 ### Phase 19 — Testing ✅ (foundation)
 - [x] Vitest + form schema tests (`npm run test`)
@@ -93,7 +95,7 @@
 - [ ] Supabase production database
 - [ ] Admin password rotated after deploy
 - [ ] Legal pages reviewed
-- [ ] Merge Ketet → sync standalone → promote Vercel
+- [x] Merge Ketet → sync standalone → promote Vercel (PR #229 merged; sync workflow green)
 
 ---
 
@@ -102,6 +104,6 @@
 1. Add real NAP (phone, address, hours) in Payload Brand Settings
 2. Provision Supabase + set `DATABASE_URI` on Vercel
 3. Review and publish service copy, careers, legal pages
-4. Merge PRs to `main` and run sync workflow
+4. Hard-refresh jarkabi.ca and spot-check routes in `docs/caregiver-fidelity-summary.md`
 
 See `DEPLOYMENT.md` for full deployment steps.

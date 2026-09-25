@@ -166,3 +166,4 @@ Legend: `[x]` done · `[ ]` needs work · `[~]` partial
 | 2026-09-25 | Cloud Agent | Pass 5: Referrals intro; how-care-works photo bands; gallery lightbox; locations/growing intros |
 | 2026-09-25 | Cloud Agent | Pass 6: Team intro; service detail contact panel; career/province sidebars |
 | 2026-09-25 | Cloud Agent | Pass 7: City pages; local SEO service layout; homepage trust/contact/stats polish |
+| 2026-09-25 | Cloud Agent | **Production verified** — PR #229 merged; jarkabi.ca/en live; sync to Jarkabi-Home-Care @ e0dd300 |
