@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { isPostgresUri, resolveDatabaseUri } from "@/lib/database-uri";
+import {
+  getDatabaseUriDiagnostics,
+  isPostgresUri,
+  resolveDatabaseUri,
+} from "@/lib/database-uri";
 
 export async function GET() {
   const databaseUri = resolveDatabaseUri();
@@ -29,11 +33,16 @@ export async function GET() {
     }
   }
 
+  const databaseDiagnostics = hasDb
+    ? getDatabaseUriDiagnostics(databaseUri)
+    : null;
+
   return NextResponse.json({
     ok: hasSecret && (!hasDb || databaseConnected),
     database: hasDb ? "postgresql" : "sqlite-or-missing",
     databaseConnected: hasDb ? databaseConnected : null,
     databaseError,
+    databaseDiagnostics,
     payloadSecret: hasSecret,
     siteUrl,
   });
