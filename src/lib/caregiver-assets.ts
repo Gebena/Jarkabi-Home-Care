@@ -71,6 +71,9 @@ export const caregiverBlogThumbs = [
 /** How-care-works meeting image from Care Giver `started.html`. */
 export const caregiverMeetingImage = caregiverImage("resource/meeting.jpg");
 
+/** Service sidebar contact widget background from Care Giver detail pages. */
+export const caregiverContactWidgetImage = caregiverImage("resource/contact-2.jpg");
+
 /** Per-service detail imagery — one entry per Care Giver demo HTML file. */
 export const caregiverServiceDetailImages: Record<
   string,

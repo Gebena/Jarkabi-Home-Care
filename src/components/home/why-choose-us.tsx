@@ -1,11 +1,11 @@
 "use client";
 
+import { ParallaxBackground } from "@/components/ui/parallax-background";
 import { VideoLightbox } from "@/components/ui/video-lightbox";
 import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { whyChooseUsImage } from "@/lib/site-images";
 import { Check, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -68,14 +68,15 @@ export function WhyChooseUs({ locale }: { locale: string }) {
           </div>
         </div>
 
-        <div className="relative aspect-[4/3] w-full self-center lg:-ml-16 lg:my-12 lg:aspect-auto lg:self-stretch">
-          <Image
+        <div
+          className="relative aspect-[4/3] w-full self-center overflow-hidden lg:-ml-16 lg:my-12 lg:aspect-auto lg:min-h-[28rem] lg:self-stretch"
+          style={{ backgroundImage: `url(${whyChooseUsImage.src})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        >
+          <ParallaxBackground
             src={whyChooseUsImage.src}
             alt={whyChooseUsImage.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 45vw"
-            style={{ objectPosition: whyChooseUsImage.position }}
-            className="object-cover"
+            strength={0.16}
+            objectPosition={whyChooseUsImage.position}
           />
           <button
             type="button"

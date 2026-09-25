@@ -432,7 +432,15 @@ export async function getTeamMembers(locale: Locale): Promise<TeamMemberData[]> 
         : undefined,
     }));
   });
-  if (result.ok && result.data.length > 0) return result.data;
+  if (result.ok && result.data.length > 0) {
+    return result.data.map((member, index) => ({
+      ...member,
+      photo:
+        member.photo ||
+        demoTeamMembers[index % demoTeamMembers.length]?.photo ||
+        demoTeamMembers[0]?.photo,
+    }));
+  }
   return demoTeamMembers;
 }
 

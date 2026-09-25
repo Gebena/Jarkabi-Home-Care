@@ -70,6 +70,15 @@
   --color-mist: var(--cg-mist);
   --color-mist-deep: var(--cg-mist-deep);
   --color-line: var(--cg-line);
+  --color-demo-navy: var(--cg-demo-navy);
+  --color-demo-muted: var(--cg-demo-muted);
+  --color-demo-tan-line: var(--cg-demo-tan-line);
+  --color-demo-plum-card: var(--cg-demo-plum-card);
+  --color-demo-sidebar-bg: var(--cg-demo-sidebar-bg);
+  --color-demo-sidebar-border: var(--cg-demo-sidebar-border);
+  --color-demo-widget-teal: var(--cg-demo-widget-teal);
+  --color-demo-gold: var(--cg-demo-gold);
+  --color-demo-icon-blue: var(--cg-demo-icon-blue);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

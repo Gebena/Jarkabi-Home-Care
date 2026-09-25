@@ -12,10 +12,8 @@ import { useCallback, useEffect, useState } from "react";
 const AUTOPLAY_MS = 7000;
 
 /**
- * Care Giver Home Page 01 hero: a full-bleed photograph with a plum overlay
- * covering the left of the frame, a serif headline, a tan call to action and
- * square slider arrows. The original used an owl.carousel jQuery slider; this is
- * plain React state that honours `prefers-reduced-motion`.
+ * Care Giver Home Page 01 hero — licensed slider photos with cross-fading layers,
+ * scroll parallax, and a plum wash that leaves the photograph visible on the right.
  */
 export function HeroSection({ locale }: { locale: string }) {
   const t = useTranslations("hero");
@@ -29,7 +27,6 @@ export function HeroSection({ locale }: { locale: string }) {
     { script: t("slide3Script"), title: t("slide3Title"), body: t("slide3Body") },
   ];
 
-  // Pair copy with however much photography exists, so adding a photo adds a slide.
   const slides = copy.slice(0, heroSlides.length);
   const count = slides.length;
   const hasSlider = count > 1;
@@ -47,56 +44,53 @@ export function HeroSection({ locale }: { locale: string }) {
     <section
       aria-roledescription="carousel"
       aria-label={t("headline")}
-      className="relative isolate overflow-hidden bg-plum"
+      className="relative isolate min-h-[36rem] overflow-hidden bg-plum lg:min-h-[44rem]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      {heroSlides.slice(0, count).map((slide, i) => (
-        <div
-          key={slide.src}
-          aria-hidden={i === index ? undefined : true}
-          className={cn(
-            "absolute inset-0 -z-10 transition-opacity duration-[1200ms]",
-            i === index ? "opacity-100" : "opacity-0",
-          )}
-        >
-          <ParallaxBackground
-            src={slide.src}
-            alt={i === index ? slide.alt : ""}
-            priority={i === 0}
-            strength={0.18}
-            objectPosition={rtl ? mirrorObjectPosition(slide.position) : slide.position}
-            flip={Boolean(slide.flip) !== rtl}
-          />
-        </div>
-      ))}
+      {heroSlides.slice(0, count).map((slide, i) => {
+        const active = i === index;
+        return (
+          <div
+            key={slide.src}
+            aria-hidden={active ? undefined : true}
+            className={cn(
+              "absolute inset-0 transition-[opacity,transform] duration-[1400ms] ease-out",
+              active ? "z-0 scale-100 opacity-100" : "z-0 scale-[1.06] opacity-0",
+            )}
+          >
+            <ParallaxBackground
+              src={slide.src}
+              alt={active ? slide.alt : ""}
+              priority={i === 0}
+              strength={0.22}
+              objectPosition={rtl ? mirrorObjectPosition(slide.position) : slide.position}
+              flip={Boolean(slide.flip) !== rtl}
+            />
+          </div>
+        );
+      })}
 
-      {/* Plum wash behind the copy, as in the Care Giver demo. Only at `lg` is
-          there room for the copy to sit in the left third and let the wash clear
-          to the photograph; narrower than that the copy spans most of the frame,
-          so the wash has to keep tinting the whole width to stay legible. */}
       <div
         aria-hidden="true"
         className={cn(
-          "absolute inset-0 -z-10 from-plum from-30% via-plum/95 via-60% to-plum/80",
-          "lg:from-42% lg:via-plum/90 lg:via-55% lg:to-transparent lg:to-68%",
+          "pointer-events-none absolute inset-0 z-[1] from-plum/95 from-25% via-plum/80 via-55% to-plum/25 to-90%",
+          "lg:from-38% lg:via-plum/75 lg:via-50% lg:to-transparent lg:to-72%",
           rtl ? "bg-gradient-to-l" : "bg-gradient-to-r",
         )}
       />
 
-      <div className="mx-auto flex w-[min(1240px,calc(100%-2rem))] items-center py-24 md:min-h-[36rem] md:py-28 lg:min-h-[44rem]">
+      <div className="relative z-[2] mx-auto flex w-[min(1240px,calc(100%-2rem))] items-center py-24 md:min-h-[36rem] md:py-28 lg:min-h-[44rem]">
         <div className="max-w-2xl">
-          {/* Only the active slide is rendered: keeping the inactive ones in the
-              DOM under `hidden` gave the page more than one h1. */}
           <div
             role="group"
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${count}`}
             aria-live="polite"
           >
-            <p className="font-display text-xl text-white/85 md:text-2xl lg:text-3xl">
+            <p className="font-display text-xl text-white/90 md:text-2xl lg:text-3xl">
               {slides[index].script}
             </p>
             <h1 className="mt-1 font-display text-3xl text-white sm:text-4xl md:text-5xl lg:text-[3.4rem]">
@@ -132,7 +126,7 @@ export function HeroSection({ locale }: { locale: string }) {
             type="button"
             onClick={() => go(index - 1)}
             aria-label="Previous slide"
-            className="absolute left-0 top-1/2 hidden h-14 w-11 -translate-y-1/2 place-items-center bg-white/90 text-plum transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:grid"
+            className="absolute left-0 top-1/2 z-[3] hidden h-14 w-11 -translate-y-1/2 place-items-center bg-white/90 text-plum transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:grid"
           >
             <ChevronLeft size={22} aria-hidden="true" />
           </button>
@@ -140,13 +134,12 @@ export function HeroSection({ locale }: { locale: string }) {
             type="button"
             onClick={() => go(index + 1)}
             aria-label="Next slide"
-            className="absolute right-0 top-1/2 hidden h-14 w-11 -translate-y-1/2 place-items-center bg-white/90 text-plum transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:grid"
+            className="absolute right-0 top-1/2 z-[3] hidden h-14 w-11 -translate-y-1/2 place-items-center bg-white/90 text-plum transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:grid"
           >
             <ChevronRight size={22} aria-hidden="true" />
           </button>
 
-          {/* 24px hit areas around 10px dots, per WCAG 2.2 target size. */}
-          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2">
+          <div className="absolute bottom-4 left-1/2 z-[3] flex -translate-x-1/2">
             {slides.map((slide, i) => (
               <button
                 key={slide.title}

@@ -59,6 +59,21 @@
   --cg-mist-deep: #dfe4ea;
   --cg-line: #e3e6ea;
 
+  /* Care Giver demo-exact accents (sampled from ThemeForest index.html CSS) */
+  --cg-demo-navy: #0e2a4e;
+  --cg-demo-muted: #797979;
+  --cg-demo-tan-line: #be9a8d;
+  --cg-demo-plum-card: #532840;
+  --cg-demo-sidebar-bg: #edf1f4;
+  --cg-demo-sidebar-border: #dadfe3;
+  --cg-demo-widget-teal: #329f82;
+  --cg-demo-gold: #f7b800;
+  --cg-demo-icon-blue: #33629d;
+  --cg-demo-team-overlay: rgba(77, 39, 63, 0.6);
+  --cg-pillar-teal: rgba(19, 147, 113, 0.85);
+  --cg-pillar-brick: rgba(134, 32, 29, 0.85);
+  --cg-pillar-ocean: rgba(10, 95, 167, 0.85);
+
   /* ── Semantic aliases consumed by legacy CSS in globals.css ───────── */
   --color-navy: var(--cg-ink);
   --color-navy-dark: #101c29;
