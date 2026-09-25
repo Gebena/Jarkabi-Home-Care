@@ -1,6 +1,7 @@
 "use client";
 
 import type { ProvinceData } from "@/lib/cms";
+import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { locationImages } from "@/lib/site-images";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -27,8 +28,17 @@ export function LocationFinder({ locale, provinces }: LocationFinderProps) {
   if (servable.length === 0) return null;
 
   return (
-    <section className="bg-care-ocean py-16 lg:py-20">
-      <div className="mx-auto grid w-[min(1240px,calc(100%-2rem))] items-center gap-12 lg:grid-cols-2">
+    <section className="relative overflow-hidden bg-care-ocean py-16 lg:py-20">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-right-top bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${caregiverBackgrounds.locationTexture})` }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-care-ocean/90"
+      />
+      <div className="relative mx-auto grid w-[min(1240px,calc(100%-2rem))] items-center gap-12 lg:grid-cols-2">
         <div aria-hidden="true" className="relative hidden h-80 lg:block">
           <div className="absolute left-4 top-0 h-64 w-52 rotate-[-6deg] border-[10px] border-white shadow-elevated">
             <Image

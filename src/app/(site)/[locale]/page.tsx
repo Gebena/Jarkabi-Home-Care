@@ -1,4 +1,3 @@
-import { AboutPreview } from "@/components/home/about-preview";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { CareProcess } from "@/components/home/care-process";
@@ -48,8 +47,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <HeroSection locale={locale} />
-      <AboutPreview locale={locale} />
-      <PillarsSection />
+      <PillarsSection locale={locale} />
       <ServicesGrid locale={locale} services={services} />
       <WhyChooseUs locale={locale} />
       <CareTasksSection />

@@ -48,7 +48,25 @@ When `/templates/caregiver/` is populated, the agent will:
 3. Register each copied file in the table below (original filename → final path → pages used).
 4. Replace AI placeholder photography where licensed demo photos are cleared for end-product use.
 
-Until the package is unpacked, production uses the Jarkabi placeholder set below (same visual direction, not the original demo files).
+Production still uses the Jarkabi placeholder photography set below for faces and scenes (not redistributed demo photos). Decorative backgrounds and Flaticon line icons from the purchased package **are** wired in.
+
+---
+
+## Template assets copied into `public/` (2026-09-25)
+
+| Source (template) | Production path | Used on |
+|---|---|---|
+| `images/background/pattern-1.png` | `public/images/caregiver-licensed/backgrounds/pattern-1.png` | Home — "Here For You Always" plum panel texture |
+| `images/background/1.png` | `public/images/caregiver-licensed/backgrounds/1.png` | Home + inner pages — mid-page CTA texture |
+| `images/background/2.png` | `public/images/caregiver-licensed/backgrounds/2.png` | Home — location finder band texture |
+| Flaticon `189-hair.svg` | `public/icons/caregiver/189-hair.svg` | Home — care tasks grid |
+| Flaticon `186-elder.svg` | `public/icons/caregiver/186-elder.svg` | Home — care tasks grid |
+| Flaticon `180-medicine.svg` | `public/icons/caregiver/180-medicine.svg` | Home — care tasks grid |
+| Flaticon `187-walk.svg` | `public/icons/caregiver/187-walk.svg` | Home — care tasks grid |
+| Flaticon `183-groceries.svg` | `public/icons/caregiver/183-groceries.svg` | Home — care tasks grid |
+| Flaticon `188-deal.svg` | `public/icons/caregiver/188-deal.svg` | Home — care tasks grid |
+
+Wiring: `src/lib/caregiver-assets.ts`.
 
 ---
 

@@ -1,4 +1,5 @@
 import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
+import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { ctaImage } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -29,6 +30,14 @@ export function CallToAction({ locale }: { locale: string }) {
           "absolute inset-0 -z-20 object-cover",
           Boolean(ctaImage.flip) !== rtl && "scale-x-[-1]",
         )}
+      />
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 -z-10 bg-left bg-no-repeat opacity-40",
+          rtl ? "bg-right" : "bg-left",
+        )}
+        style={{ backgroundImage: `url(${caregiverBackgrounds.ctaTexture})` }}
       />
       <div
         aria-hidden="true"
