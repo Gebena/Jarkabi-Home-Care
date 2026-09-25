@@ -36,7 +36,8 @@ homepage layout was replaced by the Care Giver Home Page 01 layout.
 
 | Path | Status | Action |
 |---|---|---|
-| `/templates/caregiver/` | **Empty** on Cloud Agent VM | Owner: unzip purchased Care Giver HTML package here (see `/templates/README.md`) |
+| `/templates/caregiver/` | **Present** — 25 HTML demos, css/js/images/fonts (unpacked 2026-09-25) | Agent: extract permitted assets into `public/` |
+| `/templates/caregiver-icons-flat/` | **Present** — Flaticon SVG/PNG/EPS icon pack | Optional: wire icons where Care Giver uses flaticon |
 | `/templates/seniar/` | **Empty** | Owner: unzip Seniar React package here |
 | `/templates/licenses/caregiver-envato-elements.pdf` | Present | Envato Elements licence `KVZ473J956` |
 

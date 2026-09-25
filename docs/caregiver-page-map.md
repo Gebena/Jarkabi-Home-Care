@@ -4,7 +4,7 @@
 
 **Primary reference:** Care Giver **Home Page 01** (ThemeArc, ThemeForest `23847564`, Envato Elements `KVZ473J956`).
 
-**Template source:** Licensed files must live at `/templates/caregiver/` (gitignored). That folder is currently **empty** on the Cloud Agent VM — unpack your purchased zip locally or upload to the agent before file-level asset extraction. Until then, this map is maintained from the prior preview audit plus the implemented Next.js routes.
+**Template source:** Licensed files live at `/templates/caregiver/` (gitignored). **Unpacked 2026-09-25** from the owner's Google Drive upload (15.7 MB main package + icon pack in `/templates/caregiver-icons-flat/`).
 
 **Status legend:** `completed` · `partial` · `planned` · `n/a` (not relevant to Jarkabi)
 
@@ -95,7 +95,7 @@ Secondary/footer: Locations, Our Caregivers, Referrals.
 
 | Phase | Deliverable | Status |
 |---|---|---|
-| 1 | Inspect licensed Care Giver files | **blocked** — `/templates/caregiver/` empty; license PDF present |
+| 1 | Inspect licensed Care Giver files | **completed** — 25 HTML demos + assets at `/templates/caregiver/` |
 | 2 | Inspect Seniar / Jarkabi architecture | **completed** — this repo |
 | 3 | Page inventory | **this document** |
 | 4 | `caregiver-page-map.md` | **this document** |
@@ -110,8 +110,41 @@ Secondary/footer: Locations, Our Caregivers, Referrals.
 
 ---
 
-## Next actions when template is unpacked
+## Licensed HTML inventory (`/templates/caregiver/`)
 
-1. Run a file-level diff: list every `.html` under `/templates/caregiver/` and add a row to this table.
-2. Copy permitted images into `jarkabi-home-care/public/images/caregiver-licensed/` and register each file in `docs/licensed-assets.md`.
-3. Side-by-side visual comparison at 1920 / 1440 / 1280 / 1024 / 768 / 430 / 390 / 375 px for Home Page 01 first, then each inner page.
+| Care Giver file | Demo purpose |
+|---|---|
+| `index.html` | **Home Page 01** (primary reference) |
+| `index-2.html` | Home Page 02 |
+| `index-3.html` | Home Page 03 |
+| `index-4.html` | Home Page 04 |
+| `index-5.html` | Home Page 05 |
+| `about.html` | About Us |
+| `blog.html` | Blog listing |
+| `blog-detail.html` | Blog detail |
+| `team.html` | Team listing |
+| `testimonial.html` | Testimonials |
+| `faq.html` | FAQ |
+| `gallery.html` | Gallery |
+| `contact.html` | Contact |
+| `caregiver.html` | Caregiver landing |
+| `care.html` | Care services overview |
+| `nursing.html` | Nursing care |
+| `personal-care.html` | Personal care |
+| `respite-care.html` | Respite care |
+| `special-care.html` | Special care |
+| `elderly-service.html` | Elderly services |
+| `life-care.html` | Life care |
+| `chronical.html` | Chronic care |
+| `discharge.html` | Discharge care |
+| `support.html` | Support services |
+| `surgery.html` | Surgery recovery |
+| `started.html` | Getting started |
+
+Also present: `documentation/` (ThemeArc help site), `css/`, `js/`, `images/` (107 files), `fonts/`, `plugins/`.
+
+## Next actions
+
+1. Copy permitted images into `jarkabi-home-care/public/images/caregiver-licensed/` and register each file in `docs/licensed-assets.md`.
+2. Side-by-side visual comparison at 1920 / 1440 / 1280 / 1024 / 768 / 430 / 390 / 375 px for Home Page 01 first, then each inner page.
+3. Inner-page visual pass using the HTML demos above.
