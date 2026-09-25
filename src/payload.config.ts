@@ -25,7 +25,6 @@ import { TeamMembers } from "./payload/collections/TeamMembers";
 import { Testimonials } from "./payload/collections/Testimonials";
 import { Users } from "./payload/collections/Users";
 import { BrandSettings } from "./payload/globals/BrandSettings";
-import { ensurePayloadSchema } from "./lib/ensure-payload-schema";
 import { seedDatabase } from "./payload/seed";
 import { isPostgresUri, resolveDatabaseUri } from "./lib/database-uri";
 
@@ -90,7 +89,6 @@ export default buildConfig({
     Testimonials,
   ],
   onInit: async (payload) => {
-    await ensurePayloadSchema(payload);
     await seedDatabase(payload);
   },
   globals: [BrandSettings],
