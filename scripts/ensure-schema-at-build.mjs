@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Push Payload/Drizzle schema during Vercel production builds.
- * Skips when DATABASE_URI is SQLite (local CI) or unset.
+ * Initialize Payload during Vercel production builds.
+ * Pushes schema on first deploy; always boots Payload so admin import maps stay valid.
  */
 import Module from "node:module";
 
@@ -47,29 +47,28 @@ async function schemaAlreadyExists() {
 }
 
 async function main() {
-  if (await schemaAlreadyExists()) {
-    console.log("[ensure-schema] Schema already exists — skipping push.");
-    return;
-  }
+  const schemaExists = await schemaAlreadyExists();
 
-  Object.assign(process.env, {
-    NODE_ENV: "development",
-    PAYLOAD_FORCE_DRIZZLE_PUSH: "true",
-    CI: "true",
-  });
+  if (!schemaExists) {
+    Object.assign(process.env, {
+      NODE_ENV: "development",
+      PAYLOAD_FORCE_DRIZZLE_PUSH: "true",
+      CI: "true",
+    });
+    console.log("[ensure-schema] Pushing Payload schema to Supabase…");
+  } else {
+    console.log("[ensure-schema] Schema exists — initializing Payload for admin build…");
+  }
 
   const { getPayload } = await import("payload");
   const { default: config } = await import("../src/payload.config.ts");
-
-  console.log("[ensure-schema] Pushing Payload schema to Supabase…");
-
   const payload = await getPayload({ config });
 
   if (typeof payload.db?.destroy === "function") {
     await payload.db.destroy();
   }
 
-  console.log("[ensure-schema] Schema push and seed complete.");
+  console.log("[ensure-schema] Payload build init complete.");
 }
 
 main().catch((error) => {
