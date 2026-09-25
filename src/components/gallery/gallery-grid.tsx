@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Link2, Search } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -10,13 +10,15 @@ type GalleryGridProps = {
   closeLabel?: string;
   previousLabel?: string;
   nextLabel?: string;
+  expandLabel?: string;
 };
 
 const FOCUSABLE =
   'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
- * Care Giver `gallery.html` — masonry-style grid with a polished lightbox.
+ * Care Giver `gallery.html` — three-column grid, terracotta slide-down overlay,
+ * plum circular link + search icons, and a polished lightbox.
  */
 export function GalleryGrid({
   images,
@@ -24,11 +26,17 @@ export function GalleryGrid({
   closeLabel = "Close",
   previousLabel = "Previous image",
   nextLabel = "Next image",
+  expandLabel = "View larger image",
 }: GalleryGridProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+
+  const openLightbox = useCallback((index: number, trigger: HTMLElement) => {
+    triggerRef.current = trigger;
+    setActiveIndex(index);
+  }, []);
 
   const close = useCallback(() => {
     setActiveIndex(null);
@@ -83,24 +91,39 @@ export function GalleryGrid({
 
   return (
     <>
-      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {images.map((src, index) => (
-          <li key={src}>
+          <li key={src} className="gallery-item">
             <button
               type="button"
-              onClick={(event) => {
-                triggerRef.current = event.currentTarget;
-                setActiveIndex(index);
-              }}
-              className="group relative block aspect-square w-full overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+              onClick={(event) => openLightbox(index, event.currentTarget)}
+              aria-label={`${expandLabel} ${index + 1}`}
+              className="group relative block w-full overflow-hidden text-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
             >
-              <Image
-                src={src}
-                alt={`${altPrefix} ${index + 1}`}
-                fill
-                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              <figure className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src={src}
+                  alt={`${altPrefix} ${index + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 group-focus-visible:scale-105"
+                />
+
+                {/* Care Giver overlay — rgba(200,162,148,0.90) slides down on hover */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 flex items-center justify-center bg-[rgba(200,162,148,0.9)] opacity-0 transition-all duration-700 ease-out -translate-y-full group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0"
+                >
+                  <div className="flex translate-y-12 items-center gap-2.5 opacity-0 transition-all duration-500 delay-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    <span className="grid h-[58px] w-[58px] place-items-center rounded-full bg-plum-footer text-white transition-colors duration-500 group-hover:bg-white group-hover:text-neutral-600">
+                      <Link2 size={20} strokeWidth={2} />
+                    </span>
+                    <span className="grid h-[58px] w-[58px] place-items-center rounded-full bg-plum-footer text-white transition-colors duration-500 group-hover:bg-white group-hover:text-neutral-600">
+                      <Search size={20} strokeWidth={2} />
+                    </span>
+                  </div>
+                </div>
+              </figure>
             </button>
           </li>
         ))}

@@ -34,9 +34,13 @@ export const caregiverHeroSlides = [
   caregiverImage("main-slider/3.jpg"),
 ] as const;
 
-/** Gallery grid — Care Giver `gallery.html` (19 images). */
+/**
+ * Gallery grid — Care Giver `gallery.html` (19 images).
+ * Template package ships grey JPEG placeholders; production uses curated home-care
+ * photography in `public/images/caregiver-licensed/gallery/*.webp`.
+ */
 export const caregiverGalleryImages = Array.from({ length: 19 }, (_, index) =>
-  caregiverImage(`gallery/${index + 1}.jpg`),
+  caregiverImage(`gallery/${index + 1}.webp`),
 );
 
 /** Team portraits from Care Giver `team.html` (four unique frames in the package). */

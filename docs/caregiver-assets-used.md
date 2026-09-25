@@ -45,7 +45,7 @@ Do not delete or replace an asset listed here without updating this file and run
 | `resource/care-1–3.jpg` | About collage | `/about` | `/images/caregiver-licensed/resource/care-*.jpg` |
 | `resource/meeting.jpg` | How care works | `/how-care-works` | `/images/caregiver-licensed/resource/meeting.jpg` |
 | `resource/contact-2.jpg` | Service sidebar widget | `ServiceSidebar` | `/images/caregiver-licensed/resource/contact-2.jpg` |
-| `gallery/1–19.jpg` | Gallery | `/gallery` | `/images/caregiver-licensed/gallery/*.jpg` |
+| `gallery/1–19.webp` | Gallery | `/gallery` | `/images/caregiver-licensed/gallery/*.webp` | Curated home-care photography (template JPEGs are grey placeholders) |
 | `resource/service-8–21.jpg` | Service detail heroes/inline | `/services/[slug]` | per slug in `caregiverServiceDetailImages` |
 | `resource/news-4–7.jpg` | Blog listing extras | `/resources` | `/images/caregiver-licensed/resource/news-*.jpg` |
 | `resource/post-thumb-1–4.jpg` | Blog sidebar | `/resources/[slug]` | `/images/caregiver-licensed/resource/post-thumb-*.jpg` |

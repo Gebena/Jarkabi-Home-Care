@@ -73,7 +73,7 @@ Wiring: `src/lib/caregiver-assets.ts`.
 | Source folder | Production path | Used on |
 |---|---|---|
 | `images/background/*` | `public/images/caregiver-licensed/backgrounds/` | Page banners, CTA textures |
-| `images/gallery/*` (19 files) | `public/images/caregiver-licensed/gallery/` | `/gallery` |
+| `images/gallery/*` (19 placeholders in package) | `public/images/caregiver-licensed/gallery/*.webp` | `/gallery` — real curated photography replaces grey template JPEGs |
 | `images/resource/*` (52 files) | `public/images/caregiver-licensed/resource/` | Team, testimonials, blog, service detail, how-care-works |
 | `images/main-slider/1–3.jpg` | `public/images/caregiver-licensed/main-slider/` | Homepage hero slider |
 
