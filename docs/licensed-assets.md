@@ -48,7 +48,7 @@ When `/templates/caregiver/` is populated, the agent will:
 3. Register each copied file in the table below (original filename → final path → pages used).
 4. Replace AI placeholder photography where licensed demo photos are cleared for end-product use.
 
-Production still uses the Jarkabi placeholder photography set below for faces and scenes (not redistributed demo photos). Decorative backgrounds and Flaticon line icons from the purchased package **are** wired in.
+Homepage hero, service cards, about collage, location finder, blog fallbacks, and the "Here For You Always" panel now use licensed Care Giver template photos via `src/lib/site-images.ts`. The legacy AI placeholder set in `public/images/photography/` remains on disk but is no longer referenced by the site.
 
 ---
 
@@ -75,8 +75,9 @@ Wiring: `src/lib/caregiver-assets.ts`.
 | `images/background/*` | `public/images/caregiver-licensed/backgrounds/` | Page banners, CTA textures |
 | `images/gallery/*` (19 files) | `public/images/caregiver-licensed/gallery/` | `/gallery` |
 | `images/resource/*` (52 files) | `public/images/caregiver-licensed/resource/` | Team, testimonials, blog, service detail, how-care-works |
+| `images/main-slider/1–3.jpg` | `public/images/caregiver-licensed/main-slider/` | Homepage hero slider |
 
-Registry: `src/lib/caregiver-assets.ts`, demo copy: `src/lib/caregiver-demo-fallbacks.ts`.
+Registry: `src/lib/caregiver-assets.ts`, homepage slots: `src/lib/site-images.ts`, demo copy: `src/lib/caregiver-demo-fallbacks.ts`.
 
 **Home Page 02–05:** intentionally **not** implemented — spec §32 uses Home Page 01 only. Variants remain reference-only in `/templates/caregiver/index-2.html` … `index-5.html`.
 

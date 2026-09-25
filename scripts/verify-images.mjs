@@ -2,11 +2,9 @@
 /**
  * Verifies every photograph referenced by src/lib/site-images.ts exists in
  * public/, and reports anything in public/images/photography that nothing
- * references.
+ * references (legacy AI set).
  *
- * The site has twice shipped broken imagery — a 404 hero, then an opera house on
- * a service card — because a path was edited without anyone loading the page.
- * Run this after editing the set.
+ * Run after editing the licensed or placeholder image registry.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -16,21 +14,27 @@ const source = readFileSync(new URL("src/lib/site-images.ts", root), "utf8");
 const publicDir = new URL("public", root).pathname;
 const photoDir = join(publicDir, "images", "photography");
 
-// `local()` composes each path from the shared DIR constant, so read both.
-const dir = source.match(/^const DIR = "([^"]+)";$/m)?.[1];
-const names = [...new Set([...source.matchAll(/\blocal\(\s*"([\w-]+)"/g)].map(([, name]) => name))];
+const licensedPaths = [
+  ...new Set(
+    [...source.matchAll(/licensed\(\s*"([^"]+)"/g)].map(([, path]) => `/images/caregiver-licensed/${path}`),
+  ),
+];
 
-if (!dir || names.length === 0) {
-  console.error("Could not read the image set out of src/lib/site-images.ts");
+const legacyNames = [...new Set([...source.matchAll(/\blocal\(\s*"([\w-]+)"/g)].map(([, name]) => name))];
+const legacyDir = source.match(/^const DIR = "([^"]+)";$/m)?.[1];
+const legacyPaths = legacyDir ? legacyNames.map((name) => `${legacyDir}/${name}.webp`) : [];
+
+const referenced = [...licensedPaths, ...legacyPaths].sort();
+
+if (referenced.length === 0) {
+  console.error("Could not read image paths from src/lib/site-images.ts");
   process.exit(1);
 }
-
-const referenced = names.map((name) => `${dir}/${name}.webp`);
 
 console.log(`Checking ${referenced.length} referenced image(s)…\n`);
 
 const missing = [];
-for (const path of referenced.sort()) {
+for (const path of referenced) {
   const file = join(publicDir, path);
   let size = 0;
   try {
@@ -48,12 +52,15 @@ for (const path of referenced.sort()) {
   }
 }
 
-const onDisk = readdirSync(photoDir).map((name) => `/images/photography/${name}`);
-const unused = onDisk.filter((path) => !referenced.includes(path));
-
-if (unused.length > 0) {
-  console.log(`\n${unused.length} file(s) in public/images/photography are unreferenced:`);
-  for (const path of unused.sort()) console.log(`     ${path}`);
+try {
+  const onDisk = readdirSync(photoDir).map((name) => `/images/photography/${name}`);
+  const unused = onDisk.filter((path) => !legacyPaths.includes(path));
+  if (unused.length > 0) {
+    console.log(`\n${unused.length} legacy file(s) in public/images/photography are unreferenced:`);
+    for (const path of unused.sort()) console.log(`     ${path}`);
+  }
+} catch {
+  // photography dir optional once fully on licensed assets
 }
 
 if (missing.length > 0) {

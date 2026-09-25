@@ -27,6 +27,13 @@ export function caregiverImage(path: string): string {
   return `${BASE}/${path.replace(/^\//, "")}`;
 }
 
+/** Hero slider backgrounds — Care Giver `index.html` main slider. */
+export const caregiverHeroSlides = [
+  caregiverImage("main-slider/1.jpg"),
+  caregiverImage("main-slider/2.jpg"),
+  caregiverImage("main-slider/3.jpg"),
+] as const;
+
 /** Gallery grid — Care Giver `gallery.html` (19 images). */
 export const caregiverGalleryImages = Array.from({ length: 19 }, (_, index) =>
   caregiverImage(`gallery/${index + 1}.jpg`),

@@ -1,24 +1,24 @@
 /**
- * Jarkabi Home Care — photography set.
+ * Jarkabi Home Care — site photography registry.
  *
- * Care Giver's photography direction is warm, naturally lit, candid senior care:
- * caregivers with seniors, family interaction, older adults at home, companionship,
- * mobility assistance, nursing support and personal care. Every photograph below
- * follows that direction.
+ * Production uses licensed Care Giver template images from
+ * `public/images/caregiver-licensed/` (Envato Elements licence KVZ473J956).
+ * Paths are composed through `caregiverImage()` in `caregiver-assets.ts`.
  *
- * The Care Giver demo photographs themselves are not redistributable under the
- * Envato licence, so this set is commissioned imagery held in
- * `public/images/photography`. See `docs/licensed-assets.md` for provenance and
- * for the plan to replace it with photography of real Jarkabi clients and staff.
+ * Slot assignments mirror Care Giver Home Page 01 (`index.html`):
+ *  - Hero slider: `main-slider/1–3.jpg`
+ *  - Service carousel cards: `resource/service-4–7.jpg` (+ extended set for all 11 slugs)
+ *  - "Here For You Always" panel: `resource/video-img.jpg`
+ *  - Location finder prints: `resource/post-1.jpg`, `post-2.jpg`
+ *  - About collage: `resource/care-1–3.jpg`
+ *  - Blog fallbacks: `resource/news-1–3.jpg`
  *
  * Two rules when editing:
- *  1. Run `npm run verify:images` — the site previously shipped a 404 hero and an
- *     opera house on a service card because nobody checked.
- *  2. Look at the photograph at the crop the slot actually uses before trusting a
- *     description of it, and write alt text from what you see.
+ *  1. Run `npm run verify:images` after changing paths.
+ *  2. Decorative slots use `alt=""`; hero and about lead images carry descriptive alt text.
  */
 
-const DIR = "/images/photography";
+import { caregiverImage } from "@/lib/caregiver-assets";
 
 type Photo = {
   src: string;
@@ -27,197 +27,125 @@ type Photo = {
 
 /**
  * `position` is a CSS object-position and `flip` mirrors the frame. Both belong
- * to the photograph rather than the component: a wash that covers the left of a
- * band only works if the subject happens to sit on the right, and which way a
- * given frame needs nudging is a fact about the frame.
- *
- * Every frame in this set was composed with its subject to the right of centre,
- * so nothing currently needs `flip` — it stays because the inner-page banner and
- * the call to action both mirror themselves under RTL locales.
+ * to the photograph rather than the component.
  */
 type PositionedPhoto = Photo & { position: string; flip?: boolean };
 
-function local(file: string, alt: string): Photo {
-  return { src: `${DIR}/${file}.webp`, alt };
+function licensed(path: string, alt: string): Photo {
+  return { src: caregiverImage(path), alt };
 }
 
-/**
- * Every photograph in the set, described as it actually appears. Alt text is
- * written from the frame, not from the prompt that produced it.
- */
+/** Licensed Care Giver frames keyed by template filename. */
 const library = {
-  heroCareConversation: local(
-    "jarkabi-hero-care-conversation",
-    "A care worker sitting close beside a smiling older man in his living room, her hand on his shoulder",
+  heroSlide1: licensed(
+    "main-slider/1.jpg",
+    "A care worker with an older adult in a warm home setting",
   ),
-  heroKitchenTea: local(
-    "jarkabi-hero-kitchen-tea",
-    "A care worker pouring tea for an older woman at her kitchen counter, both laughing",
+  heroSlide2: licensed(
+    "main-slider/2.jpg",
+    "A caregiver supporting an older person during daily activities at home",
   ),
-  heroGardenWalk: local(
-    "jarkabi-hero-garden-walk",
-    "A care worker walking an older woman along a garden path, steadying her walking frame",
+  heroSlide3: licensed(
+    "main-slider/3.jpg",
+    "Compassionate in-home care for a senior in their living room",
   ),
-  albumOnTheSofa: local(
-    "jarkabi-pillar-enrich",
-    "An older woman and a younger woman looking through a photo album together on a sofa",
-  ),
-  wateringHerbs: local(
-    "jarkabi-pillar-empower",
-    "An older man watering herbs on his kitchen windowsill while a care worker stands with him",
-  ),
-  boardGame: local(
-    "jarkabi-pillar-engage",
-    "An older woman and a care worker laughing over a board game at a living room table",
-  ),
-  teaConversation: local(
-    "jarkabi-why-tea-conversation",
-    "An older woman talking with a care worker across a table set with a teapot and fruit",
-  ),
-  handsHeld: local(
-    "jarkabi-cta-hands",
-    "An older woman smiling as someone holds her hands across a table",
-  ),
-  bannerTexture: local(
-    "jarkabi-page-banner-texture",
-    "An older person's hands resting on a knitted blanket beside a mug of tea",
-  ),
-  doorstepWelcome: local(
-    "jarkabi-location-home-visit",
-    "A care worker arriving at a front door and being greeted by an older woman",
-  ),
-  coupleAtHome: local(
-    "jarkabi-location-couple-home",
-    "An older couple laughing together over a photo album in their living room",
-  ),
-  blogFamilyPlanning: local(
-    "jarkabi-blog-family-planning",
-    "A daughter and her older mother talking over a notebook at the dining table",
-  ),
-  blogHomeSafety: local(
-    "jarkabi-blog-home-safety",
-    "A care worker fitting a grab rail in a doorway while an older man looks on",
-  ),
-  blogNutrition: local(
-    "jarkabi-blog-nutrition",
-    "An older woman and a care worker chopping vegetables together at a kitchen counter",
-  ),
-  servicePersonalCare: local(
-    "svc-personal-care",
-    "A care worker helping an older woman fasten her cardigan in her sunlit living room",
-  ),
-  serviceSeniorHomeCare: local(
-    "svc-senior-home-care",
-    "An older woman with a cup of tea under a blanket in her armchair while a care worker tidies behind her",
-  ),
-  serviceCompanionCare: local(
-    "svc-companion-care",
-    "An older man laughing over a cup of tea beside a companion on a garden bench",
-  ),
-  serviceRegisteredNursing: local(
-    "svc-registered-nursing",
-    "A nurse in scrubs taking an older man's blood pressure at his dining table",
-  ),
-  serviceDementiaSupport: local(
-    "svc-dementia-support",
-    "A care worker and an older woman looking through a box of old photographs together",
-  ),
-  serviceRespiteCare: local(
-    "svc-respite-care",
-    "A family member handing over to a care worker at the front door, an older relative seated inside",
-  ),
-  servicePostHospitalCare: local(
-    "svc-post-hospital-care",
-    "A care worker supporting an older man as he rises from his armchair, his walking stick beside him",
-  ),
-  servicePalliativeCare: local(
-    "svc-palliative-care",
-    "A care worker sitting quietly at an older woman's bedside, holding her hand",
-  ),
+  pillarEnrich: licensed("resource/service-1.jpg", ""),
+  pillarEmpower: licensed("resource/service-2.jpg", ""),
+  pillarEngage: licensed("resource/service-3.jpg", ""),
+  whyPanel: licensed("resource/video-img.jpg", "Care worker with an older adult at home"),
+  ctaBackground: licensed("resource/quality-1.jpg", ""),
+  pageBanner: licensed("resource/started.jpg", ""),
+  locationPrint1: licensed("resource/post-1.jpg", ""),
+  locationPrint2: licensed("resource/post-2.jpg", ""),
+  blogNews1: licensed("resource/news-1.jpg", ""),
+  blogNews2: licensed("resource/news-2.jpg", ""),
+  blogNews3: licensed("resource/news-3.jpg", ""),
+  aboutCare1: licensed("resource/care-1.jpg", "Care team member with a client at home"),
+  aboutCare2: licensed("resource/care-2.jpg", ""),
+  aboutCare3: licensed("resource/care-3.jpg", ""),
+  serviceElderly: licensed("resource/service-4.jpg", ""),
+  serviceDaySupport: licensed("resource/service-5.jpg", ""),
+  serviceRespite: licensed("resource/service-6.jpg", ""),
+  servicePersonal: licensed("resource/service-7.jpg", ""),
+  serviceAfterSurgery: licensed("resource/service-8.jpg", ""),
+  serviceCompanion: licensed("resource/service-12.jpg", ""),
+  serviceChronic: licensed("resource/service-14.jpg", ""),
+  serviceEndOfLife: licensed("resource/service-17.jpg", ""),
+  serviceSkilledNursing: licensed("resource/service-18.jpg", ""),
+  serviceHospitalDischarge: licensed("resource/service-11.jpg", ""),
+  serviceSpecialNeeds: licensed("resource/service-21.jpg", ""),
 } as const;
 
-/**
- * Hero slides. The slider pairs these with whatever hero copy exists, so adding
- * photography here is a one-line change.
- */
+/** Hero slides — Care Giver `main-slider/1–3.jpg`. */
 export const heroSlides: PositionedPhoto[] = [
-  { ...library.heroCareConversation, position: "50% 45%" },
-  { ...library.heroKitchenTea, position: "55% 45%" },
-  { ...library.heroGardenWalk, position: "55% 40%" },
+  { ...library.heroSlide1, position: "center center" },
+  { ...library.heroSlide2, position: "center center" },
+  { ...library.heroSlide3, position: "center center" },
 ];
 
-/** Three colour-overlaid pillar blocks: Enrich / Empower / Engage. */
+/** Three colour-overlaid pillar blocks (also wired directly in `pillars-section.tsx`). */
 export const pillarImages: Photo[] = [
-  library.albumOnTheSofa,
-  library.wateringHerbs,
-  library.boardGame,
+  library.pillarEnrich,
+  library.pillarEmpower,
+  library.pillarEngage,
 ];
 
-/**
- * "Here For You Always" — the overlapping photograph carrying the video play
- * button. A tall slot, so it wants a frame whose subjects sit near the centre.
- */
+/** "Here For You Always" — overlapping photograph with video play button. */
 export const whyChooseUsImage: PositionedPhoto = {
-  ...library.teaConversation,
-  position: "50% 40%",
+  ...library.whyPanel,
+  position: "center center",
 };
 
-/** Full-bleed mid-page call-to-action banner. */
+/** Full-bleed mid-page call-to-action banner photograph. */
 export const ctaImage: PositionedPhoto = {
-  ...library.handsHeld,
-  position: "55% 40%",
+  ...library.ctaBackground,
+  position: "center center",
 };
 
-/**
- * Banner behind every inner page title. It sits under a heavy plum wash, so it
- * reads as texture rather than as a subject — which is what lets one photograph
- * serve every page without looking repetitive.
- */
+/** Banner behind inner page titles — position metadata for parallax crops. */
 export const pageBannerImage: PositionedPhoto = {
-  ...library.bannerTexture,
+  ...library.pageBanner,
   position: "50% 55%",
 };
 
-/** Location finder collage — two tilted prints behind the province picker. */
-export const locationImages: Photo[] = [library.doorstepWelcome, library.coupleAtHome];
+/** Location finder collage — tilted prints behind the province picker. */
+export const locationImages: Photo[] = [library.locationPrint1, library.locationPrint2];
 
 /**
- * Square service card imagery, keyed by service slug. Every service has its own
- * photograph so no two cards in a row repeat.
+ * Square service card imagery keyed by slug. Carousel slots 4–7 match Care Giver
+ * Home Page 01; remaining slugs use the closest matching demo detail frame.
  */
 export const serviceImages: Record<string, Photo> = {
-  "elderly-care": library.serviceSeniorHomeCare,
-  "personal-care": library.servicePersonalCare,
-  "respite-care": library.serviceRespiteCare,
-  "skilled-nursing": library.serviceRegisteredNursing,
-  "day-support": library.serviceSeniorHomeCare,
-  "hospital-discharge": library.servicePostHospitalCare,
-  "companion-care": library.serviceCompanionCare,
-  "chronic-condition-care": library.servicePostHospitalCare,
-  "after-surgery-care": library.servicePostHospitalCare,
-  "end-of-life-care": library.servicePalliativeCare,
-  "special-needs-care": library.serviceDementiaSupport,
+  "elderly-care": library.serviceElderly,
+  "personal-care": library.servicePersonal,
+  "respite-care": library.serviceRespite,
+  "skilled-nursing": library.serviceSkilledNursing,
+  "day-support": library.serviceDaySupport,
+  "hospital-discharge": library.serviceHospitalDischarge,
+  "companion-care": library.serviceCompanion,
+  "chronic-condition-care": library.serviceChronic,
+  "after-surgery-care": library.serviceAfterSurgery,
+  "end-of-life-care": library.serviceEndOfLife,
+  "special-needs-care": library.serviceSpecialNeeds,
   /** Legacy slugs */
-  "senior-home-care": library.serviceSeniorHomeCare,
-  "registered-nursing": library.serviceRegisteredNursing,
-  "dementia-support": library.serviceDementiaSupport,
-  "post-hospital-care": library.servicePostHospitalCare,
-  "palliative-care": library.servicePalliativeCare,
+  "senior-home-care": library.serviceElderly,
+  "registered-nursing": library.serviceSkilledNursing,
+  "dementia-support": library.serviceSpecialNeeds,
+  "post-hospital-care": library.serviceHospitalDischarge,
+  "palliative-care": library.serviceEndOfLife,
 };
 
-export const serviceFallbackImage: Photo = library.serviceSeniorHomeCare;
+export const serviceFallbackImage: Photo = library.serviceElderly;
 
-/** Blog / resource card imagery, used when a post has no cover image. */
+/** Blog / resource card imagery when a post has no cover image. */
 export const blogFallbackImages: Photo[] = [
-  library.blogFamilyPlanning,
-  library.blogHomeSafety,
-  library.blogNutrition,
+  library.blogNews1,
+  library.blogNews2,
+  library.blogNews3,
 ];
 
-/* ── Shared by inner pages ── */
-
 export const aboutImages = {
-  main: library.teaConversation,
-  small1: library.albumOnTheSofa,
-  small2: library.boardGame,
+  main: library.aboutCare1,
+  small1: library.aboutCare2,
+  small2: library.aboutCare3,
 };
