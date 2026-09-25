@@ -89,13 +89,7 @@ export default buildConfig({
     Testimonials,
   ],
   onInit: async (payload) => {
-    try {
-      await seedDatabase(payload);
-    } catch (error) {
-      payload.logger.warn(
-        `[seed] Skipped during init: ${error instanceof Error ? error.message : "unknown error"}`,
-      );
-    }
+    await seedDatabase(payload);
   },
   globals: [BrandSettings],
   editor: lexicalEditor(),
