@@ -1,3 +1,4 @@
+import { LegalSections } from "@/components/legal/legal-sections";
 import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import { PageHero } from "@/components/layout/page-hero";
 import { DraftNotice } from "@/components/ui/draft-notice";
@@ -42,6 +43,7 @@ export default async function PrivacyPage({ params }: Props) {
       >
         {legal?.reviewRequired === false ? null : <DraftNotice>{t("draftNotice")}</DraftNotice>}
         <p className="mt-8 text-base leading-relaxed text-body">{t("privacyBody")}</p>
+        <LegalSections sections={t.raw("privacySections") as { title: string; body: string }[]} />
       </LegalPageLayout>
     </>
   );

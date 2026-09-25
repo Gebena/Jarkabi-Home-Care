@@ -8,6 +8,7 @@ import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { getBrand, getProvinces } from "@/lib/cms";
 import { defaultBrand } from "@/lib/brand";
 import { defaultOpenGraphImages } from "@/lib/og-image";
+import { googleSiteVerificationMetadata } from "@/lib/google-search-console";
 import { buildLanguageAlternates, siteUrl } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -47,6 +48,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       images: defaultOpenGraphImages().map((image) => image.url),
     },
+    ...googleSiteVerificationMetadata(),
   };
 }
 

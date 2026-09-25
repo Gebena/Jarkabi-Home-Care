@@ -63,7 +63,7 @@
 - [x] 7 locales configured; RTL for Arabic
 - [x] hreflang for all locales via `buildLanguageAlternates()`
 - [x] `LocaleDocument` sets `lang`/`dir` on `<html>`
-- [x] Complete ti/byn/tig/ar/am message keys (`npm run sync:locales`; human review pending)
+- [x] Eight-locale sync: ti/ar/am/zh/es/hi (`npm run sync:locales`; human review pending)
 
 ### Phase 16 — SEO ✅ (partial)
 - [x] `app/sitemap.ts` — dynamic from CMS + local SEO URLs
@@ -86,7 +86,7 @@
 - [ ] `globals.css` cleanup (still ~2.7k lines)
 - [x] Replace Unsplash with licensed production photography (`caregiver-licensed/`; legacy `photography/` removed)
 - [x] CMS editorial seed (FAQs, blog, team, testimonials, careers) via `seedEditorialContent`
-- [x] Partial locale sync (`npm run sync:locales`) — ti/tig/byn/ar/am merged from en + patches
+- [x] Partial locale sync (`npm run sync:locales`) — ti/ar/am/zh/es/hi merged from en + patches (byn/tig removed)
 
 ### Phase 19 — Testing ✅ (foundation)
 - [x] Vitest + form schema tests (`npm run test`)

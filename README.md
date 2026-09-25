@@ -4,7 +4,7 @@ Premium national Canadian home-care platform — launching in Ottawa, Ontario, b
 
 **Website:** https://jarkabi.ca  
 **Email:** care@jarkabi.ca  
-**Languages:** English, French, Tigrinya, Blin, Tigre, Arabic (RTL), Amharic
+**Languages:** English, French, Tigrinya, Arabic (RTL), Amharic, Mandarin, Spanish, Hindi
 
 This repository is **fully isolated** from other projects. Requirements live in `docs/MASTER_PROMPT.md`.
 

@@ -157,7 +157,7 @@
     "subtitle": "We are committed to compassionate, professional home care that helps seniors and families live with dignity, safety, and peace of mind.",
     "commitment1Value": "24/7",
     "commitment1Label": "Availability, including nights and weekends",
-    "commitment2Value": "7",
+    "commitment2Value": "8",
     "commitment2Label": "Languages our care team works in",
     "commitment3Value": "1:1",
     "commitment3Label": "A care plan written for each individual",
@@ -587,7 +587,7 @@
       },
       {
         "title": "Respect for language",
-        "body": "We match caregivers by language wherever we can, and this site is published in seven, including Tigrinya, Blin, Tigre, Arabic and Amharic."
+        "body": "We match caregivers by language wherever we can, and this site is published in eight — English, French, Tigrinya, Arabic, Amharic, Mandarin, Spanish, and Hindi."
       },
       {
         "title": "Flexible support",
@@ -773,9 +773,77 @@
     "sidebarWidgetButton": "Contact us",
     "draftNotice": "This page is being finalised with legal counsel and is not yet approved for publication.",
     "privacyLead": "How Jarkabi Home Care collects, uses and protects personal information.",
-    "privacyBody": "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate. Until the full policy is published, contact our care team with any question about how your information is handled.",
+    "privacyBody": "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate.",
+    "privacySections": [
+      {
+        "title": "Who we are",
+        "body": "Jarkabi Home Care provides regulated home care services in Canada. The agency named in our Brand Settings is the organization responsible for personal information collected through this website, our care forms, and our coordination team."
+      },
+      {
+        "title": "What we collect",
+        "body": "We collect only what is needed to respond to inquiries, coordinate care, process job applications, or operate the website. This may include your name, phone number, email address, city, language preference, and any health or care details you choose to share in a form or conversation."
+      },
+      {
+        "title": "Why we use it",
+        "body": "We use personal information to answer questions, schedule assessments, match caregivers, communicate with families and referral partners, comply with regulatory record-keeping where required, and improve this website. We do not sell personal information."
+      },
+      {
+        "title": "Consent and health information",
+        "body": "We ask for consent before collecting health information beyond what you voluntarily submit in an initial inquiry. Referral partners should send only what is necessary to start a conversation; we obtain client or substitute decision-maker consent before collecting further clinical details."
+      },
+      {
+        "title": "How we protect information",
+        "body": "Access to personal information is limited to staff and contractors who need it for their role. Data is stored on infrastructure with encryption in transit, and we use reputable hosting providers with Canadian or contractually appropriate data handling."
+      },
+      {
+        "title": "Retention and your rights",
+        "body": "We retain information only as long as needed for care coordination, employment, or legal obligations. You may ask what we hold about you, request correction, or ask us to delete information where no legal retention requirement applies. Contact our care team to exercise these rights."
+      },
+      {
+        "title": "Cookies and analytics",
+        "body": "This site may use essential cookies for language preference and security. If analytics tools are enabled, they are configured to minimise identifiable data. You can adjust browser settings to limit non-essential cookies."
+      },
+      {
+        "title": "Changes to this policy",
+        "body": "We will update this page when our practices change or when legal counsel approves a revised policy. Material changes will be noted here with an updated effective date once counsel review is complete."
+      }
+    ],
     "termsLead": "The terms that apply when you use this website.",
-    "termsBody": "Nothing on this website is medical advice, and the information here does not create a care relationship. Service availability differs by province and city, and only the communities listed as active on our locations page are served today.",
+    "termsBody": "By using jarkabi.ca you agree to the terms below. If you do not agree, please do not use the site.",
+    "termsSections": [
+      {
+        "title": "About this website",
+        "body": "This website provides general information about Jarkabi Home Care services, careers, and resources for families and referral partners. Content may change without notice as services and communities evolve."
+      },
+      {
+        "title": "Not medical advice",
+        "body": "Nothing on this website is medical advice, diagnosis, or treatment. Always consult a qualified health professional about medical decisions. Using this site or submitting a form does not create a care relationship until Jarkabi confirms service in writing."
+      },
+      {
+        "title": "Service availability",
+        "body": "Service availability differs by province and city. Only communities listed as active on our locations page are served today. We do not imply coverage where we cannot staff visits."
+      },
+      {
+        "title": "Acceptable use",
+        "body": "You agree not to misuse the site, attempt unauthorized access, submit false information, or use automated tools that degrade service for others. We may restrict access when misuse is detected."
+      },
+      {
+        "title": "Intellectual property",
+        "body": "Text, logos, photography, and design on this site belong to Jarkabi Home Care or its licensors unless otherwise noted. You may link to public pages, but you may not copy or republish content without written permission."
+      },
+      {
+        "title": "Third-party links",
+        "body": "Links to external sites are provided for convenience. We are not responsible for the content, privacy practices, or accessibility of third-party websites."
+      },
+      {
+        "title": "Limitation of liability",
+        "body": "To the fullest extent permitted by applicable law, Jarkabi Home Care is not liable for indirect or consequential damages arising from use of this website. Nothing here limits rights that cannot be excluded under Canadian consumer protection law."
+      },
+      {
+        "title": "Governing law",
+        "body": "These terms are governed by the laws of the province where Jarkabi Home Care operates the service relevant to your inquiry, and the federal laws of Canada where applicable."
+      }
+    ],
     "accessibilityLead": "What we have done to make this site usable, and how to tell us when it is not.",
     "accessibilityIntro": "Jarkabi Home Care aims to meet WCAG 2.1 Level AA across this website. Accessibility matters more than usual here: many of our visitors are older adults, people with low vision, or families reading on a phone in a hospital corridor.",
     "accessibilityDoneTitle": "What is in place today",
@@ -784,7 +852,7 @@
       "Every page can be operated with a keyboard alone, and focused elements show a visible outline.",
       "Headings follow a single logical order, form fields have visible labels, and images that carry meaning have alternative text.",
       "Interactive targets are at least 24 by 24 pixels, and the layout reflows without horizontal scrolling down to a 320 pixel viewport.",
-      "The site is published in seven languages, with right-to-left layout support for Arabic."
+      "The site is published in eight languages, with right-to-left layout support for Arabic."
     ],
     "accessibilityGapsTitle": "Known gaps",
     "accessibilityGaps": [

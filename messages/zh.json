@@ -1,38 +1,38 @@
 {
   "meta": {
     "siteName": "Jarkabi Home Care",
-    "translationNote": "[HUMAN TRANSLATION REQUIRED]"
+    "translationNote": "部分翻译 — 发布前需人工审核"
   },
   "topbar": {
     "tagline": "Compassionate home care for Ottawa families",
     "cta": "Free Consultation"
   },
   "nav": {
-    "home": "Home",
+    "home": "首页",
     "pages": "Pages",
     "servicesMenu": "Services",
     "projects": "Locations",
     "blog": "Resources",
-    "about": "About",
+    "about": "关于我们",
     "aboutMenu": "About us",
     "typesOfCare": "Types Of Care",
     "knowledgeCenter": "Knowledge Center",
-    "services": "Services",
+    "services": "服务",
     "servicesGrid": "All Services",
     "referrals": "Referrals",
     "caregivers": "Our Caregivers",
     "team": "Our Team",
-    "gallery": "Gallery",
+    "gallery": "相册",
     "testimonials": "Testimonials",
-    "faq": "FAQ",
+    "faq": "常见问题",
     "howCareWorks": "How Care Works",
-    "locations": "Locations",
+    "locations": "服务区域",
     "whyChooseUs": "Why Choose Us",
     "whyJarkabi": "Why Jarkabi",
     "resources": "Resources",
-    "careers": "Careers",
-    "contact": "Contact",
-    "requestCare": "Request Care",
+    "careers": "招聘",
+    "contact": "联系我们",
+    "requestCare": "申请护理",
     "contactUs": "Contact Us",
     "callUs": "Call Us",
     "search": "Search",
@@ -87,15 +87,15 @@
     "slide3Script": "Trusted by families",
     "slide3Title": "Your Partner in Senior Care",
     "slide3Body": "From personal care to nursing support, we build thoughtful care plans tailored to each person's needs, routines, and family goals.",
-    "eyebrow": "Compassionate Home Care in Ottawa",
-    "headline": "Exceptional Care. Right at Home.",
-    "subheadline": "Professional Care. Personal Connection. Peace of Mind.",
-    "body": "Compassionate home-care and nursing services designed to help people live safely, independently and confidently in the comfort of home.",
+    "eyebrow": "渥太华充满关爱的居家护理",
+    "headline": "卓越护理，就在家中",
+    "subheadline": "专业护理。个人关怀。家人安心。",
+    "body": "We provide thoughtful home care and nursing services tailored to each person's needs, routines, and family goals.",
     "callAnytime": "Call anytime",
-    "primaryCta": "Request Care",
-    "secondaryCta": "Explore Our Services",
+    "primaryCta": "申请护理",
+    "secondaryCta": "了解服务",
     "tertiaryCta": "Call Our Care Team",
-    "locationNote": "Proudly serving Ottawa and surrounding communities, with thoughtful expansion across Canada.",
+    "locationNote": "Serving Ottawa and surrounding communities.",
     "badgeLicensed": "Licensed & Regulated",
     "badgeInsured": "Fully Insured",
     "badgeSupport": "Responsive Support",
@@ -158,7 +158,7 @@
     "subtitle": "We are committed to compassionate, professional home care that helps seniors and families live with dignity, safety, and peace of mind.",
     "commitment1Value": "24/7",
     "commitment1Label": "Availability, including nights and weekends",
-    "commitment2Value": "7",
+    "commitment2Value": "8",
     "commitment2Label": "Languages our care team works in",
     "commitment3Value": "1:1",
     "commitment3Label": "A care plan written for each individual",
@@ -174,9 +174,9 @@
     "viewAll": "Meet the team"
   },
   "intro": {
-    "eyebrow": "Why families choose us",
+    "eyebrow": "Who we are",
     "headline": "Care Built Around the Person — Not the Schedule.",
-    "body": "Every person has different needs, routines, preferences, culture, language, health circumstances, family situations and personal goals.",
+    "body": "Every person has different needs, routines, preferences, culture, language, health circumstances, and personal goals. We partner with families for the long term — not simply as a staffing service.",
     "badge1Title": "Family-centred",
     "badge1Desc": "Care plans built together",
     "badge2Title": "Fully insured",
@@ -195,7 +195,7 @@
     "feature3Desc": "Care in your language, respecting your traditions.",
     "feature4Title": "Flexible scheduling",
     "feature4Desc": "From a few hours to around-the-clock support.",
-    "cta": "Learn Why Families Trust Us"
+    "cta": "Read More"
   },
   "features": {
     "eyebrow": "What we do at home",
@@ -238,8 +238,8 @@
     "eyebrow": "Our services",
     "title": "Support tailored to life at home",
     "subtitle": "Comprehensive home care services designed to help your loved ones live safely, comfortably, and independently.",
-    "learnMore": "Learn more",
-    "viewAll": "View all services"
+    "learnMore": "View Details",
+    "viewAll": "All Services"
   },
   "servicesPage": {
     "metaTitle": "Services",
@@ -330,12 +330,12 @@
   },
   "process": {
     "eyebrow": "How care works",
-    "title": "How Care Begins",
+    "title": "A clear path to care at home",
     "step1": "Talk With Us",
     "step2": "Care Assessment",
     "step3": "Personalized Care Plan",
-    "step4": "Begin Care",
-    "step5": "Ongoing Review & Support",
+    "step4": "Meet Your Care Team",
+    "step5": "Care Begins",
     "step6": "Ongoing Review"
   },
   "nursingHighlight": {
@@ -369,19 +369,10 @@
   },
   "testimonials": {
     "eyebrow": "Testimonials",
-    "title": "What families are saying",
-    "subtitle": "Hear from families who have experienced the Jarkabi difference.",
+    "title": "What Our Clients Say",
+    "subtitle": "Families across Ottawa share how thoughtful home care made a difference for them.",
     "placeholder": "Verified family testimonials will appear here after launch. We do not publish placeholder or fabricated reviews.",
-    "viewAll": "Read all testimonials",
-    "quote1": "The caregivers have been wonderful with my mother. They treat her with such dignity and patience. We finally have peace of mind knowing she's in good hands.",
-    "name1": "Margaret R.",
-    "role1": "Daughter of client, Ottawa",
-    "quote2": "From the first consultation, the team was professional and caring. They matched us with a caregiver who speaks our language and understands our culture.",
-    "name2": "Samuel L.",
-    "role2": "Son of client, Kanata",
-    "quote3": "After my father's surgery, Jarkabi provided excellent nursing support at home. The coordination was seamless and the care was outstanding.",
-    "name3": "Diane K.",
-    "role3": "Family caregiver, Nepean"
+    "viewAll": "Read all testimonials"
   },
   "blog": {
     "eyebrow": "Resources",
@@ -398,8 +389,8 @@
     "fallback3Excerpt": "Understanding respite care and preventing caregiver burnout."
   },
   "faq": {
-    "eyebrow": "FAQ",
-    "title": "Frequently asked questions",
+    "eyebrow": "FAQs",
+    "title": "Your Most Important Questions Answered Here",
     "subtitle": "Answers to common questions about our home care services.",
     "stillHaveQuestions": "Still have questions?",
     "stillHaveQuestionsBody": "Can't find the answer you're looking for? Please chat with our friendly care team.",
@@ -437,14 +428,14 @@
   },
   "cta": {
     "title": "Ready to begin?",
-    "body": "Speak with our care team.",
+    "body": "Speak with our care team for a free, confidential consultation. We're here to help.",
     "button": "Request Care",
     "callButton": "Call Us Today"
   },
   "footer": {
-    "brandStatement": "Compassionate home care for Canadian families.",
+    "brandStatement": "Compassionate home care and nursing services for Canadian families — local heart, national capability.",
     "coverage": "Current service area",
-    "coverageNote": "Serving Ottawa, Ontario & surrounding communities",
+    "coverageNote": "Ottawa, Ontario & surrounding communities",
     "company": "Company",
     "quickLinks": "Quick Links",
     "contact": "Contact",
@@ -459,17 +450,17 @@
   },
   "form": {
     "title": "Request Care",
-    "subtitle": "Tell us how we can help.",
+    "subtitle": "Tell us how we can help. We will respond promptly during business hours.",
     "name": "Full name",
     "phone": "Phone",
     "email": "Email",
     "province": "Province",
     "city": "City",
     "postalCode": "Postal code",
-    "relationship": "Relationship",
-    "careType": "Type of care",
+    "relationship": "Relationship to person requiring care",
+    "careType": "Type of care required",
     "startDate": "Preferred start date",
-    "hours": "Approximate hours",
+    "hours": "Approximate hours per week",
     "language": "Preferred language",
     "contactTime": "Best time to contact",
     "notes": "Additional notes",
@@ -550,14 +541,14 @@
     "leadershipBody": "Our care team is led by a clinical director and a care director, supported by coordinators who know every client by name. Named profiles are published as the team grows."
   },
   "whyPage": {
-    "metaTitle": "Why Jarkabi Home Care",
-    "eyebrow": "Why Jarkabi",
-    "crumb": "Why Jarkabi",
-    "title": "Care built on trust, compassion, and professional standards",
-    "lead": "Twelve things families ask about before choosing a home care provider, answered plainly.",
-    "introTitle": "Why families choose Jarkabi Home Care",
-    "introBody": "Home care should feel personal, professional, and predictable. Jarkabi combines licensed caregivers, nurse-reviewed plans, and coordinators who stay reachable — so dignity stays at the centre of every visit.",
-    "gridTitle": "More reasons families trust Jarkabi",
+    "metaTitle": "为什么选择 Jarkabi Home Care",
+    "eyebrow": "为什么选择 Jarkabi",
+    "crumb": "为什么选择 Jarkabi",
+    "title": "以信任、关爱与专业标准为基础的护理",
+    "lead": "家庭在选择居家护理机构前常问的十二个问题——清晰解答。",
+    "introTitle": "为什么家庭选择 Jarkabi Home Care",
+    "introBody": "居家护理应当个性化、专业且可预期。Jarkabi 结合持证护理人员、护士审核的护理计划以及随时可联系的协调员——让尊严成为每次上门服务的核心。",
+    "gridTitle": "家庭信任 Jarkabi 的更多理由",
     "items": [
       {
         "title": "Care that starts with listening",
@@ -597,7 +588,7 @@
       },
       {
         "title": "Respect for language",
-        "body": "We match caregivers by language wherever we can, and this site is published in seven, including Tigrinya, Blin, Tigre, Arabic and Amharic."
+        "body": "We match caregivers by language wherever we can, and this site is published in eight — English, French, Tigrinya, Arabic, Amharic, Mandarin, Spanish, and Hindi."
       },
       {
         "title": "Flexible support",
@@ -635,15 +626,15 @@
     ]
   },
   "howCareWorksPage": {
-    "communicationTitle": "Family communication",
-    "communicationBody": "You receive a note after each visit covering what was done, how the day went and anything that changed. A coordinator is reachable during business hours, and families living outside the province get the same updates as those next door.",
-    "supervisionTitle": "Supervision and review",
-    "supervisionBody": "Caregivers escalate concerns to a coordinator rather than leaving them with the family. Care plans are reviewed on a regular schedule and immediately after any hospital stay, fall or change in medication.",
-    "title": "A clear, reassuring path to care at home",
-    "lead": "From the first conversation through ongoing review — every step is written to be understandable for families and referral partners alike.",
-    "meetingTitle": "How to get started with Jarkabi",
-    "meetingTagline": "Learn how home care begins with a single conversation",
-    "meetingIntro": "The best care plans start with a meeting where family and client talk with a Jarkabi care coordinator. We review health needs, routines, language preferences, and goals — and answer every question before the first visit.",
+    "communicationTitle": "与家庭沟通",
+    "communicationBody": "每次访问后您会收到记录，说明做了什么、当天情况以及任何变化。协调员在工作时间可联系，外地的家庭同样收到更新。",
+    "supervisionTitle": "监督与复查",
+    "supervisionBody": "护理人员将顾虑上报协调员，而不是留给家庭处理。护理计划定期复查，并在住院、跌倒或用药变化后立即更新。",
+    "title": "清晰、安心的居家护理路径",
+    "lead": "从第一次谈话到持续跟进——每一步都便于家庭和转诊伙伴理解。",
+    "meetingTitle": "如何开始与 Jarkabi 合作",
+    "meetingTagline": "了解居家护理如何从一次对话开始",
+    "meetingIntro": "最好的护理计划始于家庭与客户与 Jarkabi 护理协调员的会面。我们了解健康需求、日常习惯、语言偏好和目标——并在首次上门前回答所有问题。",
     "meetingTopicsTitle": "Topics we commonly cover in the first meeting",
     "meetingTopics": [
       "Physical needs — bathing, dressing, meals, mobility, and continence support.",
@@ -654,24 +645,24 @@
     ]
   },
   "faqPage": {
-    "metaTitle": "Frequently Asked Questions",
-    "crumb": "FAQ",
-    "title": "Questions families ask us",
-    "lead": "Straight answers about starting care, safety, languages, and what to expect from Jarkabi Home Care.",
-    "sectionTitle": "Frequently asked questions",
+    "metaTitle": "常见问题",
+    "crumb": "常见问题",
+    "title": "家庭常问的问题",
+    "lead": "关于开始护理、安全、语言以及 Jarkabi Home Care 服务内容的清晰解答。",
+    "sectionTitle": "常见问题",
     "sectionLead": "Search below or browse common topics. If your question is not listed, call our care team.",
-    "searchPlaceholder": "Search your question",
+    "searchPlaceholder": "搜索您的问题",
     "sidebarTitle": "Helpful links",
-    "widgetTitle": "Need Help Finding the Right Care?",
-    "widgetButton": "Speak With Jarkabi"
+    "widgetTitle": "需要帮助找到合适的护理？",
+    "widgetButton": "联系 Jarkabi"
   },
   "galleryPage": {
-    "metaTitle": "Gallery",
+    "metaTitle": "相册",
     "eyebrow": "Gallery",
     "crumb": "Gallery",
-    "title": "Moments of care and connection",
-    "lead": "A glimpse of the warmth, dignity, and companionship that define home care.",
-    "sectionTitle": "Our gallery",
+    "title": "护理与连接的点滴",
+    "lead": "一窥定义居家护理的温暖、尊严与陪伴。",
+    "sectionTitle": "我们的相册",
     "sectionLead": "Warm, dignified moments from the Jarkabi home care experience.",
     "imageAlt": "Home care gallery",
     "lightboxClose": "Close",
@@ -679,11 +670,11 @@
     "lightboxNext": "Next image"
   },
   "teamPage": {
-    "metaTitle": "Our Team",
+    "metaTitle": "我们的团队",
     "eyebrow": "Our team",
     "crumb": "Team",
-    "title": "Caregivers and coordinators who know Ottawa",
-    "lead": "Experienced professionals committed to respectful, person-centred home care.",
+    "title": "了解渥太华的护理人员与协调员",
+    "lead": "经验丰富的专业人士，致力于尊重、以人为中心的居家护理。",
     "introTitle": "People who show up — and stay",
     "introBody": "Our team is built for continuity: coordinators who know your family, caregivers matched for fit, and clinical oversight when needs change.",
     "introHighlights": [
@@ -695,20 +686,20 @@
     "sectionLead": "Demo profiles shown until verified team photography and biographies are published."
   },
   "testimonialsPage": {
-    "metaTitle": "Testimonials",
+    "metaTitle": "客户评价",
     "crumb": "Testimonials",
-    "title": "What families say about Jarkabi",
-    "lead": "Stories from Ottawa-area families who trusted us with care at home.",
+    "title": "家庭对 Jarkabi 的评价",
+    "lead": "渥太华地区信任我们居家护理的家庭故事。",
     "featuredTitle": "Featured stories",
     "featuredLead": "Families share what consistent, coordinator-led home care meant for them.",
     "sectionTitle": "More client stories"
   },
   "careersPage": {
-    "metaTitle": "Careers",
+    "metaTitle": "招聘",
     "eyebrow": "Careers",
     "crumb": "Careers",
-    "title": "Join a team built on dignity and professionalism",
-    "lead": "We hire for consistency. If you want to see the same clients each week and be supported by a coordinator who knows them, we would like to hear from you.",
+    "title": "加入以尊严与专业为核心的团队",
+    "lead": "我们招聘注重服务连续性的护理人员。若您希望每周见到相同客户并获得了解他们的协调员支持，欢迎联系我们。",
     "introTitle": "Work that matters, with a team that has your back",
     "introBody": "Jarkabi Home Care is built for caregivers who want steady schedules, clear communication, and the time to do excellent work — not rushed visits between strangers.",
     "introBenefits": [
@@ -723,18 +714,18 @@
     "rolesTitle": "Roles we hire for",
     "emptyTitle": "No positions are advertised right now",
     "emptyBody": "We keep applications on file and contact people when a matching role opens. Send a résumé and tell us which communities you can work in.",
-    "emptyCta": "Send us your résumé",
+    "emptyCta": "发送简历",
     "apply": "View and apply",
     "professionLabel": "Profession",
     "employmentTypeLabel": "Employment type",
     "applicationPrivacy": "Your application is read by our care team and kept on file for future openings. We do not share it outside Jarkabi Home Care, and you can ask us to delete it at any time."
   },
   "resourcesPage": {
-    "metaTitle": "Resources",
+    "metaTitle": "资源",
     "eyebrow": "Resources",
     "crumb": "Resources",
-    "title": "Educational resources for families and partners",
-    "lead": "Practical guides on choosing home care, coming home from hospital, and supporting someone living with dementia.",
+    "title": "面向家庭与合作伙伴的教育资源",
+    "lead": "关于选择居家护理、出院回家以及支持痴呆症患者的实用指南。",
     "read": "Read article",
     "emptyTitle": "The first guides are being written",
     "emptyBody": "Until they are published, our care team will answer any question about home care by phone or email — including questions about providers other than us.",
@@ -755,12 +746,12 @@
     ]
   },
   "referralsPage": {
-    "metaTitle": "Professional Referrals",
+    "metaTitle": "专业转诊",
     "eyebrow": "Referrals",
     "crumb": "Referrals",
-    "title": "Refer a client with confidence",
-    "lead": "For hospitals, physicians, nurses, social workers, case managers and community partners.",
-    "introTitle": "A referral partner you can trust",
+    "title": "放心转诊客户",
+    "lead": "面向医院、医生、护士、社工、案例管理员及社区合作伙伴。",
+    "introTitle": "可信赖的转诊伙伴",
     "introBody": "We built Jarkabi for the professionals who need a reliable home care partner — clear communication, same-day acknowledgement, and consent before we collect health information.",
     "introHighlights": [
       "Same-business-day referral acknowledgement",
@@ -778,15 +769,83 @@
     "privacyBody": "Send only what is needed to start the conversation. We contact the client or their substitute decision-maker for consent before collecting anything further."
   },
   "legalPages": {
-    "sidebarTitle": "Legal information",
-    "sidebarWidgetTitle": "Questions about our policies?",
-    "sidebarWidgetButton": "Contact us",
-    "draftNotice": "This page is being finalised with legal counsel and is not yet approved for publication.",
-    "privacyLead": "How Jarkabi Home Care collects, uses and protects personal information.",
-    "privacyBody": "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate. Until the full policy is published, contact our care team with any question about how your information is handled.",
-    "termsLead": "The terms that apply when you use this website.",
-    "termsBody": "Nothing on this website is medical advice, and the information here does not create a care relationship. Service availability differs by province and city, and only the communities listed as active on our locations page are served today.",
-    "accessibilityLead": "What we have done to make this site usable, and how to tell us when it is not.",
+    "sidebarTitle": "法律信息",
+    "sidebarWidgetTitle": "对我们的政策有疑问？",
+    "sidebarWidgetButton": "联系我们",
+    "draftNotice": "本页正与法律顾问最终定稿，尚未批准发布。",
+    "privacyLead": "Jarkabi Home Care 如何收集、使用和保护个人信息。",
+    "privacyBody": "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate.",
+    "privacySections": [
+      {
+        "title": "Who we are",
+        "body": "Jarkabi Home Care provides regulated home care services in Canada. The agency named in our Brand Settings is the organization responsible for personal information collected through this website, our care forms, and our coordination team."
+      },
+      {
+        "title": "What we collect",
+        "body": "We collect only what is needed to respond to inquiries, coordinate care, process job applications, or operate the website. This may include your name, phone number, email address, city, language preference, and any health or care details you choose to share in a form or conversation."
+      },
+      {
+        "title": "Why we use it",
+        "body": "We use personal information to answer questions, schedule assessments, match caregivers, communicate with families and referral partners, comply with regulatory record-keeping where required, and improve this website. We do not sell personal information."
+      },
+      {
+        "title": "Consent and health information",
+        "body": "We ask for consent before collecting health information beyond what you voluntarily submit in an initial inquiry. Referral partners should send only what is necessary to start a conversation; we obtain client or substitute decision-maker consent before collecting further clinical details."
+      },
+      {
+        "title": "How we protect information",
+        "body": "Access to personal information is limited to staff and contractors who need it for their role. Data is stored on infrastructure with encryption in transit, and we use reputable hosting providers with Canadian or contractually appropriate data handling."
+      },
+      {
+        "title": "Retention and your rights",
+        "body": "We retain information only as long as needed for care coordination, employment, or legal obligations. You may ask what we hold about you, request correction, or ask us to delete information where no legal retention requirement applies. Contact our care team to exercise these rights."
+      },
+      {
+        "title": "Cookies and analytics",
+        "body": "This site may use essential cookies for language preference and security. If analytics tools are enabled, they are configured to minimise identifiable data. You can adjust browser settings to limit non-essential cookies."
+      },
+      {
+        "title": "Changes to this policy",
+        "body": "We will update this page when our practices change or when legal counsel approves a revised policy. Material changes will be noted here with an updated effective date once counsel review is complete."
+      }
+    ],
+    "termsLead": "使用本网站适用的条款。",
+    "termsBody": "By using jarkabi.ca you agree to the terms below. If you do not agree, please do not use the site.",
+    "termsSections": [
+      {
+        "title": "About this website",
+        "body": "This website provides general information about Jarkabi Home Care services, careers, and resources for families and referral partners. Content may change without notice as services and communities evolve."
+      },
+      {
+        "title": "Not medical advice",
+        "body": "Nothing on this website is medical advice, diagnosis, or treatment. Always consult a qualified health professional about medical decisions. Using this site or submitting a form does not create a care relationship until Jarkabi confirms service in writing."
+      },
+      {
+        "title": "Service availability",
+        "body": "Service availability differs by province and city. Only communities listed as active on our locations page are served today. We do not imply coverage where we cannot staff visits."
+      },
+      {
+        "title": "Acceptable use",
+        "body": "You agree not to misuse the site, attempt unauthorized access, submit false information, or use automated tools that degrade service for others. We may restrict access when misuse is detected."
+      },
+      {
+        "title": "Intellectual property",
+        "body": "Text, logos, photography, and design on this site belong to Jarkabi Home Care or its licensors unless otherwise noted. You may link to public pages, but you may not copy or republish content without written permission."
+      },
+      {
+        "title": "Third-party links",
+        "body": "Links to external sites are provided for convenience. We are not responsible for the content, privacy practices, or accessibility of third-party websites."
+      },
+      {
+        "title": "Limitation of liability",
+        "body": "To the fullest extent permitted by applicable law, Jarkabi Home Care is not liable for indirect or consequential damages arising from use of this website. Nothing here limits rights that cannot be excluded under Canadian consumer protection law."
+      },
+      {
+        "title": "Governing law",
+        "body": "These terms are governed by the laws of the province where Jarkabi Home Care operates the service relevant to your inquiry, and the federal laws of Canada where applicable."
+      }
+    ],
+    "accessibilityLead": "我们为提升网站可用性所做的工作，以及如何向我们反馈障碍。",
     "accessibilityIntro": "Jarkabi Home Care aims to meet WCAG 2.1 Level AA across this website. Accessibility matters more than usual here: many of our visitors are older adults, people with low vision, or families reading on a phone in a hospital corridor.",
     "accessibilityDoneTitle": "What is in place today",
     "accessibilityDone": [
@@ -794,14 +853,14 @@
       "Every page can be operated with a keyboard alone, and focused elements show a visible outline.",
       "Headings follow a single logical order, form fields have visible labels, and images that carry meaning have alternative text.",
       "Interactive targets are at least 24 by 24 pixels, and the layout reflows without horizontal scrolling down to a 320 pixel viewport.",
-      "The site is published in seven languages, with right-to-left layout support for Arabic."
+      "The site is published in eight languages, with right-to-left layout support for Arabic."
     ],
     "accessibilityGapsTitle": "Known gaps",
     "accessibilityGaps": [
       "Translations outside English and French are partial; untranslated text falls back to English rather than showing an empty page.",
       "Documents published by third parties, such as external forms, may not meet the same standard."
     ],
-    "accessibilityContactTitle": "Tell us about a barrier",
+    "accessibilityContactTitle": "告诉我们遇到的障碍",
     "accessibilityContactBody": "If any part of this site prevents you from finding or requesting care, email our care team and tell us what happened. We treat access barriers as service failures and respond to them the same way."
   },
   "locationsPage": {
@@ -818,8 +877,8 @@
     "growingBody": "We began by caring for families in Ottawa and intend to expand into other Canadian communities with local leadership and the same quality standards.",
     "growingLink": "Read about our expansion plans",
     "coverageNote": "We do not list a community until we can actually staff it.",
-    "title": "Growing across Canada with local care",
-    "lead": "Select a province to see what we actually deliver there today."
+    "title": "在加拿大各地发展，本地护理",
+    "lead": "选择省份，查看我们目前实际提供的服务。"
   },
   "cityPage": {
     "title": "Home care in {city}",
@@ -846,11 +905,11 @@
     "inactiveBody": "We only list a community once we can staff it properly. Send us your location and we will contact you when that changes."
   },
   "growingPage": {
-    "metaTitle": "Growing Across Canada",
+    "metaTitle": "在加拿大各地发展",
     "eyebrow": "National vision",
     "crumb": "Growing across Canada",
-    "title": "Growing across Canada — without compromising quality",
-    "lead": "We began locally in Ottawa, and we open a new community only once we can staff it to the same standard.",
+    "title": "在加拿大各地发展——不降低质量标准",
+    "lead": "我们从渥太华本地起步，只有能够按相同标准配备人员时才开放新社区。",
     "introTitle": "National reach, local accountability",
     "introBody": "Every community we list is staffed to the same standard as Ottawa — local coordinators, local caregivers, and honest availability on our locations page.",
     "localTitle": "Local heart, national capability",

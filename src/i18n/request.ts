@@ -5,7 +5,7 @@ import en from "../../messages/en.json";
 type Messages = Record<string, unknown>;
 
 /**
- * Translations for ti, byn, tig, ar and am cover only part of the site. Layering
+ * Community locales (ti, ar, am, zh, es, hi) may cover only part of the site. Layering
  * them over English keeps every page renderable instead of emitting raw key paths
  * for whatever has not been translated yet.
  */

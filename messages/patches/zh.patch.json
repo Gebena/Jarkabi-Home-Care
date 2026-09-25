@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "translationNote": "部分翻译 — 发布前需人工审核"
+  },
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "requestCare": "申请护理",
+    "gallery": "相册",
+    "faq": "常见问题",
+    "careers": "招聘",
+    "locations": "服务区域"
+  },
+  "hero": {
+    "eyebrow": "渥太华充满关爱的居家护理",
+    "headline": "卓越护理，就在家中",
+    "subheadline": "专业护理。个人关怀。家人安心。",
+    "primaryCta": "申请护理",
+    "secondaryCta": "了解服务"
+  },
+  "whyPage": {
+    "metaTitle": "为什么选择 Jarkabi Home Care",
+    "eyebrow": "为什么选择 Jarkabi",
+    "crumb": "为什么选择 Jarkabi",
+    "title": "以信任、关爱与专业标准为基础的护理",
+    "lead": "家庭在选择居家护理机构前常问的十二个问题——清晰解答。",
+    "introTitle": "为什么家庭选择 Jarkabi Home Care",
+    "introBody": "居家护理应当个性化、专业且可预期。Jarkabi 结合持证护理人员、护士审核的护理计划以及随时可联系的协调员——让尊严成为每次上门服务的核心。",
+    "gridTitle": "家庭信任 Jarkabi 的更多理由"
+  },
+  "howCareWorksPage": {
+    "title": "清晰、安心的居家护理路径",
+    "lead": "从第一次谈话到持续跟进——每一步都便于家庭和转诊伙伴理解。",
+    "meetingTitle": "如何开始与 Jarkabi 合作",
+    "meetingTagline": "了解居家护理如何从一次对话开始",
+    "meetingIntro": "最好的护理计划始于家庭与客户与 Jarkabi 护理协调员的会面。我们了解健康需求、日常习惯、语言偏好和目标——并在首次上门前回答所有问题。",
+    "communicationTitle": "与家庭沟通",
+    "communicationBody": "每次访问后您会收到记录，说明做了什么、当天情况以及任何变化。协调员在工作时间可联系，外地的家庭同样收到更新。",
+    "supervisionTitle": "监督与复查",
+    "supervisionBody": "护理人员将顾虑上报协调员，而不是留给家庭处理。护理计划定期复查，并在住院、跌倒或用药变化后立即更新。"
+  },
+  "faqPage": {
+    "metaTitle": "常见问题",
+    "crumb": "常见问题",
+    "title": "家庭常问的问题",
+    "lead": "关于开始护理、安全、语言以及 Jarkabi Home Care 服务内容的清晰解答。",
+    "sectionTitle": "常见问题",
+    "searchPlaceholder": "搜索您的问题",
+    "widgetTitle": "需要帮助找到合适的护理？",
+    "widgetButton": "联系 Jarkabi"
+  },
+  "galleryPage": {
+    "metaTitle": "相册",
+    "title": "护理与连接的点滴",
+    "lead": "一窥定义居家护理的温暖、尊严与陪伴。",
+    "sectionTitle": "我们的相册"
+  },
+  "teamPage": {
+    "metaTitle": "我们的团队",
+    "title": "了解渥太华的护理人员与协调员",
+    "lead": "经验丰富的专业人士，致力于尊重、以人为中心的居家护理。"
+  },
+  "testimonialsPage": {
+    "metaTitle": "客户评价",
+    "title": "家庭对 Jarkabi 的评价",
+    "lead": "渥太华地区信任我们居家护理的家庭故事。"
+  },
+  "careersPage": {
+    "metaTitle": "招聘",
+    "title": "加入以尊严与专业为核心的团队",
+    "lead": "我们招聘注重服务连续性的护理人员。若您希望每周见到相同客户并获得了解他们的协调员支持，欢迎联系我们。",
+    "emptyCta": "发送简历"
+  },
+  "resourcesPage": {
+    "metaTitle": "资源",
+    "title": "面向家庭与合作伙伴的教育资源",
+    "lead": "关于选择居家护理、出院回家以及支持痴呆症患者的实用指南。"
+  },
+  "referralsPage": {
+    "metaTitle": "专业转诊",
+    "title": "放心转诊客户",
+    "lead": "面向医院、医生、护士、社工、案例管理员及社区合作伙伴。",
+    "introTitle": "可信赖的转诊伙伴"
+  },
+  "legalPages": {
+    "sidebarTitle": "法律信息",
+    "sidebarWidgetTitle": "对我们的政策有疑问？",
+    "sidebarWidgetButton": "联系我们",
+    "draftNotice": "本页正与法律顾问最终定稿，尚未批准发布。",
+    "privacyLead": "Jarkabi Home Care 如何收集、使用和保护个人信息。",
+    "termsLead": "使用本网站适用的条款。",
+    "accessibilityLead": "我们为提升网站可用性所做的工作，以及如何向我们反馈障碍。",
+    "accessibilityContactTitle": "告诉我们遇到的障碍"
+  },
+  "locationsPage": {
+    "title": "在加拿大各地发展，本地护理",
+    "lead": "选择省份，查看我们目前实际提供的服务。"
+  },
+  "growingPage": {
+    "metaTitle": "在加拿大各地发展",
+    "title": "在加拿大各地发展——不降低质量标准",
+    "lead": "我们从渥太华本地起步，只有能够按相同标准配备人员时才开放新社区。"
+  }
+}

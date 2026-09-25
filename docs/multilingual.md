@@ -1,7 +1,7 @@
 # Multilingual Architecture — Jarkabi Home Care
 
 **Launch languages:** English, French (full content)  
-**Community languages:** Tigrinya, Blin, Tigre, Arabic (RTL), Amharic  
+**Community languages:** Tigrinya, Arabic (RTL), Amharic, Mandarin, Spanish, Hindi  
 **Long-term goal:** Database-driven translations §46
 
 ---
@@ -15,10 +15,11 @@
 | `en` | English | English | — |
 | `fr` | French | Français | — |
 | `ti` | Tigrinya | ትግርኛ | — |
-| `byn` | Blin | ብሊን | — |
-| `tig` | Tigre | ትግረ | — |
 | `ar` | Arabic | العربية | ✅ |
 | `am` | Amharic | አማርኛ | — |
+| `zh` | Mandarin | 中文 | — |
+| `es` | Spanish | Español | — |
+| `hi` | Hindi | हिन्दी | — |
 
 - `localePrefix: "always"` → all URLs prefixed (`/en/about`)
 - Default locale: `en`
@@ -28,14 +29,26 @@
 | Layer | Storage | Status |
 |-------|---------|--------|
 | UI chrome (nav, buttons, labels) | `messages/{locale}.json` | EN/FR complete; others partial |
-| CMS content (services, blog, legal) | Payload localized fields | Working for all 7 codes |
-| SEO metadata | Per-page `generateMetadata` | hreflang incomplete |
+| CMS content (services, blog, legal) | Payload localized fields | Working for all 8 codes |
+| SEO metadata | Per-page `generateMetadata` | hreflang for all 8 locales |
 
 ### RTL (Arabic) §47
 
-- `dir="rtl"` applied in `src/app/[locale]/layout.tsx`
+- `dir="rtl"` applied in `src/app/(site)/[locale]/layout.tsx`
 - `.rtl-layout` overrides in `globals.css`
 - **Gaps:** form layouts, chevron icons, partial Arabic translations
+
+---
+
+## Partial locale sync
+
+Community locales merge English base + existing translations + patches:
+
+```bash
+npm run sync:locales
+```
+
+Patch files live in `messages/patches/{locale}.patch.json`. Keys not yet translated fall back to English at runtime (`src/i18n/request.ts`).
 
 ---
 
@@ -48,16 +61,6 @@ translations (key, locale, value, namespace)
     ↓
 next-intl loader reads from DB with JSON fallback
 ```
-
-### Namespaces
-
-| Namespace | Examples |
-|-----------|----------|
-| `nav` | Home, Services, Request Care |
-| `home` | Hero, trust bar, section headings |
-| `forms` | Labels, validation messages |
-| `footer` | Column titles, legal links |
-| `seo` | Default meta descriptions |
 
 ---
 
@@ -72,22 +75,13 @@ next-intl loader reads from DB with JSON fallback
 
 ## hreflang & SEO
 
-Target for all 7 locales on every public page:
-
-```html
-<link rel="alternate" hreflang="en" href="https://jarkabi.ca/en/..." />
-<link rel="alternate" hreflang="fr" href="https://jarkabi.ca/fr/..." />
-<!-- ti, byn, tig, ar, am -->
-<link rel="alternate" hreflang="x-default" href="https://jarkabi.ca/en/..." />
-```
-
-**Current:** Only `en` and `fr` in metadata alternates.
+All 8 locales emit alternates on public pages via `buildLanguageAlternates` in `src/lib/seo.ts`.
 
 ---
 
 ## Ge'ez script considerations
 
-Languages `ti`, `byn`, `tig`, `am` use Ge'ez script:
+Languages `ti` and `am` use Ge'ez script:
 
 - Ensure font stack includes Ge'ez-capable fallbacks
 - Test line-height and font size (may need +1px vs Latin)
@@ -100,24 +94,11 @@ Languages `ti`, `byn`, `tig`, `am` use Ge'ez script:
 Display native names in selector:
 
 ```
-English | Français | ትግርኛ | ብሊን | ትግረ | العربية | አማርኛ
+English | Français | ትግርኛ | العربية | አማርኛ | 中文 | Español | हिन्दी
 ```
 
 Persist via next-intl cookie / URL prefix.
 
 ---
 
-## Migration plan
-
-| Step | Action |
-|------|--------|
-| 1 | Complete `messages/*.json` for all keys (or hide incomplete locales) |
-| 2 | Add `languages` + `translations` Payload collections |
-| 3 | Build admin translation UI |
-| 4 | Migrate JSON → DB namespace by namespace |
-| 5 | Extend hreflang to 7 locales |
-| 6 | Fix `<html lang>` in root layout |
-
----
-
-*See also: [`migration-strategy.md`](./migration-strategy.md) Phase 12*
+*See also: [`google-search-console.md`](./google-search-console.md), [`migration-strategy.md`](./migration-strategy.md) Phase 12*

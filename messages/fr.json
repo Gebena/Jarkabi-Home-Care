@@ -153,7 +153,7 @@
     "subtitle": "Nous nous engageons à fournir des soins à domicile compatissants et professionnels pour la dignité et la tranquillité d'esprit des familles.",
     "commitment1Value": "24/7",
     "commitment1Label": "Disponibilité, y compris les nuits et les fins de semaine",
-    "commitment2Value": "7",
+    "commitment2Value": "8",
     "commitment2Label": "Langues parlées par notre équipe de soins",
     "commitment3Value": "1:1",
     "commitment3Label": "Un plan de soins rédigé pour chaque personne",
@@ -557,7 +557,7 @@
       },
       {
         "title": "Respect de la langue",
-        "body": "Nous jumelons les soignants par langue autant que possible, et ce site est publié en sept langues, dont le tigrigna, le blin, le tigré, l'arabe et l'amharique."
+        "body": "Nous jumelons les soignants par langue autant que possible, et ce site est publié en huit langues — anglais, français, tigrigna, arabe, amharique, mandarin, espagnol et hindi."
       },
       {
         "title": "Un soutien souple",
@@ -731,9 +731,77 @@
     "sidebarWidgetButton": "Communiquez avec nous",
     "draftNotice": "Cette page est en cours de finalisation avec un conseiller juridique et n'est pas encore approuvée pour publication.",
     "privacyLead": "Comment Jarkabi Home Care recueille, utilise et protège les renseignements personnels.",
-    "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons. D'ici la publication de la politique complète, communiquez avec notre équipe pour toute question.",
+    "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons.",
+    "privacySections": [
+      {
+        "title": "Qui nous sommes",
+        "body": "Jarkabi Home Care fournit des services de soins à domicile réglementés au Canada. L'agence indiquée dans nos paramètres de marque est responsable des renseignements personnels recueillis par ce site, nos formulaires de soins et notre équipe de coordination."
+      },
+      {
+        "title": "Ce que nous recueillons",
+        "body": "Nous recueillons seulement ce qui est nécessaire pour répondre aux demandes, coordonner les soins, traiter les candidatures ou faire fonctionner le site. Cela peut inclure votre nom, numéro de téléphone, courriel, ville, langue préférée et tout détail de santé ou de soins que vous choisissez de partager."
+      },
+      {
+        "title": "Pourquoi nous l'utilisons",
+        "body": "Nous utilisons les renseignements personnels pour répondre aux questions, planifier des évaluations, jumeler des soignants, communiquer avec les familles et les partenaires de référence, respecter les exigences réglementaires lorsque requis et améliorer ce site. Nous ne vendons pas de renseignements personnels."
+      },
+      {
+        "title": "Consentement et renseignements de santé",
+        "body": "Nous demandons le consentement avant de recueillir des renseignements de santé au-delà de ce que vous soumettez volontairement dans une première demande. Les partenaires de référence ne doivent envoyer que ce qui est nécessaire pour amorcer la conversation."
+      },
+      {
+        "title": "Protection des renseignements",
+        "body": "L'accès aux renseignements personnels est limité au personnel et aux sous-traitants qui en ont besoin pour leur rôle. Les données sont stockées sur une infrastructure chiffrée en transit, avec des fournisseurs d'hébergement réputés."
+      },
+      {
+        "title": "Conservation et vos droits",
+        "body": "Nous conservons les renseignements seulement aussi longtemps que nécessaire pour la coordination des soins, l'emploi ou les obligations légales. Vous pouvez demander ce que nous détenons, demander une correction ou demander la suppression lorsqu'aucune obligation légale ne s'applique."
+      },
+      {
+        "title": "Témoins et analytique",
+        "body": "Ce site peut utiliser des témoins essentiels pour la langue et la sécurité. Si des outils d'analytique sont activés, ils sont configurés pour minimiser les données identifiables."
+      },
+      {
+        "title": "Modifications de cette politique",
+        "body": "Nous mettrons à jour cette page lorsque nos pratiques changeront ou lorsqu'un conseiller juridique approuvera une politique révisée."
+      }
+    ],
     "termsLead": "Les conditions qui s'appliquent à l'utilisation de ce site.",
-    "termsBody": "Rien sur ce site ne constitue un avis médical, et l'information qui s'y trouve ne crée pas de relation de soins. La disponibilité des services varie selon la province et la ville : seules les communautés indiquées comme actives sur notre page des emplacements sont desservies aujourd'hui.",
+    "termsBody": "En utilisant jarkabi.ca, vous acceptez les conditions ci-dessous. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site.",
+    "termsSections": [
+      {
+        "title": "À propos de ce site",
+        "body": "Ce site fournit de l'information générale sur les services, les carrières et les ressources de Jarkabi Home Care. Le contenu peut changer sans préavis."
+      },
+      {
+        "title": "Pas un avis médical",
+        "body": "Rien sur ce site ne constitue un avis médical, un diagnostic ou un traitement. Consultez toujours un professionnel de la santé qualifié. L'utilisation du site ne crée pas de relation de soins tant que Jarkabi n'a pas confirmé le service par écrit."
+      },
+      {
+        "title": "Disponibilité des services",
+        "body": "La disponibilité varie selon la province et la ville. Seules les communautés indiquées comme actives sur notre page des emplacements sont desservies aujourd'hui."
+      },
+      {
+        "title": "Utilisation acceptable",
+        "body": "Vous acceptez de ne pas utiliser le site de manière abusive, tenter un accès non autorisé, soumettre de fausses informations ou utiliser des outils automatisés qui dégradent le service."
+      },
+      {
+        "title": "Propriété intellectuelle",
+        "body": "Le texte, les logos, la photographie et la conception appartiennent à Jarkabi Home Care ou à ses concédants, sauf indication contraire."
+      },
+      {
+        "title": "Liens vers des tiers",
+        "body": "Les liens vers des sites externes sont fournis pour votre commodité. Nous ne sommes pas responsables du contenu ou des pratiques de confidentialité de sites tiers."
+      },
+      {
+        "title": "Limitation de responsabilité",
+        "body": "Dans la mesure permise par la loi applicable, Jarkabi Home Care n'est pas responsable des dommages indirects découlant de l'utilisation de ce site."
+      },
+      {
+        "title": "Droit applicable",
+        "body": "Ces conditions sont régies par les lois de la province où Jarkabi Home Care exploite le service pertinent à votre demande, ainsi que par les lois fédérales du Canada le cas échéant."
+      }
+    ],
     "accessibilityLead": "Ce que nous avons fait pour rendre ce site utilisable, et comment nous signaler ce qui ne l'est pas.",
     "accessibilityIntro": "Jarkabi Home Care vise le niveau AA des WCAG 2.1 sur l'ensemble de ce site. L'accessibilité compte particulièrement ici : beaucoup de nos visiteurs sont des personnes âgées, des personnes ayant une basse vision ou des familles qui lisent sur un téléphone dans un couloir d'hôpital.",
     "accessibilityDoneTitle": "Ce qui est en place aujourd'hui",
@@ -742,7 +810,7 @@
       "Chaque page s'utilise au clavier seul, et les éléments ciblés affichent un contour visible.",
       "Les titres suivent un ordre logique unique, les champs de formulaire portent des étiquettes visibles et les images porteuses de sens ont un texte de remplacement.",
       "Les cibles interactives mesurent au moins 24 pixels sur 24, et la mise en page se réorganise sans défilement horizontal jusqu'à 320 pixels de largeur.",
-      "Le site est publié en sept langues, avec prise en charge de la mise en page de droite à gauche pour l'arabe."
+      "Le site est publié en huit langues, avec prise en charge de la mise en page de droite à gauche pour l'arabe."
     ],
     "accessibilityGapsTitle": "Limites connues",
     "accessibilityGaps": [

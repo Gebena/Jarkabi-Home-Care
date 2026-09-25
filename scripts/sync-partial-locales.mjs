@@ -11,7 +11,7 @@ const messagesDir = join(root, "messages");
 const patchesDir = join(messagesDir, "patches");
 
 const en = JSON.parse(readFileSync(join(messagesDir, "en.json"), "utf8"));
-const partialLocales = ["ti", "tig", "byn", "ar", "am"];
+const partialLocales = ["ti", "ar", "am", "zh", "es", "hi"];
 
 function isPlainObject(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);

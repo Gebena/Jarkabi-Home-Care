@@ -1,19 +1,28 @@
-# Locale translation patches
+# Translation patches
 
-Partial locales (`ti`, `tig`, `byn`, `ar`, `am`) start with community-language strings for the homepage and forms. Keys added in later fidelity passes are merged from `en.json` via:
+Partial locales (`ti`, `ar`, `am`, `zh`, `es`, `hi`) start with community-language strings for key pages and forms. Keys added in later passes are merged from `en.json` via:
 
 ```bash
 npm run sync:locales
 ```
 
-## How it works
+## Workflow
 
-1. `en.json` is the complete base.
-2. Existing keys in `messages/{locale}.json` are preserved.
-3. Optional `messages/patches/{locale}.patch.json` overrides or adds translations before English fallback fills gaps.
+1. Add or update strings in `{locale}.patch.json`
+2. Run `npm run sync:locales`
+3. Human review before launch — patches include `[REVIEW REQUIRED]` / translation notes where applicable
 
-Runtime also merges via `src/i18n/request.ts` (`withEnglishFallback`), so untranslated keys never render as raw paths.
+## Locales
 
-## Human review
+| Code | Patch file | Notes |
+|------|------------|-------|
+| `ti` | *(optional)* | Tigrinya — edit `ti.json` or add `ti.patch.json` |
+| `ar` | `ar.patch.json` | Arabic — RTL layout |
+| `am` | *(optional)* | Amharic |
+| `zh` | `zh.patch.json` | Mandarin (Simplified) |
+| `es` | `es.patch.json` | Spanish |
+| `hi` | `hi.patch.json` | Hindi |
 
-Strings marked `[HUMAN TRANSLATION REQUIRED]` in `meta.translationNote` need review by native speakers before launch.
+English (`en`) and French (`fr`) are maintained directly in `messages/en.json` and `messages/fr.json`.
+
+**Removed locales:** Blin (`byn`) and Tigre (`tig`) were retired in favour of Mandarin, Spanish, and Hindi.

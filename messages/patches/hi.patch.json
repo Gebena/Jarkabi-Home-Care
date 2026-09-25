@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "translationNote": "आंशिक अनुवाद — लॉन्च से पहले मानव समीक्षा आवश्यक"
+  },
+  "nav": {
+    "home": "होम",
+    "services": "सेवाएँ",
+    "about": "हमारे बारे में",
+    "contact": "संपर्क",
+    "requestCare": "देखभाल का अनुरोध",
+    "gallery": "गैलरी",
+    "faq": "अक्सर पूछे जाने वाले प्रश्न",
+    "careers": "करियर",
+    "locations": "स्थान"
+  },
+  "hero": {
+    "eyebrow": "ओटावा में दयालु घरेलू देखभाल",
+    "headline": "उत्कृष्ट देखभाल। सीधे घर पर।",
+    "subheadline": "पेशेवर देखभाल। व्यक्तिगत संबंध। मन की शांति।",
+    "primaryCta": "देखभाल का अनुरोध",
+    "secondaryCta": "सेवाएँ देखें"
+  },
+  "whyPage": {
+    "metaTitle": "Jarkabi Home Care क्यों",
+    "eyebrow": "Jarkabi क्यों",
+    "crumb": "Jarkabi क्यों",
+    "title": "विश्वास, करुणा और पेशेवर मानकों पर आधारित देखभाल",
+    "lead": "घरेलू देखभाल प्रदाता चुनने से पहले परिवार जो बारह सवाल पूछते हैं — स्पष्ट जवाब।",
+    "introTitle": "परिवार Jarkabi Home Care क्यों चुनते हैं",
+    "introBody": "घरेलू देखभाल व्यक्तिगत, पेशेवर और predictable महसूस होनी चाहिए। Jarkabi licensed caregivers, nurse-reviewed plans और reachable coordinators को जोड़ता है — ताकि हर visit में गरिमा केंद्र में रहे।",
+    "gridTitle": "Jarkabi पर भरोसा करने के और कारण"
+  },
+  "howCareWorksPage": {
+    "title": "घर पर देखभाल की स्पष्ट, आश्वस्त करने वाली राह",
+    "lead": "पहली बातचीत से लेकर ongoing review तक — हर कदम परिवारों और referral partners के लिए समझने योग्य है।",
+    "meetingTitle": "Jarkabi के साथ कैसे शुरू करें",
+    "meetingTagline": "जानें कि घरेलू देखभाल एक बातचीत से कैसे शुरू होती है",
+    "meetingIntro": "सबसे अच्छी care plans उस meeting से शुरू होती हैं जहाँ परिवार और client Jarkabi care coordinator से बात करते हैं। हम health needs, routines, language preferences और goals समीक्षा करते हैं — और पहली visit से पहले हर सवाल का जवाब देते हैं।",
+    "communicationTitle": "परिवार से संवाद",
+    "communicationBody": "हर visit के बाद आपको note मिलती है — क्या किया गया, दिन कैसा रहा और क्या बदला। coordinator business hours में available है, और province के बाहर के परिवार भी same updates पाते हैं।",
+    "supervisionTitle": "Supervision और review",
+    "supervisionBody": "Caregivers concerns coordinator को escalate करते हैं, परिवार पर नहीं छोड़ते। Care plans regularly review होती हैं और hospital stay, fall या medication change के तुरंत बाद।"
+  },
+  "faqPage": {
+    "metaTitle": "अक्सर पूछे जाने वाले प्रश्न",
+    "crumb": "FAQ",
+    "title": "परिवार हमसे जो पूछते हैं",
+    "lead": "देखभाल शुरू करने, सुरक्षा, भाषाओं और Jarkabi Home Care से क्या expect करें — स्पष्ट जवाब।",
+    "sectionTitle": "अक्सर पूछे जाने वाले प्रश्न",
+    "searchPlaceholder": "अपना प्रश्न खोजें",
+    "widgetTitle": "सही देखभाल खोजने में मदद चाहिए?",
+    "widgetButton": "Jarkabi से बात करें"
+  },
+  "galleryPage": {
+    "metaTitle": "गैलरी",
+    "title": "देखभाल और connection के पल",
+    "lead": "घरेलू देखभाल की गर्मजोशी, गरिमा और companionship की झलक।",
+    "sectionTitle": "हमारी गैलरी"
+  },
+  "teamPage": {
+    "metaTitle": "हमारी टीम",
+    "title": "Caregivers और coordinators जो Ottawa जानते हैं",
+    "lead": "सम्मानजनक, person-centred home care के लिए committed experienced professionals।"
+  },
+  "testimonialsPage": {
+    "metaTitle": "प्रशंसापत्र",
+    "title": "परिवार Jarkabi के बारे में क्या कहते हैं",
+    "lead": "Ottawa-area families की कहानियाँ जिन्होंने home care के लिए हम पर भरोसा किया।"
+  },
+  "careersPage": {
+    "metaTitle": "करियर",
+    "title": "गरिमा और professionalism पर बनी टीम में शामिल हों",
+    "lead": "हम continuity के लिए hire करते हैं। अगर आप हर हफ्ते same clients देखना चाहते हैं और coordinator support चाहते हैं, हम सुनना चाहेंगे।",
+    "emptyCta": "अपना résumé भेजें"
+  },
+  "resourcesPage": {
+    "metaTitle": "संसाधन",
+    "title": "परिवारों और partners के लिए educational resources",
+    "lead": "home care चुनने, hospital से घर लौटने और dementia वाले किसी का support करने पर practical guides।"
+  },
+  "referralsPage": {
+    "metaTitle": "Professional referrals",
+    "title": "Confidence के साथ client refer करें",
+    "lead": "Hospitals, physicians, nurses, social workers, case managers और community partners के लिए।",
+    "introTitle": "Referral partner जिस पर भरोसा कर सकते हैं"
+  },
+  "legalPages": {
+    "sidebarTitle": "कानूनी जानकारी",
+    "sidebarWidgetTitle": "हमारी policies के बारे में सवाल?",
+    "sidebarWidgetButton": "संपर्क करें",
+    "draftNotice": "यह page legal counsel के साथ finalize हो रही है और अभी publish के लिए approved नहीं है।",
+    "privacyLead": "Jarkabi Home Care personal information कैसे collect, use और protect करता है।",
+    "termsLead": "इस website का उपयोग करते समय लागू terms।",
+    "accessibilityLead": "Site usable बनाने के लिए हमने क्या किया, और जब न हो तो कैसे बताएँ।",
+    "accessibilityContactTitle": "Barrier के बारे में बताएँ"
+  },
+  "locationsPage": {
+    "title": "Canada में local care के साथ बढ़ना",
+    "lead": "Province चुनें और देखें कि वहाँ आज actually क्या deliver करते हैं।"
+  },
+  "growingPage": {
+    "metaTitle": "Canada में बढ़ना",
+    "title": "Canada में बढ़ना — quality compromise किए बिना",
+    "lead": "हम locally Ottawa से शुरू हुए, और नया community तभी open करते हैं जब same standard पर staff कर सकें।"
+  }
+}

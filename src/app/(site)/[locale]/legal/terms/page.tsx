@@ -1,3 +1,4 @@
+import { LegalSections } from "@/components/legal/legal-sections";
 import { LegalPageLayout } from "@/components/legal/legal-page-layout";
 import { PageHero } from "@/components/layout/page-hero";
 import { DraftNotice } from "@/components/ui/draft-notice";
@@ -38,6 +39,7 @@ export default async function TermsPage({ params }: Props) {
       >
         <DraftNotice>{t("draftNotice")}</DraftNotice>
         <p className="mt-8 text-base leading-relaxed text-body">{t("termsBody")}</p>
+        <LegalSections sections={t.raw("termsSections") as { title: string; body: string }[]} />
       </LegalPageLayout>
     </>
   );
