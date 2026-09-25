@@ -11,10 +11,9 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const withSerwist = withSerwistInit({
   swSrc: "src/sw.ts",
   swDest: "public/sw.js",
-  disable: process.env.NODE_ENV === "development",
-  // Do not auto-register on Payload /admin — Serwist throws during register()
-  // and prevents React from hydrating the login UI.
-  register: false,
+  // Serwist injects sw-entry into the app bundle and breaks Payload /admin
+  // hydration on Vercel production. Re-enable once scoped to public routes only.
+  disable: true,
 });
 
 const nextConfig: NextConfig = {

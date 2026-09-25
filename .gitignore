@@ -46,3 +46,4 @@ next-env.d.ts
 payload.db
 payload.db-*
 /media
+public/sw.js
