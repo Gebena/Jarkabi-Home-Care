@@ -129,13 +129,13 @@ export function MainNav({ locale }: MainNavProps) {
 
             <div
               className={cn(
-                "absolute start-0 top-[calc(100%+0.5rem)] z-50 min-w-[15.5rem] transition-all duration-200",
+                "absolute start-0 top-[calc(100%+0.5rem)] z-[200] min-w-[15.5rem] transition-all duration-200",
                 open
                   ? "pointer-events-auto translate-y-0 opacity-100"
                   : "pointer-events-none -translate-y-1 opacity-0",
               )}
             >
-              <ul className="border border-line bg-white py-1 shadow-[0_12px_40px_rgba(67,38,58,0.12)]">
+              <ul className="relative z-[200] border border-line bg-white py-1 shadow-[0_12px_40px_rgba(67,38,58,0.12)]">
                 {entry.items.map((item) => {
                   const href = `${base}${item.href}`;
                   const itemActive = isActive(pathname, base, item.href);
