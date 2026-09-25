@@ -36,18 +36,26 @@ const databaseUri = resolveDatabaseUri();
 const db =
   isPostgresUri(databaseUri)
     ? postgresAdapter({
-        pool: { connectionString: databaseUri },
+        pool: {
+          connectionString: databaseUri,
+          ssl: databaseUri.includes("supabase.com")
+            ? { rejectUnauthorized: false }
+            : undefined,
+        },
       })
     : sqliteAdapter({
         client: { url: databaseUri },
       });
 
 const blobToken = process.env.BLOB_READ_WRITE_TOKEN?.trim();
-const plugins: Plugin[] = blobToken
+const hasValidBlobToken = Boolean(
+  blobToken?.startsWith("vercel_blob_rw_"),
+);
+const plugins: Plugin[] = hasValidBlobToken
   ? [
       vercelBlobStorage({
         collections: { media: true },
-        token: blobToken,
+        token: blobToken!,
         clientUploads: true,
       }),
     ]

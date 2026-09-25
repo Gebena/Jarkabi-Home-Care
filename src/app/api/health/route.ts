@@ -7,9 +7,33 @@ export async function GET() {
   const hasSecret = Boolean(process.env.PAYLOAD_SECRET);
   const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
 
+  let databaseConnected = false;
+  let databaseError: string | undefined;
+
+  if (hasDb) {
+    try {
+      const { default: pg } = await import("pg");
+      const client = new pg.Client({
+        connectionString: databaseUri,
+        ssl: databaseUri.includes("supabase.com")
+          ? { rejectUnauthorized: false }
+          : undefined,
+      });
+      await client.connect();
+      await client.query("SELECT 1");
+      await client.end();
+      databaseConnected = true;
+    } catch (err) {
+      databaseError =
+        err instanceof Error ? err.message : "Database connection failed";
+    }
+  }
+
   return NextResponse.json({
-    ok: true,
+    ok: hasSecret && (!hasDb || databaseConnected),
     database: hasDb ? "postgresql" : "sqlite-or-missing",
+    databaseConnected: hasDb ? databaseConnected : null,
+    databaseError,
     payloadSecret: hasSecret,
     siteUrl,
   });
