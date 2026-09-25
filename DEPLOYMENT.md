@@ -22,13 +22,20 @@ git push -u origin main
 
 ---
 
-## 2. Create the Vercel project
+## 2. Vercel project (configured)
 
-1. Sign in at [vercel.com](https://vercel.com) with GitHub.
-2. **Add New… → Project** → import **Gebena/Jarkabi-Home-Care** (or **Gebena/Ketet** with root `jarkabi-home-care`).
-3. **Production Branch:** `main`
-4. **Framework Preset:** Next.js
-5. **Do not deploy yet** — add environment variables first (step 3).
+The **jarkabi-home-care** Vercel project is linked to **Gebena/Jarkabi-Home-Care**.
+
+| Setting | Value |
+|---------|--------|
+| Git repository | `Gebena/Jarkabi-Home-Care` |
+| Production branch | `main` |
+| Root Directory | **(empty / repo root)** — not `jarkabi-home-care` |
+| Framework | Next.js |
+
+> If deploy fails with `Root Directory "jarkabi-home-care" does not exist`, clear Root Directory in Vercel → Project Settings → General.
+
+Add environment variables before first production deploy (step 3).
 
 ---
 

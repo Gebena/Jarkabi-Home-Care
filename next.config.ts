@@ -22,7 +22,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "http", hostname: "localhost" },
       { protocol: "https", hostname: "jarkabi.ca" },
-      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
 };

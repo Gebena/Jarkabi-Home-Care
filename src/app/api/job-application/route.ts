@@ -1,6 +1,7 @@
 import { sendCareTeamEmail } from "@/lib/email";
 import { getPayloadClient } from "@/lib/payload";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { jobApplicationSchema } from "@/lib/validations/forms";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -13,6 +14,25 @@ export async function POST(request: Request) {
 
   try {
     const form = await request.formData();
+    const parsed = jobApplicationSchema.safeParse({
+      applicantName: form.get("applicantName"),
+      email: form.get("email"),
+      phone: form.get("phone"),
+      jobTitle: form.get("jobTitle"),
+      province: form.get("province"),
+      city: form.get("city"),
+      coverLetter: form.get("coverLetter"),
+      locale: form.get("locale"),
+    });
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { ok: false, error: "validation_failed", issues: parsed.error.flatten() },
+        { status: 400 },
+      );
+    }
+
+    const data = parsed.data;
     const payload = await getPayloadClient();
 
     let resumeId: number | string | undefined;
@@ -22,7 +42,7 @@ export async function POST(request: Request) {
       const buffer = Buffer.from(await resume.arrayBuffer());
       const uploaded = await payload.create({
         collection: "media",
-        data: { alt: `Resume — ${form.get("applicantName")}` },
+        data: { alt: `Resume — ${data.applicantName}` },
         file: {
           data: buffer,
           mimetype: resume.type || "application/pdf",
@@ -36,27 +56,27 @@ export async function POST(request: Request) {
     await payload.create({
       collection: "job-applications",
       data: {
-        applicantName: String(form.get("applicantName") || ""),
-        email: String(form.get("email") || ""),
-        phone: String(form.get("phone") || ""),
-        jobTitle: String(form.get("jobTitle") || ""),
-        province: String(form.get("province") || ""),
-        city: String(form.get("city") || ""),
-        coverLetter: String(form.get("coverLetter") || ""),
-        locale: String(form.get("locale") || "en"),
+        applicantName: data.applicantName,
+        email: data.email,
+        phone: data.phone,
+        jobTitle: data.jobTitle,
+        province: data.province,
+        city: data.city,
+        coverLetter: data.coverLetter,
+        locale: data.locale || "en",
         resume: resumeId,
         status: "new",
       },
     });
 
     await sendCareTeamEmail({
-      subject: `New job application — ${form.get("applicantName")}`,
+      subject: `New job application — ${data.applicantName}`,
       text: [
-        `Applicant: ${form.get("applicantName")}`,
-        `Job: ${form.get("jobTitle")}`,
-        `Email: ${form.get("email")}`,
-        `Phone: ${form.get("phone")}`,
-        `Location: ${form.get("city")}, ${form.get("province")}`,
+        `Applicant: ${data.applicantName}`,
+        `Job: ${data.jobTitle}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone}`,
+        `Location: ${data.city || "—"}, ${data.province}`,
       ].join("\n"),
     });
 

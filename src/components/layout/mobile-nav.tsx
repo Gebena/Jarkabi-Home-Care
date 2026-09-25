@@ -9,55 +9,74 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { mainNav } from "@/lib/nav-config";
+import { mainNav, secondaryNav } from "@/lib/nav-config";
+import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { BrandWordmark } from "./brand-wordmark";
 
 export function MobileNav({ locale }: { locale: string }) {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const base = `/${locale}`;
 
   return (
-    <div className="mobile-nav">
+    <div className="xl:hidden">
       <Sheet>
         <SheetTrigger
           render={
             <Button
               variant="ghost"
               size="icon"
-              className="mobile-nav-toggle"
+              className="h-9 w-9 rounded-sm border border-line text-ink"
               aria-label={t("openMenu")}
             />
           }
         >
           <Menu size={20} />
         </SheetTrigger>
-        <SheetContent side="right" className="mobile-nav-sheet w-[min(100%,20rem)]">
-          <SheetHeader>
-            <SheetTitle className="text-left font-display text-lg text-primary">
-              Jarkabi Home Care
+        <SheetContent side="right" className="w-[min(100%,20rem)] bg-white p-0">
+          <SheetHeader className="border-b border-line px-5 py-4">
+            <SheetTitle className="text-left">
+              <BrandWordmark size="sm" />
             </SheetTitle>
           </SheetHeader>
-          <nav id="mobile-menu" className="mobile-nav-panel" aria-label="Mobile">
-            <ul>
-              {mainNav.map((item) => (
-                <li key={item.key}>
-                  <SheetClose
-                    render={
-                      <Link href={`${base}${item.href}`} className="mobile-nav-link" />
-                    }
-                  >
-                    {t(item.key)}
-                  </SheetClose>
-                </li>
-              ))}
+          <nav id="mobile-menu" className="flex flex-col p-5" aria-label="Mobile">
+            <ul className="flex flex-col">
+              {[...mainNav, ...secondaryNav].map((item) => {
+                const href = `${base}${item.href}`;
+                const active =
+                  item.href === ""
+                    ? pathname === base || pathname === `${base}/`
+                    : pathname === href || pathname.startsWith(`${href}/`);
+
+                return (
+                  <li key={item.key} className="border-b border-line/70">
+                    <SheetClose
+                      render={
+                        <Link
+                          href={href}
+                          aria-current={active ? "page" : undefined}
+                          className={cn(
+                            "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
+                            active ? "text-coral" : "text-ink",
+                          )}
+                        />
+                      }
+                    >
+                      {t(item.key)}
+                    </SheetClose>
+                  </li>
+                );
+              })}
             </ul>
             <SheetClose
               render={
                 <Link
-                  className="button button-accent button-full"
                   href={`${base}/contact`}
+                  className="mt-6 block bg-tan px-6 py-3.5 text-center text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light"
                 />
               }
             >

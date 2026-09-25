@@ -1,6 +1,7 @@
 import { sendCareTeamEmail } from "@/lib/email";
 import { getPayloadClient } from "@/lib/payload";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { referralSchema } from "@/lib/validations/forms";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -13,35 +14,45 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
+    const parsed = referralSchema.safeParse(body);
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { ok: false, error: "validation_failed", issues: parsed.error.flatten() },
+        { status: 400 },
+      );
+    }
+
+    const data = parsed.data;
     const payload = await getPayloadClient();
 
     await payload.create({
       collection: "referrals",
       data: {
-        organizationName: body.organizationName,
-        contactName: body.contactName,
-        phone: body.phone,
-        email: body.email,
-        province: body.province,
-        city: body.city,
-        referrerType: body.referrerType,
-        clientSummary: body.clientSummary,
-        notes: body.notes,
-        locale: body.locale,
+        organizationName: data.organizationName,
+        contactName: data.contactName,
+        phone: data.phone,
+        email: data.email,
+        province: data.province,
+        city: data.city,
+        referrerType: data.referrerType,
+        clientSummary: data.clientSummary,
+        notes: data.notes,
+        locale: data.locale,
         status: "new",
       },
     });
 
     await sendCareTeamEmail({
-      subject: `New referral — ${body.organizationName}`,
+      subject: `New referral — ${data.organizationName}`,
       text: [
-        `Organization: ${body.organizationName}`,
-        `Contact: ${body.contactName}`,
-        `Phone: ${body.phone}`,
-        `Email: ${body.email}`,
-        `Type: ${body.referrerType}`,
-        `Province: ${body.province}`,
-        `Summary: ${body.clientSummary || "—"}`,
+        `Organization: ${data.organizationName}`,
+        `Contact: ${data.contactName}`,
+        `Phone: ${data.phone}`,
+        `Email: ${data.email}`,
+        `Type: ${data.referrerType}`,
+        `Province: ${data.province}`,
+        `Summary: ${data.clientSummary || "—"}`,
       ].join("\n"),
     });
 

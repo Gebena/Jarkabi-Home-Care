@@ -1,50 +1,65 @@
+import { CallToAction } from "@/components/ui/call-to-action";
 import { PageHero } from "@/components/layout/page-hero";
+import { SectionTitle } from "@/components/ui/section-title";
+import { ServiceCard } from "@/components/ui/service-card";
 import type { Locale } from "@/i18n/routing";
 import { getServices } from "@/lib/cms";
+import { getCategoryLabel, serviceCategories, type ServiceCategory } from "@/lib/services-config";
+import { cn } from "@/lib/utils";
 import { setRequestLocale } from "next-intl/server";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = { title: "Services" };
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "servicesPage" });
+  return { title: t("metaTitle") };
+}
 
 export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const services = await getServices(locale as Locale);
+  const lang = locale as Locale;
+  const services = await getServices(lang);
+  const t = await getTranslations({ locale, namespace: "servicesPage" });
+
+  const grouped = (Object.keys(serviceCategories) as ServiceCategory[])
+    .map((category) => ({
+      category,
+      items: services.filter((service) => service.category === category),
+    }))
+    .filter(({ items }) => items.length > 0);
 
   return (
     <>
-      <PageHero
-        eyebrow="Services"
-        title="Home care that adapts to your family"
-        lead="Each service can be activated, edited and restricted by province and city from the admin dashboard."
-      />
-      <section className="section">
-        <div className="container card-grid">
-          {services.map((service) => (
-            <article key={service.slug} className="service-card service-card--large">
-              <h2>{service.title}</h2>
-              <p>{service.summary}</p>
-              <Link href={`/${locale}/services/${service.slug}`} className="text-link">
-                View service details
-              </Link>
-            </article>
-          ))}
-        </div>
-        <div className="container specialty-links">
-          <h2>Specialty care</h2>
-          <ul className="city-list">
-            <li><Link href={`/${locale}/services/nursing`}>Nursing</Link></li>
-            <li><Link href={`/${locale}/services/dementia-care`}>Dementia Care</Link></li>
-            <li><Link href={`/${locale}/services/post-hospital-care`}>Post-Hospital Care</Link></li>
-            <li><Link href={`/${locale}/services/respite-care`}>Respite Care</Link></li>
-            <li><Link href={`/${locale}/services/palliative-care`}>Palliative & Comfort Support</Link></li>
-            <li><Link href={`/${locale}/caregivers`}>Our Caregivers</Link></li>
-          </ul>
-        </div>
-      </section>
+      <PageHero locale={locale} eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+
+      {grouped.map(({ category, items }, index) => (
+        <section
+          key={category}
+          className={cn("py-16 lg:py-20", index % 2 === 0 ? "bg-white" : "bg-mist")}
+        >
+          <div className="mx-auto w-[min(1240px,calc(100%-2rem))]">
+            <SectionTitle
+              align="center"
+              title={getCategoryLabel(category, locale)}
+              subtitle={serviceCategories[category].description[locale === "fr" ? "fr" : "en"]}
+            />
+
+            <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {items.map((service) => (
+                <li key={service.slug}>
+                  <ServiceCard locale={locale} service={service} ctaLabel={t("learnMore")} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))}
+
+      <CallToAction locale={locale} />
     </>
   );
 }

@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated output — linting it buries real findings in thousands of warnings.
+    ".vercel/**",
+    "public/sw.js",
   ]),
 ]);
 

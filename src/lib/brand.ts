@@ -5,13 +5,39 @@ export const defaultBrand = {
   tollFreePhone: "[TOLL-FREE PHONE]",
   email: "care@jarkabi.ca",
   websiteUrl: "https://jarkabi.ca",
-  businessHours: "[BUSINESS HOURS]",
+  /**
+   * A real value rather than a bracketed placeholder, because the footer was
+   * already publishing these hours from a translation string. Two sources that
+   * disagreed meant the contact band showed "[BUSINESS HOURS]" beside a footer
+   * quoting specific times.
+   */
+  businessHours: "Mon–Fri: 8:00 AM – 6:00 PM · Sat: 9:00 AM – 2:00 PM",
   ottawaOfficeAddress: "[OTTAWA OFFICE ADDRESS]",
 };
 
-export const defaultServices = [
+import type { ServiceCategory } from "@/lib/services-config";
+
+export type DefaultService = {
+  slug: string;
+  category: ServiceCategory;
+  featured: boolean;
+  sortOrder: number;
+  title: { en: string; fr: string };
+  summary: { en: string; fr: string };
+  /**
+   * Makes a regulated or clinical claim that needs professional sign-off before
+   * publication. Tracked as data rather than a "[REVIEW REQUIRED]" string inside
+   * `summary`, which rendered the marker onto public service cards.
+   */
+  reviewRequired?: true;
+};
+
+export const defaultServices: DefaultService[] = [
   {
     slug: "personal-care",
+    category: "daily-living",
+    featured: true,
+    sortOrder: 10,
     title: { en: "Personal Care", fr: "Soins personnels" },
     summary: {
       en: "Respectful assistance with bathing, dressing, grooming and mobility.",
@@ -20,6 +46,9 @@ export const defaultServices = [
   },
   {
     slug: "senior-home-care",
+    category: "daily-living",
+    featured: true,
+    sortOrder: 20,
     title: { en: "Senior Home Care", fr: "Soins à domicile pour personnes âgées" },
     summary: {
       en: "Support that helps seniors live safely and independently at home.",
@@ -28,6 +57,9 @@ export const defaultServices = [
   },
   {
     slug: "companion-care",
+    category: "daily-living",
+    featured: false,
+    sortOrder: 30,
     title: { en: "Companion Care", fr: "Soins de compagnie" },
     summary: {
       en: "Meaningful companionship, conversation and shared activities.",
@@ -36,14 +68,21 @@ export const defaultServices = [
   },
   {
     slug: "registered-nursing",
+    category: "clinical",
+    featured: true,
+    sortOrder: 40,
     title: { en: "Registered Nursing", fr: "Soins infirmiers autorisés" },
+    reviewRequired: true,
     summary: {
-      en: "Professional nursing services where legally and operationally appropriate. [REVIEW REQUIRED]",
-      fr: "Services infirmiers professionnels lorsque légalement et opérationnellement appropriés. [REVIEW REQUIRED]",
+      en: "Skilled nursing support at home, coordinated with your healthcare team.",
+      fr: "Soins infirmiers qualifiés à domicile, coordonnés avec votre équipe de santé.",
     },
   },
   {
     slug: "dementia-support",
+    category: "specialty",
+    featured: true,
+    sortOrder: 50,
     title: { en: "Dementia Support", fr: "Soutien à la démence" },
     summary: {
       en: "Routine, familiarity and caregiver consistency for cognitive support.",
@@ -52,10 +91,37 @@ export const defaultServices = [
   },
   {
     slug: "respite-care",
+    category: "specialty",
+    featured: false,
+    sortOrder: 60,
     title: { en: "Respite Care", fr: "Soins de répit" },
     summary: {
       en: "Temporary relief for family caregivers who need rest and peace of mind.",
       fr: "Répit temporaire pour les aidants familiaux qui ont besoin de repos et de tranquillité d'esprit.",
+    },
+  },
+  {
+    slug: "post-hospital-care",
+    category: "specialty",
+    featured: false,
+    sortOrder: 70,
+    title: { en: "Post-Hospital Care", fr: "Soins post-hospitalisation" },
+    reviewRequired: true,
+    summary: {
+      en: "Support after surgery, hospitalization or illness while recovering at home.",
+      fr: "Soutien après une chirurgie, une hospitalisation ou une maladie pendant la récupération à domicile.",
+    },
+  },
+  {
+    slug: "palliative-care",
+    category: "specialty",
+    featured: false,
+    sortOrder: 80,
+    title: { en: "Palliative & Comfort Support", fr: "Soins palliatifs et de confort" },
+    reviewRequired: true,
+    summary: {
+      en: "Comfort-focused support with dignity, companionship and family coordination.",
+      fr: "Soutien axé sur le confort, la dignité, la compagnie et la coordination familiale.",
     },
   },
 ];

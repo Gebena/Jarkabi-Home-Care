@@ -1,7 +1,9 @@
 import { PageHero } from "@/components/layout/page-hero";
-import { CtaSection } from "@/components/sections/cta-section";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { PageSection } from "@/components/ui/page-section";
 import type { Locale } from "@/i18n/routing";
 import { getBlogPost } from "@/lib/cms";
+import { lexicalToParagraphs } from "@/lib/rich-text";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
@@ -21,19 +23,26 @@ export default async function ResourceArticlePage({ params }: Props) {
 
   if (!post) notFound();
 
+  const paragraphs = lexicalToParagraphs(post.body);
+
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={String(post.category ?? "Resource")}
         title={String(post.title)}
         lead={String(post.excerpt ?? "")}
       />
-      <section className="section">
-        <div className="container content-card legal-content">
-          <p>Article body managed in CMS. [Human translation required for non-EN/FR locales]</p>
+      <PageSection>
+        <div className="mx-auto max-w-3xl text-base leading-relaxed text-body">
+          {(paragraphs.length > 0 ? paragraphs : [String(post.excerpt ?? "")]).map((paragraph) => (
+            <p key={paragraph} className="mt-6 first:mt-0">
+              {paragraph}
+            </p>
+          ))}
         </div>
-      </section>
-      <CtaSection locale={locale} />
+      </PageSection>
+      <CallToAction locale={locale} />
     </>
   );
 }

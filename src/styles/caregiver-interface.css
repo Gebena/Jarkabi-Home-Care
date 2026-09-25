@@ -1,0 +1,112 @@
+/**
+ * Jarkabi Home Care — Care Giver visual identity
+ *
+ * Single source of truth for the colour palette. Values were sampled from the licensed
+ * Care Giver Home Page 01 demo (ThemeArc, ThemeForest 23847564).
+ *
+ * Never hard-code these hex values in components. Consume them through the Tailwind
+ * utilities generated from the `@theme inline` block in `src/app/globals.css`
+ * (`bg-plum`, `text-tan`, `bg-care-teal`, …) or through the semantic aliases below.
+ */
+:root {
+  /* ── Care Giver palette ───────────────────────────────────────────── */
+
+  /* Plum / burgundy — hero overlay, feature panels, footer */
+  --cg-plum: #5b2e42;
+  --cg-plum-deep: #4a2336;
+  --cg-plum-footer: #43263a;
+
+  /*
+   * Tan — primary buttons, rules, italic callouts.
+   *
+   * Care Giver sets white labels on tan, which only reaches about 2.1:1. The tan
+   * surface is kept exactly; labels use plum instead, and `--cg-tan-ink` is the
+   * tan-family colour for text and borders on white. Both clear WCAG AA.
+   */
+  --cg-tan: #d9a894;
+  --cg-tan-light: #e8c6b6;
+  --cg-tan-dark: #b87658;
+  /* Clears 4.5:1 on every surface it is set on: 6.4:1 white, 5.5:1 mist,
+     4.8:1 blush-soft — the last of which the previous #96552f missed at 4.37. */
+  --cg-tan-ink: #8e4f2b;
+
+  /* Rose blush — testimonial band */
+  --cg-blush: #ddb4a6;
+  --cg-blush-soft: #f0dcd4;
+
+  /* Pillar accents — Enrich / Empower / Engage. Teal is darkened from the
+     template's #12987d so white body copy on it clears 4.5:1. */
+  --cg-care-teal: #0d7f68;
+  --cg-care-brick: #b0322f;
+  --cg-care-ocean: #2472b8;
+  --cg-care-ocean-dark: #1c5b94;
+
+  /* Coral — active navigation, inline "read more" links. Darkened from the
+     template's #d97d57, which only reached 3:1 on white. The current value
+     clears 4.5:1 on all three surfaces this text lands on: 6.3:1 on white,
+     5.4:1 on mist, 4.8:1 on blush-soft. */
+  --cg-coral: #a04422;
+  --cg-coral-soft: #d97d57;
+
+  /* Neutrals */
+  --cg-ink: #1a2b3c;
+  --cg-ink-soft: #2c4055;
+  /* Darkened from #5f6875, which was 4.26:1 on --cg-blush-soft and so failed AA
+     for body text on the location card. This clears 4.5:1 on every surface the
+     palette uses: 6.4:1 on white, 5.5:1 on mist, 4.8:1 on blush-soft. */
+  --cg-body: #566070;
+  --cg-mist: #eceff3;
+  --cg-mist-deep: #dfe4ea;
+  --cg-line: #e3e6ea;
+
+  /* ── Semantic aliases consumed by legacy CSS in globals.css ───────── */
+  --color-navy: var(--cg-ink);
+  --color-navy-dark: #101c29;
+  --color-navy-soft: var(--cg-ink-soft);
+  --color-teal: var(--cg-care-teal);
+  --color-teal-dark: #0a6653;
+  --color-teal-light: #3fb39a;
+  --color-gold: var(--cg-tan);
+  --color-gold-muted: var(--cg-tan-light);
+  --color-ivory: #ffffff;
+  --color-stone: var(--cg-mist);
+  --color-line: var(--cg-line);
+  --color-primary: var(--cg-plum);
+  --color-primary-dark: var(--cg-plum-deep);
+  --color-primary-light: #74425a;
+  --color-secondary: var(--cg-care-teal);
+  --color-secondary-dark: var(--cg-care-teal-dark);
+  --color-accent: var(--cg-tan);
+  --color-accent-muted: var(--cg-tan-light);
+  --color-bg: #ffffff;
+  --color-bg-alt: var(--cg-mist);
+  --color-text: var(--cg-ink);
+  --color-muted: var(--cg-body);
+
+  /* Legacy Seniar aliases — retained so untouched inner pages keep rendering.
+     Careful: Seniar's "coral" is this palette's tan, so `var(--color-coral)` in
+     plain CSS is a dusty pink while Tailwind's `text-coral` is the burnt orange
+     above. The two never meet because `@theme inline` inlines its values into
+     the generated utilities instead of emitting `:root` custom properties. */
+  --color-purple: var(--cg-plum);
+  --color-purple-dark: var(--cg-plum-deep);
+  --color-purple-light: #74425a;
+  --color-coral: var(--cg-tan);
+  --color-coral-dark: var(--cg-tan-dark);
+  --color-coral-light: var(--cg-tan-light);
+
+  --shadow-soft: 0 10px 40px rgba(67, 38, 58, 0.08);
+  --shadow-card: 0 6px 24px rgba(67, 38, 58, 0.07);
+  --shadow-elevated: 0 24px 60px rgba(67, 38, 58, 0.14);
+
+  /* Care Giver uses square-ish geometry, not pill shapes */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.1875rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.5rem;
+}
+
+/* Tokens only. globals.css is imported after this file, so any component rule
+   written here loses to the legacy definition there and silently does nothing —
+   restyle a legacy class at its own definition in globals.css instead. */

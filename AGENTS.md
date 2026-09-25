@@ -7,3 +7,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Cursor Cloud Agent
+
+- **App directory:** `jarkabi-home-care/` (monorepo path). Standalone deploy repo is [Gebena/Jarkabi-Home-Care](https://github.com/Gebena/Jarkabi-Home-Care) with the app at repo root.
+- **Install:** `bash .cursor/scripts/install-jarkabi.sh` (runs `npm ci`, generates PWA icons, seeds `.env` from `.env.example` with a local `PAYLOAD_SECRET`).
+- **Dev server:** `cd jarkabi-home-care && npm run dev -- -p 3000 -H 0.0.0.0` (also started automatically via `.cursor/environment.json` terminals).
+- **Build:** `cd jarkabi-home-care && npm run build`
+- **Local DB:** SQLite via `DATABASE_URI=file:./payload.db` in `.env` — no Supabase required for local dev.
+- **Do not modify** Ketet root app, root `vercel.json`, or Ketet Supabase. All Jarkabi work stays in `jarkabi-home-care/` plus sync workflow files.

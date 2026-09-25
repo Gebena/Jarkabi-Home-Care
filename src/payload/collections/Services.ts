@@ -11,6 +11,16 @@ export const Services: CollectionConfig = {
     { name: "title", type: "text", localized: true, required: true },
     { name: "slug", type: "text", required: true, unique: true },
     { name: "summary", type: "textarea", localized: true },
+    {
+      name: "category",
+      type: "select",
+      defaultValue: "daily-living",
+      options: [
+        { label: "Daily Living", value: "daily-living" },
+        { label: "Clinical Care", value: "clinical" },
+        { label: "Specialty Care", value: "specialty" },
+      ],
+    },
     { name: "icon", type: "text", admin: { description: "Icon key or emoji placeholder" } },
     { name: "featured", type: "checkbox", defaultValue: false },
     { name: "sortOrder", type: "number", defaultValue: 0 },

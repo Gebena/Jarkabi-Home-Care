@@ -1,38 +1,56 @@
 import { PageHero } from "@/components/layout/page-hero";
 import { ProcessSection } from "@/components/sections/process-section";
-import { CtaSection } from "@/components/sections/cta-section";
-import { setRequestLocale } from "next-intl/server";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { FeatureCard } from "@/components/ui/feature-card";
+import { PageSection } from "@/components/ui/page-section";
+import { MessageSquare, ShieldCheck } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = { title: "How Care Works" };
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "howCareWorksPage" });
+  return { title: t("title"), description: t("lead") };
+}
 
 export default async function HowCareWorksPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "howCareWorksPage" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
 
   return (
     <>
       <PageHero
-        eyebrow="How Care Works"
-        title="A clear, reassuring path to care at home"
-        lead="From first conversation through ongoing review — every step is designed to be understandable for families and referral partners."
+        locale={locale}
+        eyebrow={tNav("howCareWorks")}
+        title={t("title")}
+        lead={t("lead")}
+        crumbLabel={tNav("howCareWorks")}
       />
+
       <ProcessSection />
-      <section className="section muted-section">
-        <div className="container content-stack">
-          <article className="content-card">
-            <h2>Family communication</h2>
-            <p>Regular updates and responsive coordination — content editable in CMS. [PLACEHOLDER]</p>
-          </article>
-          <article className="content-card">
-            <h2>Supervision & review</h2>
-            <p>Clinical oversight and quality improvement processes. [REVIEW REQUIRED]</p>
-          </article>
+
+      <PageSection>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FeatureCard
+            headingLevel={2}
+            icon={MessageSquare}
+            title={t("communicationTitle")}
+            body={t("communicationBody")}
+          />
+          <FeatureCard
+            headingLevel={2}
+            icon={ShieldCheck}
+            title={t("supervisionTitle")}
+            body={t("supervisionBody")}
+          />
         </div>
-      </section>
-      <CtaSection locale={locale} />
+      </PageSection>
+
+      <CallToAction locale={locale} />
     </>
   );
 }

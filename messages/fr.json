@@ -87,7 +87,7 @@
     "community5Desc": "Processus professionnels adaptés au domicile.",
     "community6Title": "Tranquillité d'esprit familiale",
     "community6Desc": "Communication claire et horaires fiables.",
-    "processTagline": "Libre de vivre chez soi",
+    "processTagline": "Trois étapes, de la première conversation aux soins à domicile.",
     "step1Title": "Consultation et évaluation gratuites",
     "step1Body": "Nous écoutons les besoins, préférences et objectifs de votre famille.",
     "step2Title": "Jumelage et présentation du soignant",
@@ -110,37 +110,24 @@
     "responsiveSupport": "Soutien réactif"
   },
   "stats": {
-    "eyebrow": "Notre impact",
     "title": "Notre mission : offrir les meilleurs services pour une meilleure vie à domicile",
     "subtitle": "Nous nous engageons à fournir des soins à domicile compatissants et professionnels pour la dignité et la tranquillité d'esprit des familles.",
-    "stat1Value": "500+",
-    "stat1Label": "Familles servies",
-    "stat2Value": "50+",
-    "stat2Label": "Professionnels qualifiés",
-    "stat3Value": "98%",
-    "stat3Label": "Satisfaction familiale",
-    "yearsValue": "15+",
-    "yearsLabel": "Années d'expérience combinée",
-    "familiesValue": "500+",
-    "familiesLabel": "Familles servies à Ottawa",
-    "caregiversValue": "50+",
-    "caregiversLabel": "Professionnels dévoués",
-    "satisfactionValue": "98%",
-    "satisfactionLabel": "Taux de satisfaction familiale"
+    "commitment1Value": "24/7",
+    "commitment1Label": "Disponibilité, y compris les nuits et les fins de semaine",
+    "commitment2Value": "7",
+    "commitment2Label": "Langues parlées par notre équipe de soins",
+    "commitment3Value": "1:1",
+    "commitment3Label": "Un plan de soins rédigé pour chaque personne",
+    "commitment4Value": "Gratuite",
+    "commitment4Label": "Première consultation et évaluation à domicile"
   },
   "team": {
     "eyebrow": "Notre équipe",
-    "title": "Infirmières autorisées et professionnels qualifiés",
+    "title": "Direction et supervision clinique",
     "subtitle": "Soignants et professionnels cliniques dévoués à des soins à domicile exceptionnels.",
-    "member1Name": "Sarah Mitchell",
-    "member1Role": "Directrice des soins",
-    "member2Name": "James Carter",
-    "member2Role": "Gestionnaire clinique",
-    "member3Name": "Maria Santos",
-    "member3Role": "Soignante principale",
-    "member4Name": "David Chen",
-    "member4Role": "Infirmier autorisé",
-    "viewAll": "Rencontrer notre équipe"
+    "placeholder": "Les profils de direction seront publiés ici une fois vérifiés. Aucune accréditation inventée sur ce site.",
+    "profilePending": "Profil et biographie à venir.",
+    "viewAll": "À propos de Jarkabi"
   },
   "intro": {
     "eyebrow": "Qui nous sommes",
@@ -172,6 +159,60 @@
     "subtitle": "Des services de soins à domicile complets pour aider vos proches à vivre en sécurité, confortablement et en toute indépendance.",
     "learnMore": "Voir les détails",
     "viewAll": "Tous les services"
+  },
+  "servicesPage": {
+    "metaTitle": "Services",
+    "eyebrow": "Services",
+    "title": "Des soins à domicile adaptés à votre famille",
+    "lead": "Chaque service est assuré par des soignants sélectionnés, coordonné par notre équipe de soins et ajusté à mesure que les besoins de votre famille évoluent.",
+    "learnMore": "Voir les détails du service",
+    "specialtyTitle": "Soins spécialisés",
+    "caregiversLink": "Nos soignants"
+  },
+  "contactPage": {
+    "metaTitle": "Contact",
+    "eyebrow": "Contact",
+    "title": "Nous sommes là pour vous aider",
+    "lead": "Contactez notre équipe de soins pour des questions ou soumettez une demande de soins.",
+    "sidebarTitle": "Joindre notre équipe",
+    "emailLabel": "Courriel",
+    "phoneLabel": "Téléphone",
+    "officeLabel": "Bureau",
+    "hoursLabel": "Heures",
+    "requestCareLink": "Prêt à demander des soins?",
+    "contactFormTitle": "Envoyez-nous un message",
+    "requestCareTitle": "Demander des soins",
+    "requestCareLead": "Partagez quelques détails et notre équipe vous contactera.",
+    "expectations": [
+      "Un coordonnateur de soins lit votre message et vous répond pendant les heures d’ouverture — pas un accusé de réception automatique.",
+      "Nous discutons de vos besoins avant de proposer un prix, et nous vous dirons franchement si nous ne sommes pas le bon choix.",
+      "Si nous pouvons aider, nous organisons une évaluation gratuite à domicile et rédigeons un plan de soins que vous approuvez avant tout début."
+    ]
+  },
+  "contactForm": {
+    "name": "Nom",
+    "phone": "Téléphone",
+    "email": "Courriel",
+    "subject": "Sujet",
+    "message": "Message",
+    "submit": "Envoyer",
+    "submitting": "Envoi…",
+    "success": "Merci. Notre équipe vous répondra sous peu.",
+    "error": "Impossible d'envoyer le message. Veuillez réessayer ou nous appeler."
+  },
+  "serviceDetail": {
+    "eyebrow": "Service",
+    "whoFor": "À qui s'adresse ce service",
+    "whoForBody": "Les familles et les personnes qui souhaitent un soutien respectueux et centré sur la personne à domicile — quelques heures par semaine ou des soins à temps plein.",
+    "howWeHelp": "Comment nous pouvons aider",
+    "howWeHelpBody": "Les soins sont adaptés aux besoins de santé, aux routines quotidiennes, à la langue, à la culture et aux priorités de la famille, puis révisés à mesure qu'ils évoluent.",
+    "howCareBegins": "Comment les soins commencent",
+    "howCareBeginsBody": "Une consultation gratuite, une évaluation à domicile, un plan de soins écrit et une révision régulière avec votre équipe de soins.",
+    "locations": "Emplacements disponibles",
+    "locationsEmpty": "Ottawa et les communautés environnantes constituent notre territoire actuel. Dites-nous où vous êtes et nous vous dirons franchement si nous pouvons aider.",
+    "related": "Services connexes",
+    "learnMore": "Voir les détails",
+    "requestCare": "Demander des soins"
   },
   "process": {
     "eyebrow": "Comment fonctionnent les soins",
@@ -214,17 +255,9 @@
   },
   "testimonials": {
     "eyebrow": "Témoignages",
-    "title": "Ce que disent les familles",
+    "title": "Histoires de familles",
     "subtitle": "Découvrez les expériences des familles qui ont connu la différence Jarkabi.",
-    "quote1": "Les soignants ont été merveilleux avec ma mère. Ils la traitent avec tant de dignité et de patience. Nous avons enfin l'esprit tranquille.",
-    "name1": "Margaret R.",
-    "role1": "Fille d'une cliente, Ottawa",
-    "quote2": "Dès la première consultation, l'équipe a été professionnelle et attentionnée. Ils nous ont jumelés avec un soignant qui parle notre langue.",
-    "name2": "Samuel L.",
-    "role2": "Fils d'un client, Kanata",
-    "quote3": "Après la chirurgie de mon père, Jarkabi a fourni un excellent soutien infirmier à domicile. La coordination était impeccable.",
-    "name3": "Diane K.",
-    "role3": "Aidante familiale, Nepean"
+    "placeholder": "Les témoignages vérifiés apparaîtront ici après le lancement. Nous ne publions pas d'avis fictifs."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -259,13 +292,12 @@
     "referrals": "Références professionnelles",
     "followUs": "Suivez-nous",
     "rights": "Tous droits réservés.",
-    "legalReview": "Le contenu juridique nécessite un examen professionnel avant publication.",
     "privacy": "Politique de confidentialité",
     "accessibility": "Accessibilité",
     "terms": "Conditions d'utilisation",
     "contact": "Contact",
     "appointment": "Prendre rendez-vous",
-    "hours": "Lun–ven : 8 h – 18 h · Sam : 9 h – 14 h"
+    "hoursLabel": "Heures d’ouverture"
   },
   "form": {
     "title": "Demander des soins",
@@ -291,7 +323,9 @@
   "mobile": {
     "call": "Appeler",
     "requestCare": "Demander des soins",
-    "installApp": "Installer l'application"
+    "installApp": "Installer l'application",
+    "installTitle": "Installez Jarkabi Home Care pour un accès rapide sur votre téléphone.",
+    "installDismiss": "Fermer l'invitation d'installation"
   },
   "topbar": {
     "tagline": "Soins à domicile compatissants pour les familles d'Ottawa",
@@ -324,7 +358,15 @@
     "check4": "Communication transparente",
     "check5": "Plans de soins flexibles",
     "check6": "Basé à Ottawa, entreprise familiale",
-    "cta": "En savoir plus"
+    "cta": "En savoir plus",
+    "condition1": "Grand âge et fragilité",
+    "condition2": "Démence et maladie d'Alzheimer",
+    "condition3": "Maladies dégénératives comme la SP ou la SLA",
+    "condition4": "Rétablissement après une chirurgie ou une hospitalisation",
+    "condition5": "Maladies chroniques comme le diabète, la MPOC ou le cancer",
+    "condition6": "Proches aidants ayant besoin de répit",
+    "callout": "Laissez-nous vous aider à accompagner un proche atteint de démence.",
+    "playVideo": "Lire la vidéo de présentation de Jarkabi Home Care"
   },
   "blog": {
     "eyebrow": "Notre blog",
@@ -359,5 +401,270 @@
     "submitting": "Envoi...",
     "success": "Merci! Un coordonnateur vous contactera sous peu.",
     "error": "Une erreur s'est produite. Veuillez réessayer ou nous appeler."
+  },
+  "pillars": {
+    "oneTitle": "Enrichir",
+    "oneBody": "Des routines familières, des lieux appréciés et une compagnie quotidienne qui rendent la vie à domicile plus riche.",
+    "twoTitle": "Autonomiser",
+    "twoBody": "Un soutien concret qui protège l'autonomie, afin que votre proche continue de faire ce qu'il peut.",
+    "threeTitle": "Accompagner",
+    "threeBody": "Conversation, activité et lien social — une présence attentive fait partie des bons soins."
+  },
+  "specialtyPages": {
+    "nursing": {
+      "lead": "Des infirmières et infirmiers autorisés et auxiliaires prodiguant des soins cliniques à domicile, dans le champ d'exercice défini par leur ordre professionnel.",
+      "section1Body": "Les personnes qui ont besoin de soins cliniques — soins de plaies, administration de médicaments, soutien pour sonde ou stomie, ou surveillance après un séjour à l'hôpital — et qui préfèrent les recevoir à domicile plutôt qu'en établissement.",
+      "section2Body": "Nous assurons la coordination avec votre médecin, l'équipe de congé de l'hôpital ou les services communautaires, gardons un seul interlocuteur et informons la famille de tout changement après chaque visite.",
+      "section3Body": "Les soins infirmiers sont une profession réglementée. Les infirmières et infirmiers autorisés et auxiliaires détiennent un permis de leur ordre provincial et posent des actes réservés que les préposés aux services de soutien et les accompagnateurs ne peuvent pas poser."
+    },
+    "dementia": {
+      "lead": "Un soutien construit autour de ce qui demeure familier : les mêmes visages, la même routine et un domicile qui n'a pas à changer.",
+      "section1Body": "Le plan de soins part de l'histoire, de la langue, de la foi et du rythme quotidien de la personne, car la familiarité fait plus pour une personne atteinte de démence que toute nouvelle routine.",
+      "section2Body": "Vous recevez les soins d'un même petit groupe de soignants plutôt que de la personne disponible, une note après chaque visite et un coordonnateur qui répond au téléphone.",
+      "section3Body": "Nous décrivons les personnes par ce qu'elles peuvent encore faire. Les soignants apprennent à réorienter plutôt qu'à corriger, et à ne jamais contredire un souvenir."
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "À propos",
+    "eyebrow": "À propos",
+    "crumb": "À propos",
+    "title": "Enracinés dans le respect, bâtis pour les familles canadiennes",
+    "lead": "Jarkabi Home Care est né à Ottawa d'une idée simple : les soins doivent s'adapter à la personne, pas à l'horaire.",
+    "storyTitle": "Notre histoire",
+    "storyBody": "Jarkabi Home Care a été fondé pour les familles qui voulaient mieux qu'une succession de visages inconnus. Nous avons commencé avec une petite équipe et une règle que nous gardons encore : les mêmes soignants, à chaque visite, aussi longtemps que la famille le souhaite. L'organisation est conçue pour servir d'autres communautés canadiennes, mais seulement là où nous pouvons offrir la même qualité.",
+    "missionTitle": "Notre mission",
+    "missionBody": "Aider les gens à vivre en sécurité, de façon autonome et dans la dignité, dans le confort de leur domicile — avec des soins professionnels et un lien humain.",
+    "visionTitle": "Notre vision",
+    "visionBody": "Une organisation canadienne de soins à domicile qui allie l'attachement local à une capacité nationale, à la sensibilité culturelle et au professionnalisme clinique.",
+    "valuesTitle": "Ce à quoi nous nous engageons",
+    "valuesSubtitle": "Six engagements qui façonnent chaque plan de soins et chaque visite.",
+    "values": [
+      {
+        "title": "La dignité d'abord",
+        "body": "Les soins sont donnés comme la personne les donnerait elle-même, à son rythme et selon ses préférences."
+      },
+      {
+        "title": "Continuité des soignants",
+        "body": "Le même petit groupe de soignants autant que possible. Les familles nous disent que c'est ce qui compte le plus."
+      },
+      {
+        "title": "Respect de la culture et de la langue",
+        "body": "L'alimentation, la foi, les fêtes et la langue font partie du plan de soins, et non d'une réflexion après coup."
+      },
+      {
+        "title": "Une portée honnête",
+        "body": "Nous disons clairement ce que nous pouvons faire et ne jamais laisser croire que nous desservons une communauté qui ne l'est pas encore."
+      },
+      {
+        "title": "Communication avec la famille",
+        "body": "Une note après chaque visite et un coordonnateur qui répond — y compris pour les familles qui vivent à l'extérieur de la province."
+      },
+      {
+        "title": "Supervision professionnelle",
+        "body": "Les soignants signalent leurs préoccupations à un coordonnateur, et non à la famille, et les plans liés à la santé sont révisés par une infirmière."
+      }
+    ],
+    "leadershipTitle": "Direction des soins",
+    "leadershipBody": "Notre équipe est dirigée par une direction clinique et une direction des soins, appuyées par des coordonnateurs qui connaissent chaque client par son nom. Les profils nominatifs seront publiés à mesure que l'équipe grandira."
+  },
+  "whyPage": {
+    "metaTitle": "Pourquoi Jarkabi Home Care",
+    "eyebrow": "Pourquoi Jarkabi",
+    "crumb": "Pourquoi Jarkabi",
+    "title": "Des soins fondés sur la confiance, la compassion et des normes professionnelles",
+    "lead": "Douze questions que les familles posent avant de choisir un fournisseur de soins à domicile, avec des réponses claires.",
+    "items": [
+      {
+        "title": "Des soins qui commencent par l'écoute",
+        "body": "La première conversation n'est pas un argumentaire de vente. Nous demandons à quoi ressemble une bonne journée, ce qui a déjà été essayé et ce qui inquiète la famille."
+      },
+      {
+        "title": "Un plan de soins personnalisé",
+        "body": "Chaque plan est écrit pour une seule personne : sa routine, ses besoins de santé, sa langue, son foyer. Rien n'est copié d'un modèle."
+      },
+      {
+        "title": "Une équipe professionnelle",
+        "body": "Préposés aux services de soutien, aides-soignants, accompagnateurs et infirmières, chacun dans son propre champ d'exercice."
+      },
+      {
+        "title": "Jumelage des soignants",
+        "body": "Nous jumelons d'abord selon les compétences, puis selon la personnalité, la langue et la culture, car c'est ce qui fait que les soins ressemblent à de l'aide et non à une intrusion."
+      },
+      {
+        "title": "Supervision clinique",
+        "body": "Les plans comportant des besoins de santé sont révisés par une infirmière, et les soignants signalent leurs préoccupations à un coordonnateur plutôt que de les laisser à la famille."
+      },
+      {
+        "title": "Un horaire fiable",
+        "body": "De quelques heures par semaine à une présence continue. Si un soignant ne peut pas venir, vous en êtes informé avant la visite et non après."
+      },
+      {
+        "title": "Continuité des soins",
+        "body": "Nous protégeons la relation avec le soignant. Changer la personne qui franchit la porte est notre dernier recours, jamais le premier."
+      },
+      {
+        "title": "Communication avec la famille",
+        "body": "Une note après chaque visite, un coordonnateur qui répond et une vue commune du plan de soins pour tous ceux qui en ont besoin."
+      },
+      {
+        "title": "Respect de la culture",
+        "body": "Les repas, les pratiques religieuses et les habitudes du foyer font partie du plan de soins. Nous posons la question à l'évaluation plutôt que d'attendre de nous tromper."
+      },
+      {
+        "title": "Respect de la langue",
+        "body": "Nous jumelons les soignants par langue autant que possible, et ce site est publié en sept langues, dont le tigrigna, le blin, le tigré, l'arabe et l'amharique."
+      },
+      {
+        "title": "Un soutien souple",
+        "body": "Les besoins changent après une chute, un congé d'hôpital ou un diagnostic. Le plan et les heures changent avec eux, sans renégocier de contrat."
+      },
+      {
+        "title": "Amélioration continue",
+        "body": "Nous demandons des commentaires, les consignons et agissons. Une plainte parvient à un coordonnateur le jour même."
+      }
+    ]
+  },
+  "caregiversPage": {
+    "metaTitle": "Nos soignants",
+    "eyebrow": "Soignants",
+    "crumb": "Nos soignants",
+    "title": "Des personnes qui apportent compétence, respect et chaleur au domicile",
+    "lead": "Qui sont nos soignants, comment ils sont sélectionnés et comment nous décidons qui se présente chez vous.",
+    "sections": [
+      {
+        "title": "Qui sont nos soignants",
+        "body": "Préposés aux services de soutien, aides-soignants, accompagnateurs, infirmières auxiliaires et infirmières autorisées. Chacun travaille dans son champ d'exercice, et nous vous disons quel rôle se présentera avant la première visite."
+      },
+      {
+        "title": "Sélection et formation",
+        "body": "Chaque soignant passe une entrevue, une vérification des références et une vérification des antécédents judiciaires incluant le secteur vulnérable avant son premier quart. Les titres sont vérifiés auprès de l'ordre ou de l'établissement de formation, et l'orientation couvre la prévention des infections, les transferts sécuritaires et le signalement."
+      },
+      {
+        "title": "Comment nous jumelons les soignants",
+        "body": "La compétence d'abord : le soignant doit pouvoir faire ce que le plan de soins demande. Ensuite viennent la langue, la culture, la personnalité et l'horaire, et nous demandons à la famille après la première semaine si le jumelage convient."
+      },
+      {
+        "title": "Supervision et soutien",
+        "body": "Les soignants relèvent d'un coordonnateur, pas de la famille. Un changement de santé, une chute ou un médicament oublié sont signalés le jour même, et les plans liés à la santé sont révisés par une infirmière."
+      }
+    ]
+  },
+  "howCareWorksPage": {
+    "communicationTitle": "Communication avec la famille",
+    "communicationBody": "Vous recevez une note après chaque visite : ce qui a été fait, comment la journée s'est déroulée et ce qui a changé. Un coordonnateur est joignable pendant les heures d'ouverture, et les familles à l'extérieur de la province reçoivent les mêmes nouvelles que celles d'à côté.",
+    "supervisionTitle": "Supervision et révision",
+    "supervisionBody": "Les soignants signalent leurs préoccupations à un coordonnateur plutôt que de les laisser à la famille. Les plans de soins sont révisés à intervalles réguliers et immédiatement après tout séjour à l'hôpital, toute chute ou tout changement de médication.",
+    "title": "Un chemin clair et rassurant vers les soins à domicile",
+    "lead": "De la première conversation au suivi continu, chaque étape est rédigée pour être comprise autant par les familles que par les partenaires de référence."
+  },
+  "careersPage": {
+    "metaTitle": "Carrières",
+    "eyebrow": "Carrières",
+    "crumb": "Carrières",
+    "title": "Joignez-vous à une équipe fondée sur la dignité et le professionnalisme",
+    "lead": "Nous embauchons pour la continuité. Si vous souhaitez revoir les mêmes clients chaque semaine et être appuyé par un coordonnateur qui les connaît, écrivez-nous.",
+    "rolesTitle": "Postes que nous recrutons",
+    "emptyTitle": "Aucun poste n'est affiché pour le moment",
+    "emptyBody": "Nous conservons les candidatures et communiquons avec les personnes lorsqu'un poste correspondant s'ouvre. Envoyez un curriculum vitæ en précisant les communautés où vous pouvez travailler.",
+    "emptyCta": "Envoyez-nous votre CV",
+    "apply": "Voir et postuler",
+    "professionLabel": "Profession",
+    "employmentTypeLabel": "Type d’emploi",
+    "applicationPrivacy": "Votre candidature est lue par notre équipe de soins et conservée pour de futurs postes. Nous ne la partageons pas à l’extérieur de Jarkabi Home Care et vous pouvez demander sa suppression à tout moment."
+  },
+  "resourcesPage": {
+    "metaTitle": "Ressources",
+    "eyebrow": "Ressources",
+    "crumb": "Ressources",
+    "title": "Ressources éducatives pour les familles et les partenaires",
+    "lead": "Des guides pratiques sur le choix des soins à domicile, le retour de l'hôpital et l'accompagnement d'une personne atteinte de démence.",
+    "read": "Lire l'article",
+    "emptyTitle": "Les premiers guides sont en rédaction",
+    "emptyBody": "D'ici leur publication, notre équipe de soins répondra par téléphone ou par courriel à toute question sur les soins à domicile — y compris sur d'autres fournisseurs que nous.",
+    "emptyCta": "Posez votre question"
+  },
+  "referralsPage": {
+    "metaTitle": "Références professionnelles",
+    "eyebrow": "Références",
+    "crumb": "Références",
+    "title": "Référez un client en toute confiance",
+    "lead": "Pour les hôpitaux, médecins, infirmières, travailleurs sociaux, gestionnaires de cas et partenaires communautaires.",
+    "partnersTitle": "Qui nous réfère",
+    "partnersBody": "Équipes de congé hospitalier, équipes de réadaptation, résidences pour retraités, organismes de soutien communautaire et médecins de famille d'Ottawa et des environs.",
+    "responseTitle": "Ce qui se passe ensuite",
+    "responseBody": "Un coordonnateur accuse réception de chaque référence le jour ouvrable même et confirme que nous pouvons y répondre avant de contacter le client.",
+    "privacyTitle": "Avant d'envoyer des renseignements de santé",
+    "privacyBody": "N'envoyez que ce qui est nécessaire pour amorcer la conversation. Nous obtenons le consentement du client ou de son mandataire avant de recueillir davantage."
+  },
+  "legalPages": {
+    "draftNotice": "Cette page est en cours de finalisation avec un conseiller juridique et n'est pas encore approuvée pour publication.",
+    "privacyLead": "Comment Jarkabi Home Care recueille, utilise et protège les renseignements personnels.",
+    "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons. D'ici la publication de la politique complète, communiquez avec notre équipe pour toute question.",
+    "termsLead": "Les conditions qui s'appliquent à l'utilisation de ce site.",
+    "termsBody": "Rien sur ce site ne constitue un avis médical, et l'information qui s'y trouve ne crée pas de relation de soins. La disponibilité des services varie selon la province et la ville : seules les communautés indiquées comme actives sur notre page des emplacements sont desservies aujourd'hui.",
+    "accessibilityLead": "Ce que nous avons fait pour rendre ce site utilisable, et comment nous signaler ce qui ne l'est pas.",
+    "accessibilityIntro": "Jarkabi Home Care vise le niveau AA des WCAG 2.1 sur l'ensemble de ce site. L'accessibilité compte particulièrement ici : beaucoup de nos visiteurs sont des personnes âgées, des personnes ayant une basse vision ou des familles qui lisent sur un téléphone dans un couloir d'hôpital.",
+    "accessibilityDoneTitle": "Ce qui est en place aujourd'hui",
+    "accessibilityDone": [
+      "Les couleurs du texte et de l'interface respectent les minimums de contraste AA des WCAG, soit 4,5:1 pour le texte courant et 3:1 pour le grand texte.",
+      "Chaque page s'utilise au clavier seul, et les éléments ciblés affichent un contour visible.",
+      "Les titres suivent un ordre logique unique, les champs de formulaire portent des étiquettes visibles et les images porteuses de sens ont un texte de remplacement.",
+      "Les cibles interactives mesurent au moins 24 pixels sur 24, et la mise en page se réorganise sans défilement horizontal jusqu'à 320 pixels de largeur.",
+      "Le site est publié en sept langues, avec prise en charge de la mise en page de droite à gauche pour l'arabe."
+    ],
+    "accessibilityGapsTitle": "Limites connues",
+    "accessibilityGaps": [
+      "Les traductions autres que l'anglais et le français sont partielles ; le texte non traduit s'affiche en anglais plutôt que de laisser une page vide.",
+      "Les documents publiés par des tiers, comme des formulaires externes, peuvent ne pas respecter la même norme."
+    ],
+    "accessibilityContactTitle": "Signalez-nous un obstacle",
+    "accessibilityContactBody": "Si une partie de ce site vous empêche de trouver ou de demander des soins, écrivez à notre équipe en nous expliquant ce qui s'est passé. Nous traitons les obstacles à l'accès comme des défaillances de service."
+  },
+  "locationsPage": {
+    "mapTitle": "Où nous intervenons aujourd'hui",
+    "mapLead": "Chaque province ci-dessous affiche son statut réel. Nous n'inscrivons une communauté qu'une fois que nous pouvons y affecter du personnel : une province indiquée comme non desservie l'est réellement.",
+    "ottawaTitle": "Communautés desservies à Ottawa",
+    "ottawaNote": "Gatineau figurera sous le Québec au lancement des services québécois, plutôt que d'être regroupée avec l'Ontario.",
+    "growingTitle": "Notre croissance au Canada",
+    "growingBody": "Nous avons commencé auprès des familles d'Ottawa et comptons nous étendre à d'autres communautés canadiennes avec une direction locale et les mêmes normes de qualité.",
+    "growingLink": "En savoir plus sur notre expansion",
+    "coverageNote": "Nous n'inscrivons pas une communauté tant que nous ne pouvons pas réellement y affecter du personnel.",
+    "title": "Une présence pancanadienne, des soins locaux",
+    "lead": "Choisissez une province pour voir ce que nous y offrons réellement aujourd'hui."
+  },
+  "cityPage": {
+    "title": "Soins à domicile à {city}",
+    "lead": "Les services que nous offrons actuellement à {city}, et l’équipe qui les coordonne.",
+    "servicesTitle": "Services offerts"
+  },
+  "provincePage": {
+    "status": {
+      "active": "Desservi",
+      "coming_soon": "Bientôt",
+      "paused": "Service suspendu",
+      "not_served": "Pas encore desservi"
+    },
+    "statusLead": {
+      "active": "Nous offrons des soins dans les communautés listées ci-dessous en {province}.",
+      "coming_soon": "Nous préparons notre lancement en {province}. Dites-nous où vous êtes et nous vous préviendrons.",
+      "paused": "Le service en {province} est suspendu pendant que nous reconstituons nos équipes locales.",
+      "not_served": "Nous ne desservons pas encore {province}, et nous ne laisserons pas croire le contraire."
+    },
+    "activeTitle": "Communautés desservies",
+    "inactiveTitle": "Pas encore dans votre région",
+    "inactiveBody": "Nous n’inscrivons une communauté que lorsque nous pouvons y affecter du personnel. Envoyez-nous votre emplacement et nous vous contacterons quand cela changera."
+  },
+  "growingPage": {
+    "metaTitle": "Notre expansion au Canada",
+    "eyebrow": "Vision nationale",
+    "crumb": "Notre expansion au Canada",
+    "title": "Grandir au Canada sans rien céder sur la qualité",
+    "lead": "Nous avons commencé à Ottawa et nous n'ouvrons une nouvelle communauté que lorsque nous pouvons y affecter du personnel répondant aux mêmes normes.",
+    "localTitle": "Un ancrage local, une capacité nationale",
+    "localBody": "Chaque communauté présente sa propre direction, ses préposés, son numéro de téléphone et ses ressources, tout en partageant une seule marque et un seul cadre de qualité.",
+    "opensTitle": "Comment une nouvelle communauté ouvre",
+    "opensBody": "Nous recrutons et sélectionnons des préposés locaux, nommons une coordonnatrice, confirmons les exigences provinciales de conformité, et ce n'est qu'ensuite que la communauté est inscrite comme active.",
+    "neverTitle": "Ce que nous ne ferons jamais",
+    "neverBody": "Nous ne laisserons jamais entendre que nous desservons une province ou une ville avant d'y avoir réellement du personnel. Une inscription vide est une promesse que nous ne pouvons pas tenir."
   }
 }

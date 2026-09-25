@@ -1,52 +1,67 @@
-import { BlogPreviewSection } from "@/components/sections/blog-preview-section";
-import { CareersCtaSection } from "@/components/sections/careers-cta-section";
-import { ContactCtaSection } from "@/components/sections/contact-cta-section";
-import { FamilyPeaceSection } from "@/components/sections/family-peace-section";
-import { IntroSection } from "@/components/sections/intro-section";
-import { JarkabiHeroSection } from "@/components/sections/jarkabi-hero-section";
-import { LocationsPreviewSection } from "@/components/sections/locations-preview-section";
-import { NursingHighlightSection } from "@/components/sections/nursing-highlight-section";
-import { ProcessSection } from "@/components/sections/process-section";
-import { ServicesPreview } from "@/components/sections/services-preview";
-import { TeamSection } from "@/components/sections/team-section";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { TrustBar } from "@/components/sections/trust-bar";
-import { WhySection } from "@/components/sections/why-section";
+import { AboutPreview } from "@/components/home/about-preview";
+import { BlogPreview } from "@/components/home/blog-preview";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { CareProcess } from "@/components/home/care-process";
+import { CareTasksSection } from "@/components/home/care-tasks-section";
+import { ContactSection } from "@/components/home/contact-section";
+import { HeroSection } from "@/components/home/hero-section";
+import { LocationFinder } from "@/components/home/location-finder";
+import { PillarsSection } from "@/components/home/pillars-section";
+import { ServicesGrid } from "@/components/home/services-grid";
+import { StatisticsSection } from "@/components/home/statistics-section";
+import { TeamSection } from "@/components/home/team-section";
+import { TestimonialSection } from "@/components/home/testimonial-section";
+import { TrustBar } from "@/components/home/trust-bar";
+import { WhyChooseUs } from "@/components/home/why-choose-us";
 import type { Locale } from "@/i18n/routing";
-import { getBlogPosts, getBrand, getProvinces, getServices } from "@/lib/cms";
+import {
+  getBlogPosts,
+  getBrand,
+  getProvinces,
+  getServices,
+  getTeamMembers,
+  getTestimonials,
+} from "@/lib/cms";
 import { setRequestLocale } from "next-intl/server";
 
 type Props = { params: Promise<{ locale: string }> };
 
-/** Homepage — spec §25 sequence */
+/**
+ * Care Giver Home Page 01, rebuilt as React components on the Seniar/Next.js
+ * architecture. Section order follows the licensed demo top to bottom —
+ * see docs/caregiver-to-jarkabi-map.md.
+ */
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const lang = locale as Locale;
 
-  const [services, posts, brand, provinces] = await Promise.all([
+  const [services, posts, brand, provinces, team, testimonials] = await Promise.all([
     getServices(lang),
     getBlogPosts(lang),
     getBrand(lang),
     getProvinces(lang),
+    getTeamMembers(lang),
+    getTestimonials(lang),
   ]);
 
   return (
     <>
-      <JarkabiHeroSection locale={locale} brand={brand} />
+      <HeroSection locale={locale} />
+      <AboutPreview locale={locale} />
+      <PillarsSection />
+      <ServicesGrid locale={locale} services={services} />
+      <WhyChooseUs locale={locale} />
+      <CareTasksSection />
+      <CareProcess locale={locale} />
+      <StatisticsSection />
+      <CallToAction locale={locale} />
+      <TestimonialSection testimonials={testimonials} />
+      <TeamSection locale={locale} members={team} />
+      <LocationFinder locale={locale} provinces={provinces} />
+      <BlogPreview locale={locale} posts={posts} />
       <TrustBar />
-      <IntroSection locale={locale} />
-      <ServicesPreview locale={locale} services={services} />
-      <WhySection locale={locale} />
-      <ProcessSection />
-      <NursingHighlightSection locale={locale} />
-      <FamilyPeaceSection />
-      <TeamSection locale={locale} />
-      <TestimonialsSection />
-      <LocationsPreviewSection locale={locale} provinces={provinces} />
-      <BlogPreviewSection locale={locale} posts={posts} />
-      <CareersCtaSection locale={locale} />
-      <ContactCtaSection locale={locale} brand={brand} />
+      <ContactSection locale={locale} brand={brand} />
     </>
   );
 }

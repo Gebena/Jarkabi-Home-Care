@@ -1,60 +1,76 @@
 import { PageHero } from "@/components/layout/page-hero";
 import { CanadaMap } from "@/components/locations/canada-map";
-import { CanadaSvgMap } from "@/components/locations/canada-svg-map";
+import { PageSection } from "@/components/ui/page-section";
 import { ottawaCities } from "@/lib/brand";
 import type { Locale } from "@/i18n/routing";
 import { getProvinces } from "@/lib/cms";
-import { setRequestLocale } from "next-intl/server";
+import { ArrowRight } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = { title: "Locations" };
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "locationsPage" });
+  return { title: t("title"), description: t("lead") };
+}
 
 export default async function LocationsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const provinces = await getProvinces(locale as Locale);
+  const t = await getTranslations({ locale, namespace: "locationsPage" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
   const base = `/${locale}`;
 
   return (
     <>
       <PageHero
-        eyebrow="Locations"
-        title="Growing across Canada with local care"
-        lead="Select a province to explore service availability. We never imply coverage where none exists."
+        locale={locale}
+        eyebrow={tNav("locations")}
+        title={t("title")}
+        lead={t("lead")}
+        crumbLabel={tNav("locations")}
       />
-      <section className="section">
-        <div className="container">
-          <CanadaSvgMap provinces={provinces} locale={locale} />
-          <CanadaMap provinces={provinces} locale={locale} />
-          <div className="content-card ottawa-launch">
-            <h2>Ottawa launch communities (Ontario — ACTIVE)</h2>
-            <ul className="city-list">
+      <PageSection>
+        <CanadaMap provinces={provinces} locale={locale} />
+      </PageSection>
+
+      <PageSection tone="mist">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="border border-line bg-white p-8 lg:p-10">
+            <h2 className="font-display text-xl text-ink">{t("ottawaTitle")}</h2>
+            <ul className="mt-6 flex flex-wrap gap-2.5">
               {ottawaCities.map((city) => (
                 <li key={city}>
-                  <Link href={`${base}/locations/ontario/${city}`}>
+                  <Link
+                    href={`${base}/locations/ontario/${city}`}
+                    className="inline-block border border-line px-4 py-2 text-sm text-ink transition-colors hover:border-tan hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                  >
                     {city.charAt(0).toUpperCase() + city.slice(1)}
                   </Link>
                 </li>
               ))}
             </ul>
-            <p className="legal-note">
-              Gatineau is listed under Quebec when Quebec service launches — not grouped with Ontario.
-            </p>
+            <p className="mt-6 text-sm leading-relaxed text-body">{t("ottawaNote")}</p>
           </div>
-          <div className="content-card">
-            <h2>Growing Across Canada</h2>
-            <p>
-              We began with a commitment to caring for families locally in Ottawa and intend to thoughtfully expand into additional Canadian communities with local leadership and consistent quality standards.
-            </p>
-            <Link href={`${base}/growing-across-canada`} className="text-link">
-              Learn about our expansion vision
+
+          <div className="border border-line bg-white p-8 lg:p-10">
+            <h2 className="font-display text-xl text-ink">{t("growingTitle")}</h2>
+            <p className="mt-6 text-base leading-relaxed text-body">{t("growingBody")}</p>
+            <p className="mt-4 text-sm leading-relaxed text-body">{t("coverageNote")}</p>
+            <Link
+              href={`${base}/growing-across-canada`}
+              className="mt-6 inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-coral transition-colors hover:text-tan-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+            >
+              {t("growingLink")}
+              <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>
         </div>
-      </section>
+      </PageSection>
     </>
   );
 }

@@ -1,10 +1,13 @@
 import { PageHero } from "@/components/layout/page-hero";
-import { CtaSection } from "@/components/sections/cta-section";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { PageSection } from "@/components/ui/page-section";
+import { SectionTitle } from "@/components/ui/section-title";
 import type { Locale } from "@/i18n/routing";
-import { getCitiesByProvince, getProvinces, getServices } from "@/lib/cms";
+import { ServiceCard } from "@/components/ui/service-card";
+import { getCitiesByProvince, getProvinces, getServicesForLocation } from "@/lib/cms";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string; province: string; city: string }> };
@@ -27,32 +30,38 @@ export default async function CityLocationPage({ params }: Props) {
   const cityData = cities.find((c) => c.slug === city);
   if (!cityData || cityData.status !== "active") notFound();
 
-  const services = await getServices(lang);
+  const [services, t, tCity, tNav] = await Promise.all([
+    getServicesForLocation(lang, province, city),
+    getTranslations({ locale, namespace: "servicesPage" }),
+    getTranslations({ locale, namespace: "cityPage" }),
+    getTranslations({ locale, namespace: "nav" }),
+  ]);
 
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={`${provinceData.name} · ${cityData.name}`}
-        title={`Home care in ${cityData.name}`}
-        lead="Local services, contact information and team profiles are editable per city from the admin dashboard."
+        title={tCity("title", { city: cityData.name })}
+        lead={tCity("lead", { city: cityData.name })}
+        crumbLabel={cityData.name}
+        breadcrumbs={[
+          { label: tNav("locations"), href: `/${locale}/locations` },
+          { label: provinceData.name, href: `/${locale}/locations/${province}` },
+        ]}
       />
-      <section className="section">
-        <div className="container">
-          <h2>Available services</h2>
-          <div className="card-grid">
-            {services.map((service) => (
-              <article key={service.slug} className="service-card">
-                <h3>{service.title}</h3>
-                <p>{service.summary}</p>
-                <Link href={`/${locale}/services/${service.slug}`} className="text-link">
-                  View service
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <CtaSection locale={locale} />
+
+      <PageSection tone="mist">
+        <SectionTitle align="center" title={tCity("servicesTitle")} />
+        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service) => (
+            <li key={service.slug}>
+              <ServiceCard service={service} locale={locale} ctaLabel={t("learnMore")} />
+            </li>
+          ))}
+        </ul>
+      </PageSection>
+      <CallToAction locale={locale} />
     </>
   );
 }

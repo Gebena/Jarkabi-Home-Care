@@ -8,6 +8,7 @@ import type { Plugin } from "payload";
 import { fileURLToPath } from "node:url";
 import { BlogPosts } from "./payload/collections/BlogPosts";
 import { CareRequests } from "./payload/collections/CareRequests";
+import { ContactInquiries } from "./payload/collections/ContactInquiries";
 import { Careers } from "./payload/collections/Careers";
 import { JobApplications } from "./payload/collections/JobApplications";
 import { LegalPages } from "./payload/collections/LegalPages";
@@ -25,15 +26,15 @@ import { Testimonials } from "./payload/collections/Testimonials";
 import { Users } from "./payload/collections/Users";
 import { BrandSettings } from "./payload/globals/BrandSettings";
 import { seedDatabase } from "./payload/seed";
+import { isPostgresUri, resolveDatabaseUri } from "./lib/database-uri";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const databaseUri =
-  process.env.DATABASE_URI || "file:./payload.db";
+const databaseUri = resolveDatabaseUri();
 
 const db =
-  databaseUri.startsWith("postgresql")
+  isPostgresUri(databaseUri)
     ? postgresAdapter({
         pool: { connectionString: databaseUri },
       })
@@ -68,6 +69,7 @@ export default buildConfig({
     ServiceAvailability,
     Pages,
     CareRequests,
+    ContactInquiries,
     Referrals,
     Careers,
     JobApplications,

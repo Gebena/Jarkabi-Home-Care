@@ -52,16 +52,6 @@
     "culturallyResponsive": "Culturally Responsive Care",
     "responsiveSupport": "Responsive Support"
   },
-  "stats": {
-    "yearsValue": "15+",
-    "yearsLabel": "Years of Combined Experience",
-    "familiesValue": "500+",
-    "familiesLabel": "Families Served in Ottawa",
-    "caregiversValue": "50+",
-    "caregiversLabel": "Dedicated Care Professionals",
-    "satisfactionValue": "98%",
-    "satisfactionLabel": "Family Satisfaction Rate"
-  },
   "intro": {
     "eyebrow": "Why families choose us",
     "headline": "Care Built Around the Person — Not the Schedule.",
@@ -135,7 +125,6 @@
     "company": "Company",
     "referrals": "Professional referrals",
     "rights": "All rights reserved.",
-    "legalReview": "[REVIEW REQUIRED]",
     "privacy": "Privacy Policy",
     "accessibility": "Accessibility",
     "terms": "Terms of Use"

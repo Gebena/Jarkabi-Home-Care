@@ -57,7 +57,13 @@ async function getZoneId() {
   const zone = zones?.[0];
   if (!zone?.id) {
     throw new Error(
-      `Cloudflare zone not found for ${DOMAIN}. Add jarkabi.ca to Cloudflare first.`,
+      [
+        `Cloudflare zone not found for ${DOMAIN} with this API token.`,
+        `The domain uses Cloudflare nameservers but the token may only cover ketet.org.`,
+        `Fix: Cloudflare → jarkabi.ca → Overview → copy Zone ID, then set`,
+        `CLOUDFLARE_JARKABI_ZONE_ID and use a token with Zone → DNS → Edit for jarkabi.ca.`,
+        `Or add these records manually: A @ → 76.76.21.21, CNAME www → cname.vercel-dns.com (DNS only).`,
+      ].join("\n"),
     );
   }
   return zone.id;

@@ -1,44 +1,87 @@
 import { PageHero } from "@/components/layout/page-hero";
-import { CtaSection } from "@/components/sections/cta-section";
-import { setRequestLocale } from "next-intl/server";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { FeatureCard } from "@/components/ui/feature-card";
+import { PageSection } from "@/components/ui/page-section";
+import { SectionTitle } from "@/components/ui/section-title";
+import { aboutImages } from "@/lib/site-images";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = { title: "About" };
+type Value = { title: string; body: string };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "aboutPage" });
+  return { title: t("metaTitle"), description: t("lead") };
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "aboutPage" });
+  const values = t.raw("values") as Value[];
 
   return (
     <>
       <PageHero
-        eyebrow="About"
-        title="Rooted in respect, built for Canadian families"
-        lead="Our mission, values and growth vision are fully editable from the administration dashboard. [REVIEW REQUIRED]"
+        locale={locale}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+        crumbLabel={t("crumb")}
       />
-      <section className="section">
-        <div className="container editorial-grid">
-          <article className="content-card">
-            <h2>Our Story</h2>
-            <p>[FOUNDER NAME] and our leadership team are committed to compassionate home care beginning in Ottawa, Ontario — with a national platform designed to expand thoughtfully. [PLACEHOLDER]</p>
-          </article>
-          <article className="content-card">
-            <h2>Our Mission</h2>
-            <p>To help people live safely, independently and with dignity in the comfort of home — with professional care and personal connection.</p>
-          </article>
-          <article className="content-card">
-            <h2>Our Vision</h2>
-            <p>A trusted Canadian home-care organization that combines local heart with national capability, cultural responsiveness and clinical professionalism.</p>
-          </article>
-          <article className="content-card">
-            <h2>Clinical Leadership</h2>
-            <p>[CLINICAL DIRECTOR] · [CARE DIRECTOR] — profiles editable in admin. [PLACEHOLDER]</p>
-          </article>
+
+      <PageSection>
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative aspect-4/3 overflow-hidden">
+            <Image
+              src={aboutImages.main.src}
+              alt={aboutImages.main.alt}
+              fill
+              sizes="(max-width: 1024px) 92vw, 45vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div>
+            <SectionTitle title={t("storyTitle")} />
+            <p className="mt-6 text-base leading-relaxed text-body">{t("storyBody")}</p>
+
+            <div className="mt-8 border-l-2 border-tan pl-6">
+              <h3 className="font-display text-lg text-plum">{t("missionTitle")}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-body">{t("missionBody")}</p>
+            </div>
+
+            <div className="mt-6 border-l-2 border-tan pl-6">
+              <h3 className="font-display text-lg text-plum">{t("visionTitle")}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-body">{t("visionBody")}</p>
+            </div>
+          </div>
         </div>
-      </section>
-      <CtaSection locale={locale} />
+      </PageSection>
+
+      <PageSection tone="mist">
+        <SectionTitle align="center" title={t("valuesTitle")} subtitle={t("valuesSubtitle")} />
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {values.map((value, index) => (
+            <li key={value.title}>
+              <FeatureCard index={index + 1} title={value.title} body={value.body} />
+            </li>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionTitle align="center" title={t("leadershipTitle")} />
+          <p className="mt-6 text-base leading-relaxed text-body">{t("leadershipBody")}</p>
+        </div>
+      </PageSection>
+
+      <CallToAction locale={locale} />
     </>
   );
 }

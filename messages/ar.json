@@ -51,16 +51,6 @@
     "culturallyResponsive": "رعاية حساسة ثقافياً",
     "responsiveSupport": "دعم سريع الاستجابة"
   },
-  "stats": {
-    "yearsValue": "15+",
-    "yearsLabel": "Years of Combined Experience",
-    "familiesValue": "500+",
-    "familiesLabel": "Families Served in Ottawa",
-    "caregiversValue": "50+",
-    "caregiversLabel": "Dedicated Care Professionals",
-    "satisfactionValue": "98%",
-    "satisfactionLabel": "Family Satisfaction Rate"
-  },
   "intro": {
     "eyebrow": "Why families choose us",
     "headline": "رعاية مبنية حول الشخص — وليس الجدول.",
@@ -134,7 +124,6 @@
     "company": "Company",
     "referrals": "Professional referrals",
     "rights": "All rights reserved.",
-    "legalReview": "[مراجعة مطلوبة]",
     "privacy": "سياسة الخصوصية",
     "accessibility": "إمكانية الوصول",
     "terms": "شروط الاستخدام"

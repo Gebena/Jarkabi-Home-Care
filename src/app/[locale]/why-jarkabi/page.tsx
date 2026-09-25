@@ -1,49 +1,47 @@
 import { PageHero } from "@/components/layout/page-hero";
-import { CtaSection } from "@/components/sections/cta-section";
-import { setRequestLocale } from "next-intl/server";
+import { CallToAction } from "@/components/ui/call-to-action";
+import { FeatureCard } from "@/components/ui/feature-card";
+import { PageSection } from "@/components/ui/page-section";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-
-const differentiators = [
-  "Care That Starts With Listening",
-  "Personalized Care Planning",
-  "Professional Care Team",
-  "Caregiver Matching",
-  "Clinical Oversight",
-  "Dependable Scheduling",
-  "Continuity of Care",
-  "Family Communication",
-  "Respect for Culture",
-  "Respect for Language",
-  "Flexible Support",
-  "Quality Improvement",
-];
 
 type Props = { params: Promise<{ locale: string }> };
 
-export const metadata: Metadata = { title: "Why Jarkabi Home Care" };
+type Differentiator = { title: string; body: string };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "whyPage" });
+  return { title: t("metaTitle"), description: t("lead") };
+}
 
 export default async function WhyJarkabiPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "whyPage" });
+  const items = t.raw("items") as Differentiator[];
 
   return (
     <>
       <PageHero
-        eyebrow="Why Jarkabi"
-        title="Care built on trust, compassion, and professional standards"
-        lead="Every differentiator below will be editable in the CMS. Claims require substantiation before publication."
+        locale={locale}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+        crumbLabel={t("crumb")}
       />
-      <section className="section">
-        <div className="container card-grid">
-          {differentiators.map((item) => (
-            <article key={item} className="content-card">
-              <h2>{item}</h2>
-              <p>Editable content block. [PLACEHOLDER]</p>
-            </article>
+
+      <PageSection tone="mist">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item, index) => (
+            <li key={item.title}>
+              <FeatureCard headingLevel={2} index={index + 1} title={item.title} body={item.body} />
+            </li>
           ))}
-        </div>
-      </section>
-      <CtaSection locale={locale} />
+        </ul>
+      </PageSection>
+
+      <CallToAction locale={locale} />
     </>
   );
 }

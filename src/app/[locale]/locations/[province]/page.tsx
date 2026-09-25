@@ -1,8 +1,9 @@
 import { PageHero } from "@/components/layout/page-hero";
+import { PageSection } from "@/components/ui/page-section";
 import type { Locale } from "@/i18n/routing";
 import { getCitiesByProvince, getProvinces } from "@/lib/cms";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -23,42 +24,56 @@ export default async function ProvinceLocationsPage({ params }: Props) {
 
   if (!item) notFound();
 
-  const cities = await getCitiesByProvince(province, locale as Locale);
+  const [cities, t, tNav] = await Promise.all([
+    getCitiesByProvince(province, locale as Locale),
+    getTranslations({ locale, namespace: "provincePage" }),
+    getTranslations({ locale, namespace: "nav" }),
+  ]);
   const activeCities = cities.filter((c) => c.status === "active");
 
   return (
     <>
       <PageHero
-        eyebrow="Province"
+        locale={locale}
+        eyebrow={t(`status.${item.status}`)}
         title={item.name}
-        lead={`Status: ${item.status.replace("_", " ")}`}
+        lead={t(`statusLead.${item.status}`, { province: item.name })}
+        breadcrumbs={[{ label: tNav("locations"), href: `/${locale}/locations` }]}
       />
-      <section className="section">
-        <div className="container content-stack">
+
+      <PageSection tone="mist">
+        <div className="mx-auto max-w-3xl border border-line bg-white p-8 text-center lg:p-10">
           {activeCities.length > 0 ? (
-            <article className="content-card">
-              <h2>Active communities</h2>
-              <ul className="city-list">
+            <>
+              <h2 className="font-display text-xl text-ink">{t("activeTitle")}</h2>
+              <ul className="mt-6 flex flex-wrap justify-center gap-2.5">
                 {activeCities.map((city) => (
                   <li key={city.slug}>
-                    <Link href={`/${locale}/locations/${province}/${city.slug}`}>
+                    <Link
+                      href={`/${locale}/locations/${province}/${city.slug}`}
+                      className="inline-block border border-line px-4 py-2 text-sm text-ink transition-colors hover:border-tan hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                    >
                       {city.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </article>
+            </>
           ) : (
-            <article className="content-card">
-              <h2>Expansion</h2>
-              <p>This province is not currently marked as active. Join our expansion notification list on the contact page.</p>
-            </article>
+            <>
+              <h2 className="font-display text-xl text-ink">{t("inactiveTitle")}</h2>
+              <p className="mt-4 text-base leading-relaxed text-body">{t("inactiveBody")}</p>
+            </>
           )}
-          <Link href={`/${locale}/contact`} className="button button-primary">
-            Request Care
+
+          <Link
+            href={`/${locale}/contact`}
+            className="mt-8 inline-block bg-tan px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"
+          >
+            {tNav("requestCare")}
           </Link>
         </div>
-      </section>
+      </PageSection>
     </>
   );
 }

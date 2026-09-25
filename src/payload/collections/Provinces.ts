@@ -34,7 +34,8 @@ export const Provinces: CollectionConfig = {
       type: "richText",
       localized: true,
       admin: {
-        description: "[REVIEW REQUIRED] Province-specific legal and compliance content.",
+        description:
+          "Province-specific legal and compliance content. Needs professional review before the province is set to Active.",
       },
     },
     { name: "seoTitle", type: "text", localized: true },

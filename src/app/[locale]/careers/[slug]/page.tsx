@@ -1,9 +1,11 @@
 import { JobApplicationForm } from "@/components/forms/job-application-form";
 import { PageHero } from "@/components/layout/page-hero";
+import { JsonLd, jobPostingJsonLd } from "@/components/seo/json-ld";
+import { PageSection } from "@/components/ui/page-section";
 import type { Locale } from "@/i18n/routing";
 import { getCareer } from "@/lib/cms";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -21,25 +23,50 @@ export default async function CareerDetailPage({ params }: Props) {
 
   if (!job) notFound();
 
+  const tCareers = await getTranslations({ locale, namespace: "careersPage" });
   const title = String(job.title);
 
   return (
     <>
+      <JsonLd
+        data={jobPostingJsonLd({
+          title,
+          summary: String(job.summary ?? ""),
+          slug,
+          locale,
+          employmentType: String(job.employmentType ?? "PART_TIME"),
+        })}
+      />
       <PageHero
-        eyebrow="Careers"
+        locale={locale}
+        eyebrow={tCareers("eyebrow")}
         title={title}
         lead={String(job.summary ?? "")}
+        breadcrumbs={[{ label: tCareers("crumb"), href: `/${locale}/careers` }]}
       />
-      <section className="section">
-        <div className="container contact-layout">
-          <aside className="contact-sidebar">
-            <p><strong>Profession:</strong> {String(job.profession ?? "—")}</p>
-            <p><strong>Employment type:</strong> {String(job.employmentType ?? "—")}</p>
-            <p className="legal-note">[REVIEW REQUIRED] Employment privacy notice before production.</p>
+      <PageSection tone="mist">
+        <div className="grid gap-10 lg:grid-cols-[20rem_1fr] lg:gap-14">
+          <aside className="space-y-6 border-s-2 border-tan ps-6">
+            <div>
+              <h2 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
+                {tCareers("professionLabel")}
+              </h2>
+              <p className="mt-1 text-base text-ink">{String(job.profession ?? "—")}</p>
+            </div>
+            <div>
+              <h2 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
+                {tCareers("employmentTypeLabel")}
+              </h2>
+              <p className="mt-1 text-base text-ink">{String(job.employmentType ?? "—")}</p>
+            </div>
+            <p className="text-sm leading-relaxed text-body">{tCareers("applicationPrivacy")}</p>
           </aside>
-          <JobApplicationForm locale={locale} jobTitle={title} />
+
+          <div className="bg-white p-8 lg:p-10">
+            <JobApplicationForm locale={locale} jobTitle={title} />
+          </div>
         </div>
-      </section>
+      </PageSection>
     </>
   );
 }

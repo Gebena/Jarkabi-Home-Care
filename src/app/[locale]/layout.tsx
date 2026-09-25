@@ -1,10 +1,13 @@
+import { LocaleDocument } from "@/components/layout/locale-document";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MobileBottomBar } from "@/components/layout/mobile-bottom-bar";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
+import { JsonLd, localBusinessJsonLd, organizationJsonLd } from "@/components/seo/json-ld";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { getBrand, getProvinces } from "@/lib/cms";
 import { defaultBrand } from "@/lib/brand";
+import { buildLanguageAlternates, siteUrl } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -30,12 +33,9 @@ export async function generateMetadata({
       default: defaultBrand.agencyName,
       template: `%s | ${defaultBrand.agencyName}`,
     },
-    metadataBase: new URL(defaultBrand.websiteUrl),
+    metadataBase: new URL(siteUrl),
     alternates: {
-      languages: {
-        en: "/en",
-        fr: "/fr",
-      },
+      languages: buildLanguageAlternates(""),
     },
     openGraph: {
       locale,
@@ -63,6 +63,8 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <LocaleDocument locale={lang} />
+      <JsonLd data={[organizationJsonLd(brand), localBusinessJsonLd(brand)]} />
       <div dir={isRtl ? "rtl" : "ltr"} className={isRtl ? "rtl-layout" : undefined}>
         <SiteHeader locale={locale} brand={brand} />
         <main id="main-content">{children}</main>

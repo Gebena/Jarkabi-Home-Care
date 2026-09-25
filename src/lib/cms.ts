@@ -1,6 +1,8 @@
 import { defaultBrand, defaultServices, provincesSeed } from "@/lib/brand";
 import { getPayloadClient } from "@/lib/payload";
 import type { Locale } from "@/i18n/routing";
+import type { ServiceCategory } from "@/lib/services-config";
+import { resolveServiceSlug } from "@/lib/services-config";
 
 export type BrandData = {
   agencyName: string;
@@ -24,6 +26,22 @@ export type ServiceData = {
   slug: string;
   title: string;
   summary: string;
+  category: ServiceCategory;
+  featured: boolean;
+  sortOrder: number;
+};
+
+export type ServiceDetailData = ServiceData & {
+  blocks: unknown[] | null;
+  seoTitle?: string;
+  seoDescription?: string;
+};
+
+export type ServiceAvailabilityData = {
+  serviceSlug: string;
+  provinceSlug: string;
+  citySlug?: string;
+  status: "active" | "coming_soon" | "paused" | "not_served";
 };
 
 export type CityData = {
@@ -123,6 +141,29 @@ export async function getCitiesByProvince(
   return result.ok ? result.data : [];
 }
 
+function mapServiceDoc(doc: Record<string, unknown>): ServiceData {
+  return {
+    slug: String(doc.slug ?? ""),
+    title: typeof doc.title === "string" ? doc.title : String(doc.title ?? ""),
+    summary: typeof doc.summary === "string" ? doc.summary : String(doc.summary ?? ""),
+    category: (doc.category as ServiceCategory) || "daily-living",
+    featured: Boolean(doc.featured),
+    sortOrder: typeof doc.sortOrder === "number" ? doc.sortOrder : 0,
+  };
+}
+
+function fallbackServices(locale: Locale): ServiceData[] {
+  const lang = locale in defaultServices[0].title ? locale : "en";
+  return defaultServices.map((s) => ({
+    slug: s.slug,
+    title: s.title[lang as keyof typeof s.title] ?? s.title.en,
+    summary: s.summary[lang as keyof typeof s.summary] ?? s.summary.en,
+    category: s.category,
+    featured: s.featured,
+    sortOrder: s.sortOrder,
+  }));
+}
+
 export async function getServices(locale: Locale): Promise<ServiceData[]> {
   const result = await safePayload(async () => {
     const payload = await getPayloadClient();
@@ -133,22 +174,113 @@ export async function getServices(locale: Locale): Promise<ServiceData[]> {
       limit: 50,
       sort: "sortOrder",
     });
-    return docs.map((doc) => ({
-      slug: doc.slug,
-      title: typeof doc.title === "string" ? doc.title : String(doc.title),
-      summary: typeof doc.summary === "string" ? doc.summary : String(doc.summary ?? ""),
-    }));
+    return docs.map(mapServiceDoc);
+  });
+
+  if (!result.ok) return fallbackServices(locale);
+  return result.data;
+}
+
+export async function getService(slug: string, locale: Locale): Promise<ServiceDetailData | null> {
+  const canonicalSlug = resolveServiceSlug(slug);
+
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "services",
+      locale,
+      where: { slug: { equals: canonicalSlug }, published: { equals: true } },
+      limit: 1,
+    });
+    const doc = docs[0];
+    if (!doc) return null;
+    return {
+      ...mapServiceDoc(doc),
+      blocks: (doc.blocks as unknown[]) ?? null,
+      seoTitle: typeof doc.seoTitle === "string" ? doc.seoTitle : undefined,
+      seoDescription: typeof doc.seoDescription === "string" ? doc.seoDescription : undefined,
+    };
+  });
+
+  if (result.ok) return result.data;
+
+  const fallback = fallbackServices(locale).find((s) => s.slug === canonicalSlug);
+  if (!fallback) return null;
+  return { ...fallback, blocks: null };
+}
+
+export async function getServiceAvailability(): Promise<ServiceAvailabilityData[]> {
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "service-availability",
+      limit: 200,
+      depth: 2,
+    });
+
+    return docs
+      .map((doc) => {
+        const service = doc.service as { slug?: string } | number | null;
+        const province = doc.province as { slug?: string } | number | null;
+        const city = doc.city as { slug?: string } | number | null;
+        const serviceSlug = typeof service === "object" && service?.slug ? service.slug : null;
+        const provinceSlug = typeof province === "object" && province?.slug ? province.slug : null;
+        const citySlug = typeof city === "object" && city?.slug ? city.slug : undefined;
+        if (!serviceSlug || !provinceSlug) return null;
+        return {
+          serviceSlug,
+          provinceSlug,
+          citySlug,
+          status: doc.status as ServiceAvailabilityData["status"],
+        };
+      })
+      .filter(Boolean) as ServiceAvailabilityData[];
   });
 
   if (!result.ok) {
-    const lang = locale in defaultServices[0].title ? locale : "en";
     return defaultServices.map((s) => ({
-      slug: s.slug,
-      title: s.title[lang as keyof typeof s.title] ?? s.title.en,
-      summary: s.summary[lang as keyof typeof s.summary] ?? s.summary.en,
+      serviceSlug: s.slug,
+      provinceSlug: "ontario",
+      status: "active" as const,
     }));
   }
   return result.data;
+}
+
+export async function getServicesForLocation(
+  locale: Locale,
+  provinceSlug: string,
+  citySlug?: string,
+): Promise<ServiceData[]> {
+  const [services, availability] = await Promise.all([
+    getServices(locale),
+    getServiceAvailability(),
+  ]);
+
+  const activeSlugs = new Set(
+    availability
+      .filter((row) => {
+        if (row.provinceSlug !== provinceSlug || row.status !== "active") return false;
+        if (!citySlug) return !row.citySlug;
+        return !row.citySlug || row.citySlug === citySlug;
+      })
+      .map((row) => row.serviceSlug),
+  );
+
+  if (activeSlugs.size === 0) return services;
+  return services.filter((service) => activeSlugs.has(service.slug));
+}
+
+export async function getRelatedServices(
+  locale: Locale,
+  currentSlug: string,
+  category: ServiceCategory,
+  limit = 3,
+): Promise<ServiceData[]> {
+  const services = await getServices(locale);
+  return services
+    .filter((service) => service.slug !== currentSlug && service.category === category)
+    .slice(0, limit);
 }
 
 export type BlogPostData = {
@@ -248,6 +380,82 @@ export async function getLegalPage(slug: string, locale: Locale) {
     return docs[0] ?? null;
   });
   return result.ok ? result.data : null;
+}
+
+export type TeamMemberData = {
+  name: string;
+  role: string;
+  bio: string;
+  category?: string;
+};
+
+export type TestimonialData = {
+  quote: string;
+  attribution: string;
+  relation: string;
+};
+
+export type FaqData = {
+  question: string;
+  answer: string;
+  category?: string;
+};
+
+export async function getTeamMembers(locale: Locale): Promise<TeamMemberData[]> {
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "team-members",
+      locale,
+      where: { published: { equals: true }, isPlaceholder: { equals: false } },
+      limit: 12,
+      sort: "sortOrder",
+    });
+    return docs.map((doc) => ({
+      name: String(doc.name),
+      role: String(doc.role),
+      bio: String(doc.bio ?? ""),
+      category: doc.category ? String(doc.category) : undefined,
+    }));
+  });
+  return result.ok ? result.data : [];
+}
+
+export async function getTestimonials(locale: Locale): Promise<TestimonialData[]> {
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "testimonials",
+      locale,
+      where: { published: { equals: true }, isPlaceholder: { equals: false } },
+      limit: 6,
+    });
+    return docs.map((doc) => ({
+      quote: String(doc.quote),
+      attribution: String(doc.attribution),
+      relation: String(doc.relation ?? ""),
+    }));
+  });
+  return result.ok ? result.data : [];
+}
+
+export async function getFaqs(locale: Locale, category?: string): Promise<FaqData[]> {
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "faqs",
+      locale,
+      where: category ? { category: { equals: category } } : {},
+      limit: 50,
+      sort: "sortOrder",
+    });
+    return docs.map((doc) => ({
+      question: String(doc.question),
+      answer: String(doc.answer),
+      category: doc.category ? String(doc.category) : undefined,
+    }));
+  });
+  return result.ok ? result.data : [];
 }
 
 export async function getPageBlocks(slug: string, locale: Locale) {
