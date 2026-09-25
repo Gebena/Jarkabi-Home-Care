@@ -12,6 +12,9 @@ const withSerwist = withSerwistInit({
   swSrc: "src/sw.ts",
   swDest: "public/sw.js",
   disable: process.env.NODE_ENV === "development",
+  // Do not auto-register on Payload /admin — Serwist throws during register()
+  // and prevents React from hydrating the login UI.
+  register: false,
 });
 
 const nextConfig: NextConfig = {
