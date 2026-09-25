@@ -3,6 +3,7 @@
 ## Status: Care Giver Home Page 01 visual fidelity — passes 1–7 shipped ✅
 
 **Merged:** [PR #229](https://github.com/Gebena/Ketet/pull/229) → `main` (2026-09-25).  
+**CMS/locale/cleanup:** [PR #231](https://github.com/Gebena/Ketet/pull/231) → `main` (2026-09-25).  
 **Production verified:** https://jarkabi.ca/en (sync to `Gebena/Jarkabi-Home-Care` succeeded).  
 **Handoff:** `docs/caregiver-fidelity-summary.md`, `docs/jarkabi-caregiver-visual-qa.md`, `docs/caregiver-assets-used.md`.
 
@@ -24,7 +25,7 @@
 ### Phase 9 — Specialty & service pages ✅ (content review pending)
 - [x] Dedicated `/nursing` and `/dementia-care` marketing pages
 - [x] CMS blocks seeded for core services
-- [ ] Full CMS copy for all 8 services
+- [x] CMS demo blocks for all 11 services (`seed-service-blocks.ts` + boot backfill)
 - [ ] Post-hospital, respite, palliative dedicated pages (use `/services/[slug]`)
 
 ### Phase 10 — Locations & local SEO ✅ (partial)
@@ -61,20 +62,21 @@
 - [x] 7 locales configured; RTL for Arabic
 - [x] hreflang for all locales via `buildLanguageAlternates()`
 - [x] `LocaleDocument` sets `lang`/`dir` on `<html>`
-- [ ] Complete ti/byn/tig/ar/am message files
+- [x] Complete ti/byn/tig/ar/am message keys (`npm run sync:locales`; human review pending)
 
 ### Phase 16 — SEO ✅ (partial)
 - [x] `app/sitemap.ts` — dynamic from CMS + local SEO URLs
 - [x] `app/robots.ts`
 - [x] JSON-LD: Organization, LocalBusiness, Service, JobPosting, Breadcrumbs
 - [x] Breadcrumbs component on service pages
-- [ ] OG images per page type
+- [x] Default OG + Twitter card images (`src/lib/og-image.ts`)
 - [ ] Google Search Console setup
 
 ### Phase 17 — Accessibility ✅ (partial)
 - [x] Skip link, reduced motion, form `aria-invalid` on contact form
 - [x] Per-locale `lang`/`dir`
-- [ ] Focus traps on all dialogs
+- [x] Gallery lightbox focus trap + body scroll lock
+- [ ] Focus traps on remaining dialogs (mobile nav, install prompt)
 - [ ] Formal WCAG 2.2 AA audit
 
 ### Phase 18 — Performance ⏳

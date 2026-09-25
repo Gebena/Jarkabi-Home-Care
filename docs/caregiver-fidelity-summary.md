@@ -45,12 +45,14 @@ npm run verify:images
 
 ## Remaining (not blocking visual fidelity)
 
-- CMS copy for all services, published careers, legal counsel review
+- CMS copy for all services — demo blocks seeded for all 11 slugs; review before launch
+- Published careers, legal counsel review
 - Supabase production `DATABASE_URI` on Vercel
 - Complete ti/byn/tig/ar/am translations (English fallback active)
 - ~~Remove legacy `public/images/photography/` files~~ — done (licensed assets only)
 - Run `npm run sync:locales` after adding keys to `en.json`; add community translations in `messages/patches/{locale}.patch.json`
 - Seed editorial CMS content on empty DB via `seedEditorialContent` in `src/payload/seed-content.ts`
-- OG images, GSC, formal WCAG audit
+- Default OG/Twitter images wired; per-page OG art optional
+- GSC, formal WCAG audit
 
 See `docs/PROGRESS.md` for the full launch checklist.

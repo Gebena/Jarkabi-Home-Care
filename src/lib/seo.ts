@@ -1,5 +1,6 @@
 import { locales, type Locale } from "@/i18n/routing";
 import { defaultBrand } from "@/lib/brand";
+import { defaultOpenGraphImages } from "@/lib/og-image";
 
 export const siteUrl = defaultBrand.websiteUrl.replace(/\/$/, "");
 
@@ -49,6 +50,13 @@ export function buildPageMetadata({
       siteName: defaultBrand.agencyName,
       locale: locale === "fr" ? "fr_CA" : "en_CA",
       type: "website" as const,
+      images: defaultOpenGraphImages(),
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title: `${title} | ${defaultBrand.agencyName}`,
+      description,
+      images: defaultOpenGraphImages().map((image) => image.url),
     },
   };
 }

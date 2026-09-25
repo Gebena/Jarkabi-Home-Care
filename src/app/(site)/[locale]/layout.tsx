@@ -7,6 +7,7 @@ import { JsonLd, localBusinessJsonLd, organizationJsonLd } from "@/components/se
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { getBrand, getProvinces } from "@/lib/cms";
 import { defaultBrand } from "@/lib/brand";
+import { defaultOpenGraphImages } from "@/lib/og-image";
 import { buildLanguageAlternates, siteUrl } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -40,6 +41,11 @@ export async function generateMetadata({
     openGraph: {
       locale,
       siteName: defaultBrand.agencyName,
+      images: defaultOpenGraphImages(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: defaultOpenGraphImages().map((image) => image.url),
     },
   };
 }

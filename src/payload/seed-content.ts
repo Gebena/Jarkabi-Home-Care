@@ -5,6 +5,7 @@ import {
   demoTeamMembers,
   demoTestimonials,
 } from "@/lib/caregiver-demo-fallbacks";
+import { buildServiceBlocks } from "@/payload/seed-service-blocks";
 
 const faqCategoryMap: Record<string, string> = {
   "Getting started": "getting-started",
@@ -111,5 +112,38 @@ export async function seedEditorialContent(payload: Payload) {
       },
     });
     console.info("[seed] Created sample career posting.");
+  }
+
+  await seedServiceBlocks(payload);
+}
+
+/**
+ * Backfills CMS page blocks on services that have none — safe on every boot.
+ */
+export async function seedServiceBlocks(payload: Payload) {
+  const { docs } = await payload.find({
+    collection: "services",
+    limit: 20,
+  });
+
+  let updated = 0;
+  for (const service of docs) {
+    const slug = String(service.slug);
+    const blocks = service.blocks as unknown[] | null | undefined;
+    if (blocks?.length) continue;
+
+    const seeded = buildServiceBlocks(slug);
+    if (!seeded.length) continue;
+
+    await payload.update({
+      collection: "services",
+      id: service.id,
+      data: { blocks: seeded },
+    });
+    updated += 1;
+  }
+
+  if (updated > 0) {
+    console.info(`[seed] Backfilled blocks on ${updated} service(s).`);
   }
 }
