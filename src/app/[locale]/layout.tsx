@@ -73,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <JsonLd data={[organizationJsonLd(brand), localBusinessJsonLd(brand)]} />
       <div dir={isRtl ? "rtl" : "ltr"} className={isRtl ? "rtl-layout" : undefined}>
         <HeaderUtilityBar locale={locale} />
-        <SiteHeader locale={locale} brand={brand} />
+        <SiteHeader locale={locale} brand={brand} provinces={provinces} />
         <PartialLocaleBanner locale={locale} />
         <main id="main-content">{children}</main>
         <SiteFooter locale={locale} brand={brand} provinces={provinces} />

@@ -1,9 +1,11 @@
 "use client";
 
+import { HeaderLocationSelector } from "@/components/layout/header-location-selector";
+import { MainNavDropdown } from "@/components/layout/main-nav-dropdown";
 import { SearchModal } from "@/components/ui/search-modal";
 import { isDisplayablePhone } from "@/lib/brand";
-import type { BrandData } from "@/lib/cms";
-import { mainNav } from "@/lib/nav-config";
+import type { BrandData, ProvinceData } from "@/lib/cms";
+import { aboutSubNav, mainNav, navDropdownKeys } from "@/lib/nav-config";
 import { cn } from "@/lib/utils";
 import { Phone, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -18,10 +20,18 @@ import { TextSizeControl } from "./text-size-control";
 type SiteHeaderProps = {
   locale: string;
   brand: BrandData;
+  provinces: ProvinceData[];
 };
 
+function isAboutNavActive(base: string, pathname: string) {
+  const aboutPaths = aboutSubNav.map((item) => `${base}${item.href.split("#")[0]}`);
+  return aboutPaths.some(
+    (href) => pathname === href || (href !== base && pathname.startsWith(`${href}/`)),
+  );
+}
+
 /** Care Giver Home Page 01 header: white, sticky, serif wordmark, inline nav, tan CTA. */
-export function SiteHeader({ locale, brand }: SiteHeaderProps) {
+export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -58,8 +68,23 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
             <BrandWordmark size="md" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+          <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main">
             {mainNav.map((item) => {
+              if (navDropdownKeys.has(item.key)) {
+                return (
+                  <MainNavDropdown
+                    key={item.key}
+                    label={t(item.key)}
+                    menuLabel={t("aboutMenu")}
+                    items={aboutSubNav}
+                    base={base}
+                    pathname={pathname}
+                    translate={t}
+                    isActive={isAboutNavActive(base, pathname)}
+                  />
+                );
+              }
+
               const href = `${base}${item.href}`;
               const active =
                 item.href === ""
@@ -80,6 +105,8 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
                 </Link>
               );
             })}
+
+            <HeaderLocationSelector locale={locale} provinces={provinces} />
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -113,7 +140,7 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
               {t("requestCare")}
             </Link>
 
-            <MobileNav locale={locale} />
+            <MobileNav locale={locale} provinces={provinces} />
           </div>
         </div>
       </header>

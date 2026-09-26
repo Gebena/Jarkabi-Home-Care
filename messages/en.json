@@ -42,7 +42,12 @@
     "contactUs": "Contact Us",
     "callUs": "Call Us",
     "search": "Search",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "aboutMenu": "About Jarkabi Home Care",
+    "aboutOverview": "About Jarkabi",
+    "leadership": "Leadership",
+    "growingAcrossCanada": "Growing Across Canada",
+    "locationSelector": "Select your province"
   },
   "search": {
     "title": "Search",

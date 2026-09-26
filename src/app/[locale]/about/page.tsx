@@ -74,7 +74,7 @@ export default async function AboutPage({ params }: Props) {
         </ul>
       </PageSection>
 
-      <PageSection>
+      <PageSection id="leadership">
         <div className="mx-auto max-w-3xl text-center">
           <SectionTitle align="center" title={t("leadershipTitle")} />
           <p className="mt-6 text-base leading-relaxed text-body">{t("leadershipBody")}</p>

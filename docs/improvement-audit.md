@@ -69,7 +69,7 @@
 | B3 | **Brand — logo** | Master prompt lists stacked/horizontal/reversed logo variants; only horizontal wordmark + one SVG implemented; `[LOGO DECISION PENDING]` unresolved | **LOW** |
 | B4 | **Homepage structure** | ~~Trust bar position, funding teaser, referral/careers band, 5-step process~~ **fixed Batch 2**; philosophy/family peace blocks still inline in other sections | **MEDIUM** (partial ✅) |
 | B5 | **Homepage hero copy** | ~~Care Giver headline + unverified licensed/insured claims~~ **fixed Batch 1** — Jarkabi tagline on slide 1; trust bar uses professional/family-centred copy | **HIGH** ✅ Batch 1 |
-| B6 | **Navigation** | No About **dropdown** (Why Choose Us, Caregivers, Leadership, Growing Across Canada); no **location selector** in header; header not transparent-over-hero on scroll | **MEDIUM** |
+| B6 | **Navigation** | ~~About dropdown + location selector~~ **Batch 8**; header not transparent-over-hero on scroll | **MEDIUM** (partial ✅) |
 | B7 | **Design system drift** | `docs/design-system.md` still documents old navy/teal palette and Fraunces/Source Sans; conflicts with live tokens and master prompt | **LOW** |
 | B8 | **Care Giver comments** | Many source comments still say “Care Giver Home Page 01”; harmless but confusing for future editors | **LOW** |
 | B9 | **Forms — Request Care** | ~~RHF+Zod, multi-step, CASL, urgent, 911 on embeds~~ **fixed Batch 3**; confirmation email/page copy still basic | **HIGH** (partial ✅) |
@@ -134,7 +134,7 @@
 | 4 | Photos | ✅ Good | 22/22 WebPs verified; all AI placeholders per `licensed-assets.md` |
 | 5 | Pages | ⚠️ Partial | All 9 legal routes live (Batch 4); leadership standalone pages still sections on About |
 | 6 | Design quality | ⚠️ Partial | Homepage order aligned (Batch 2); Care Giver layout retained |
-| 7 | Navigation & links | ⚠️ Partial | No broken routes; About submenu / location selector still missing |
+| 7 | Navigation & links | ⚠️ Partial | About submenu + province selector (Batch 8); transparent hero header still TODO |
 | 8 | Forms | ⚠️ Partial | Request Care: RHF+Zod+CASL+urgent (Batch 3); referral/job forms still plain HTML / hard-coded EN |
 | 9 | Accessibility | ✅ Good (baseline) | Lighthouse **100** a11y on `/en` homepage; focus traps on modals still TODO |
 | 10 | Performance | ✅ Good (baseline) | Lighthouse perf **90**; LCP 3.7s, CLS 0, TBT 60ms (local prod, `/en`) |
@@ -203,6 +203,7 @@
 | 5 | 2026-09-26 | B17 (partial locale strategy: banner, grouped switcher, EN fallback documented, hreflang/sitemap EN+FR only, noindex on partial locales) | ✅ PASS (558 pages) · tests 9/9 |
 | 6 | 2026-09-26 | B20 (homepage `generateMetadata`; default OG + Twitter cards; footer social sr-only labels; intro/why CTA accessible text) | ✅ PASS (558 pages) · tests 9/9 · SEO **100** |
 | 7 | 2026-09-26 | B10 (referral + job application forms — RHF+Zod, EN/FR labels, aria-invalid, CMS referrer types) | ✅ PASS (558 pages) · tests 9/9 |
+| 8 | 2026-09-26 | B6/C6 (About dropdown, header province selector, mobile nav parity, leadership anchor) | ✅ PASS (558 pages) · tests 9/9 |
 
 **Batch 1 notes:**
 - Added `isBrandPlaceholder()` / `isDisplayablePhone()` in `src/lib/brand.ts`; footer, header, contact band, and contact page omit `[PRIMARY PHONE]` / `[OTTAWA OFFICE ADDRESS]` until CMS values are set.

@@ -1,5 +1,13 @@
 # Jarkabi Home Care — Progress Log
 
+## Status: Batch 8 navigation on branch `cursor/jarkabi-nav-batch8-04d3`
+
+### Batch 8 — Navigation (2026-09-26) ✅
+- [x] About flyout submenu (overview, Why Choose Us, Caregivers, Leadership, Growing Across Canada)
+- [x] Header province location selector (CMS active/coming_soon provinces)
+- [x] Mobile drawer: About sub-links + province selector
+- [x] Leadership anchor `id="leadership"` on About page
+
 ## Status: Batches 1–7 reconciled to `main` (2026-09-26)
 
 ### Batch 6 — SEO polish (2026-09-26) ✅

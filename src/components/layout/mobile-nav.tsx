@@ -9,18 +9,44 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { mainNav, secondaryNav } from "@/lib/nav-config";
+import type { ProvinceData } from "@/lib/cms";
+import { aboutSubNav, mainNav, navDropdownKeys, secondaryNav } from "@/lib/nav-config";
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useId, useMemo, useState } from "react";
 import { BrandWordmark } from "./brand-wordmark";
 
-export function MobileNav({ locale }: { locale: string }) {
+type MobileNavProps = {
+  locale: string;
+  provinces: ProvinceData[];
+};
+
+export function MobileNav({ locale, provinces }: MobileNavProps) {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const router = useRouter();
+  const selectId = useId();
   const base = `/${locale}`;
+
+  const servable = useMemo(
+    () => provinces.filter((p) => p.status === "active" || p.status === "coming_soon"),
+    [provinces],
+  );
+  const [provinceSlug, setProvinceSlug] = useState(servable[0]?.slug ?? "");
+
+  const flatNav = mainNav.flatMap((item) => {
+    if (navDropdownKeys.has(item.key)) {
+      return aboutSubNav.map((child) => ({ ...child, indent: true, group: item.key }));
+    }
+    return [{ ...item, indent: false, group: undefined as string | undefined }];
+  });
+
+  const extraNav = secondaryNav.filter(
+    (item) => !flatNav.some((entry) => entry.key === item.key),
+  );
 
   return (
     <div className="xl:hidden">
@@ -44,33 +70,67 @@ export function MobileNav({ locale }: { locale: string }) {
             </SheetTitle>
           </SheetHeader>
           <nav id="mobile-menu" className="flex flex-col p-5" aria-label="Mobile">
-            <ul className="flex flex-col">
-              {[...mainNav, ...secondaryNav].map((item) => {
-                const href = `${base}${item.href}`;
-                const active =
-                  item.href === ""
-                    ? pathname === base || pathname === `${base}/`
-                    : pathname === href || pathname.startsWith(`${href}/`);
+            {servable.length > 0 ? (
+              <form
+                className="mb-4 border-b border-line/70 pb-4"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  if (provinceSlug) router.push(`/${locale}/locations/${provinceSlug}`);
+                }}
+              >
+                <label htmlFor={selectId} className="text-xs font-bold uppercase tracking-[0.14em] text-plum">
+                  {t("locationSelector")}
+                </label>
+                <select
+                  id={selectId}
+                  value={provinceSlug}
+                  onChange={(event) => {
+                    const next = event.target.value;
+                    setProvinceSlug(next);
+                    if (next) router.push(`/${locale}/locations/${next}`);
+                  }}
+                  className="mt-2 w-full border border-line bg-white px-3 py-2.5 text-sm font-semibold text-ink"
+                >
+                  {servable.map((province) => (
+                    <option key={province.slug} value={province.slug}>
+                      {province.name}
+                    </option>
+                  ))}
+                </select>
+              </form>
+            ) : null}
 
-                return (
-                  <li key={item.key} className="border-b border-line/70">
-                    <SheetClose
-                      render={
-                        <Link
-                          href={href}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
-                            active ? "text-coral" : "text-ink",
-                          )}
-                        />
-                      }
-                    >
-                      {t(item.key)}
-                    </SheetClose>
-                  </li>
-                );
-              })}
+            <ul className="flex flex-col">
+              {[...flatNav, ...extraNav.map((item) => ({ ...item, indent: false, group: undefined }))].map(
+                (item) => {
+                  const href = `${base}${item.href}`;
+                  const pathOnly = href.split("#")[0];
+                  const active =
+                    item.href === ""
+                      ? pathname === base || pathname === `${base}/`
+                      : pathname === href || pathname === pathOnly || pathname.startsWith(`${pathOnly}/`);
+
+                  return (
+                    <li key={`${item.group ?? "root"}-${item.key}`} className="border-b border-line/70">
+                      <SheetClose
+                        render={
+                          <Link
+                            href={href}
+                            aria-current={active ? "page" : undefined}
+                            className={cn(
+                              "block py-3 text-[0.95rem] font-semibold transition-colors hover:text-coral",
+                              item.indent ? "pl-4 text-[0.9rem]" : "",
+                              active ? "text-coral" : "text-ink",
+                            )}
+                          />
+                        }
+                      >
+                        {t(item.key)}
+                      </SheetClose>
+                    </li>
+                  );
+                },
+              )}
             </ul>
             <SheetClose
               render={

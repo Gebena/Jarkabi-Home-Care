@@ -38,7 +38,12 @@
     "callUs": "Nous appeler",
     "contactUs": "Nous contacter",
     "search": "Rechercher",
-    "openMenu": "Ouvrir le menu"
+    "openMenu": "Ouvrir le menu",
+    "aboutMenu": "À propos de Jarkabi Home Care",
+    "aboutOverview": "À propos de Jarkabi",
+    "leadership": "Direction",
+    "growingAcrossCanada": "Notre expansion au Canada",
+    "locationSelector": "Choisir votre province"
   },
   "search": {
     "title": "Rechercher",
