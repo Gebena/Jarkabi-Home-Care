@@ -6,6 +6,7 @@ import {
 } from "@/lib/database-uri";
 import { launchBrandConfigured } from "@/lib/launch-brand";
 import { photosAreStaging } from "@/lib/site-photos";
+import { isPortalDemoEnabled, isSupabaseConfigured, isSupabaseServiceConfigured } from "@/lib/supabase/config";
 
 export async function GET() {
   const databaseUri = resolveDatabaseUri();
@@ -51,5 +52,11 @@ export async function GET() {
       ...launchBrandConfigured(),
       photosStaging: photosAreStaging(),
     },
+    supabase: {
+      authConfigured: isSupabaseConfigured(),
+      serviceConfigured: isSupabaseServiceConfigured(),
+      portalDemo: isPortalDemoEnabled(),
+    },
+    maintenanceMode: process.env.MAINTENANCE_MODE === "true",
   });
 }

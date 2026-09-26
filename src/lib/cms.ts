@@ -440,6 +440,62 @@ export async function getTestimonials(locale: Locale): Promise<TestimonialData[]
   return result.ok ? result.data : [];
 }
 
+export type PricingRateData = {
+  id: string;
+  serviceTitle: string;
+  locationLabel: string;
+  weekdayRate?: string;
+  weekendRate?: string;
+  holidayRate?: string;
+  overnightRate?: string;
+  minimumVisit?: string;
+  notes?: string;
+};
+
+export async function getPricingRates(locale: Locale): Promise<PricingRateData[]> {
+  const result = await safePayload(async () => {
+    const payload = await getPayloadClient();
+    const { docs } = await payload.find({
+      collection: "pricing-rates",
+      locale,
+      where: { published: { equals: true } },
+      limit: 50,
+      depth: 2,
+    });
+
+    return docs.map((doc) => {
+      const service = doc.service;
+      const province = doc.province;
+      const city = doc.city;
+      const serviceTitle =
+        typeof service === "object" && service && "title" in service
+          ? String(service.title)
+          : "Service";
+      const provinceName =
+        typeof province === "object" && province && "name" in province
+          ? String(province.name)
+          : "";
+      const cityName =
+        typeof city === "object" && city && "name" in city ? String(city.name) : "";
+      const locationLabel = [cityName, provinceName].filter(Boolean).join(", ") || provinceName;
+
+      return {
+        id: String(doc.id),
+        serviceTitle,
+        locationLabel,
+        weekdayRate: doc.weekdayRate ? String(doc.weekdayRate) : undefined,
+        weekendRate: doc.weekendRate ? String(doc.weekendRate) : undefined,
+        holidayRate: doc.holidayRate ? String(doc.holidayRate) : undefined,
+        overnightRate: doc.overnightRate ? String(doc.overnightRate) : undefined,
+        minimumVisit: doc.minimumVisit ? String(doc.minimumVisit) : undefined,
+        notes: doc.notes ? String(doc.notes) : undefined,
+      };
+    });
+  });
+
+  return result.ok ? result.data : [];
+}
+
 export async function getFaqs(locale: Locale, category?: string): Promise<FaqData[]> {
   const result = await safePayload(async () => {
     const payload = await getPayloadClient();

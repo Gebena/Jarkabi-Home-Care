@@ -1,6 +1,7 @@
 import { sendCareTeamEmail } from "@/lib/email";
 import { getPayloadClient } from "@/lib/payload";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { mirrorFormSubmission } from "@/lib/supabase/forms";
 import { jobApplicationSchema } from "@/lib/validations/forms";
 import { NextResponse } from "next/server";
 
@@ -67,6 +68,13 @@ export async function POST(request: Request) {
         resume: resumeId,
         status: "new",
       },
+    });
+
+    await mirrorFormSubmission({
+      formType: "job_application",
+      locale: data.locale,
+      sourceIp: ip,
+      payload: { ...data, resumeUploaded: Boolean(resumeId) },
     });
 
     await sendCareTeamEmail({

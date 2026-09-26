@@ -1,6 +1,7 @@
 import { sendCareTeamEmail } from "@/lib/email";
 import { getPayloadClient } from "@/lib/payload";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { mirrorFormSubmission } from "@/lib/supabase/forms";
 import { careRequestSchema } from "@/lib/validations/forms";
 import { NextResponse } from "next/server";
 
@@ -49,6 +50,13 @@ export async function POST(request: Request) {
         areaServed: Boolean(data.areaServed),
         status: "new",
       },
+    });
+
+    await mirrorFormSubmission({
+      formType: "care_request",
+      locale: data.locale,
+      sourceIp: ip,
+      payload: data as unknown as Record<string, unknown>,
     });
 
     await sendCareTeamEmail({

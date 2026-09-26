@@ -16,7 +16,7 @@ describe("locale strategy", () => {
   });
 
   it("treats community locales as partial", () => {
-    expect(partialLocales).toEqual(["ti", "byn", "tig", "ar", "am"]);
+    expect(partialLocales).toEqual(["ti", "byn", "tig", "ar", "am", "zh", "pa", "es"]);
     expect(isPartialLocale("ar")).toBe(true);
     expect(isPartialLocale("en")).toBe(false);
   });

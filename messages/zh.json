@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "siteName": "Jarkabi Home Care"
+  },
+  "localeBanner": {
+    "title": "翻译进行中",
+    "body": "您正在浏览 Jarkabi Home Care 的{language}版本。部分内容为英文，我们正在完成专业翻译。",
+    "switchFull": "查看完整网站："
+  },
+  "homePage": {
+    "metaTitle": "Jarkabi Home Care | 渥太华居家护理",
+    "metaDescription": "渥太华 compassionate 居家护理与护理服务。"
+  }
+}

@@ -6,7 +6,7 @@ export const fullLocales = ["en", "fr"] as const satisfies readonly Locale[];
 export type FullLocale = (typeof fullLocales)[number];
 
 /** Community locales with partial message files — English fills gaps via `i18n/request.ts`. */
-export const partialLocales = ["ti", "byn", "tig", "ar", "am"] as const satisfies readonly Locale[];
+export const partialLocales = ["ti", "byn", "tig", "ar", "am", "zh", "pa", "es"] as const satisfies readonly Locale[];
 
 export type PartialLocale = (typeof partialLocales)[number];
 

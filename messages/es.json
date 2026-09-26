@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "siteName": "Jarkabi Home Care"
+  },
+  "localeBanner": {
+    "title": "Traducción en curso",
+    "body": "Está viendo la versión en {language} de Jarkabi Home Care. Algunas secciones pueden aparecer en inglés mientras completamos la traducción profesional.",
+    "switchFull": "Ver el sitio completo:"
+  },
+  "homePage": {
+    "metaTitle": "Jarkabi Home Care | Cuidado en el hogar en Ottawa",
+    "metaDescription": "Servicios compasivos de cuidado en el hogar y enfermería en Ottawa."
+  }
+}
