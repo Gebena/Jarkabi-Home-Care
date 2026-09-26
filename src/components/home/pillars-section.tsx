@@ -1,4 +1,4 @@
-import { caregiverImage } from "@/lib/caregiver-assets";
+import { caregiverPillarImages } from "@/lib/caregiver-assets";
 import { careGiverServiceMenu } from "@/lib/service-menu";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -8,12 +8,6 @@ import Link from "next/link";
 type PillarsSectionProps = {
   locale: string;
 };
-
-const pillarPhotos = [
-  caregiverImage("resource/service-1.jpg"),
-  caregiverImage("resource/service-2.jpg"),
-  caregiverImage("resource/service-3.jpg"),
-];
 
 const pillarLinks = [
   careGiverServiceMenu[0].slug,
@@ -29,8 +23,8 @@ const pillarOverlays = [
 
 /**
  * Care Giver `service-block` Enrich / Empower / Engage — full-bleed photos with
- * demo-exact colour washes. Default: centred title + body on all three; hover
- * reveals the pill CTA only (matches `index.html` / `style.css`).
+ * colour washes. Title and body stay visible on all three; the pill CTA appears
+ * on hover/focus (demo uses visibility on `.link-box`).
  */
 export function PillarsSection({ locale }: PillarsSectionProps) {
   const t = useTranslations("pillars");
@@ -55,7 +49,7 @@ export function PillarsSection({ locale }: PillarsSectionProps) {
             className="group relative isolate min-h-[18.5rem] overflow-hidden text-center sm:min-h-[20rem] lg:min-h-[22rem]"
           >
             <Image
-              src={pillarPhotos[i]}
+              src={caregiverPillarImages[i]}
               alt=""
               aria-hidden="true"
               fill
@@ -68,16 +62,14 @@ export function PillarsSection({ locale }: PillarsSectionProps) {
               style={{ backgroundColor: pillarOverlays[i] }}
             />
 
-            <div className="relative flex min-h-[18.5rem] items-center justify-center px-8 py-14 sm:min-h-[20rem] lg:min-h-[22rem]">
-              <div className="relative w-full max-w-xs pb-0 transition-[padding] duration-500 motion-safe:group-hover:pb-10 motion-safe:group-focus-within:pb-10">
+            <div className="relative flex min-h-[18.5rem] flex-col items-center justify-center px-8 py-12 sm:min-h-[20rem] lg:min-h-[22rem]">
+              <div className="flex w-full max-w-xs flex-col items-center">
                 <h3 className="font-display text-[2rem] font-bold leading-tight text-white sm:text-[2.35rem] lg:text-[2.5rem]">
                   {pillar.title}
                 </h3>
-                <p className="mx-auto mt-2.5 text-base leading-relaxed text-white">
-                  {pillar.body}
-                </p>
+                <p className="mt-3 text-base leading-relaxed text-white">{pillar.body}</p>
 
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 invisible opacity-0 transition-opacity duration-500 motion-safe:group-hover:pointer-events-auto motion-safe:group-hover:visible motion-safe:group-hover:opacity-100 motion-safe:group-focus-within:pointer-events-auto motion-safe:group-focus-within:visible motion-safe:group-focus-within:opacity-100">
+                <div className="mt-6 max-h-0 overflow-hidden opacity-0 transition-all duration-500 motion-safe:group-hover:max-h-16 motion-safe:group-hover:opacity-100 motion-safe:group-focus-within:max-h-16 motion-safe:group-focus-within:opacity-100">
                   <Link
                     href={`/${locale}/services/${pillarLinks[i]}`}
                     className="inline-flex items-center gap-2 rounded-full bg-plum-footer px-6 py-2.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"

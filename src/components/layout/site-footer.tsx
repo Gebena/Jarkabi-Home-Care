@@ -1,10 +1,11 @@
 import type { BrandData, ProvinceData } from "@/lib/cms";
 import { hasRealAddress, telHref } from "@/lib/brand-nap";
 import { secondaryNav } from "@/lib/nav-config";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { BrandWordmark } from "./brand-wordmark";
+import { NewsletterSignup } from "./newsletter-signup";
 
 type SiteFooterProps = {
   locale: string;
@@ -154,20 +155,7 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           ) : null}
         </div>
 
-        <div>
-          <h2 className="font-display text-lg text-white">{t("appointment")}</h2>
-          <span aria-hidden="true" className="mt-3 block h-0.5 w-9 bg-tan" />
-          <p className="mt-5 text-sm leading-relaxed text-white/70">{t("coverageNote")}</p>
-          <p className="mt-3 text-sm leading-relaxed text-white/70">{brand.businessHours}</p>
-
-          <Link
-            href={`${base}/contact`}
-            className="mt-6 inline-flex items-center gap-2 bg-tan px-7 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan"
-          >
-            {nav("requestCare")}
-            <ArrowRight size={14} aria-hidden="true" />
-          </Link>
-        </div>
+        <NewsletterSignup locale={locale} />
       </div>
 
       <div className="border-t border-white/10">

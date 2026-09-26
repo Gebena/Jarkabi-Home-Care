@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { BrandWordmark } from "./brand-wordmark";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
+import { SiteHeaderTop } from "./site-header-top";
 
 type SiteHeaderProps = {
   locale: string;
@@ -45,11 +46,14 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
 
       <header
         className={cn(
-          "sticky top-0 z-[100] overflow-visible border-b border-line/70 bg-white transition-shadow duration-300",
+          "sticky top-0 z-[100] overflow-visible bg-white transition-shadow duration-300",
           scrolled && "shadow-[0_2px_18px_rgba(67,38,58,0.10)]",
         )}
       >
-        <div className="mx-auto flex h-[4.75rem] w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4 lg:h-[5.25rem]">
+        <SiteHeaderTop locale={locale} brand={brand} />
+
+        <div className="border-b border-line/70">
+          <div className="mx-auto flex h-[4.75rem] w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4 lg:h-[5.25rem]">
           <Link href={base} aria-label="Jarkabi Home Care — home">
             <BrandWordmark size="md" />
           </Link>
@@ -68,15 +72,17 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
               <Search size={17} aria-hidden="true" />
             </button>
 
-            <LocaleSwitcher />
+            <div className="md:hidden">
+              <LocaleSwitcher />
+            </div>
 
             {phoneLink ? (
               <a
                 href={phoneLink}
-                className="hidden items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink lg:flex"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink md:hidden"
               >
                 <Phone size={15} aria-hidden="true" />
-                <span>{brand.primaryPhone}</span>
+                <span className="sr-only">{t("callUs")}</span>
               </a>
             ) : null}
 
@@ -84,11 +90,12 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
               href={`${base}/contact`}
               className="hidden whitespace-nowrap bg-tan px-6 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum md:inline-block"
             >
-              {t("requestCare")}
+              {t("askQuestion")}
             </Link>
 
             <MobileNav locale={locale} />
           </div>
+        </div>
         </div>
       </header>
 

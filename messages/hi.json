@@ -5,7 +5,12 @@
   },
   "topbar": {
     "tagline": "Compassionate home care for Ottawa families",
-    "cta": "Free Consultation"
+    "cta": "Free Consultation",
+    "needHelp": "Need help? Call Us Now :",
+    "ourStory": "Our Story",
+    "newsArticles": "News & Articles",
+    "franchiseOpportunity": "Franchise Opportunity",
+    "utilityNav": "Utility links"
   },
   "nav": {
     "home": "होम",
@@ -33,6 +38,7 @@
     "careers": "करियर",
     "contact": "संपर्क",
     "requestCare": "देखभाल का अनुरोध",
+    "askQuestion": "Ask a Question",
     "contactUs": "Contact Us",
     "callUs": "Call Us",
     "search": "Search",
@@ -441,6 +447,13 @@
     "contact": "Contact",
     "referrals": "Professional referrals",
     "appointment": "Get Appointment",
+    "newsletterTitle": "Newsletter",
+    "newsletterLead": "Get Special offers & Discounts",
+    "newsletterPlaceholder": "Enter your email address",
+    "newsletterSubscribe": "Subscribe",
+    "newsletterSubmitting": "Subscribing…",
+    "newsletterSuccess": "Thank you — you are subscribed.",
+    "newsletterError": "Something went wrong. Please try again.",
     "followUs": "Follow us",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",

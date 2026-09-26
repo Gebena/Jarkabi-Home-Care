@@ -27,6 +27,13 @@ export function caregiverImage(path: string): string {
   return `${BASE}/${path.replace(/^\//, "")}`;
 }
 
+/** Enrich / Empower / Engage pillar photography (replaces grey template placeholders). */
+export const caregiverPillarImages = [
+  "/images/photography/jarkabi-pillar-enrich.webp",
+  "/images/photography/jarkabi-pillar-empower.webp",
+  "/images/photography/jarkabi-pillar-engage.webp",
+] as const;
+
 /** Hero slider backgrounds — Care Giver `index.html` main slider. */
 export const caregiverHeroSlides = [
   caregiverImage("main-slider/1.jpg"),

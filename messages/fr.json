@@ -2,6 +2,15 @@
   "meta": {
     "siteName": "Jarkabi Home Care"
   },
+  "topbar": {
+    "tagline": "Soins à domicile compatissants pour les familles d'Ottawa",
+    "cta": "Consultation gratuite",
+    "needHelp": "Besoin d'aide? Appelez-nous :",
+    "ourStory": "Notre histoire",
+    "newsArticles": "Nouvelles et articles",
+    "franchiseOpportunity": "Opportunité de franchise",
+    "utilityNav": "Liens utilitaires"
+  },
   "nav": {
     "home": "Accueil",
     "pages": "Pages",
@@ -26,6 +35,7 @@
     "careers": "Carrières",
     "contact": "Contact",
     "requestCare": "Demander des soins",
+    "askQuestion": "Poser une question",
     "callUs": "Nous appeler",
     "contactUs": "Nous contacter",
     "search": "Rechercher",
@@ -339,6 +349,13 @@
     "terms": "Conditions d'utilisation",
     "contact": "Contact",
     "appointment": "Prendre rendez-vous",
+    "newsletterTitle": "Infolettre",
+    "newsletterLead": "Offres spéciales et rabais",
+    "newsletterPlaceholder": "Entrez votre adresse courriel",
+    "newsletterSubscribe": "S'abonner",
+    "newsletterSubmitting": "Abonnement…",
+    "newsletterSuccess": "Merci — vous êtes abonné.",
+    "newsletterError": "Une erreur s'est produite. Veuillez réessayer.",
     "hoursLabel": "Heures d’ouverture"
   },
   "form": {
