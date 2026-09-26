@@ -293,6 +293,14 @@ a { color: inherit; text-decoration: none; }
   max-width: 9.5rem;
   cursor: pointer;
 }
+.locale-switcher--overlay {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+.locale-select--overlay {
+  color: rgba(255, 255, 255, 0.92);
+}
 .partial-locale-banner a:focus-visible {
   outline: 2px solid var(--cg-tan-ink);
   outline-offset: 2px;

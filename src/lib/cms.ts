@@ -1,4 +1,5 @@
 import { defaultBrand, defaultServices, provincesSeed } from "@/lib/brand";
+import { applyLaunchBrandOverrides } from "@/lib/launch-brand";
 import { getPayloadClient } from "@/lib/payload";
 import type { Locale } from "@/i18n/routing";
 import type { ServiceCategory } from "@/lib/services-config";
@@ -64,7 +65,7 @@ export async function getBrand(locale: Locale): Promise<BrandData> {
   const result = await safePayload(async () => {
     const payload = await getPayloadClient();
     const brand = await payload.findGlobal({ slug: "brand-settings", locale });
-    return {
+    return applyLaunchBrandOverrides({
       agencyName: brand.agencyName || defaultBrand.agencyName,
       tagline: brand.tagline || defaultBrand.tagline,
       primaryPhone: brand.primaryPhone || defaultBrand.primaryPhone,
@@ -73,10 +74,10 @@ export async function getBrand(locale: Locale): Promise<BrandData> {
       websiteUrl: brand.websiteUrl || defaultBrand.websiteUrl,
       businessHours: brand.businessHours || defaultBrand.businessHours,
       ottawaOfficeAddress: brand.ottawaOfficeAddress || defaultBrand.ottawaOfficeAddress,
-    };
+    });
   });
 
-  if (!result.ok) return { ...defaultBrand };
+  if (!result.ok) return applyLaunchBrandOverrides({ ...defaultBrand });
   return result.data;
 }
 

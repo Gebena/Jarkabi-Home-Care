@@ -2,10 +2,11 @@
 
 import { fullLocales, partialLocales } from "@/lib/locale-strategy";
 import { localeLabels, type Locale } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 
-export function LocaleSwitcher() {
+export function LocaleSwitcher({ overlay = false }: { overlay?: boolean }) {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
@@ -18,13 +19,17 @@ export function LocaleSwitcher() {
   }
 
   return (
-    <div className="locale-switcher" role="group" aria-label={t("ariaLabel")}>
+    <div
+      className={cn("locale-switcher", overlay && "locale-switcher--overlay")}
+      role="group"
+      aria-label={t("ariaLabel")}
+    >
       <select
         value={locale}
         onChange={(event) => switchLocale(event.target.value)}
         aria-label={t("ariaLabel")}
         aria-describedby="locale-switcher-hint"
-        className="locale-select"
+        className={overlay ? "locale-select locale-select--overlay" : "locale-select"}
       >
         <optgroup label={t("fullSite")}>
           {fullLocales.map((code) => (

@@ -3,8 +3,9 @@
 import { HeaderLocationSelector } from "@/components/layout/header-location-selector";
 import { MainNavDropdown } from "@/components/layout/main-nav-dropdown";
 import { SearchModal } from "@/components/ui/search-modal";
-import { isDisplayablePhone } from "@/lib/brand";
+import { isDisplayablePhone, napDisplayValue } from "@/lib/brand";
 import type { BrandData, ProvinceData } from "@/lib/cms";
+import { isHomePath } from "@/lib/header-overlay";
 import { aboutSubNav, mainNav, navDropdownKeys } from "@/lib/nav-config";
 import { cn } from "@/lib/utils";
 import { Phone, Search } from "lucide-react";
@@ -30,7 +31,10 @@ function isAboutNavActive(base: string, pathname: string) {
   );
 }
 
-/** Care Giver Home Page 01 header: white, sticky, serif wordmark, inline nav, tan CTA. */
+/**
+ * Care Giver Home Page 01 header: transparent over the homepage hero, solid white
+ * with shadow on scroll and on inner pages.
+ */
 export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
   const t = useTranslations("nav");
   const pathname = usePathname();
@@ -38,8 +42,10 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const base = `/${locale}`;
+  const isHome = isHomePath(pathname, locale);
+  const overlay = isHome && !scrolled;
   const hasPhone = isDisplayablePhone(brand.primaryPhone);
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const phoneDigits = napDisplayValue(brand.primaryPhone).replace(/\D/g, "");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -47,6 +53,18 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinkClass = (active: boolean) =>
+    cn(
+      "whitespace-nowrap text-[0.9rem] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
+      overlay
+        ? active
+          ? "text-tan hover:text-tan-light"
+          : "text-white/92 hover:text-tan-light"
+        : active
+          ? "text-coral"
+          : "text-ink hover:text-coral",
+    );
 
   return (
     <>
@@ -59,13 +77,18 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
 
       <header
         className={cn(
-          "sticky top-0 z-50 border-b border-line/70 bg-white transition-shadow duration-300",
-          scrolled && "shadow-[0_2px_18px_rgba(67,38,58,0.10)]",
+          "sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
+          overlay
+            ? "border-b border-transparent bg-transparent"
+            : cn(
+                "border-b border-line/70 bg-white",
+                scrolled && "shadow-[0_2px_18px_rgba(67,38,58,0.10)]",
+              ),
         )}
       >
         <div className="mx-auto flex h-[4.75rem] w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4 lg:h-[5.25rem]">
           <Link href={base} aria-label="Jarkabi Home Care — home">
-            <BrandWordmark size="md" />
+            <BrandWordmark size="md" tone={overlay ? "light" : "dark"} />
           </Link>
 
           <nav className="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main">
@@ -81,6 +104,7 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
                     pathname={pathname}
                     translate={t}
                     isActive={isAboutNavActive(base, pathname)}
+                    overlay={overlay}
                   />
                 );
               }
@@ -96,17 +120,14 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
                   key={item.key}
                   href={href}
                   aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "whitespace-nowrap text-[0.9rem] font-semibold transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
-                    active ? "text-coral" : "text-ink",
-                  )}
+                  className={navLinkClass(active)}
                 >
                   {t(item.key)}
                 </Link>
               );
             })}
 
-            <HeaderLocationSelector locale={locale} provinces={provinces} />
+            <HeaderLocationSelector locale={locale} provinces={provinces} overlay={overlay} />
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -114,22 +135,30 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
               type="button"
               aria-label={t("search")}
               onClick={() => setSearchOpen(true)}
-              className="hidden h-9 w-9 place-items-center rounded-sm border border-line text-ink transition-colors hover:border-tan hover:text-tan-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink sm:grid"
+              className={cn(
+                "hidden h-9 w-9 place-items-center rounded-sm border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink sm:grid",
+                overlay
+                  ? "border-white/40 text-white hover:border-white hover:text-tan-light"
+                  : "border-line text-ink hover:border-tan hover:text-tan-ink",
+              )}
             >
               <Search size={17} aria-hidden="true" />
             </button>
 
-            <TextSizeControl className="hidden xl:flex" />
+            <TextSizeControl className="hidden xl:flex" overlay={overlay} />
 
-            <LocaleSwitcher />
+            <LocaleSwitcher overlay={overlay} />
 
             {hasPhone ? (
               <a
                 href={`tel:${phoneDigits}`}
-                className="hidden items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink lg:flex"
+                className={cn(
+                  "hidden items-center gap-2 text-sm font-semibold transition-colors lg:flex",
+                  overlay ? "text-white hover:text-tan-light" : "text-plum hover:text-tan-ink",
+                )}
               >
                 <Phone size={15} aria-hidden="true" />
-                <span>{brand.primaryPhone}</span>
+                <span>{napDisplayValue(brand.primaryPhone)}</span>
               </a>
             ) : null}
 
@@ -140,7 +169,7 @@ export function SiteHeader({ locale, brand, provinces }: SiteHeaderProps) {
               {t("requestCare")}
             </Link>
 
-            <MobileNav locale={locale} provinces={provinces} />
+            <MobileNav locale={locale} provinces={provinces} overlay={overlay} />
           </div>
         </div>
       </header>

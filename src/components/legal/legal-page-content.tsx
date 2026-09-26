@@ -1,10 +1,10 @@
 import { PageHero } from "@/components/layout/page-hero";
-import { DraftNotice } from "@/components/ui/draft-notice";
 import { PageSection } from "@/components/ui/page-section";
 import type { Locale } from "@/i18n/routing";
 import { defaultBrand } from "@/lib/brand";
 import { getLegalPage } from "@/lib/cms";
 import { LEGAL_PAGES, type LegalPageSlug } from "@/lib/legal-pages";
+import { lexicalToParagraphs } from "@/lib/rich-text";
 import { Check, CircleAlert } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -21,7 +21,7 @@ export async function LegalPageContent({ locale, slug }: LegalPageContentProps) 
 
   const footerTitle = tFooter(config.footerKey);
   const title = legal?.title ? String(legal.title) : footerTitle;
-  const showDraftNotice = legal?.reviewRequired !== false;
+  const cmsParagraphs = legal?.body ? lexicalToParagraphs(legal.body) : [];
 
   if (config.variant === "accessibility") {
     const done = t.raw("accessibilityDone") as string[];
@@ -38,7 +38,15 @@ export async function LegalPageContent({ locale, slug }: LegalPageContentProps) 
 
         <PageSection>
           <div className="mx-auto max-w-3xl">
-            <p className="text-base leading-relaxed text-body">{t("accessibilityIntro")}</p>
+            {cmsParagraphs.length > 0 ? (
+              cmsParagraphs.map((paragraph) => (
+                <p key={paragraph} className="text-base leading-relaxed text-body">
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              <p className="text-base leading-relaxed text-body">{t("accessibilityIntro")}</p>
+            )}
 
             <h2 className="mt-12 font-display text-xl text-ink">{t("accessibilityDoneTitle")}</h2>
             <ul className="mt-5 space-y-3">
@@ -88,16 +96,20 @@ export async function LegalPageContent({ locale, slug }: LegalPageContentProps) 
   }
 
   const lead = t(`${config.i18nKey}Lead` as "privacyLead");
-  const body = t(`${config.i18nKey}Body` as "privacyBody");
+  const fallbackBody = t(`${config.i18nKey}Body` as "privacyBody");
+  const paragraphs = cmsParagraphs.length > 0 ? cmsParagraphs : [fallbackBody];
 
   return (
     <>
       <PageHero locale={locale} title={title} lead={lead} crumbLabel={footerTitle} />
 
       <PageSection>
-        <div className="mx-auto max-w-3xl">
-          {showDraftNotice ? <DraftNotice>{t("draftNotice")}</DraftNotice> : null}
-          <p className="mt-8 text-base leading-relaxed text-body">{body}</p>
+        <div className="mx-auto max-w-3xl space-y-6">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph} className="text-base leading-relaxed text-body">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </PageSection>
     </>

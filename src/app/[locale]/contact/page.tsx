@@ -3,7 +3,8 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { PageHero } from "@/components/layout/page-hero";
 import { PageSection } from "@/components/ui/page-section";
 import { SectionTitle } from "@/components/ui/section-title";
-import { isBrandPlaceholder, isDisplayablePhone } from "@/lib/brand";
+import { NapEmptySlot } from "@/components/ui/nap-empty-slot";
+import { hasNapValue, isDisplayablePhone, napDisplayValue } from "@/lib/brand";
 import { getBrand } from "@/lib/cms";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo";
@@ -30,22 +31,25 @@ export default async function ContactPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "contactPage" });
   const brand = await getBrand(locale as Locale);
 
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const phoneDigits = napDisplayValue(brand.primaryPhone).replace(/\D/g, "");
+  const showPhone = isDisplayablePhone(brand.primaryPhone);
+  const showAddress = hasNapValue(brand.ottawaOfficeAddress);
+
   const details = [
     { icon: Mail, label: t("emailLabel"), value: brand.email, href: `mailto:${brand.email}` },
-    ...(isDisplayablePhone(brand.primaryPhone)
-      ? [
-          {
-            icon: Phone,
-            label: t("phoneLabel"),
-            value: brand.primaryPhone,
-            href: `tel:${phoneDigits}`,
-          },
-        ]
-      : []),
-    ...(!isBrandPlaceholder(brand.ottawaOfficeAddress)
-      ? [{ icon: MapPin, label: t("officeLabel"), value: brand.ottawaOfficeAddress }]
-      : []),
+    {
+      icon: Phone,
+      label: t("phoneLabel"),
+      value: showPhone ? napDisplayValue(brand.primaryPhone) : null,
+      href: showPhone ? `tel:${phoneDigits}` : undefined,
+      emptyLabel: t("phonePending"),
+    },
+    {
+      icon: MapPin,
+      label: t("officeLabel"),
+      value: showAddress ? napDisplayValue(brand.ottawaOfficeAddress) : null,
+      emptyLabel: t("addressPending"),
+    },
     { icon: Clock, label: t("hoursLabel"), value: brand.businessHours },
   ];
 
@@ -61,7 +65,7 @@ export default async function ContactPage({ params }: Props) {
 
       <PageSection>
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {details.map(({ icon: Icon, label, value, href }) => (
+          {details.map(({ icon: Icon, label, value, href, emptyLabel }) => (
             <li key={label} className="border border-line p-7">
               <span
                 aria-hidden="true"
@@ -72,16 +76,22 @@ export default async function ContactPage({ params }: Props) {
               <h2 className="mt-5 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-tan-ink">
                 {label}
               </h2>
-              {href ? (
-                <a
-                  href={href}
-                  className="mt-2 block text-base break-words text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
-                >
-                  {value}
-                </a>
-              ) : (
-                <p className="mt-2 text-base break-words text-ink">{value}</p>
-              )}
+              {value ? (
+                href ? (
+                  <a
+                    href={href}
+                    className="mt-2 block text-base break-words text-ink transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <p className="mt-2 text-base break-words text-ink">{value}</p>
+                )
+              ) : emptyLabel ? (
+                <div className="mt-2">
+                  <NapEmptySlot label={emptyLabel} />
+                </div>
+              ) : null}
             </li>
           ))}
         </ul>

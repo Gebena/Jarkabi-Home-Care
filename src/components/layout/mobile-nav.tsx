@@ -22,9 +22,10 @@ import { BrandWordmark } from "./brand-wordmark";
 type MobileNavProps = {
   locale: string;
   provinces: ProvinceData[];
+  overlay?: boolean;
 };
 
-export function MobileNav({ locale, provinces }: MobileNavProps) {
+export function MobileNav({ locale, provinces, overlay = false }: MobileNavProps) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const router = useRouter();
@@ -56,7 +57,12 @@ export function MobileNav({ locale, provinces }: MobileNavProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="h-9 w-9 rounded-sm border border-line text-ink"
+              className={cn(
+                "h-9 w-9 rounded-sm border",
+                overlay
+                  ? "border-white/40 text-white hover:border-white"
+                  : "border-line text-ink",
+              )}
               aria-label={t("openMenu")}
             />
           }

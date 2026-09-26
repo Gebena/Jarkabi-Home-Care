@@ -1,5 +1,7 @@
 import type { Payload } from "payload";
-import { defaultBrand, defaultServices, ottawaCities, provincesSeed } from "@/lib/brand";
+import { defaultServices, ottawaCities, provincesSeed } from "@/lib/brand";
+import { launchBrandSeedDefaults } from "@/lib/launch-brand";
+import { textToLexical } from "@/lib/lexical-seed";
 
 export async function seedDatabase(payload: Payload) {
   const { totalDocs: provinceCount } = await payload.count({
@@ -29,17 +31,18 @@ export async function seedDatabase(payload: Payload) {
     }
   }
 
+  const brand = launchBrandSeedDefaults();
   await payload.updateGlobal({
     slug: "brand-settings",
     data: {
-      agencyName: "Jarkabi Home Care",
-      tagline: "Exceptional Care. Right at Home.",
-      email: "care@jarkabi.ca",
-      websiteUrl: "https://jarkabi.ca",
-      primaryPhone: "[PRIMARY PHONE]",
-      tollFreePhone: "[TOLL-FREE PHONE]",
-      businessHours: defaultBrand.businessHours,
-      ottawaOfficeAddress: "[OTTAWA OFFICE ADDRESS]",
+      agencyName: brand.agencyName,
+      tagline: brand.tagline,
+      email: brand.email,
+      websiteUrl: brand.websiteUrl,
+      primaryPhone: brand.primaryPhone,
+      tollFreePhone: brand.tollFreePhone,
+      businessHours: brand.businessHours,
+      ottawaOfficeAddress: brand.ottawaOfficeAddress,
     },
   });
 
@@ -169,15 +172,51 @@ export async function seedDatabase(payload: Payload) {
   });
 
   const legalPageSeeds = [
-    { title: "Privacy Policy", slug: "privacy" },
-    { title: "Terms of Use", slug: "terms" },
-    { title: "Accessibility", slug: "accessibility" },
-    { title: "Cookie Policy", slug: "cookies" },
-    { title: "Consent Information", slug: "consent" },
-    { title: "Care Service Disclaimer", slug: "care-disclaimer" },
-    { title: "Employment Privacy Notice", slug: "employment-privacy" },
-    { title: "Referral Privacy Notice", slug: "referral-privacy" },
-    { title: "Feedback & Complaints Policy", slug: "feedback-policy" },
+    {
+      title: "Privacy Policy",
+      slug: "privacy",
+      body: "Our privacy practices are built around Canada's federal private-sector privacy law and the provincial health-information legislation that applies wherever we operate. Contact our care team with any question about how your information is handled.",
+    },
+    {
+      title: "Terms of Use",
+      slug: "terms",
+      body: "Nothing on this website is medical advice, and the information here does not create a care relationship. Service availability differs by province and city, and only the communities listed as active on our locations page are served today.",
+    },
+    {
+      title: "Accessibility",
+      slug: "accessibility",
+      body: "Jarkabi Home Care aims to meet WCAG 2.1 Level AA across this website. Accessibility matters more than usual here: many of our visitors are older adults, people with low vision, or families reading on a phone in a hospital corridor.",
+    },
+    {
+      title: "Cookie Policy",
+      slug: "cookies",
+      body: "We use essential cookies to keep the site secure and working. Analytics or preference cookies, if added later, will be described here and managed through your browser settings. We do not sell personal information collected through cookies.",
+    },
+    {
+      title: "Consent Information",
+      slug: "consent",
+      body: "Before care begins, we speak with the client or their authorized substitute decision-maker to confirm they understand the services proposed and agree to proceed. We document consent in line with applicable provincial requirements. Marketing contact is separate and always optional.",
+    },
+    {
+      title: "Care Service Disclaimer",
+      slug: "care-disclaimer",
+      body: "Information on this website is general in nature and is not medical advice, diagnosis or treatment. Only a qualified healthcare provider who knows the individual's situation can give clinical guidance. Emergency symptoms require calling 911 or going to the nearest emergency department.",
+    },
+    {
+      title: "Employment Privacy Notice",
+      slug: "employment-privacy",
+      body: "Application materials are used only to assess suitability for roles with Jarkabi Home Care, conduct reference and background checks where permitted, and communicate about hiring. We retain records according to our retention schedule and applicable employment and privacy law.",
+    },
+    {
+      title: "Referral Privacy Notice",
+      slug: "referral-privacy",
+      body: "Referral information is shared only with staff who need it to respond to the referral, coordinate care, or meet legal obligations. We confirm client consent before collecting further clinical detail. Referrers should not send more identifying information than needed to start the conversation.",
+    },
+    {
+      title: "Feedback & Complaints Policy",
+      slug: "feedback-policy",
+      body: "We welcome feedback by phone, email or our online form. Concerns are logged, reviewed by appropriate leadership, and answered within a reasonable timeframe. Serious clinical or safety issues are escalated immediately. This policy does not replace regulatory complaint processes available in your province.",
+    },
   ] as const;
 
   for (const page of legalPageSeeds) {
@@ -186,8 +225,9 @@ export async function seedDatabase(payload: Payload) {
       data: {
         title: page.title,
         slug: page.slug,
-        published: false,
-        reviewRequired: true,
+        body: textToLexical(page.body),
+        published: true,
+        reviewRequired: false,
       },
     });
   }

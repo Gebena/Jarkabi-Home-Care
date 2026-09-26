@@ -4,6 +4,8 @@ import {
   isPostgresUri,
   resolveDatabaseUri,
 } from "@/lib/database-uri";
+import { launchBrandConfigured } from "@/lib/launch-brand";
+import { photosAreStaging } from "@/lib/site-photos";
 
 export async function GET() {
   const databaseUri = resolveDatabaseUri();
@@ -45,5 +47,9 @@ export async function GET() {
     databaseDiagnostics,
     payloadSecret: hasSecret,
     siteUrl,
+    launch: {
+      ...launchBrandConfigured(),
+      photosStaging: photosAreStaging(),
+    },
   });
 }

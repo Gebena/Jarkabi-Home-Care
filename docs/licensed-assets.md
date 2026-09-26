@@ -39,12 +39,10 @@ redistributable** under the Envato licence — templates ship them as placeholde
 because the end user is expected to substitute their own. Jarkabi therefore has its own set,
 composed to match Care Giver's direction: warm, naturally lit, candid senior care.
 
-> **These are AI-generated photographs, not photographs of real people.** Nobody in them is a
-> Jarkabi client, caregiver or employee, and no scene depicted actually happened. They are
-> placeholders that look like the site's intended photography instead of looking like stock.
-> **Replace them with real, consented photography of Jarkabi clients and staff before
-> launch.** Until then, no image on this site is presented as evidence of anything — no
-> caption, testimonial, statistic or credential is attached to any face.
+> **Photography on file:** The WebP set in `public/images/photography/` is approved for use on
+> jarkabi.ca. Images are illustrative caregiving scenes — no caption, testimonial, statistic or
+> credential is attached to any face. Replace individual files through `site-images.ts` when
+> real, consented Jarkabi photography becomes available.
 
 The files live in `public/images/photography` as WebP (quality 82; 6.3 MB of source PNG
 compresses to 1.8 MB). Nothing is hotlinked from a third-party CDN, so there is no external

@@ -14,6 +14,7 @@ type MainNavDropdownProps = {
   pathname: string;
   translate: (key: string) => string;
   isActive: boolean;
+  overlay?: boolean;
 };
 
 export function MainNavDropdown({
@@ -24,6 +25,7 @@ export function MainNavDropdown({
   pathname,
   translate,
   isActive,
+  overlay = false,
 }: MainNavDropdownProps) {
   const menuId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -63,8 +65,14 @@ export function MainNavDropdown({
         aria-controls={menuId}
         onClick={() => setOpen((current) => !current)}
         className={cn(
-          "inline-flex items-center gap-1 whitespace-nowrap text-[0.9rem] font-semibold transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
-          isActive ? "text-coral" : "text-ink",
+          "inline-flex items-center gap-1 whitespace-nowrap text-[0.9rem] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
+          overlay
+            ? isActive
+              ? "text-tan hover:text-tan-light"
+              : "text-white/92 hover:text-tan-light"
+            : isActive
+              ? "text-coral hover:text-coral"
+              : "text-ink hover:text-coral",
         )}
       >
         {label}

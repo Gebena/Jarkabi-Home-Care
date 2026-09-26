@@ -1,4 +1,5 @@
-import { isBrandPlaceholder, isDisplayablePhone } from "@/lib/brand";
+import { NapEmptySlot } from "@/components/ui/nap-empty-slot";
+import { hasNapValue, isDisplayablePhone, napDisplayValue } from "@/lib/brand";
 import type { BrandData } from "@/lib/cms";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -17,24 +18,24 @@ type ContactSectionProps = {
 export function ContactSection({ locale, brand }: ContactSectionProps) {
   const t = useTranslations("contactCta");
   const tFooter = useTranslations("footer");
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const phoneDigits = napDisplayValue(brand.primaryPhone).replace(/\D/g, "");
   const showPhone = isDisplayablePhone(brand.primaryPhone);
-  const showAddress = !isBrandPlaceholder(brand.ottawaOfficeAddress);
+  const showAddress = hasNapValue(brand.ottawaOfficeAddress);
 
   const rows = [
-    ...(showAddress
-      ? [{ Icon: MapPin, label: t("locationLabel"), value: brand.ottawaOfficeAddress }]
-      : []),
-    ...(showPhone
-      ? [
-          {
-            Icon: Phone,
-            label: t("phoneLabel"),
-            value: brand.primaryPhone,
-            href: `tel:${phoneDigits}`,
-          },
-        ]
-      : []),
+    {
+      Icon: MapPin,
+      label: t("locationLabel"),
+      value: showAddress ? napDisplayValue(brand.ottawaOfficeAddress) : null,
+      emptyLabel: t("addressPending"),
+    },
+    {
+      Icon: Phone,
+      label: t("phoneLabel"),
+      value: showPhone ? napDisplayValue(brand.primaryPhone) : null,
+      href: showPhone ? `tel:${phoneDigits}` : undefined,
+      emptyLabel: t("phonePending"),
+    },
     { Icon: Mail, label: t("emailLabel"), value: brand.email, href: `mailto:${brand.email}` },
     { Icon: Clock, label: tFooter("hoursLabel"), value: brand.businessHours },
   ];
@@ -58,20 +59,24 @@ export function ContactSection({ locale, brand }: ContactSectionProps) {
         </div>
 
         <dl className="grid gap-px overflow-hidden bg-white/15 sm:grid-cols-2">
-          {rows.map(({ Icon, label, value, href }) => (
+          {rows.map(({ Icon, label, value, href, emptyLabel }) => (
             <div key={label} className="bg-plum p-6">
               <dt className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-tan">
                 <Icon size={15} aria-hidden="true" />
                 {label}
               </dt>
               <dd className="mt-2 text-sm leading-relaxed text-white/85">
-                {href ? (
-                  <a href={href} className="transition-colors hover:text-tan">
-                    {value}
-                  </a>
-                ) : (
-                  value
-                )}
+                {value ? (
+                  href ? (
+                    <a href={href} className="transition-colors hover:text-tan">
+                      {value}
+                    </a>
+                  ) : (
+                    value
+                  )
+                ) : emptyLabel ? (
+                  <NapEmptySlot label={emptyLabel} inverted />
+                ) : null}
               </dd>
             </div>
           ))}

@@ -1,12 +1,14 @@
 "use client";
 
 import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
+import { isHomePath } from "@/lib/header-overlay";
 import { heroSlides } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const AUTOPLAY_MS = 7000;
@@ -19,6 +21,8 @@ const AUTOPLAY_MS = 7000;
  */
 export function HeroSection({ locale }: { locale: string }) {
   const t = useTranslations("hero");
+  const pathname = usePathname();
+  const isHome = isHomePath(pathname, locale);
   const rtl = isRtlLocale(locale);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -47,7 +51,10 @@ export function HeroSection({ locale }: { locale: string }) {
     <section
       aria-roledescription="carousel"
       aria-label={t("headline")}
-      className="relative isolate overflow-hidden bg-plum"
+      className={cn(
+        "relative isolate overflow-hidden bg-plum",
+        isHome && "-mt-[4.75rem] pt-[4.75rem] lg:-mt-[5.25rem] lg:pt-[5.25rem]",
+      )}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

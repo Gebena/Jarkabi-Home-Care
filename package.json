@@ -21,7 +21,9 @@
     "vercel:set-database-uri": "node scripts/set-vercel-database-uri.mjs",
     "sync:github": "node ../scripts/sync-jarkabi-github.mjs",
     "verify:images": "node scripts/verify-images.mjs",
-    "verify:go-live": "node scripts/verify-go-live.mjs"
+    "verify:go-live": "node scripts/verify-go-live.mjs",
+    "verify:production": "node scripts/verify-production-readiness.mjs",
+    "legal:approve": "node scripts/approve-legal-pages.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

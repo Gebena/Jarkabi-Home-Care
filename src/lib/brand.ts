@@ -8,6 +8,16 @@ export function isDisplayablePhone(phone: string): boolean {
   return phone.replace(/\D/g, "").length > 3;
 }
 
+/** Whether a NAP field has a real value (not a bracketed CMS placeholder). */
+export function hasNapValue(value: string): boolean {
+  return !isBrandPlaceholder(value) && value.trim().length > 0;
+}
+
+/** Reserved empty slot for phone/address until Jarkabi supplies values. */
+export function napDisplayValue(value: string): string {
+  return hasNapValue(value) ? value : "";
+}
+
 export const defaultBrand = {
   agencyName: "Jarkabi Home Care",
   tagline: "Exceptional Care. Right at Home.",

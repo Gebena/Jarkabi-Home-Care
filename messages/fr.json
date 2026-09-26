@@ -8,6 +8,10 @@
     "partialSite": "Langues communautaires (traduction partielle)",
     "partialHint": "Les langues communautaires peuvent afficher une partie du contenu en anglais pendant la traduction."
   },
+  "photoBanner": {
+    "title": "Avis sur la photographie",
+    "body": "Les images de ce site sont des illustrations de remplacement — ce ne sont pas des photos de clients, de soignants ou d'employés de Jarkabi. Nous les remplacerons par des photographies consenties avant le lancement."
+  },
   "localeBanner": {
     "title": "Traduction en cours",
     "body": "Vous consultez la version {language} de Jarkabi Home Care. Certaines sections s'affichent en anglais pendant la traduction professionnelle.",
@@ -205,6 +209,8 @@
     "phoneLabel": "Téléphone",
     "officeLabel": "Bureau",
     "hoursLabel": "Heures",
+    "phonePending": "Numéro de téléphone à Ottawa — à ajouter",
+    "addressPending": "Adresse du bureau à Ottawa — à ajouter",
     "requestCareLink": "Prêt à demander des soins?",
     "contactFormTitle": "Envoyez-nous un message",
     "requestCareTitle": "Demander des soins",
@@ -382,7 +388,9 @@
     "feedback": "Commentaires et préoccupations",
     "contact": "Contact",
     "appointment": "Prendre rendez-vous",
-    "hoursLabel": "Heures d’ouverture"
+    "hoursLabel": "Heures d’ouverture",
+    "phonePending": "Numéro de téléphone à Ottawa — à ajouter",
+    "addressPending": "Adresse du bureau à Ottawa — à ajouter"
   },
   "form": {
     "title": "Demander des soins",
@@ -500,6 +508,8 @@
     "emailLabel": "Courriel",
     "locationLabel": "Emplacement",
     "locationValue": "Ottawa, Ontario et environs",
+    "phonePending": "Numéro de téléphone à Ottawa — à ajouter",
+    "addressPending": "Adresse du bureau à Ottawa — à ajouter",
     "addressPlaceholder": "Votre adresse",
     "formTitle": "Réserver une consultation gratuite",
     "formSubtitle": "Dites-nous comment nous pouvons vous aider.",
@@ -787,7 +797,7 @@
       },
       {
         "question": "Quelle est la différence entre les soins publics et privés?",
-        "answer": "En Ontario, Santé Ontario à domicile organise les soins publics admissibles. Les soins privés sont payés directement ou par assurance. Beaucoup de familles combinent les deux. [REVIEW REQUIRED]"
+        "answer": "En Ontario, Santé Ontario à domicile organise le soutien à domicile financé par les fonds publics. Les soins privés sont payés directement par vous ou par votre assurance. Beaucoup de familles utilisent les deux. Il s'agit d'information générale seulement — l'admissibilité et les programmes changent; confirmez les détails auprès de l'organisme concerné ou de votre coordonnateur de soins."
       },
       {
         "question": "À quelle vitesse les soins peuvent-ils commencer?",
@@ -795,7 +805,7 @@
       },
       {
         "question": "Offrez-vous des soins infirmiers et du soutien personnel?",
-        "answer": "Oui. Nous distinguons clairement le soutien non réglementé des services infirmiers réglementés. [REVIEW REQUIRED]"
+        "answer": "Oui. Nous distinguons clairement les services de soutien non réglementés des services infirmiers réglementés, afin que vous sachiez qui prodigue les soins et quel champ de pratique s'applique en Ontario. Les soins infirmiers réglementés sont fournis dans le cadre de compétence de chaque clinicien et des exigences de son ordre professionnel."
       },
       {
         "question": "Quels secteurs desservez-vous?",
@@ -808,7 +818,7 @@
     "eyebrow": "Financement",
     "title": "Comment les familles paient les soins à domicile",
     "lead": "Comprendre vos options tôt aide à planifier avec confiance. Ce texte n'est pas un avis fiscal ou juridique.",
-    "reviewNotice": "[REVIEW REQUIRED] Le libellé final doit être révisé par des professionnels qualifiés.",
+    "reviewNotice": "Cette page explique les voies de paiement courantes en langage clair. Ce n'est pas un avis fiscal, juridique ou d'assurance. Jarkabi Home Care ne représente aucun assureur ni programme public, sauf confirmation écrite distincte de notre part.",
     "sections": [
       {
         "title": "Paiement privé",
@@ -816,7 +826,7 @@
       },
       {
         "title": "Assurance santé privée",
-        "body": "Certaines polices incluent des avantages pour soins à domicile. Vérifiez auprès de votre assureur. [REVIEW REQUIRED]"
+        "body": "Certains régimes de santé complémentaires incluent des avantages pour soins à domicile ou soins infirmiers. Vérifiez votre police ou parlez à votre assureur. Nous pouvons fournir des reçus et la documentation exigée par votre assureur. La couverture varie selon le régime — nous ne garantissons pas le remboursement."
       },
       {
         "title": "Soins publics en Ontario",
@@ -824,11 +834,11 @@
       },
       {
         "title": "Assurance automobile et accidents du travail",
-        "body": "Certains coûts peuvent être couverts selon votre dossier. [REVIEW REQUIRED]"
+        "body": "Après un accident de la route ou une blessure au travail, certains coûts de soins peuvent être couverts par l'assurance automobile ou les programmes provinciaux d'indemnisation (comme la CNESST en Ontario). La couverture dépend de votre dossier et de l'approbation de l'agent — nous pouvons discuter de la documentation requise, sans garantir la couverture."
       },
       {
         "title": "Anciens combattants et autres programmes",
-        "body": "Vétérans Canada et d'autres programmes peuvent aider les personnes admissibles. [REVIEW REQUIRED]"
+        "body": "Anciens Combattants Canada et d'autres programmes peuvent soutenir les personnes admissibles. Demandez-nous si votre situation pourrait être admissible et quelles démarches s'appliquent. Les règles et l'admissibilité sont fixées par l'organisme administrateur, et non par Jarkabi."
       },
       {
         "title": "Crédits d'impôt",
@@ -843,12 +853,12 @@
     "lead": "Vos commentaires nous aident à nous améliorer.",
     "processTitle": "Prochaines étapes",
     "steps": [
-      "Nous accusons réception dans les deux jours ouvrables. [JARKABI FACT REQUIRED]",
+      "Nous visons à accuser réception de votre message dans les deux jours ouvrables.",
       "Un responsable des soins examine les détails.",
       "Nous travaillons vers une résolution en langage clair.",
       "Si vous n'êtes pas satisfait, nous expliquons les options restantes."
     ],
-    "responseNote": "[REVIEW REQUIRED]",
+    "responseNote": "Les préoccupations cliniques ou de sécurité graves sont escaladées immédiatement. Si vous n'êtes pas satisfait après notre examen, nous vous expliquerons les options de plainte externes qui pourraient s'appliquer dans votre province.",
     "formTitle": "Envoyez-nous un message",
     "formLead": "Pour les urgences cliniques, appelez-nous. En cas d'urgence médicale, composez le 911."
   },

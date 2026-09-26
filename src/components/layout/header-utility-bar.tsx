@@ -1,14 +1,23 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { isHomePath } from "@/lib/header-overlay";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type HeaderUtilityBarProps = {
   locale: string;
 };
 
-/** Master prompt §25 — utility bar with Refer a Client. */
-export async function HeaderUtilityBar({ locale }: HeaderUtilityBarProps) {
-  const t = await getTranslations({ locale, namespace: "nav" });
+/** Master prompt §25 — utility bar with Refer a Client (hidden on homepage hero). */
+export function HeaderUtilityBar({ locale }: HeaderUtilityBarProps) {
+  const t = useTranslations("nav");
+  const pathname = usePathname();
   const base = `/${locale}`;
+
+  if (isHomePath(pathname, locale)) {
+    return null;
+  }
 
   return (
     <div className="hidden border-b border-line/60 bg-mist text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-body lg:block">

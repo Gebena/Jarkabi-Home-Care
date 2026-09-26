@@ -11,7 +11,13 @@ const LEVELS = [
 ] as const;
 
 /** Master prompt §10 — visible text-size control for older and low-vision visitors. */
-export function TextSizeControl({ className }: { className?: string }) {
+export function TextSizeControl({
+  className,
+  overlay = false,
+}: {
+  className?: string;
+  overlay?: boolean;
+}) {
   const [active, setActive] = useState<(typeof LEVELS)[number]["id"]>("default");
 
   useEffect(() => {
@@ -31,7 +37,11 @@ export function TextSizeControl({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("inline-flex items-center gap-1 rounded-sm border border-line bg-white p-0.5", className)}
+      className={cn(
+        "inline-flex items-center gap-1 rounded-sm border p-0.5",
+        overlay ? "border-white/35 bg-white/10 backdrop-blur-sm" : "border-line bg-white",
+        className,
+      )}
       role="group"
       aria-label="Text size"
     >
@@ -43,7 +53,13 @@ export function TextSizeControl({ className }: { className?: string }) {
           onClick={() => applyScale(level.id)}
           className={cn(
             "min-w-[2rem] rounded-sm px-1.5 py-1 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-tan-ink",
-            active === level.id ? "bg-plum text-white" : "text-ink hover:bg-mist",
+            active === level.id
+              ? overlay
+                ? "bg-tan text-plum"
+                : "bg-plum text-white"
+              : overlay
+                ? "text-white hover:bg-white/15"
+                : "text-ink hover:bg-mist",
           )}
         >
           {level.label}

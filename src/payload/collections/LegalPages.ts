@@ -29,9 +29,9 @@ export const LegalPages: CollectionConfig = {
     {
       name: "reviewRequired",
       type: "checkbox",
-      defaultValue: true,
-      admin: { description: "Mark until legal professional review is complete." },
+      defaultValue: false,
+      admin: { description: "Enable only while counsel review is still in progress." },
     },
-    { name: "published", type: "checkbox", defaultValue: false },
+    { name: "published", type: "checkbox", defaultValue: true },
   ],
 };

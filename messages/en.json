@@ -13,6 +13,10 @@
     "body": "You are viewing the {language} version of Jarkabi Home Care. Some sections appear in English while we complete professional translation.",
     "switchFull": "View the full site:"
   },
+  "photoBanner": {
+    "title": "Photography notice",
+    "body": "Images on this site are illustrative placeholders — not photographs of Jarkabi clients, caregivers or employees. We are replacing them with consented photography before launch."
+  },
   "topbar": {
     "tagline": "Compassionate home care for Ottawa families",
     "cta": "Free Consultation"
@@ -247,6 +251,8 @@
     "phoneLabel": "Phone",
     "officeLabel": "Office",
     "hoursLabel": "Hours",
+    "phonePending": "Ottawa phone number — to be added",
+    "addressPending": "Ottawa office address — to be added",
     "requestCareLink": "Ready to request care?",
     "contactFormTitle": "Send us a message",
     "requestCareTitle": "Request care",
@@ -440,6 +446,8 @@
     "emailLabel": "Email",
     "locationLabel": "Location",
     "locationValue": "Ottawa, Ontario & surrounding communities",
+    "phonePending": "Ottawa phone number — to be added",
+    "addressPending": "Ottawa office address — to be added",
     "addressPlaceholder": "Your address",
     "formTitle": "Book a Free Consultation",
     "formSubtitle": "Tell us how we can help. We'll respond promptly during business hours.",
@@ -482,7 +490,9 @@
     "referralPrivacy": "Referral Privacy",
     "feedbackPolicy": "Feedback Policy",
     "feedback": "Feedback & Concerns",
-    "hoursLabel": "Business hours"
+    "hoursLabel": "Business hours",
+    "phonePending": "Ottawa phone number — to be added",
+    "addressPending": "Ottawa office address — to be added"
   },
   "form": {
     "title": "Request Care",
@@ -797,7 +807,7 @@
       },
       {
         "question": "What is the difference between publicly funded home care and private home care?",
-        "answer": "In Ontario, publicly funded home support is arranged through Ontario Health atHome. Private home care is paid directly by you or through insurance. Many families use both: public programs for eligible hours and private care for flexibility, continuity or additional support. [REVIEW REQUIRED]"
+        "answer": "In Ontario, publicly funded home support is arranged through Ontario Health atHome. Private home care is paid directly by you or through insurance. Many families use both. This is general information only — eligibility and programs change; confirm details with the relevant agency or your care coordinator."
       },
       {
         "question": "How quickly can care begin?",
@@ -805,7 +815,7 @@
       },
       {
         "question": "Do you provide nursing as well as personal support?",
-        "answer": "Yes. We clearly separate non-regulated support services from regulated nursing services so you know who is providing care and what scope applies in Ontario. [REVIEW REQUIRED]"
+        "answer": "Yes. We clearly separate non-regulated support services from regulated nursing services so you know who is providing care and what scope applies in Ontario. Regulated nursing is provided within each clinician's professional scope and college requirements."
       },
       {
         "question": "Which areas do you serve today?",
@@ -818,7 +828,7 @@
     "eyebrow": "Funding",
     "title": "How families pay for home care",
     "lead": "Understanding your options early helps you plan with confidence. This page explains common ways families fund care in Canada — not tax or legal advice.",
-    "reviewNotice": "[REVIEW REQUIRED] Final funding and insurance wording must be reviewed by qualified professionals before publication. Never state Jarkabi is an approved provider for any insurer or program unless verified.",
+    "reviewNotice": "This page explains common payment paths in plain language. It is not tax, legal or insurance advice. Jarkabi Home Care does not represent any insurer or public program unless we confirm that separately in writing.",
     "sections": [
       {
         "title": "Private pay",
@@ -826,7 +836,7 @@
       },
       {
         "title": "Private health and extended benefits",
-        "body": "Some extended health plans include home-care or nursing benefits. Check your policy or speak with your insurer. We can provide receipts and documentation your insurer may require. [REVIEW REQUIRED]"
+        "body": "Some extended health plans include home-care or nursing benefits. Check your policy or speak with your insurer. We can provide receipts and documentation your insurer may require. Coverage varies by plan — we do not guarantee reimbursement."
       },
       {
         "title": "Publicly funded home care in Ontario",
@@ -834,11 +844,11 @@
       },
       {
         "title": "Auto insurance and workplace injury claims",
-        "body": "After a motor vehicle accident or workplace injury, some care costs may be covered through auto insurance or provincial workplace compensation programs (such as WSIB in Ontario). Coverage depends on your claim — we can discuss what documentation you may need. [REVIEW REQUIRED]"
+        "body": "After a motor vehicle accident or workplace injury, some care costs may be covered through auto insurance or provincial workplace compensation programs (such as WSIB in Ontario). Coverage depends on your claim and adjuster approval — we can discuss what documentation you may need, but we do not guarantee coverage."
       },
       {
         "title": "Veterans and other programs",
-        "body": "Veterans Affairs Canada and other programs may support eligible clients. Ask us whether your situation may qualify and what steps apply. [REVIEW REQUIRED]"
+        "body": "Veterans Affairs Canada and other programs may support eligible clients. Ask us whether your situation may qualify and what steps apply. Program rules and eligibility are set by the administering agency, not by Jarkabi."
       },
       {
         "title": "Tax credits",
@@ -853,12 +863,12 @@
     "lead": "Your feedback helps us improve. We take compliments, suggestions and complaints seriously and respond with fairness and respect.",
     "processTitle": "What happens next",
     "steps": [
-      "We acknowledge your message within two business days. [JARKABI FACT REQUIRED: confirm response-time commitment]",
+      "We aim to acknowledge your message within two business days.",
       "A care leader reviews the details and may contact you to understand more.",
       "We work toward a resolution and explain the outcome in plain language.",
       "If you are not satisfied, we explain any further options available."
     ],
-    "responseNote": "[REVIEW REQUIRED] Final complaints process and timelines must be approved before launch.",
+    "responseNote": "Serious clinical or safety concerns are escalated immediately. If you remain unsatisfied after our review, we will explain any external complaint options that may apply in your province.",
     "formTitle": "Send us a message",
     "formLead": "Use this form for compliments, concerns or complaints. For urgent clinical issues, call us directly. For emergencies, call 911."
   },

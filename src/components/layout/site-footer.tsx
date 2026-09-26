@@ -1,4 +1,5 @@
-import { isBrandPlaceholder, isDisplayablePhone } from "@/lib/brand";
+import { NapEmptySlot } from "@/components/ui/nap-empty-slot";
+import { hasNapValue, isDisplayablePhone, napDisplayValue } from "@/lib/brand";
 import type { BrandData, ProvinceData } from "@/lib/cms";
 import { secondaryNav } from "@/lib/nav-config";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
@@ -62,8 +63,8 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
   const base = `/${locale}`;
   const activeProvinces = provinces.filter((province) => province.status === "active");
   const showPhone = isDisplayablePhone(brand.primaryPhone);
-  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
-  const showAddress = !isBrandPlaceholder(brand.ottawaOfficeAddress);
+  const phoneDigits = napDisplayValue(brand.primaryPhone).replace(/\D/g, "");
+  const showAddress = hasNapValue(brand.ottawaOfficeAddress);
 
   const quickLinks = [
     { href: `${base}/about`, label: nav("about") },
@@ -120,23 +121,27 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           <h2 className="font-display text-lg text-white">{t("contact")}</h2>
           <span aria-hidden="true" className="mt-3 block h-0.5 w-9 bg-tan" />
           <ul className="mt-5 space-y-3 text-sm">
-            {showPhone ? (
-              <li>
+            <li className="flex items-start gap-2.5">
+              <Phone size={15} aria-hidden="true" className="mt-1.5 shrink-0 text-white/70" />
+              {showPhone ? (
                 <a
                   href={`tel:${phoneDigits}`}
-                  className="flex items-start gap-2.5 font-display text-lg text-white transition-colors hover:text-tan"
+                  className="font-display text-lg text-white transition-colors hover:text-tan"
                 >
-                  <Phone size={15} aria-hidden="true" className="mt-1.5 shrink-0" />
-                  {brand.primaryPhone}
+                  {napDisplayValue(brand.primaryPhone)}
                 </a>
-              </li>
-            ) : null}
-            {showAddress ? (
-              <li className="flex items-start gap-2.5 text-white/70">
-                <MapPin size={15} aria-hidden="true" className="mt-0.5 shrink-0" />
-                <span>{brand.ottawaOfficeAddress}</span>
-              </li>
-            ) : null}
+              ) : (
+                <NapEmptySlot label={t("phonePending")} inverted />
+              )}
+            </li>
+            <li className="flex items-start gap-2.5 text-white/70">
+              <MapPin size={15} aria-hidden="true" className="mt-0.5 shrink-0" />
+              {showAddress ? (
+                <span>{napDisplayValue(brand.ottawaOfficeAddress)}</span>
+              ) : (
+                <NapEmptySlot label={t("addressPending")} inverted />
+              )}
+            </li>
             <li>
               <a
                 href={`mailto:${brand.email}`}
