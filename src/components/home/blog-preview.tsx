@@ -1,8 +1,8 @@
 import type { BlogPostData } from "@/lib/cms";
-import { BlogPostCard } from "@/components/blog/blog-post-card";
-import { caregiverBlogImages } from "@/lib/caregiver-assets";
 import { blogFallbackImages } from "@/lib/site-images";
-import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
+import { useFormatter, useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import { SectionTitle } from "@/components/ui/section-title";
 
@@ -17,6 +17,7 @@ type BlogPreviewProps = {
  */
 export function BlogPreview({ locale, posts }: BlogPreviewProps) {
   const t = useTranslations("blog");
+  const format = useFormatter();
 
   if (posts.length === 0) return null;
 
@@ -26,38 +27,63 @@ export function BlogPreview({ locale, posts }: BlogPreviewProps) {
         <SectionTitle align="center" title={t("title")} subtitle={t("subtitle")} />
 
         <ul className="mt-12 grid gap-8 md:grid-cols-3">
-          {posts.slice(0, 3).map((post, index) => {
-            const imageSrc =
-              post.image ??
-              caregiverBlogImages[index % caregiverBlogImages.length] ??
-              blogFallbackImages[index % blogFallbackImages.length].src;
-
-            return (
-              <li key={post.slug} className="flex flex-col">
-                <BlogPostCard
-                  locale={locale}
-                  slug={post.slug}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  imageSrc={imageSrc}
-                  readLabel={t("readMore")}
-                  category={post.category}
-                  publishedAt={post.publishedAt}
-                  variant="grid"
+          {posts.slice(0, 3).map((post, i) => (
+            <li key={post.slug} className="group flex flex-col bg-white">
+              <Link
+                href={`/${locale}/resources/${post.slug}`}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="relative block aspect-[3/2] overflow-hidden"
+              >
+                <Image
+                  src={blogFallbackImages[i % blogFallbackImages.length].src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 90vw, 30vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </li>
-            );
-          })}
-        </ul>
+              </Link>
 
-        <div className="mt-10 text-center">
-          <Link
-            href={`/${locale}/resources`}
-            className="inline-block border-2 border-plum px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-plum hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"
-          >
-            {t("viewAll")}
-          </Link>
-        </div>
+              <div className="flex flex-1 flex-col p-6">
+                <p className="text-xs uppercase tracking-[0.14em] text-body">
+                  {post.category}
+                  {post.publishedAt ? (
+                    <>
+                      {" · "}
+                      <time dateTime={post.publishedAt}>
+                        {format.dateTime(new Date(post.publishedAt), {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </time>
+                    </>
+                  ) : null}
+                </p>
+
+                <h3 className="mt-3 font-display text-lg">
+                  <Link
+                    href={`/${locale}/resources/${post.slug}`}
+                    className="transition-colors hover:text-tan-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+                  >
+                    {post.title}
+                  </Link>
+                </h3>
+
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-body">{post.excerpt}</p>
+
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-coral">
+                  {t("readMore")}
+                  <ArrowRight
+                    size={14}
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

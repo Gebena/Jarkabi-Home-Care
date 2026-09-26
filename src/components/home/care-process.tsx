@@ -3,14 +3,14 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/ui/section-title";
 
 /**
- * Three-step care journey, styled after Care Giver's numbered panels: an oversized
- * tan index sitting above a serif step title.
+ * Five-step care journey on the homepage — a condensed version of the full path on
+ * `/how-care-works`, styled after Care Giver's numbered panels.
  */
 export function CareProcess({ locale }: { locale: string }) {
   const t = useTranslations("home01");
   const tProcess = useTranslations("process");
 
-  const steps = [1, 2, 3].map((n) => ({
+  const steps = [1, 2, 3, 4, 5].map((n) => ({
     index: String(n).padStart(2, "0"),
     title: t(`step${n}Title`),
     body: t(`step${n}Body`),
@@ -21,7 +21,7 @@ export function CareProcess({ locale }: { locale: string }) {
       <div className="mx-auto w-[min(1240px,calc(100%-2rem))]">
         <SectionTitle align="center" title={tProcess("title")} subtitle={t("processTagline")} />
 
-        <ol className="mt-12 grid gap-8 md:grid-cols-3">
+        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step) => (
             <li key={step.index} className="border-t-2 border-tan pt-6">
               <span aria-hidden="true" className="font-display text-4xl text-tan-ink">

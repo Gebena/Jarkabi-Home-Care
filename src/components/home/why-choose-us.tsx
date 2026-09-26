@@ -1,11 +1,10 @@
 "use client";
 
-import { ParallaxBackground } from "@/components/ui/parallax-background";
 import { VideoLightbox } from "@/components/ui/video-lightbox";
-import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { whyChooseUsImage } from "@/lib/site-images";
 import { Check, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -30,16 +29,7 @@ export function WhyChooseUs({ locale }: { locale: string }) {
   return (
     <section className="bg-white">
       <div className="mx-auto w-[min(1240px,calc(100%-2rem))] lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
-        <div className="relative overflow-hidden bg-plum px-6 py-14 sm:px-10 lg:px-12 lg:py-20 lg:pr-24">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-[0.14]"
-            style={{
-              backgroundImage: `url(${caregiverBackgrounds.panelPattern})`,
-              backgroundRepeat: "repeat",
-            }}
-          />
-          <div className="relative">
+        <div className="bg-plum px-6 py-14 sm:px-10 lg:px-12 lg:py-20 lg:pr-24">
           <h2 className="font-display text-2xl text-white sm:text-3xl lg:text-[2.35rem]">
             {t("title")}
           </h2>
@@ -63,20 +53,19 @@ export function WhyChooseUs({ locale }: { locale: string }) {
             href={`/${locale}/why-jarkabi`}
             className="mt-8 inline-block border border-white/60 px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-white hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
-            {t("cta")}
+            <span className="sr-only">{t("ctaAccessible")}</span>
+            <span aria-hidden="true">{t("cta")}</span>
           </Link>
-          </div>
         </div>
 
-        <div
-          className="relative aspect-[4/3] w-full self-center overflow-hidden lg:-ml-16 lg:my-12 lg:aspect-auto lg:min-h-[28rem] lg:self-stretch"
-          style={{ backgroundImage: `url(${whyChooseUsImage.src})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        >
-          <ParallaxBackground
+        <div className="relative aspect-[4/3] w-full self-center lg:-ml-16 lg:my-12 lg:aspect-auto lg:self-stretch">
+          <Image
             src={whyChooseUsImage.src}
             alt={whyChooseUsImage.alt}
-            strength={0.16}
-            objectPosition={whyChooseUsImage.position}
+            fill
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            style={{ objectPosition: whyChooseUsImage.position }}
+            className="object-cover"
           />
           <button
             type="button"

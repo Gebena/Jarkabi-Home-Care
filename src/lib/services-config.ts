@@ -4,7 +4,6 @@ import {
   Heart,
   Home,
   Hospital,
-  Moon,
   Stethoscope,
   Users,
   type LucideIcon,
@@ -40,42 +39,20 @@ export const serviceCategories: Record<
 };
 
 export const serviceIcons: Record<string, LucideIcon> = {
-  "elderly-care": Home,
   "personal-care": Heart,
-  "companion-care": Users,
-  "skilled-nursing": Stethoscope,
-  "day-support": Moon,
-  "hospital-discharge": Hospital,
-  "chronic-condition-care": Hospital,
-  "after-surgery-care": Hospital,
-  "special-needs-care": Brain,
-  "respite-care": Clock,
-  "end-of-life-care": Heart,
-  /** Legacy slugs — icons for redirects and CMS records */
   "senior-home-care": Home,
+  "companion-care": Users,
   "registered-nursing": Stethoscope,
   "dementia-support": Brain,
+  "respite-care": Clock,
   "post-hospital-care": Hospital,
   "palliative-care": Heart,
 };
 
-/** Legacy or marketing slugs → Care Giver demo slug */
+/** Legacy or marketing slugs → canonical CMS slug */
 export const serviceSlugRedirects: Record<string, string> = {
-  nursing: "skilled-nursing",
-  "dementia-care": "special-needs-care",
-  "elderly-service": "elderly-care",
-  "senior-home-care": "elderly-care",
-  "registered-nursing": "skilled-nursing",
-  "chronic-care": "chronic-condition-care",
-  "chronical-care": "chronic-condition-care",
-  "post-hospital-care": "hospital-discharge",
-  "palliative-care": "end-of-life-care",
-  "life-care": "end-of-life-care",
-  "dementia-support": "special-needs-care",
-  support: "day-support",
-  discharge: "hospital-discharge",
-  surgery: "after-surgery-care",
-  chronical: "chronic-condition-care",
+  nursing: "registered-nursing",
+  "dementia-care": "dementia-support",
 };
 
 export function resolveServiceSlug(slug: string): string {

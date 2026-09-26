@@ -5,9 +5,9 @@ import en from "../../messages/en.json";
 type Messages = Record<string, unknown>;
 
 /**
- * Community locales (ti, ar, am, zh, es, hi) may cover only part of the site. Layering
- * them over English keeps every page renderable instead of emitting raw key paths
- * for whatever has not been translated yet.
+ * Partial community locales (see `locale-strategy.ts`) cover only part of the site.
+ * Layering them over English keeps every page renderable instead of emitting raw
+ * key paths for whatever has not been translated yet.
  */
 function withEnglishFallback(messages: Messages, fallback: Messages): Messages {
   const merged: Messages = { ...fallback };

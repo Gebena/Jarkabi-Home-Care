@@ -1,10 +1,9 @@
 "use client";
 
-import { useFocusTrap } from "@/hooks/use-focus-trap";
 import { Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type SearchModalProps = {
   locale: string;
@@ -26,27 +25,18 @@ export function SearchModal({ locale, open, onClose }: SearchModalProps) {
   const tSearch = useTranslations("search");
   const [query, setQuery] = useState("");
   const base = `/${locale}`;
-  const panelRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (open) {
-      restoreFocusRef.current = document.activeElement as HTMLElement;
-    } else {
-      setQuery("");
-    }
-  }, [open]);
-
-  useFocusTrap(open, panelRef, { initialFocusRef: inputRef, restoreFocusRef });
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -58,15 +48,15 @@ export function SearchModal({ locale, open, onClose }: SearchModalProps) {
   return (
     <div className="search-modal" role="dialog" aria-modal="true" aria-label={tSearch("title")}>
       <button type="button" className="search-modal-backdrop" aria-label="Close" onClick={onClose} />
-      <div ref={panelRef} className="search-modal-panel">
+      <div className="search-modal-panel">
         <div className="search-modal-header">
           <Search size={20} aria-hidden="true" />
           <input
-            ref={inputRef}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={tSearch("placeholder")}
+            autoFocus
           />
           <button type="button" onClick={onClose} aria-label="Close search">
             <X size={20} />

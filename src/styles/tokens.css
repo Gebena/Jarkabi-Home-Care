@@ -3,19 +3,19 @@
  * See docs/design-system.md
  */
 :root {
-  /* Brand colours */
-  --color-navy: #1a2b4a;
-  --color-navy-dark: #121e33;
-  --color-navy-soft: #2a3f66;
-  --color-teal: #5e8a7d;
-  --color-teal-dark: #4a7064;
-  --color-teal-light: #7d9b8a;
-  --color-gold: #c9a96e;
-  --color-gold-muted: #e8d5b5;
-  --color-ivory: #f8f5f0;
-  --color-stone: #ede9e3;
-  --color-charcoal: #1c1c1c;
-  --color-slate: #5c6670;
+  /* Brand colours — master prompt §9 */
+  --color-navy: #1c2b45;
+  --color-navy-dark: #141e30;
+  --color-navy-soft: #2a3f5c;
+  --color-teal: #4e6a58;
+  --color-teal-dark: #3d5546;
+  --color-teal-light: #b9cdbf;
+  --color-gold: #b08d57;
+  --color-gold-muted: #c4a574;
+  --color-ivory: #f6f1e8;
+  --color-stone: #5f5a52;
+  --color-charcoal: #2a2a2a;
+  --color-slate: #5f5a52;
   --color-line: #e2ddd4;
   --color-success: #4a7c59;
   --color-error: #b42318;

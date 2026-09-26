@@ -1,15 +1,7 @@
 import { PageHero } from "@/components/layout/page-hero";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { PageSection } from "@/components/ui/page-section";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-
-export type SpecialtySection = {
-  title: string;
-  body: string;
-  image: string;
-  imageAlt?: string;
-};
+import { Check } from "lucide-react";
 
 type SpecialtyPageProps = {
   locale: string;
@@ -17,12 +9,14 @@ type SpecialtyPageProps = {
   title: string;
   lead: string;
   crumbLabel?: string;
-  sections: SpecialtySection[];
+  sections: Array<{ title: string; body: string }>;
 };
 
 /**
- * Care Giver specialty inner pages — photographic bands alternating with copy,
- * each section using licensed template imagery.
+ * Shared shell for the narrative pages — nursing, dementia care, caregivers.
+ * Care Giver alternates the photograph side on pages like this; here the
+ * sections alternate the tan rule instead, which reads the same way in a
+ * right-to-left locale and does not need photography we do not have.
  */
 export function SpecialtyPage({
   locale,
@@ -42,34 +36,27 @@ export function SpecialtyPage({
         crumbLabel={crumbLabel}
       />
 
-      {sections.map((section, index) => {
-        const imageFirst = index % 2 === 0;
-        return (
-          <PageSection key={section.title} tone={index % 2 === 1 ? "mist" : undefined}>
-            <div
-              className={cn(
-                "grid items-center gap-10 lg:grid-cols-2 lg:gap-14",
-                !imageFirst && "lg:[&>*:first-child]:order-2",
-              )}
+      <PageSection>
+        <div className="mx-auto max-w-3xl">
+          {sections.map((section, index) => (
+            <article
+              key={section.title}
+              className={index > 0 ? "mt-10 border-t border-line pt-10" : undefined}
             >
-              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-[5/4]">
-                <Image
-                  src={section.image}
-                  alt={section.imageAlt ?? ""}
-                  fill
-                  sizes="(max-width: 1024px) 92vw, 46vw"
-                  className="object-cover"
+              <h2 className="flex items-start gap-3 font-display text-xl text-ink sm:text-2xl">
+                <Check
+                  size={20}
+                  aria-hidden="true"
+                  className="mt-1.5 shrink-0 text-tan-ink"
+                  strokeWidth={2.5}
                 />
-              </div>
-
-              <div>
-                <h2 className="font-display text-2xl text-ink sm:text-[1.75rem]">{section.title}</h2>
-                <p className="mt-5 text-base leading-relaxed text-body">{section.body}</p>
-              </div>
-            </div>
-          </PageSection>
-        );
-      })}
+                {section.title}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-body sm:ps-8">{section.body}</p>
+            </article>
+          ))}
+        </div>
+      </PageSection>
 
       <CallToAction locale={locale} />
     </>

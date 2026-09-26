@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
-    "build:vercel": "tsx scripts/ensure-schema-at-build.mjs && next build --webpack",
-    "ensure-schema": "tsx scripts/ensure-schema-at-build.mjs",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
@@ -23,9 +21,7 @@
     "vercel:set-database-uri": "node scripts/set-vercel-database-uri.mjs",
     "sync:github": "node ../scripts/sync-jarkabi-github.mjs",
     "verify:images": "node scripts/verify-images.mjs",
-    "sync:locales": "node scripts/sync-partial-locales.mjs",
-    "verify:go-live": "node scripts/verify-go-live.mjs",
-    "go-live:database": "node scripts/go-live-database.mjs"
+    "verify:go-live": "node scripts/verify-go-live.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

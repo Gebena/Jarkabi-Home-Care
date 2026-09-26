@@ -1,38 +1,26 @@
 /**
- * Jarkabi Home Care — Care Giver visual identity
+ * Jarkabi Home Care — public palette (master prompt §9)
  *
- * Single source of truth for the colour palette. Values were sampled from the licensed
- * Care Giver Home Page 01 demo (ThemeArc, ThemeForest 23847564).
- *
- * Never hard-code these hex values in components. Consume them through the Tailwind
- * utilities generated from the `@theme inline` block in `src/app/globals.css`
- * (`bg-plum`, `text-tan`, `bg-care-teal`, …) or through the semantic aliases below.
+ * Tailwind utilities (`bg-plum`, `text-tan`, …) map to these tokens via globals.css.
+ * Legacy Care Giver class names are kept so components retheme without a full rewrite.
  */
 :root {
-  /* ── Care Giver palette ───────────────────────────────────────────── */
+  /* ── Jarkabi brand mapped to legacy Care Giver utility names ─────── */
 
-  /* Plum / burgundy — hero overlay, feature panels, footer */
-  --cg-plum: #5b2e42;
-  --cg-plum-deep: #4a2336;
-  --cg-plum-footer: #43263a;
+  /* Jarkabi Navy — hero overlay, feature panels, footer */
+  --cg-plum: #1c2b45;
+  --cg-plum-deep: #141e30;
+  --cg-plum-footer: #1c2b45;
 
-  /*
-   * Tan — primary buttons, rules, italic callouts.
-   *
-   * Care Giver sets white labels on tan, which only reaches about 2.1:1. The tan
-   * surface is kept exactly; labels use plum instead, and `--cg-tan-ink` is the
-   * tan-family colour for text and borders on white. Both clear WCAG AA.
-   */
-  --cg-tan: #d9a894;
-  --cg-tan-light: #e8c6b6;
-  --cg-tan-dark: #b87658;
-  /* Clears 4.5:1 on every surface it is set on: 6.4:1 white, 5.5:1 mist,
-     4.8:1 blush-soft — the last of which the previous #96552f missed at 4.37. */
-  --cg-tan-ink: #8e4f2b;
+  /* Soft Gold — buttons, rules, accents (labels use navy for contrast) */
+  --cg-tan: #b08d57;
+  --cg-tan-light: #c4a574;
+  --cg-tan-dark: #96703f;
+  --cg-tan-ink: #4e6a58;
 
-  /* Rose blush — testimonial band */
-  --cg-blush: #ddb4a6;
-  --cg-blush-soft: #f0dcd4;
+  /* Warm ivory bands */
+  --cg-blush: #e8dfd0;
+  --cg-blush-soft: #f6f1e8;
 
   /* Pillar accents — Enrich / Empower / Engage. Teal is darkened from the
      template's #12987d so white body copy on it clears 4.5:1. */
@@ -48,31 +36,13 @@
   --cg-coral: #a04422;
   --cg-coral-soft: #d97d57;
 
-  /* Neutrals */
-  --cg-ink: #1a2b3c;
-  --cg-ink-soft: #2c4055;
-  /* Darkened from #5f6875, which was 4.26:1 on --cg-blush-soft and so failed AA
-     for body text on the location card. This clears 4.5:1 on every surface the
-     palette uses: 6.4:1 on white, 5.5:1 on mist, 4.8:1 on blush-soft. */
-  --cg-body: #566070;
-  --cg-mist: #eceff3;
-  --cg-mist-deep: #dfe4ea;
-  --cg-line: #e3e6ea;
-
-  /* Care Giver demo-exact accents (sampled from ThemeForest index.html CSS) */
-  --cg-demo-navy: #0e2a4e;
-  --cg-demo-muted: #797979;
-  --cg-demo-tan-line: #be9a8d;
-  --cg-demo-plum-card: #532840;
-  --cg-demo-sidebar-bg: #edf1f4;
-  --cg-demo-sidebar-border: #dadfe3;
-  --cg-demo-widget-teal: #329f82;
-  --cg-demo-gold: #f7b800;
-  --cg-demo-icon-blue: #33629d;
-  --cg-demo-team-overlay: rgba(77, 39, 63, 0.6);
-  --cg-pillar-teal: rgba(19, 147, 113, 0.85);
-  --cg-pillar-brick: rgba(134, 32, 29, 0.85);
-  --cg-pillar-ocean: rgba(10, 95, 167, 0.85);
+  /* Neutrals — charcoal + stone grey on warm ivory */
+  --cg-ink: #2a2a2a;
+  --cg-ink-soft: #1c2b45;
+  --cg-body: #5f5a52;
+  --cg-mist: #f6f1e8;
+  --cg-mist-deep: #ebe4d8;
+  --cg-line: #e2ddd4;
 
   /* ── Semantic aliases consumed by legacy CSS in globals.css ───────── */
   --color-navy: var(--cg-ink);

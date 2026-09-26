@@ -1,11 +1,7 @@
 import type { Payload } from "payload";
 import { defaultBrand, defaultServices, ottawaCities, provincesSeed } from "@/lib/brand";
-import { seedEditorialContent } from "@/payload/seed-content";
-import { allServiceBlockMap } from "@/payload/seed-service-blocks";
 
 export async function seedDatabase(payload: Payload) {
-  await seedEditorialContent(payload);
-
   const { totalDocs: provinceCount } = await payload.count({
     collection: "provinces",
   });
@@ -74,7 +70,53 @@ export async function seedDatabase(payload: Payload) {
     });
   }
 
-  const serviceBlocks = allServiceBlockMap();
+  const serviceBlocks: Record<string, unknown[]> = {
+    "personal-care": [
+      {
+        blockType: "richText",
+        eyebrow: "Overview",
+        headline: "Respectful support for daily routines",
+        body:
+          "Personal care helps individuals maintain comfort, dignity and independence with bathing, dressing, grooming and mobility support at home.",
+      },
+      {
+        blockType: "processTimeline",
+        headline: "How care begins",
+        steps: [
+          { title: "Talk with us", description: "Share your needs and preferences." },
+          { title: "Care assessment", description: "We review health, routine and home context." },
+          { title: "Personalized plan", description: "A plan shaped around the person, not the schedule." },
+          { title: "Care begins", description: "Matched caregivers start with continuity in mind." },
+        ],
+      },
+    ],
+    "registered-nursing": [
+      {
+        blockType: "richText",
+        eyebrow: "Clinical care",
+        headline: "Professional nursing at home",
+        body:
+          "Registered nurses and registered practical nurses provide skilled clinical support at home — wound care, medication administration, catheter and ostomy support, and monitoring after a hospital stay — within the scope of practice set by their regulatory college.",
+      },
+      {
+        blockType: "trustBar",
+        items: [
+          { label: "Professional oversight" },
+          { label: "Continuity of care" },
+          { label: "Family communication" },
+        ],
+      },
+    ],
+    "dementia-support": [
+      {
+        blockType: "richText",
+        eyebrow: "Specialty care",
+        headline: "Support rooted in familiarity and dignity",
+        body:
+          "Dementia support emphasizes routine, meaningful activity, caregiver consistency and respectful communication for individuals and families.",
+      },
+    ],
+  };
 
   for (const service of defaultServices) {
     const created = await payload.create({
@@ -102,14 +144,53 @@ export async function seedDatabase(payload: Payload) {
   }
 
   await payload.create({
-    collection: "legal-pages",
+    collection: "blog-posts",
     data: {
-      title: "Privacy Policy",
-      slug: "privacy",
-      published: false,
-      reviewRequired: true,
+      title: "Choosing Home Care in Ottawa",
+      slug: "choosing-home-care-ottawa",
+      excerpt: "A practical guide for families exploring home care options in the National Capital Region.",
+      category: "Choosing Home Care",
+      published: true,
+      publishedAt: new Date().toISOString(),
     },
   });
+
+  await payload.create({
+    collection: "careers",
+    data: {
+      title: "Personal Support Worker — Ottawa",
+      slug: "psw-ottawa",
+      summary:
+        "Support clients across Ottawa with personal care, companionship and help around the home. Consistent client assignments and coordinator support.",
+      profession: "Personal Support Worker",
+      employmentType: "Part-time",
+      published: false,
+    },
+  });
+
+  const legalPageSeeds = [
+    { title: "Privacy Policy", slug: "privacy" },
+    { title: "Terms of Use", slug: "terms" },
+    { title: "Accessibility", slug: "accessibility" },
+    { title: "Cookie Policy", slug: "cookies" },
+    { title: "Consent Information", slug: "consent" },
+    { title: "Care Service Disclaimer", slug: "care-disclaimer" },
+    { title: "Employment Privacy Notice", slug: "employment-privacy" },
+    { title: "Referral Privacy Notice", slug: "referral-privacy" },
+    { title: "Feedback & Complaints Policy", slug: "feedback-policy" },
+  ] as const;
+
+  for (const page of legalPageSeeds) {
+    await payload.create({
+      collection: "legal-pages",
+      data: {
+        title: page.title,
+        slug: page.slug,
+        published: false,
+        reviewRequired: true,
+      },
+    });
+  }
 
   console.info("[seed] National location and service data ready.");
 }

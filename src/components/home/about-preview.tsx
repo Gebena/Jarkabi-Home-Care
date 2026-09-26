@@ -33,7 +33,8 @@ export function AboutPreview({ locale }: { locale: string }) {
           href={`/${locale}/about`}
           className="mt-8 inline-block border border-tan px-8 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-tan-ink transition-colors hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
         >
-          {t("cta")}
+          <span className="sr-only">{t("ctaAccessible")}</span>
+          <span aria-hidden="true">{t("cta")}</span>
         </Link>
       </div>
     </section>

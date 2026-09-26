@@ -19,12 +19,6 @@
       "has": [{ "type": "host", "value": "www.jarkabi.com" }],
       "destination": "https://jarkabi.ca/:path*",
       "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.jarkabi.ca" }],
-      "destination": "https://jarkabi.ca/:path*",
-      "permanent": true
     }
   ]
 }

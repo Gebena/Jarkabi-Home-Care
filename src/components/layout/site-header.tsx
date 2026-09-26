@@ -1,18 +1,19 @@
 "use client";
 
 import { SearchModal } from "@/components/ui/search-modal";
+import { isDisplayablePhone } from "@/lib/brand";
 import type { BrandData } from "@/lib/cms";
-import { telHref } from "@/lib/brand-nap";
-import { MainNav } from "@/components/layout/main-nav";
+import { mainNav } from "@/lib/nav-config";
 import { cn } from "@/lib/utils";
 import { Phone, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BrandWordmark } from "./brand-wordmark";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
-import { SiteHeaderTop } from "./site-header-top";
+import { TextSizeControl } from "./text-size-control";
 
 type SiteHeaderProps = {
   locale: string;
@@ -22,11 +23,13 @@ type SiteHeaderProps = {
 /** Care Giver Home Page 01 header: white, sticky, serif wordmark, inline nav, tan CTA. */
 export function SiteHeader({ locale, brand }: SiteHeaderProps) {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const base = `/${locale}`;
-  const phoneLink = telHref(brand.primaryPhone);
+  const hasPhone = isDisplayablePhone(brand.primaryPhone);
+  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -46,20 +49,37 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
 
       <header
         className={cn(
-          "sticky top-0 z-[100] overflow-visible bg-white transition-shadow duration-300",
+          "sticky top-0 z-50 border-b border-line/70 bg-white transition-shadow duration-300",
           scrolled && "shadow-[0_2px_18px_rgba(67,38,58,0.10)]",
         )}
       >
-        <SiteHeaderTop locale={locale} brand={brand} />
-
-        <div className="border-b border-line/70">
-          <div className="mx-auto flex h-[4.75rem] w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4 lg:h-[5.25rem]">
+        <div className="mx-auto flex h-[4.75rem] w-[min(1240px,calc(100%-2rem))] items-center justify-between gap-4 lg:h-[5.25rem]">
           <Link href={base} aria-label="Jarkabi Home Care — home">
             <BrandWordmark size="md" />
           </Link>
 
-          <nav aria-label="Main" className="min-w-0 flex-1 justify-center lg:flex">
-            <MainNav locale={locale} />
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+            {mainNav.map((item) => {
+              const href = `${base}${item.href}`;
+              const active =
+                item.href === ""
+                  ? pathname === base || pathname === `${base}/`
+                  : pathname === href || pathname.startsWith(`${href}/`);
+
+              return (
+                <Link
+                  key={item.key}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "whitespace-nowrap text-[0.9rem] font-semibold transition-colors hover:text-coral focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan-ink",
+                    active ? "text-coral" : "text-ink",
+                  )}
+                >
+                  {t(item.key)}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -72,30 +92,29 @@ export function SiteHeader({ locale, brand }: SiteHeaderProps) {
               <Search size={17} aria-hidden="true" />
             </button>
 
-            <div className="md:hidden">
-              <LocaleSwitcher />
-            </div>
+            <TextSizeControl className="hidden xl:flex" />
 
-            {phoneLink ? (
+            <LocaleSwitcher />
+
+            {hasPhone ? (
               <a
-                href={phoneLink}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink md:hidden"
+                href={`tel:${phoneDigits}`}
+                className="hidden items-center gap-2 text-sm font-semibold text-plum transition-colors hover:text-tan-ink lg:flex"
               >
                 <Phone size={15} aria-hidden="true" />
-                <span className="sr-only">{t("callUs")}</span>
+                <span>{brand.primaryPhone}</span>
               </a>
             ) : null}
 
             <Link
-              href={`${base}/contact`}
+              href={`${base}/request-care`}
               className="hidden whitespace-nowrap bg-tan px-6 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum md:inline-block"
             >
-              {t("askQuestion")}
+              {t("requestCare")}
             </Link>
 
             <MobileNav locale={locale} />
           </div>
-        </div>
         </div>
       </header>
 

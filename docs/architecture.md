@@ -117,4 +117,4 @@ Database schema should not block these — use `profiles` + `user_roles` pattern
 - [`template-audit.md`](./template-audit.md)
 - [`migration-strategy.md`](./migration-strategy.md)
 - [`design-system.md`](./design-system.md)
-- [`MASTER_PROMPT.md`](./MASTER_PROMPT.md)
+- [`MASTER_PROMPT.md`](../../docs/MASTER_PROMPT.md) (repo root, gitignored — local copy)

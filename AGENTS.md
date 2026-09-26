@@ -15,4 +15,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Dev server:** `cd jarkabi-home-care && npm run dev -- -p 3000 -H 0.0.0.0` (also started automatically via `.cursor/environment.json` terminals).
 - **Build:** `cd jarkabi-home-care && npm run build`
 - **Local DB:** SQLite via `DATABASE_URI=file:./payload.db` in `.env` — no Supabase required for local dev.
-- **Do not modify** Ketet root app, root `vercel.json`, or Ketet Supabase. All Jarkabi work stays in `jarkabi-home-care/` plus sync workflow files.
+- **Do not modify** Ketet root app, root `vercel.json`, or Ketet Supabase. All Jarkabi work stays in `jarkabi-home-care/`.
+- **Licensed references** (templates, zips, master prompt) live at the **repo root**: `reference/` and `docs/MASTER_PROMPT.md` — all gitignored. Sync with `./reference/sync-from-downloads.sh`.

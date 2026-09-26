@@ -4,9 +4,9 @@ Premium national Canadian home-care platform — launching in Ottawa, Ontario, b
 
 **Website:** https://jarkabi.ca  
 **Email:** care@jarkabi.ca  
-**Languages:** English, French, Tigrinya, Arabic (RTL), Amharic, Mandarin, Spanish, Hindi
+**Languages:** English, French, Tigrinya, Blin, Tigre, Arabic (RTL), Amharic
 
-This repository is **fully isolated** from other projects. Requirements live in `docs/MASTER_PROMPT.md`.
+This repository is **fully isolated** from other projects. Requirements live at the monorepo root in `docs/MASTER_PROMPT.md` (gitignored — see `docs/MASTER_PROMPT.md` here for the path).
 
 ## Stack
 
@@ -68,7 +68,7 @@ src/
   payload/          Collection definitions
   components/       UI sections and layout
 docs/
-  MASTER_PROMPT.md       Full requirements (100 sections)
+  MASTER_PROMPT.md       Pointer → ../../docs/MASTER_PROMPT.md (local, gitignored)
   template-audit.md      Seniar + Care Giver audit (Phase 1)
   migration-strategy.md  Phased implementation plan (Phase 2)
   design-system.md       Jarkabi brand tokens & components (Phase 3)

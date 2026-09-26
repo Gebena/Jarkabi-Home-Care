@@ -1,5 +1,3 @@
-import { isBrandPlaceholder } from "@/lib/brand-nap";
-
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
 };
@@ -13,7 +11,9 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-/** Placeholder NAP is omitted from JSON-LD rather than published as fact. */
+import { isBrandPlaceholder } from "@/lib/brand";
+
+/** Placeholders are dropped from structured data rather than published as real NAP. */
 const real = (value: string) => (isBrandPlaceholder(value) ? undefined : value);
 
 function postalAddress(streetAddress: string) {

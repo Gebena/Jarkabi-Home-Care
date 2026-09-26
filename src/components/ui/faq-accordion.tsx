@@ -1,91 +1,62 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useId, useState } from "react";
 
 export type FaqItem = {
   question: string;
   answer: string;
+  category?: string;
 };
 
 type FaqAccordionProps = {
   items: FaqItem[];
-  /** Two-column layout matching Care Giver `faq.html`. */
-  columns?: 1 | 2;
-  searchable?: boolean;
-  searchPlaceholder?: string;
+  className?: string;
 };
 
-export function FaqAccordion({
-  items,
-  columns = 1,
-  searchable = false,
-  searchPlaceholder = "Search questions",
-}: FaqAccordionProps) {
-  const [query, setQuery] = useState("");
-
-  const filtered = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) return items;
-    return items.filter(
-      (item) =>
-        item.question.toLowerCase().includes(normalized) ||
-        item.answer.toLowerCase().includes(normalized),
-    );
-  }, [items, query]);
-
-  const midpoint = Math.ceil(filtered.length / 2);
-  const columnsData =
-    columns === 2
-      ? [filtered.slice(0, midpoint), filtered.slice(midpoint)]
-      : [filtered];
+export function FaqAccordion({ items, className }: FaqAccordionProps) {
+  const baseId = useId();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div>
-      {searchable ? (
-        <div className="mx-auto mb-10 max-w-xl">
-          <label className="sr-only" htmlFor="faq-search">
-            {searchPlaceholder}
-          </label>
-          <input
-            id="faq-search"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={searchPlaceholder}
-            className="w-full border border-line bg-white px-5 py-3.5 text-sm text-ink placeholder:text-body/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
-          />
-        </div>
-      ) : null}
+    <div className={cn("divide-y divide-line border-y border-line", className)}>
+      {items.map((item, index) => {
+        const isOpen = openIndex === index;
+        const panelId = `${baseId}-panel-${index}`;
+        const buttonId = `${baseId}-button-${index}`;
 
-      <div className={columns === 2 ? "grid gap-8 lg:grid-cols-2" : undefined}>
-        {columnsData.map((columnItems, columnIndex) => (
-          <div key={columnIndex} className="space-y-0">
-            {columnItems.map((item) => (
-              <details
-                key={item.question}
-                className="group mb-px border border-demo-sidebar-border bg-white open:border-demo-navy"
+        return (
+          <div key={`${item.question}-${index}`}>
+            <h3 className="m-0">
+              <button
+                id={buttonId}
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="flex w-full items-center justify-between gap-4 py-5 text-left text-lg font-semibold text-ink transition-colors hover:text-tan-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
               >
-                <summary className="flex cursor-pointer items-center justify-between gap-4 bg-demo-sidebar-bg px-6 py-5 font-display text-base text-demo-navy marker:content-none transition-colors group-open:bg-demo-navy group-open:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-demo-navy">
-                  {item.question}
-                  <ChevronDown
-                    size={18}
-                    aria-hidden="true"
-                    className="shrink-0 text-tan-ink transition-transform group-open:rotate-180 group-open:text-white"
-                  />
-                </summary>
-                <p className="border-t border-demo-sidebar-border px-6 py-5 text-sm leading-relaxed text-body">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
+                <span>{item.question}</span>
+                <ChevronDown
+                  size={20}
+                  aria-hidden
+                  className={cn("shrink-0 text-tan-ink transition-transform motion-reduce:transition-none", isOpen && "rotate-180")}
+                />
+              </button>
+            </h3>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              hidden={!isOpen}
+              className="pb-5 pr-8 text-base leading-relaxed text-body"
+            >
+              {item.answer}
+            </div>
           </div>
-        ))}
-      </div>
-
-      {filtered.length === 0 ? (
-        <p className="mt-6 text-center text-sm text-body">No questions match your search.</p>
-      ) : null}
+        );
+      })}
     </div>
   );
 }

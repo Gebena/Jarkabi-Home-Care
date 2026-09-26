@@ -1,33 +1,36 @@
 #!/usr/bin/env node
 /**
- * Verifies every photograph referenced by src/lib/site-images.ts exists in public/.
+ * Verifies every photograph referenced by src/lib/site-images.ts exists in
+ * public/, and reports anything in public/images/photography that nothing
+ * references.
  *
- * Run after editing the licensed image registry.
+ * The site has twice shipped broken imagery — a 404 hero, then an opera house on
+ * a service card — because a path was edited without anyone loading the page.
+ * Run this after editing the set.
  */
-import { readFileSync, statSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const root = new URL("../", import.meta.url);
 const source = readFileSync(new URL("src/lib/site-images.ts", root), "utf8");
 const publicDir = new URL("public", root).pathname;
+const photoDir = join(publicDir, "images", "photography");
 
-const licensedPaths = [
-  ...new Set(
-    [...source.matchAll(/licensed\(\s*"([^"]+)"/g)].map(([, path]) => `/images/caregiver-licensed/${path}`),
-  ),
-];
+// `local()` composes each path from the shared DIR constant, so read both.
+const dir = source.match(/^const DIR = "([^"]+)";$/m)?.[1];
+const names = [...new Set([...source.matchAll(/\blocal\(\s*"([\w-]+)"/g)].map(([, name]) => name))];
 
-const referenced = licensedPaths.sort();
-
-if (referenced.length === 0) {
-  console.error("Could not read image paths from src/lib/site-images.ts");
+if (!dir || names.length === 0) {
+  console.error("Could not read the image set out of src/lib/site-images.ts");
   process.exit(1);
 }
+
+const referenced = names.map((name) => `${dir}/${name}.webp`);
 
 console.log(`Checking ${referenced.length} referenced image(s)…\n`);
 
 const missing = [];
-for (const path of referenced) {
+for (const path of referenced.sort()) {
   const file = join(publicDir, path);
   let size = 0;
   try {
@@ -43,6 +46,14 @@ for (const path of referenced) {
   } else {
     console.log(`ok   ${String(Math.round(size / 1024)).padStart(4)}K  ${path}`);
   }
+}
+
+const onDisk = readdirSync(photoDir).map((name) => `/images/photography/${name}`);
+const unused = onDisk.filter((path) => !referenced.includes(path));
+
+if (unused.length > 0) {
+  console.log(`\n${unused.length} file(s) in public/images/photography are unreferenced:`);
+  for (const path of unused.sort()) console.log(`     ${path}`);
 }
 
 if (missing.length > 0) {

@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/(en|fr|ti|ar|am|zh|es|hi)/:path*",
+    "/(en|fr|ti|byn|tig|ar|am)/:path*",
     "/((?!admin|api|_next|_vercel|sw.js|manifest.webmanifest|.*\\..*).*)",
   ],
 };

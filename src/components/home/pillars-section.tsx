@@ -1,83 +1,41 @@
-import { PillarParallaxImage } from "@/components/home/pillar-parallax-image";
-import { caregiverPillarImages } from "@/lib/caregiver-assets";
-import { careGiverServiceMenu } from "@/lib/service-menu";
-import { ArrowUpRight } from "lucide-react";
+import { pillarImages } from "@/lib/site-images";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-
-type PillarsSectionProps = {
-  locale: string;
-};
-
-const pillarLinks = [
-  careGiverServiceMenu[0].slug,
-  careGiverServiceMenu[1].slug,
-  careGiverServiceMenu[6].slug,
-];
-
-const pillarOverlays = [
-  "var(--cg-pillar-teal)",
-  "var(--cg-pillar-brick)",
-  "var(--cg-pillar-ocean)",
-] as const;
-
-const pillarPositions = ["50% 42%", "52% 40%", "50% 45%"] as const;
+import Image from "next/image";
 
 /**
- * Care Giver `service-block` Enrich / Empower / Engage — full-bleed photos with
- * colour washes. Title and body stay visible on all three; the pill CTA appears
- * on hover/focus (demo uses visibility on `.link-box`).
+ * Care Giver Home Page 01 places three edge-to-edge colour blocks — teal, brick
+ * and blue — directly beneath the intro band, each a photograph under a heavy
+ * flat colour wash with a centred serif heading.
  */
-export function PillarsSection({ locale }: PillarsSectionProps) {
+export function PillarsSection() {
   const t = useTranslations("pillars");
 
   const pillars = [
-    { title: t("oneTitle"), body: t("oneBody") },
-    { title: t("twoTitle"), body: t("twoBody") },
-    { title: t("threeTitle"), body: t("threeBody") },
+    { title: t("oneTitle"), body: t("oneBody"), wash: "bg-care-teal/90" },
+    { title: t("twoTitle"), body: t("twoBody"), wash: "bg-care-brick/90" },
+    { title: t("threeTitle"), body: t("threeBody"), wash: "bg-care-ocean/90" },
   ];
 
   return (
-    <section className="relative bg-white pt-4 lg:pt-6">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 z-10 h-[8.75rem] w-full bg-gradient-to-b from-transparent to-white"
-      />
-
-      <div className="relative z-20 mx-auto grid w-[min(1240px,calc(100%-2rem))] pb-16 sm:grid-cols-2 lg:grid-cols-3 lg:pb-20">
+    <section className="bg-mist pb-16 lg:pb-20">
+      <div className="mx-auto grid w-[min(1240px,calc(100%-2rem))] sm:grid-cols-2 lg:grid-cols-3">
         {pillars.map((pillar, i) => (
           <article
             key={pillar.title}
-            className="group relative isolate min-h-[18.5rem] overflow-hidden text-center sm:min-h-[20rem] lg:min-h-[22rem]"
+            className="relative isolate flex min-h-[15rem] flex-col items-center justify-center overflow-hidden px-8 py-14 text-center"
           >
-            <PillarParallaxImage
-              src={caregiverPillarImages[i]}
-              position={pillarPositions[i]}
-            />
-            <div
+            <Image
+              src={pillarImages[i].src}
+              alt=""
               aria-hidden="true"
-              className="absolute inset-0"
-              style={{ backgroundColor: pillarOverlays[i] }}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="absolute inset-0 -z-20 object-cover"
             />
+            <div aria-hidden="true" className={`absolute inset-0 -z-10 ${pillar.wash}`} />
 
-            <div className="relative flex min-h-[18.5rem] flex-col items-center justify-center px-8 py-12 sm:min-h-[20rem] lg:min-h-[22rem]">
-              <div className="flex w-full max-w-xs flex-col items-center">
-                <h3 className="font-display text-[2rem] font-bold leading-tight text-white sm:text-[2.35rem] lg:text-[2.5rem]">
-                  {pillar.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-white">{pillar.body}</p>
-
-                <div className="mt-6 max-h-0 overflow-hidden opacity-0 transition-all duration-500 motion-safe:group-hover:max-h-16 motion-safe:group-hover:opacity-100 motion-safe:group-focus-within:max-h-16 motion-safe:group-focus-within:opacity-100">
-                  <Link
-                    href={`/${locale}/services/${pillarLinks[i]}`}
-                    className="inline-flex items-center gap-2 rounded-full bg-plum-footer px-6 py-2.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                  >
-                    {t("typeOfCareCta")}
-                    <ArrowUpRight size={14} aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <h3 className="font-display text-2xl text-white lg:text-3xl">{pillar.title}</h3>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/90">{pillar.body}</p>
           </article>
         ))}
       </div>

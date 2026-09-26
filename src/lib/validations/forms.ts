@@ -16,13 +16,13 @@ export const careRequestSchema = z.object({
   preferredLanguage: z.string().trim().max(80).optional(),
   contactTime: z.string().trim().max(80).optional(),
   notes: z.string().trim().max(2000).optional(),
+  urgentCare: z.boolean().optional(),
+  consentContact: z.boolean().refine((value) => value === true, {
+    message: "Consent is required to contact you about this request",
+  }),
+  consentMarketing: z.boolean().optional(),
   locale: z.string().trim().max(8).optional(),
   areaServed: z.boolean().optional(),
-});
-
-export const newsletterSchema = z.object({
-  email: z.string().trim().email(),
-  locale: z.string().trim().max(8).optional(),
 });
 
 export const contactSchema = z.object({
@@ -59,7 +59,6 @@ export const jobApplicationSchema = z.object({
 });
 
 export type CareRequestInput = z.infer<typeof careRequestSchema>;
-export type NewsletterInput = z.infer<typeof newsletterSchema>;
 export type ContactInput = z.infer<typeof contactSchema>;
 export type ReferralInput = z.infer<typeof referralSchema>;
 export type JobApplicationInput = z.infer<typeof jobApplicationSchema>;

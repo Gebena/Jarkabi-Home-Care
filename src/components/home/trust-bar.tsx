@@ -2,27 +2,26 @@ import { BadgeCheck, Clock, MapPin, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /**
- * Care Giver accreditation strip above the footer — mist band with icon badges.
+ * Narrow reassurance strip. Care Giver runs a similar accreditation band directly
+ * above the footer.
  */
 export function TrustBar() {
   const t = useTranslations("trust");
 
   const items = [
-    { Icon: BadgeCheck, label: t("licensed") },
-    { Icon: ShieldCheck, label: t("insured") },
+    { Icon: BadgeCheck, label: t("professionalCare") },
+    { Icon: ShieldCheck, label: t("familyCentred") },
     { Icon: MapPin, label: t("local") },
-    { Icon: Clock, label: t("support") },
+    { Icon: Clock, label: t("responsiveSupport") },
   ];
 
   return (
-    <section className="border-y border-line bg-mist py-10 lg:py-12">
-      <ul className="mx-auto grid w-[min(1240px,calc(100%-2rem))] gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="border-y border-line bg-white py-8">
+      <ul className="mx-auto grid w-[min(1240px,calc(100%-2rem))] gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map(({ Icon, label }) => (
-          <li key={label} className="flex items-center gap-4">
-            <span className="grid h-12 w-12 shrink-0 place-items-center border border-line bg-white text-tan-ink">
-              <Icon size={22} aria-hidden="true" />
-            </span>
-            <span className="text-sm font-semibold leading-snug text-ink">{label}</span>
+          <li key={label} className="flex items-center justify-center gap-3 text-center">
+            <Icon size={20} aria-hidden="true" className="shrink-0 text-tan-ink" />
+            <span className="text-sm font-semibold text-ink">{label}</span>
           </li>
         ))}
       </ul>

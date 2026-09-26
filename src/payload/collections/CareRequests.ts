@@ -26,6 +26,9 @@ export const CareRequests: CollectionConfig = {
     { name: "preferredLanguage", type: "text" },
     { name: "contactTime", type: "text" },
     { name: "notes", type: "textarea" },
+    { name: "urgentCare", type: "checkbox", defaultValue: false },
+    { name: "consentContact", type: "checkbox", defaultValue: false },
+    { name: "consentMarketing", type: "checkbox", defaultValue: false },
     { name: "locale", type: "text" },
     {
       name: "status",

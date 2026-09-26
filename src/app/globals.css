@@ -6,6 +6,7 @@
 
 @custom-variant dark (&:is(.dark *));/* Legacy purple/coral aliases are defined in styles/caregiver-interface.css */
 :root {
+  --text-scale: 1;
   --topbar-height: 2.75rem;
   /* shadcn/ui — Jarkabi brand mapping */
   --background: oklch(0.97 0.01 85);
@@ -70,15 +71,6 @@
   --color-mist: var(--cg-mist);
   --color-mist-deep: var(--cg-mist-deep);
   --color-line: var(--cg-line);
-  --color-demo-navy: var(--cg-demo-navy);
-  --color-demo-muted: var(--cg-demo-muted);
-  --color-demo-tan-line: var(--cg-demo-tan-line);
-  --color-demo-plum-card: var(--cg-demo-plum-card);
-  --color-demo-sidebar-bg: var(--cg-demo-sidebar-bg);
-  --color-demo-sidebar-border: var(--cg-demo-sidebar-border);
-  --color-demo-widget-teal: var(--cg-demo-widget-teal);
-  --color-demo-gold: var(--cg-demo-gold);
-  --color-demo-icon-blue: var(--cg-demo-icon-blue);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -125,12 +117,16 @@
    hero's outline button ended up rendering dark ink on plum. */
 @layer base {
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: calc(100% * var(--text-scale, 1));
+}
 body {
     margin: 0;
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1.125rem;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
@@ -294,8 +290,12 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.78rem;
   font-weight: 600;
   padding: 0.45rem 0.55rem;
-  max-width: 7rem;
+  max-width: 9.5rem;
   cursor: pointer;
+}
+.partial-locale-banner a:focus-visible {
+  outline: 2px solid var(--cg-tan-ink);
+  outline-offset: 2px;
 }
 
 /* ── Buttons ── */
@@ -356,6 +356,58 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
+.care-form label.full-width { grid-column: 1 / -1; }
+.checkbox-label {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+.form-steps {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.form-step {
+  border-top: 2px solid var(--color-line);
+  padding-top: 0.75rem;
+  opacity: 0.55;
+}
+.form-step--active,
+.form-step--done {
+  opacity: 1;
+  border-top-color: var(--cg-tan);
+}
+.form-step__index {
+  display: block;
+  font-family: var(--font-display, serif);
+  font-size: 1.25rem;
+  color: var(--cg-tan-ink, #8a6b3d);
+}
+.form-step__label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.form-review {
+  border: 1px solid var(--color-line);
+  padding: 1.25rem;
+  background: var(--color-bg);
+}
+.form-actions .button {
+  border: 1px solid var(--color-line);
+  padding: 0.85rem 1.5rem;
+  font-weight: 700;
+  background: var(--color-surface);
+}
 .form-success,
 .form-warning,
 .form-error {
@@ -411,108 +463,6 @@ body { padding-bottom: 5rem; }
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
 .button:hover { transform: none; }
-}
-
-/* Care Giver Home Page 01 — dual-layer hero glide transitions */
-@keyframes hero-glide-in {
-  from {
-    opacity: 0;
-    transform: translateX(11%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes hero-glide-out {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-9%);
-  }
-}
-
-@keyframes hero-glide-in-rtl {
-  from {
-    opacity: 0;
-    transform: translateX(-11%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes hero-glide-out-rtl {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(9%);
-  }
-}
-
-@keyframes hero-depth-in {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes hero-depth-out {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.02);
-  }
-}
-
-.animate-hero-depth-in {
-  animation: hero-depth-in 1.6s ease-out forwards;
-}
-
-.animate-hero-depth-out {
-  animation: hero-depth-out 1.6s ease-out forwards;
-}
-
-.animate-hero-glide-in {
-  animation: hero-glide-in 1.4s ease-out forwards;
-}
-
-.animate-hero-glide-out {
-  animation: hero-glide-out 1.4s ease-out forwards;
-}
-
-.animate-hero-glide-in-rtl {
-  animation: hero-glide-in-rtl 1.4s ease-out forwards;
-}
-
-.animate-hero-glide-out-rtl {
-  animation: hero-glide-out-rtl 1.4s ease-out forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hero-depth-in,
-  .animate-hero-depth-out,
-  .animate-hero-glide-in,
-  .animate-hero-glide-out,
-  .animate-hero-glide-in-rtl,
-  .animate-hero-glide-out-rtl {
-    animation: none;
-  }
 }
 .dark {
   --background: oklch(0.145 0 0);

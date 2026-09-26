@@ -45,7 +45,7 @@ export function ServicesGrid({ locale, services }: ServicesGridProps) {
               onClick={() => scrollBy(-1)}
               aria-label="Scroll services left"
               aria-controls="services-track"
-              className="grid h-10 w-10 place-items-center border border-line text-ink transition-colors hover:border-[#4d273f] hover:bg-[#4d273f] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+              className="grid h-10 w-10 place-items-center border border-line text-ink transition-colors hover:border-tan hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
             >
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
@@ -54,7 +54,7 @@ export function ServicesGrid({ locale, services }: ServicesGridProps) {
               onClick={() => scrollBy(1)}
               aria-label="Scroll services right"
               aria-controls="services-track"
-              className="grid h-10 w-10 place-items-center border border-line text-ink transition-colors hover:border-[#4d273f] hover:bg-[#4d273f] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
+              className="grid h-10 w-10 place-items-center border border-line text-ink transition-colors hover:border-tan hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan-ink"
             >
               <ChevronRight size={18} aria-hidden="true" />
             </button>

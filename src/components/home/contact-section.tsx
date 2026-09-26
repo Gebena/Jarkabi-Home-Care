@@ -1,6 +1,5 @@
+import { isBrandPlaceholder, isDisplayablePhone } from "@/lib/brand";
 import type { BrandData } from "@/lib/cms";
-import { hasRealAddress, telHref } from "@/lib/brand-nap";
-import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -11,39 +10,38 @@ type ContactSectionProps = {
 };
 
 /**
- * Care Giver footer contact band — plum panel with pattern texture and contact grid.
+ * Sits where Care Giver Home Page 01 embeds a Google map above the footer. A
+ * static service-area and contact band avoids a third-party script and an API
+ * key while serving the same "where are you, how do I reach you" purpose.
  */
 export function ContactSection({ locale, brand }: ContactSectionProps) {
   const t = useTranslations("contactCta");
   const tFooter = useTranslations("footer");
-  const phoneLink = telHref(brand.primaryPhone);
-  const locationValue = hasRealAddress(brand.ottawaOfficeAddress)
-    ? brand.ottawaOfficeAddress
-    : t("locationValue");
+  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const showPhone = isDisplayablePhone(brand.primaryPhone);
+  const showAddress = !isBrandPlaceholder(brand.ottawaOfficeAddress);
 
   const rows = [
-    { Icon: MapPin, label: t("locationLabel"), value: locationValue },
-    {
-      Icon: Phone,
-      label: t("phoneLabel"),
-      value: phoneLink ? brand.primaryPhone : t("phonePlaceholder"),
-      href: phoneLink ?? undefined,
-    },
+    ...(showAddress
+      ? [{ Icon: MapPin, label: t("locationLabel"), value: brand.ottawaOfficeAddress }]
+      : []),
+    ...(showPhone
+      ? [
+          {
+            Icon: Phone,
+            label: t("phoneLabel"),
+            value: brand.primaryPhone,
+            href: `tel:${phoneDigits}`,
+          },
+        ]
+      : []),
     { Icon: Mail, label: t("emailLabel"), value: brand.email, href: `mailto:${brand.email}` },
     { Icon: Clock, label: tFooter("hoursLabel"), value: brand.businessHours },
   ];
 
   return (
-    <section className="relative overflow-hidden bg-plum py-16 lg:py-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage: `url(${caregiverBackgrounds.panelPattern})`,
-          backgroundRepeat: "repeat",
-        }}
-      />
-      <div className="relative mx-auto grid w-[min(1240px,calc(100%-2rem))] gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+    <section className="bg-plum py-16 lg:py-20">
+      <div className="mx-auto grid w-[min(1240px,calc(100%-2rem))] gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <div>
           <h2 className="font-display text-2xl text-white sm:text-3xl lg:text-[2.35rem]">
             {t("title")}
@@ -59,9 +57,9 @@ export function ContactSection({ locale, brand }: ContactSectionProps) {
           </Link>
         </div>
 
-        <dl className="grid gap-px overflow-hidden border border-white/15 bg-white/15 sm:grid-cols-2">
+        <dl className="grid gap-px overflow-hidden bg-white/15 sm:grid-cols-2">
           {rows.map(({ Icon, label, value, href }) => (
-            <div key={label} className="bg-plum/80 p-6 backdrop-blur-[1px]">
+            <div key={label} className="bg-plum p-6">
               <dt className="flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-tan">
                 <Icon size={15} aria-hidden="true" />
                 {label}

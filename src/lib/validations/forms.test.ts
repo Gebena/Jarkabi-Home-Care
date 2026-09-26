@@ -15,8 +15,41 @@ describe("form validation schemas", () => {
       province: "Ontario",
       city: "Ottawa",
       postalCode: "K1A 0A1",
+      consentContact: true,
+      urgentCare: false,
+      consentMarketing: false,
     });
     expect(result.success).toBe(true);
+  });
+
+  it("rejects a care request without contact consent", () => {
+    const result = careRequestSchema.safeParse({
+      name: "Jane Doe",
+      phone: "613-555-0100",
+      email: "jane@example.com",
+      province: "Ontario",
+      city: "Ottawa",
+      postalCode: "K1A 0A1",
+      consentContact: false,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts an urgent care request flag", () => {
+    const result = careRequestSchema.safeParse({
+      name: "Jane Doe",
+      phone: "613-555-0100",
+      email: "jane@example.com",
+      province: "Ontario",
+      city: "Ottawa",
+      postalCode: "K1A 0A1",
+      consentContact: true,
+      urgentCare: true,
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.urgentCare).toBe(true);
+    }
   });
 
   it("rejects an invalid contact email", () => {

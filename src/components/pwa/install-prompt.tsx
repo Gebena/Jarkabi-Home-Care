@@ -1,9 +1,8 @@
 "use client";
 
-import { useFocusTrap } from "@/hooks/use-focus-trap";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -20,10 +19,6 @@ export function InstallPrompt() {
   const t = useTranslations("mobile");
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
   const [visible, setVisible] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const installButtonRef = useRef<HTMLButtonElement>(null);
-
-  useFocusTrap(visible, panelRef, { initialFocusRef: installButtonRef, lockScroll: false });
 
   useEffect(() => {
     if (sessionStorage.getItem(DISMISSED_KEY)) return;
@@ -55,16 +50,13 @@ export function InstallPrompt() {
 
   return (
     <div
-      ref={panelRef}
       role="dialog"
-      aria-modal="true"
       aria-label={t("installTitle")}
       className="fixed inset-x-4 bottom-[4.75rem] z-[55] flex items-center gap-3 border border-line bg-white p-4 shadow-elevated lg:hidden"
     >
       <p className="flex-1 text-sm leading-snug text-ink">{t("installTitle")}</p>
 
       <button
-        ref={installButtonRef}
         type="button"
         onClick={install}
         className="shrink-0 bg-tan px-4 py-2.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"

@@ -11,14 +11,28 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const withSerwist = withSerwistInit({
   swSrc: "src/sw.ts",
   swDest: "public/sw.js",
-  // Serwist injects sw-entry into the app bundle and breaks Payload /admin
-  // hydration on Vercel production. Re-enable once scoped to public routes only.
-  disable: true,
+  disable: process.env.NODE_ENV === "development",
 });
 
 const nextConfig: NextConfig = {
   turbopack: {
     root,
+  },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "jarkabi.com" }],
+        destination: "https://jarkabi.ca/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.jarkabi.com" }],
+        destination: "https://jarkabi.ca/:path*",
+        permanent: true,
+      },
+    ];
   },
   images: {
     remotePatterns: [

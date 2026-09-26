@@ -62,7 +62,6 @@ const plugins: Plugin[] = hasValidBlobToken
   : [];
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
   admin: {
     user: Users.slug,
     meta: {
@@ -99,11 +98,10 @@ export default buildConfig({
       { label: "English", code: "en" },
       { label: "Français", code: "fr" },
       { label: "ትግርኛ", code: "ti" },
+      { label: "ብሊን", code: "byn" },
+      { label: "ትግረ", code: "tig" },
       { label: "العربية", code: "ar", rtl: true },
       { label: "አማርኛ", code: "am" },
-      { label: "中文", code: "zh" },
-      { label: "Español", code: "es" },
-      { label: "हिन्दी", code: "hi" },
     ],
     defaultLocale: "en",
     fallback: true,

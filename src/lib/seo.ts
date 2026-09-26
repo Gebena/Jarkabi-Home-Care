@@ -1,8 +1,11 @@
-import { locales, type Locale } from "@/i18n/routing";
+import { type Locale } from "@/i18n/routing";
+import { indexableLocales } from "@/lib/locale-strategy";
 import { defaultBrand } from "@/lib/brand";
-import { defaultOpenGraphImages } from "@/lib/og-image";
 
 export const siteUrl = defaultBrand.websiteUrl.replace(/\/$/, "");
+
+/** Default social preview image — hero care conversation photograph. */
+export const defaultOgImage = "/images/photography/jarkabi-hero-care-conversation.webp";
 
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -20,7 +23,7 @@ export function buildLanguageAlternates(pathWithoutLocale: string): Record<strin
     : `/${pathWithoutLocale}`;
 
   return Object.fromEntries(
-    locales.map((locale) => [locale, absoluteUrl(localePath(locale, normalized))]),
+    indexableLocales().map((locale) => [locale, absoluteUrl(localePath(locale, normalized))]),
   );
 }
 
@@ -29,13 +32,20 @@ export function buildPageMetadata({
   path,
   title,
   description,
+  image = defaultOgImage,
 }: {
   locale: Locale | string;
   path: string;
   title: string;
   description?: string;
+  image?: string;
 }) {
   const canonical = absoluteUrl(localePath(locale, path));
+  const ogTitle = title.includes(defaultBrand.agencyName)
+    ? title
+    : `${title} | ${defaultBrand.agencyName}`;
+  const ogImageUrl = image.startsWith("http") ? image : absoluteUrl(image);
+
   return {
     title,
     description,
@@ -44,19 +54,19 @@ export function buildPageMetadata({
       languages: buildLanguageAlternates(path),
     },
     openGraph: {
-      title: `${title} | ${defaultBrand.agencyName}`,
+      title: ogTitle,
       description,
       url: canonical,
       siteName: defaultBrand.agencyName,
       locale: locale === "fr" ? "fr_CA" : "en_CA",
       type: "website" as const,
-      images: defaultOpenGraphImages(),
+      images: [{ url: ogImageUrl, alt: defaultBrand.agencyName }],
     },
     twitter: {
       card: "summary_large_image" as const,
-      title: `${title} | ${defaultBrand.agencyName}`,
+      title: ogTitle,
       description,
-      images: defaultOpenGraphImages().map((image) => image.url),
+      images: [ogImageUrl],
     },
   };
 }

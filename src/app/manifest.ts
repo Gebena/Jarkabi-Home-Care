@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Compassionate home care and nursing services for Canadian families — request care, find locations, and connect with our team.",
     start_url: "/en",
     display: "standalone",
-    background_color: "#f8f5f0",
-    theme_color: "#1a2b4a",
+    background_color: "#F6F1E8",
+    theme_color: "#1C2B45",
     orientation: "portrait-primary",
     lang: "en-CA",
     categories: ["health", "medical", "lifestyle"],
@@ -31,7 +31,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Request Care",
         short_name: "Request",
-        url: "/en/contact",
+        url: "/en/request-care",
       },
       {
         name: "Locations",

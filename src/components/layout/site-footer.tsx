@@ -1,11 +1,10 @@
+import { isBrandPlaceholder, isDisplayablePhone } from "@/lib/brand";
 import type { BrandData, ProvinceData } from "@/lib/cms";
-import { hasRealAddress, telHref } from "@/lib/brand-nap";
 import { secondaryNav } from "@/lib/nav-config";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { BrandWordmark } from "./brand-wordmark";
-import { NewsletterSignup } from "./newsletter-signup";
 
 type SiteFooterProps = {
   locale: string;
@@ -46,10 +45,10 @@ function XIcon({ size = 15 }: { size?: number }) {
 }
 
 const socials = [
-  { label: "Facebook", href: "https://facebook.com", Icon: FacebookIcon },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: LinkedInIcon },
-  { label: "Instagram", href: "https://instagram.com", Icon: InstagramIcon },
-  { label: "X", href: "https://x.com", Icon: XIcon },
+  { key: "socialFacebook" as const, href: "https://facebook.com", Icon: FacebookIcon },
+  { key: "socialLinkedIn" as const, href: "https://linkedin.com", Icon: LinkedInIcon },
+  { key: "socialInstagram" as const, href: "https://instagram.com", Icon: InstagramIcon },
+  { key: "socialX" as const, href: "https://x.com", Icon: XIcon },
 ];
 
 /**
@@ -62,10 +61,9 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
   const nav = await getTranslations("nav");
   const base = `/${locale}`;
   const activeProvinces = provinces.filter((province) => province.status === "active");
-  const phoneLink = telHref(brand.primaryPhone);
-  const officeAddress = hasRealAddress(brand.ottawaOfficeAddress)
-    ? brand.ottawaOfficeAddress
-    : t("coverageNote");
+  const showPhone = isDisplayablePhone(brand.primaryPhone);
+  const phoneDigits = brand.primaryPhone.replace(/\D/g, "");
+  const showAddress = !isBrandPlaceholder(brand.ottawaOfficeAddress);
 
   const quickLinks = [
     { href: `${base}/about`, label: nav("about") },
@@ -84,16 +82,17 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           </p>
 
           <ul className="mt-6 flex gap-2.5" aria-label={t("followUs")}>
-            {socials.map(({ label, href, Icon }) => (
-              <li key={label}>
+            {socials.map(({ key, href, Icon }) => (
+              <li key={key}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
+                  aria-label={t(key)}
                   className="grid h-9 w-9 place-items-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-tan hover:bg-tan hover:text-plum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tan"
                 >
                   <Icon />
+                  <span className="sr-only">{t(key)}</span>
                 </a>
               </li>
             ))}
@@ -121,10 +120,10 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           <h2 className="font-display text-lg text-white">{t("contact")}</h2>
           <span aria-hidden="true" className="mt-3 block h-0.5 w-9 bg-tan" />
           <ul className="mt-5 space-y-3 text-sm">
-            {phoneLink ? (
+            {showPhone ? (
               <li>
                 <a
-                  href={phoneLink}
+                  href={`tel:${phoneDigits}`}
                   className="flex items-start gap-2.5 font-display text-lg text-white transition-colors hover:text-tan"
                 >
                   <Phone size={15} aria-hidden="true" className="mt-1.5 shrink-0" />
@@ -132,10 +131,12 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
                 </a>
               </li>
             ) : null}
-            <li className="flex items-start gap-2.5 text-white/70">
-              <MapPin size={15} aria-hidden="true" className="mt-0.5 shrink-0" />
-              <span>{officeAddress}</span>
-            </li>
+            {showAddress ? (
+              <li className="flex items-start gap-2.5 text-white/70">
+                <MapPin size={15} aria-hidden="true" className="mt-0.5 shrink-0" />
+                <span>{brand.ottawaOfficeAddress}</span>
+              </li>
+            ) : null}
             <li>
               <a
                 href={`mailto:${brand.email}`}
@@ -155,7 +156,20 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           ) : null}
         </div>
 
-        <NewsletterSignup locale={locale} />
+        <div>
+          <h2 className="font-display text-lg text-white">{t("appointment")}</h2>
+          <span aria-hidden="true" className="mt-3 block h-0.5 w-9 bg-tan" />
+          <p className="mt-5 text-sm leading-relaxed text-white/70">{t("coverageNote")}</p>
+          <p className="mt-3 text-sm leading-relaxed text-white/70">{brand.businessHours}</p>
+
+          <Link
+            href={`${base}/request-care`}
+            className="mt-6 inline-flex items-center gap-2 bg-tan px-7 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-plum transition-colors hover:bg-tan-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tan"
+          >
+            {nav("requestCare")}
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
       </div>
 
       <div className="border-t border-white/10">
@@ -163,15 +177,33 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
           <p>
             © {new Date().getFullYear()} {brand.agencyName}. {t("rights")}
           </p>
-          <ul className="flex flex-wrap gap-5">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            <li>
+              <Link href={`${base}/legal/privacy`} className="transition-colors hover:text-tan">
+                {t("privacy")}
+              </Link>
+            </li>
             <li>
               <Link href={`${base}/legal/terms`} className="transition-colors hover:text-tan">
                 {t("terms")}
               </Link>
             </li>
             <li>
-              <Link href={`${base}/legal/privacy`} className="transition-colors hover:text-tan">
-                {t("privacy")}
+              <Link href={`${base}/legal/cookies`} className="transition-colors hover:text-tan">
+                {t("cookies")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/legal/consent`} className="transition-colors hover:text-tan">
+                {t("consent")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`${base}/legal/care-disclaimer`}
+                className="transition-colors hover:text-tan"
+              >
+                {t("careDisclaimer")}
               </Link>
             </li>
             <li>
@@ -180,6 +212,11 @@ export async function SiteFooter({ locale, brand, provinces }: SiteFooterProps) 
                 className="transition-colors hover:text-tan"
               >
                 {t("accessibility")}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/feedback`} className="transition-colors hover:text-tan">
+                {t("feedback")}
               </Link>
             </li>
           </ul>

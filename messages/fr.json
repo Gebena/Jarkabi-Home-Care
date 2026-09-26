@@ -2,14 +2,16 @@
   "meta": {
     "siteName": "Jarkabi Home Care"
   },
-  "topbar": {
-    "tagline": "Soins à domicile compatissants pour les familles d'Ottawa",
-    "cta": "Consultation gratuite",
-    "needHelp": "Besoin d'aide? Appelez-nous :",
-    "ourStory": "Notre histoire",
-    "newsArticles": "Nouvelles et articles",
-    "franchiseOpportunity": "Opportunité de franchise",
-    "utilityNav": "Liens utilitaires"
+  "localeSwitcher": {
+    "ariaLabel": "Choisir la langue",
+    "fullSite": "Site complet",
+    "partialSite": "Langues communautaires (traduction partielle)",
+    "partialHint": "Les langues communautaires peuvent afficher une partie du contenu en anglais pendant la traduction."
+  },
+  "localeBanner": {
+    "title": "Traduction en cours",
+    "body": "Vous consultez la version {language} de Jarkabi Home Care. Certaines sections s'affichent en anglais pendant la traduction professionnelle.",
+    "switchFull": "Voir le site complet :"
   },
   "nav": {
     "home": "Accueil",
@@ -18,12 +20,10 @@
     "projects": "Emplacements",
     "blog": "Ressources",
     "about": "À propos",
-    "aboutMenu": "À propos de nous",
-    "typesOfCare": "Types de soins",
-    "knowledgeCenter": "Centre de connaissances",
     "services": "Services",
     "servicesGrid": "Tous les services",
-    "referrals": "Références",
+    "referrals": "Référer un client",
+    "funding": "Financement",
     "caregivers": "Nos soignants",
     "testimonials": "Témoignages",
     "faq": "FAQ",
@@ -35,73 +35,40 @@
     "careers": "Carrières",
     "contact": "Contact",
     "requestCare": "Demander des soins",
-    "askQuestion": "Poser une question",
     "callUs": "Nous appeler",
     "contactUs": "Nous contacter",
     "search": "Rechercher",
-    "openMenu": "Ouvrir le menu",
-    "team": "Notre équipe",
-    "gallery": "Galerie",
-    "menuItems": {
-      "about": "À propos de nous",
-      "team": "Notre équipe",
-      "faq": "FAQ",
-      "testimonials": "Témoignages",
-      "elderlyCare": "Soins aux personnes âgées",
-      "personalCare": "Soins personnels",
-      "respiteCare": "Soins de répit",
-      "skilledNursing": "Soins infirmiers spécialisés",
-      "daySupport": "Soutien 24/7",
-      "hospitalDischarge": "Retour à domicile après l'hôpital",
-      "companionCare": "Soins de compagnie",
-      "chronicCondition": "Soins pour maladies chroniques",
-      "afterSurgery": "Soins post-opératoires",
-      "endOfLife": "Soins de fin de vie",
-      "specialNeeds": "Soins pour besoins spéciaux",
-      "resources": "Nouvelles de l'entreprise",
-      "gallery": "Notre galerie",
-      "howCareWorks": "Comment commencer",
-      "careers": "Carrières"
-    },
-    "serviceLabels": {
-      "elderly-care": "Soins aux personnes âgées",
-      "personal-care": "Soins personnels",
-      "respite-care": "Soins de répit",
-      "skilled-nursing": "Soins infirmiers spécialisés",
-      "day-support": "Soutien 24/7",
-      "hospital-discharge": "Retour à domicile après l'hôpital",
-      "companion-care": "Soins de compagnie",
-      "chronic-condition-care": "Soins pour maladies chroniques",
-      "after-surgery-care": "Soins post-opératoires",
-      "end-of-life-care": "Soins de fin de vie",
-      "special-needs-care": "Soins pour besoins spéciaux"
-    }
+    "openMenu": "Ouvrir le menu"
   },
   "search": {
     "title": "Rechercher",
     "placeholder": "Rechercher des pages et services..."
   },
+  "homePage": {
+    "metaTitle": "Jarkabi Home Care | Soins à domicile et infirmiers à Ottawa",
+    "metaDescription": "Services de soins à domicile et infirmiers compatissants à Ottawa. Soutien centré sur la personne pour les aînés et les familles — des soins personnels à l'infirmière autorisée."
+  },
   "hero": {
-    "slide1Script": "Prendre soin de chaque patient",
-    "slide1Title": "Nous améliorons la vie des personnes âgées",
-    "slide1Body": "Jarkabi se consacre à offrir aux personnes âgées et aux familles des soins personnels de qualité — alliant compétence professionnelle et compassion.",
+    "slide1Script": "Prendre soin de chaque famille",
+    "slide1Title": "Des soins exceptionnels. Chez vous.",
+    "slide1Body": "Jarkabi Home Care s'associe aux familles d'Ottawa pour un soutien réfléchi et centré sur la personne — alliant compétence professionnelle et compassion.",
     "slide2Script": "Soins à domicile compatissants",
     "slide2Title": "Des soins exceptionnels. Chez vous.",
     "slide2Body": "Des soins professionnels avec une connexion personnelle — pour que vos proches vivent en sécurité et en toute indépendance à Ottawa.",
     "slide3Script": "La confiance des familles",
     "slide3Title": "Votre partenaire en soins aux personnes âgées",
     "slide3Body": "Des soins personnels au soutien infirmier, nous élaborons des plans adaptés aux besoins et aux objectifs de chaque famille.",
-    "eyebrow": "Jarkabi Home Care",
-    "headline": "Des soins compatissants. Un soutien de confiance. À domicile.",
-    "subheadline": "Des soins professionnels avec une connexion personnelle — pour que vos proches vivent en sécurité et en toute indépendance à Ottawa et dans les environs.",
+    "eyebrow": "Soins à domicile compatissants à Ottawa",
+    "headline": "Des soins exceptionnels. Chez vous.",
+    "subheadline": "Des soins professionnels avec une connexion personnelle — pour que vos proches vivent en sécurité et en toute indépendance.",
     "body": "Nous offrons des services de soins à domicile et de soins infirmiers adaptés aux besoins, aux routines et aux objectifs familiaux de chaque personne.",
     "callAnytime": "Appelez à tout moment",
     "primaryCta": "Demander des soins",
-    "secondaryCta": "En savoir plus",
+    "secondaryCta": "Nos services",
     "tertiaryCta": "Appeler notre équipe",
     "locationNote": "Fièrement au service d'Ottawa et des communautés environnantes, avec une expansion réfléchie à travers le Canada.",
-    "badgeLicensed": "Licencié et réglementé",
-    "badgeInsured": "Entièrement assuré",
+    "badgeLicensed": "Soins professionnels",
+    "badgeInsured": "Tranquillité d'esprit familiale",
     "badgeSupport": "Soutien réactif",
     "panelLabel": "Coordination des soins",
     "panelTitle": "Tranquillité d'esprit, communication claire",
@@ -136,13 +103,17 @@
     "community5Desc": "Processus professionnels adaptés au domicile.",
     "community6Title": "Tranquillité d'esprit familiale",
     "community6Desc": "Communication claire et horaires fiables.",
-    "processTagline": "Trois étapes, de la première conversation aux soins à domicile.",
+    "processTagline": "Cinq étapes claires, de la première conversation aux soins à domicile.",
     "step1Title": "Consultation et évaluation gratuites",
-    "step1Body": "Nous écoutons les besoins, préférences et objectifs de votre famille.",
-    "step2Title": "Jumelage et présentation du soignant",
-    "step2Body": "Compétences, langue, culture et personnalité pour une bonne entente.",
-    "step3Title": "Soutien continu et ajustements",
-    "step3Body": "Votre plan de soins évolue avec des révisions régulières."
+    "step1Body": "Nous écoutons les besoins, préférences et objectifs de votre famille — sans pression.",
+    "step2Title": "Évaluation à domicile",
+    "step2Body": "Nous apprenons les routines, la sécurité, les besoins de santé et ce qui compte pour votre famille.",
+    "step3Title": "Plan de soins personnalisé",
+    "step3Body": "Ensemble, nous définissons les services, l'horaire et la communication avec la famille.",
+    "step4Title": "Rencontrez votre équipe de soins",
+    "step4Body": "Nous présentons des soignants jumelés avec soin et confirmons le plan avant les visites.",
+    "step5Title": "Les soins commencent — avec suivi continu",
+    "step5Body": "Le soutien débute à domicile, avec des suivis réguliers à mesure que les besoins évoluent."
   },
   "trust": {
     "licensed": "Licencié et réglementé",
@@ -163,7 +134,7 @@
     "subtitle": "Nous nous engageons à fournir des soins à domicile compatissants et professionnels pour la dignité et la tranquillité d'esprit des familles.",
     "commitment1Value": "24/7",
     "commitment1Label": "Disponibilité, y compris les nuits et les fins de semaine",
-    "commitment2Value": "8",
+    "commitment2Value": "7",
     "commitment2Label": "Langues parlées par notre équipe de soins",
     "commitment3Value": "1:1",
     "commitment3Label": "Un plan de soins rédigé pour chaque personne",
@@ -193,10 +164,11 @@
     "feature4Title": "Horaires flexibles",
     "feature4Desc": "De quelques heures à un soutien continu.",
     "cta": "En savoir plus",
+    "ctaAccessible": "En savoir plus sur Jarkabi Home Care",
     "badge1Title": "Centré sur la famille",
     "badge1Desc": "Plans élaborés ensemble",
-    "badge2Title": "Entièrement assuré",
-    "badge2Desc": "Licencié et réglementé",
+    "badge2Title": "Normes professionnelles",
+    "badge2Desc": "Des soins sur lesquels compter",
     "check1": "Plans de soins centrés sur la personne",
     "check2": "Soignants constants et soigneusement jumelés",
     "check3": "Soins culturellement adaptés dans votre langue",
@@ -249,6 +221,43 @@
     "success": "Merci. Notre équipe vous répondra sous peu.",
     "error": "Impossible d'envoyer le message. Veuillez réessayer ou nous appeler."
   },
+  "referralForm": {
+    "organizationName": "Nom de l'organisation",
+    "contactName": "Votre nom",
+    "phone": "Téléphone",
+    "email": "Courriel",
+    "province": "Province",
+    "city": "Ville",
+    "referrerType": "Type de référent",
+    "referrerTypePlaceholder": "Choisir une option",
+    "referrerHospital": "Hôpital",
+    "referrerPhysician": "Médecin",
+    "referrerNurse": "Infirmière ou infirmier",
+    "referrerSocialWorker": "Travailleur social",
+    "referrerCaseManager": "Gestionnaire de cas",
+    "referrerCommunityOrganization": "Organisme communautaire",
+    "referrerRetirementResidence": "Résidence pour aînés",
+    "referrerOther": "Autre",
+    "clientSummary": "Résumé du client",
+    "notes": "Notes supplémentaires",
+    "submit": "Soumettre la référence",
+    "submitting": "Envoi…",
+    "success": "Merci. Notre équipe des références vous contactera sous peu.",
+    "error": "Impossible de soumettre. Veuillez appeler notre équipe de soins."
+  },
+  "jobApplicationForm": {
+    "applicantName": "Nom complet",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "province": "Province",
+    "city": "Ville",
+    "coverLetter": "Lettre de motivation",
+    "resume": "Curriculum vitae (PDF ou Word)",
+    "submit": "Soumettre la candidature",
+    "submitting": "Envoi…",
+    "success": "Merci. Notre équipe de recrutement examinera votre candidature.",
+    "error": "Impossible de soumettre. Veuillez réessayer."
+  },
   "serviceDetail": {
     "eyebrow": "Service",
     "whoFor": "À qui s'adresse ce service",
@@ -261,10 +270,7 @@
     "locationsEmpty": "Ottawa et les communautés environnantes constituent notre territoire actuel. Dites-nous où vous êtes et nous vous dirons franchement si nous pouvons aider.",
     "related": "Services connexes",
     "learnMore": "Voir les détails",
-    "requestCare": "Demander des soins",
-    "contactCta": "Communiquez avec nous",
-    "contactPanelTitle": "Trouver des soins aujourd'hui",
-    "sidebarWidgetTitle": "Besoin d'aide pour trouver les bons soins?"
+    "requestCare": "Demander des soins"
   },
   "process": {
     "eyebrow": "Comment fonctionnent les soins",
@@ -305,6 +311,17 @@
     "body": "Nous bâtissons une équipe de soins compatissante et professionnelle à Ottawa.",
     "cta": "Voir les carrières"
   },
+  "homeFundingTeaser": {
+    "eyebrow": "Financement",
+    "title": "Comprenez vos options de paiement",
+    "body": "Paiement privé, assurances et programmes publics peuvent tous entrer en jeu. Notre guide explique les options courantes pour les familles d'Ottawa — sans conseil fiscal ou juridique.",
+    "cta": "Explorer le financement"
+  },
+  "homeReferralsTeaser": {
+    "title": "Référer un client en toute confiance",
+    "body": "Médecins, hôpitaux et partenaires communautaires peuvent soumettre une référence en ligne. Notre équipe répond le jour ouvrable même.",
+    "cta": "Référer un client"
+  },
   "testimonials": {
     "eyebrow": "Témoignages",
     "title": "Histoires de familles",
@@ -330,9 +347,9 @@
     "a5": "Les coûts varient selon le type et la fréquence des soins. Nous fournissons une tarification transparente lors de votre consultation gratuite."
   },
   "cta": {
-    "title": "Partagez vos soins. Inspirez les autres.",
-    "body": "Rejoignez notre mouvement pour améliorer la vie des aînés.",
-    "button": "Nous contacter",
+    "title": "Prêt à commencer?",
+    "body": "Parlez avec notre équipe pour une consultation gratuite et confidentielle. Nous sommes là pour vous aider.",
+    "button": "Demander des soins",
     "callButton": "Appelez-nous"
   },
   "footer": {
@@ -343,24 +360,48 @@
     "quickLinks": "Liens rapides",
     "referrals": "Références professionnelles",
     "followUs": "Suivez-nous",
+    "socialFacebook": "Suivre Jarkabi sur Facebook",
+    "socialLinkedIn": "Suivre Jarkabi sur LinkedIn",
+    "socialInstagram": "Suivre Jarkabi sur Instagram",
+    "socialX": "Suivre Jarkabi sur X",
     "rights": "Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "accessibility": "Accessibilité",
     "terms": "Conditions d'utilisation",
+    "cookies": "Politique de témoins",
+    "consent": "Renseignements sur le consentement",
+    "careDisclaimer": "Avis de non-responsabilité — soins",
+    "employmentPrivacy": "Confidentialité — emploi",
+    "referralPrivacy": "Confidentialité — références",
+    "feedbackPolicy": "Politique de commentaires",
+    "feedback": "Commentaires et préoccupations",
     "contact": "Contact",
     "appointment": "Prendre rendez-vous",
-    "newsletterTitle": "Infolettre",
-    "newsletterLead": "Offres spéciales et rabais",
-    "newsletterPlaceholder": "Entrez votre adresse courriel",
-    "newsletterSubscribe": "S'abonner",
-    "newsletterSubmitting": "Abonnement…",
-    "newsletterSuccess": "Merci — vous êtes abonné.",
-    "newsletterError": "Une erreur s'est produite. Veuillez réessayer.",
     "hoursLabel": "Heures d’ouverture"
   },
   "form": {
     "title": "Demander des soins",
     "subtitle": "Dites-nous comment nous pouvons vous aider. Nous répondrons rapidement pendant les heures ouvrables.",
+    "emergencyNotice": "En cas d'urgence médicale, composez le 911.",
+    "progressLabel": "Progression de la demande de soins",
+    "stepProgress": "Étape {current} sur {total}",
+    "step1Title": "Coordonnées et lieu",
+    "step2Title": "Détails des soins",
+    "step3Title": "Révision et consentement",
+    "next": "Continuer",
+    "back": "Retour",
+    "reviewTitle": "Révisez votre demande",
+    "locationSummary": "Lieu",
+    "consentLegend": "Confidentialité et consentement",
+    "consentContact": "J'accepte que Jarkabi Home Care me contacte par téléphone ou courriel au sujet de cette demande (obligatoire).",
+    "consentMarketing": "Je souhaite recevoir des mises à jour occasionnelles sur les services et ressources de Jarkabi Home Care (facultatif).",
+    "consentPrivacy": "Consultez notre",
+    "consentPrivacyLink": "politique de confidentialité",
+    "consentAnd": "et nos",
+    "consentInfoLink": "renseignements sur le consentement",
+    "urgentCare": "C'est urgent — veuillez prioriser ma demande",
+    "urgentCareHelp": "En cas d'urgence vitale, composez le 911. Nous prioriserons les demandes urgentes non vitales pendant les heures ouvrables.",
+    "urgentYes": "Oui — veuillez prioriser",
     "name": "Nom complet",
     "phone": "Téléphone",
     "email": "Courriel",
@@ -375,9 +416,12 @@
     "contactTime": "Meilleur moment pour vous joindre",
     "notes": "Notes supplémentaires",
     "submit": "Soumettre la demande",
+    "submitting": "Envoi en cours…",
+    "error": "Impossible d'envoyer. Réessayez ou écrivez à care@jarkabi.ca.",
     "success": "Merci. Un coordonnateur de soins vous contactera sous peu.",
     "notServed": "Nous ne desservons pas actuellement cette région.",
-    "joinWaitlist": "Rejoindre notre liste de notification d'expansion"
+    "joinWaitlist": "Rejoindre notre liste de notification d'expansion",
+    "waitlistSaved": "Vos renseignements ont été enregistrés. Nous vous aviserons lorsque le service sera offert dans votre région."
   },
   "mobile": {
     "call": "Appeler",
@@ -411,13 +455,14 @@
     "eyebrow": "Pourquoi nous choisir",
     "title": "Dévoués à la dignité, au confort et à l'indépendance",
     "body": "Nous croyons que des soins exceptionnels vont au-delà des tâches — il s'agit de préserver la dignité et de soutenir les familles.",
-    "check1": "Professionnels licenciés et assurés",
+    "check1": "Soignants formés professionnellement",
     "check2": "Continuité des soignants",
     "check3": "Équipes multilingues",
     "check4": "Communication transparente",
     "check5": "Plans de soins flexibles",
     "check6": "Basé à Ottawa, entreprise familiale",
     "cta": "En savoir plus",
+    "ctaAccessible": "En savoir plus sur pourquoi les familles choisissent Jarkabi",
     "condition1": "Grand âge et fragilité",
     "condition2": "Démence et maladie d'Alzheimer",
     "condition3": "Maladies dégénératives comme la SP ou la SLA",
@@ -532,9 +577,6 @@
     "crumb": "Pourquoi Jarkabi",
     "title": "Des soins fondés sur la confiance, la compassion et des normes professionnelles",
     "lead": "Douze questions que les familles posent avant de choisir un fournisseur de soins à domicile, avec des réponses claires.",
-    "introTitle": "Pourquoi les familles choisissent Jarkabi Home Care",
-    "introBody": "Les soins à domicile doivent être personnels, professionnels et prévisibles. Jarkabi combine des soignants qualifiés, des plans revus par des infirmières et des coordonnateurs joignables — pour que la dignité reste au centre de chaque visite.",
-    "gridTitle": "D'autres raisons de faire confiance à Jarkabi",
     "items": [
       {
         "title": "Des soins qui commencent par l'écoute",
@@ -574,7 +616,7 @@
       },
       {
         "title": "Respect de la langue",
-        "body": "Nous jumelons les soignants par langue autant que possible, et ce site est publié en huit langues — anglais, français, tigrigna, arabe, amharique, mandarin, espagnol et hindi."
+        "body": "Nous jumelons les soignants par langue autant que possible, et ce site est publié en sept langues, dont le tigrigna, le blin, le tigré, l'arabe et l'amharique."
       },
       {
         "title": "Un soutien souple",
@@ -619,61 +661,12 @@
     "title": "Un chemin clair et rassurant vers les soins à domicile",
     "lead": "De la première conversation au suivi continu, chaque étape est rédigée pour être comprise autant par les familles que par les partenaires de référence."
   },
-  "teamPage": {
-    "metaTitle": "Notre équipe",
-    "eyebrow": "Notre équipe",
-    "crumb": "Équipe",
-    "title": "Des préposés et coordonnatrices qui connaissent Ottawa",
-    "lead": "Des professionnels expérimentés engagés envers des soins à domicile respectueux et centrés sur la personne.",
-    "introTitle": "Des personnes qui viennent — et qui restent",
-    "introBody": "Notre équipe est bâtie pour la continuité : des coordonnatrices qui connaissent votre famille, des préposés bien jumelés et une supervision clinique lorsque les besoins changent.",
-    "introHighlights": [
-      "Préposés sélectionnés, formés et soutenus",
-      "Coordonnatrices locales pour les communautés d'Ottawa",
-      "Des soins respectueux et centrés sur la personne à chaque visite"
-    ],
-    "sectionTitle": "Nos préposés",
-    "sectionLead": "Profils de démonstration affichés jusqu'à la publication de photos et biographies vérifiées."
-  },
-  "galleryPage": {
-    "metaTitle": "Galerie",
-    "eyebrow": "Galerie",
-    "crumb": "Galerie",
-    "title": "Des moments de soins et de connexion",
-    "lead": "Un aperçu de la chaleur, de la dignité et de la compagnie qui définissent les soins à domicile.",
-    "sectionTitle": "Notre galerie",
-    "sectionLead": "Des moments chaleureux et dignes de l'expérience Jarkabi Home Care.",
-    "imageAlt": "Galerie de soins à domicile",
-    "lightboxClose": "Fermer",
-    "lightboxPrevious": "Image précédente",
-    "lightboxNext": "Image suivante"
-  },
-  "testimonialsPage": {
-    "metaTitle": "Témoignages",
-    "crumb": "Témoignages",
-    "title": "Ce que les familles disent de Jarkabi",
-    "lead": "Des histoires de familles de la région d'Ottawa qui nous ont confié des soins à domicile.",
-    "featuredTitle": "Témoignages en vedette",
-    "featuredLead": "Des familles partagent ce que des soins à domicile constants et coordonnés ont signifié pour elles.",
-    "sectionTitle": "D'autres histoires de clients"
-  },
   "careersPage": {
     "metaTitle": "Carrières",
     "eyebrow": "Carrières",
     "crumb": "Carrières",
     "title": "Joignez-vous à une équipe fondée sur la dignité et le professionnalisme",
     "lead": "Nous embauchons pour la continuité. Si vous souhaitez revoir les mêmes clients chaque semaine et être appuyé par un coordonnateur qui les connaît, écrivez-nous.",
-    "introTitle": "Un travail qui compte, avec une équipe qui vous soutient",
-    "introBody": "Jarkabi Home Care est conçu pour les soignants qui veulent des horaires stables, une communication claire et le temps de faire un excellent travail — pas des visites précipitées entre des inconnus.",
-    "introBenefits": [
-      "Affectations de clients régulières lorsque c'est possible",
-      "Soutien d'un coordonnateur qui connaît vos clients",
-      "Perfectionnement professionnel et supervision clinique",
-      "Culture respectueuse, centrée sur les familles"
-    ],
-    "sidebarTitle": "En savoir plus",
-    "sidebarWidgetTitle": "Prêt à joindre notre équipe?",
-    "sidebarWidgetButton": "Communiquez avec nous",
     "rolesTitle": "Postes que nous recrutons",
     "emptyTitle": "Aucun poste n'est affiché pour le moment",
     "emptyBody": "Nous conservons les candidatures et communiquons avec les personnes lorsqu'un poste correspondant s'ouvre. Envoyez un curriculum vitæ en précisant les communautés où vous pouvez travailler.",
@@ -692,32 +685,7 @@
     "read": "Lire l'article",
     "emptyTitle": "Les premiers guides sont en rédaction",
     "emptyBody": "D'ici leur publication, notre équipe de soins répondra par téléphone ou par courriel à toute question sur les soins à domicile — y compris sur d'autres fournisseurs que nous.",
-    "emptyCta": "Posez votre question",
-    "recent": "Récent",
-    "sidebarCategories": "Catégories",
-    "sidebarRecent": "Articles récents",
-    "sidebarSearch": "Rechercher des articles",
-    "sidebarWidgetTitle": "Besoin d'aide pour trouver les bons soins?",
-    "sidebarWidgetButton": "Demander des soins",
-    "sidebarCategoryList": [
-      "Choisir les soins à domicile",
-      "Soutien aux proches aidants",
-      "Santé et bien-être des aînés",
-      "Soins après l'hôpital",
-      "Soins et démence"
-    ]
-  },
-  "faqPage": {
-    "metaTitle": "Foire aux questions",
-    "crumb": "FAQ",
-    "title": "Les questions que les familles nous posent",
-    "lead": "Des réponses claires sur le début des soins, la sécurité, les langues et ce qu'il faut attendre de Jarkabi Home Care.",
-    "sectionTitle": "Foire aux questions",
-    "sectionLead": "Recherchez ci-dessous ou parcourez les sujets courants. Si votre question n'y figure pas, appelez notre équipe de soins.",
-    "searchPlaceholder": "Rechercher une question",
-    "sidebarTitle": "Liens utiles",
-    "widgetTitle": "Besoin d'aide pour trouver les bons soins?",
-    "widgetButton": "Parler à Jarkabi"
+    "emptyCta": "Posez votre question"
   },
   "referralsPage": {
     "metaTitle": "Références professionnelles",
@@ -725,16 +693,6 @@
     "crumb": "Références",
     "title": "Référez un client en toute confiance",
     "lead": "Pour les hôpitaux, médecins, infirmières, travailleurs sociaux, gestionnaires de cas et partenaires communautaires.",
-    "introTitle": "Un partenaire de référence en qui vous pouvez avoir confiance",
-    "introBody": "Jarkabi a été conçu pour les professionnels qui ont besoin d'un partenaire fiable en soins à domicile — communication claire, accusé de réception le jour même et consentement avant toute collecte de renseignements de santé.",
-    "introHighlights": [
-      "Accusé de réception le jour ouvrable même",
-      "La coordonnatrice confirme la disponibilité avant de contacter le client",
-      "Approche fondée sur le consentement pour les renseignements de santé"
-    ],
-    "sidebarTitle": "Liens utiles",
-    "sidebarWidgetTitle": "Des questions sur une référence?",
-    "sidebarWidgetButton": "Communiquez avec nous",
     "partnersTitle": "Qui nous réfère",
     "partnersBody": "Équipes de congé hospitalier, équipes de réadaptation, résidences pour retraités, organismes de soutien communautaire et médecins de famille d'Ottawa et des environs.",
     "responseTitle": "Ce qui se passe ensuite",
@@ -743,82 +701,11 @@
     "privacyBody": "N'envoyez que ce qui est nécessaire pour amorcer la conversation. Nous obtenons le consentement du client ou de son mandataire avant de recueillir davantage."
   },
   "legalPages": {
-    "sidebarTitle": "Renseignements juridiques",
-    "sidebarWidgetTitle": "Des questions sur nos politiques?",
-    "sidebarWidgetButton": "Communiquez avec nous",
     "draftNotice": "Cette page est en cours de finalisation avec un conseiller juridique et n'est pas encore approuvée pour publication.",
     "privacyLead": "Comment Jarkabi Home Care recueille, utilise et protège les renseignements personnels.",
-    "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons.",
-    "privacySections": [
-      {
-        "title": "Qui nous sommes",
-        "body": "Jarkabi Home Care fournit des services de soins à domicile réglementés au Canada. L'agence indiquée dans nos paramètres de marque est responsable des renseignements personnels recueillis par ce site, nos formulaires de soins et notre équipe de coordination."
-      },
-      {
-        "title": "Ce que nous recueillons",
-        "body": "Nous recueillons seulement ce qui est nécessaire pour répondre aux demandes, coordonner les soins, traiter les candidatures ou faire fonctionner le site. Cela peut inclure votre nom, numéro de téléphone, courriel, ville, langue préférée et tout détail de santé ou de soins que vous choisissez de partager."
-      },
-      {
-        "title": "Pourquoi nous l'utilisons",
-        "body": "Nous utilisons les renseignements personnels pour répondre aux questions, planifier des évaluations, jumeler des soignants, communiquer avec les familles et les partenaires de référence, respecter les exigences réglementaires lorsque requis et améliorer ce site. Nous ne vendons pas de renseignements personnels."
-      },
-      {
-        "title": "Consentement et renseignements de santé",
-        "body": "Nous demandons le consentement avant de recueillir des renseignements de santé au-delà de ce que vous soumettez volontairement dans une première demande. Les partenaires de référence ne doivent envoyer que ce qui est nécessaire pour amorcer la conversation."
-      },
-      {
-        "title": "Protection des renseignements",
-        "body": "L'accès aux renseignements personnels est limité au personnel et aux sous-traitants qui en ont besoin pour leur rôle. Les données sont stockées sur une infrastructure chiffrée en transit, avec des fournisseurs d'hébergement réputés."
-      },
-      {
-        "title": "Conservation et vos droits",
-        "body": "Nous conservons les renseignements seulement aussi longtemps que nécessaire pour la coordination des soins, l'emploi ou les obligations légales. Vous pouvez demander ce que nous détenons, demander une correction ou demander la suppression lorsqu'aucune obligation légale ne s'applique."
-      },
-      {
-        "title": "Témoins et analytique",
-        "body": "Ce site peut utiliser des témoins essentiels pour la langue et la sécurité. Si des outils d'analytique sont activés, ils sont configurés pour minimiser les données identifiables."
-      },
-      {
-        "title": "Modifications de cette politique",
-        "body": "Nous mettrons à jour cette page lorsque nos pratiques changeront ou lorsqu'un conseiller juridique approuvera une politique révisée."
-      }
-    ],
+    "privacyBody": "Nos pratiques de confidentialité s'appuient sur la loi fédérale canadienne sur la protection des renseignements personnels dans le secteur privé et sur la législation provinciale applicable aux renseignements de santé là où nous exerçons. D'ici la publication de la politique complète, communiquez avec notre équipe pour toute question.",
     "termsLead": "Les conditions qui s'appliquent à l'utilisation de ce site.",
-    "termsBody": "En utilisant jarkabi.ca, vous acceptez les conditions ci-dessous. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site.",
-    "termsSections": [
-      {
-        "title": "À propos de ce site",
-        "body": "Ce site fournit de l'information générale sur les services, les carrières et les ressources de Jarkabi Home Care. Le contenu peut changer sans préavis."
-      },
-      {
-        "title": "Pas un avis médical",
-        "body": "Rien sur ce site ne constitue un avis médical, un diagnostic ou un traitement. Consultez toujours un professionnel de la santé qualifié. L'utilisation du site ne crée pas de relation de soins tant que Jarkabi n'a pas confirmé le service par écrit."
-      },
-      {
-        "title": "Disponibilité des services",
-        "body": "La disponibilité varie selon la province et la ville. Seules les communautés indiquées comme actives sur notre page des emplacements sont desservies aujourd'hui."
-      },
-      {
-        "title": "Utilisation acceptable",
-        "body": "Vous acceptez de ne pas utiliser le site de manière abusive, tenter un accès non autorisé, soumettre de fausses informations ou utiliser des outils automatisés qui dégradent le service."
-      },
-      {
-        "title": "Propriété intellectuelle",
-        "body": "Le texte, les logos, la photographie et la conception appartiennent à Jarkabi Home Care ou à ses concédants, sauf indication contraire."
-      },
-      {
-        "title": "Liens vers des tiers",
-        "body": "Les liens vers des sites externes sont fournis pour votre commodité. Nous ne sommes pas responsables du contenu ou des pratiques de confidentialité de sites tiers."
-      },
-      {
-        "title": "Limitation de responsabilité",
-        "body": "Dans la mesure permise par la loi applicable, Jarkabi Home Care n'est pas responsable des dommages indirects découlant de l'utilisation de ce site."
-      },
-      {
-        "title": "Droit applicable",
-        "body": "Ces conditions sont régies par les lois de la province où Jarkabi Home Care exploite le service pertinent à votre demande, ainsi que par les lois fédérales du Canada le cas échéant."
-      }
-    ],
+    "termsBody": "Rien sur ce site ne constitue un avis médical, et l'information qui s'y trouve ne crée pas de relation de soins. La disponibilité des services varie selon la province et la ville : seules les communautés indiquées comme actives sur notre page des emplacements sont desservies aujourd'hui.",
     "accessibilityLead": "Ce que nous avons fait pour rendre ce site utilisable, et comment nous signaler ce qui ne l'est pas.",
     "accessibilityIntro": "Jarkabi Home Care vise le niveau AA des WCAG 2.1 sur l'ensemble de ce site. L'accessibilité compte particulièrement ici : beaucoup de nos visiteurs sont des personnes âgées, des personnes ayant une basse vision ou des familles qui lisent sur un téléphone dans un couloir d'hôpital.",
     "accessibilityDoneTitle": "Ce qui est en place aujourd'hui",
@@ -827,7 +714,7 @@
       "Chaque page s'utilise au clavier seul, et les éléments ciblés affichent un contour visible.",
       "Les titres suivent un ordre logique unique, les champs de formulaire portent des étiquettes visibles et les images porteuses de sens ont un texte de remplacement.",
       "Les cibles interactives mesurent au moins 24 pixels sur 24, et la mise en page se réorganise sans défilement horizontal jusqu'à 320 pixels de largeur.",
-      "Le site est publié en huit langues, avec prise en charge de la mise en page de droite à gauche pour l'arabe."
+      "Le site est publié en sept langues, avec prise en charge de la mise en page de droite à gauche pour l'arabe."
     ],
     "accessibilityGapsTitle": "Limites connues",
     "accessibilityGaps": [
@@ -835,14 +722,21 @@
       "Les documents publiés par des tiers, comme des formulaires externes, peuvent ne pas respecter la même norme."
     ],
     "accessibilityContactTitle": "Signalez-nous un obstacle",
-    "accessibilityContactBody": "Si une partie de ce site vous empêche de trouver ou de demander des soins, écrivez à notre équipe en nous expliquant ce qui s'est passé. Nous traitons les obstacles à l'accès comme des défaillances de service."
+    "accessibilityContactBody": "Si une partie de ce site vous empêche de trouver ou de demander des soins, écrivez à notre équipe en nous expliquant ce qui s'est passé. Nous traitons les obstacles à l'accès comme des défaillances de service.",
+    "cookiesLead": "Comment ce site utilise les témoins et technologies similaires.",
+    "cookiesBody": "Nous utilisons des témoins essentiels pour assurer la sécurité et le fonctionnement du site. Les témoins d'analyse ou de préférences, s'ils sont ajoutés plus tard, seront décrits ici et gérés via les paramètres de votre navigateur. Nous ne vendons pas les renseignements personnels recueillis par les témoins.",
+    "consentLead": "Comment nous obtenons et consignons le consentement avant de fournir des soins ou de recueillir des renseignements de santé.",
+    "consentBody": "Avant le début des soins, nous parlons avec le client ou son mandataire autorisé pour confirmer qu'il comprend les services proposés et accepte de continuer. Nous documentons le consentement conformément aux exigences provinciales applicables. Le contact marketing est distinct et toujours facultatif.",
+    "careDisclaimerLead": "Limites importantes sur ce que ce site et nos premières conversations fournissent.",
+    "careDisclaimerBody": "L'information sur ce site est de nature générale et ne constitue pas un avis médical, un diagnostic ou un traitement. Seul un professionnel de la santé qualifié qui connaît la situation de la personne peut donner des conseils cliniques. Les symptômes d'urgence exigent d'appeler le 911 ou de se rendre à l'urgence la plus proche.",
+    "employmentPrivacyLead": "Comment nous traitons les renseignements personnels recueillis auprès des candidats.",
+    "employmentPrivacyBody": "Les documents de candidature servent uniquement à évaluer l'adéquation aux postes chez Jarkabi Home Care, à mener des vérifications de références et d'antécédents lorsque permis, et à communiquer au sujet de l'embauche. Nous conservons les dossiers selon notre calendrier de conservation et les lois applicables en matière d'emploi et de confidentialité.",
+    "referralPrivacyLead": "Comment nous protégeons les renseignements transmis par les références professionnelles.",
+    "referralPrivacyBody": "Les renseignements de référence ne sont partagés qu'avec le personnel qui en a besoin pour répondre à la référence, coordonner les soins ou respecter des obligations légales. Nous confirmons le consentement du client avant de recueillir davantage de détails cliniques. Les référents ne devraient pas envoyer plus de renseignements identifiants que nécessaire pour amorcer la conversation.",
+    "feedbackPolicyLead": "Comment nous recevons, examinons et répondons aux compliments, préoccupations et plaintes.",
+    "feedbackPolicyBody": "Nous accueillons les commentaires par téléphone, courriel ou notre formulaire en ligne. Les préoccupations sont consignées, examinées par la direction appropriée et traitées dans un délai raisonnable. Les enjeux cliniques ou de sécurité graves sont escaladés immédiatement. Cette politique ne remplace pas les processus de plainte réglementaires disponibles dans votre province."
   },
   "locationsPage": {
-    "introTitle": "Des soins locaux, annoncés honnêtement",
-    "introLead": "Nous n'affichons que les provinces et les communautés que nous pouvons réellement desservir aujourd'hui — pas de listes fictives, pas de couverture implicite.",
-    "sidebarTitle": "Liens utiles",
-    "sidebarWidgetTitle": "Besoin d'aide pour trouver les bons soins?",
-    "sidebarWidgetButton": "Demander des soins",
     "mapTitle": "Où nous intervenons aujourd'hui",
     "mapLead": "Chaque province ci-dessous affiche son statut réel. Nous n'inscrivons une communauté qu'une fois que nous pouvons y affecter du personnel : une province indiquée comme non desservie l'est réellement.",
     "ottawaTitle": "Communautés desservies à Ottawa",
@@ -857,8 +751,6 @@
   "cityPage": {
     "title": "Soins à domicile à {city}",
     "lead": "Les services que nous offrons actuellement à {city}, et l’équipe qui les coordonne.",
-    "introTitle": "Des soins locaux à {city}",
-    "introLead": "Des coordonnatrices et des préposés qui connaissent {city} — visites régulières, communication claire et soutien lorsque les besoins changent.",
     "servicesTitle": "Services offerts"
   },
   "provincePage": {
@@ -878,14 +770,98 @@
     "inactiveTitle": "Pas encore dans votre région",
     "inactiveBody": "Nous n’inscrivons une communauté que lorsque nous pouvons y affecter du personnel. Envoyez-nous votre emplacement et nous vous contacterons quand cela changera."
   },
+  "faqPage": {
+    "metaTitle": "Foire aux questions",
+    "eyebrow": "FAQ",
+    "title": "Questions que les familles nous posent",
+    "lead": "Des réponses claires sur les débuts, les coûts, les soignants, les soins infirmiers, l'horaire et les secteurs desservis à Ottawa.",
+    "items": [
+      {
+        "question": "Comment savoir si les soins à domicile conviennent à notre situation?",
+        "answer": "Les soins à domicile peuvent aider lorsque les tâches quotidiennes, la sécurité, la récupération ou la compagnie deviennent difficiles. Nous commençons par une conversation sur vos objectifs et vos préférences — sans pression."
+      },
+      {
+        "question": "Quelle est la différence entre les soins publics et privés?",
+        "answer": "En Ontario, Santé Ontario à domicile organise les soins publics admissibles. Les soins privés sont payés directement ou par assurance. Beaucoup de familles combinent les deux. [REVIEW REQUIRED]"
+      },
+      {
+        "question": "À quelle vitesse les soins peuvent-ils commencer?",
+        "answer": "Le délai dépend du type de soins, de votre emplacement et de la disponibilité. Nous vous indiquerons une date réaliste après avoir compris vos besoins."
+      },
+      {
+        "question": "Offrez-vous des soins infirmiers et du soutien personnel?",
+        "answer": "Oui. Nous distinguons clairement le soutien non réglementé des services infirmiers réglementés. [REVIEW REQUIRED]"
+      },
+      {
+        "question": "Quels secteurs desservez-vous?",
+        "answer": "Nous lançons dans la région d'Ottawa. Nous n'affichons une communauté comme disponible que lorsque nous pouvons y affecter du personnel."
+      }
+    ]
+  },
+  "fundingPage": {
+    "metaTitle": "Financement et options de paiement",
+    "eyebrow": "Financement",
+    "title": "Comment les familles paient les soins à domicile",
+    "lead": "Comprendre vos options tôt aide à planifier avec confiance. Ce texte n'est pas un avis fiscal ou juridique.",
+    "reviewNotice": "[REVIEW REQUIRED] Le libellé final doit être révisé par des professionnels qualifiés.",
+    "sections": [
+      {
+        "title": "Paiement privé",
+        "body": "Beaucoup de familles paient directement pour des horaires flexibles ou des services non couverts ailleurs."
+      },
+      {
+        "title": "Assurance santé privée",
+        "body": "Certaines polices incluent des avantages pour soins à domicile. Vérifiez auprès de votre assureur. [REVIEW REQUIRED]"
+      },
+      {
+        "title": "Soins publics en Ontario",
+        "body": "Santé Ontario à domicile organise les soins publics admissibles. Les soins privés peuvent compléter ces heures."
+      },
+      {
+        "title": "Assurance automobile et accidents du travail",
+        "body": "Certains coûts peuvent être couverts selon votre dossier. [REVIEW REQUIRED]"
+      },
+      {
+        "title": "Anciens combattants et autres programmes",
+        "body": "Vétérans Canada et d'autres programmes peuvent aider les personnes admissibles. [REVIEW REQUIRED]"
+      },
+      {
+        "title": "Crédits d'impôt",
+        "body": "Consultez un professionnel fiscal qualifié — nous ne donnons pas de conseils fiscaux."
+      }
+    ]
+  },
+  "feedbackPage": {
+    "metaTitle": "Commentaires et préoccupations",
+    "eyebrow": "Commentaires",
+    "title": "Partager un compliment ou signaler une préoccupation",
+    "lead": "Vos commentaires nous aident à nous améliorer.",
+    "processTitle": "Prochaines étapes",
+    "steps": [
+      "Nous accusons réception dans les deux jours ouvrables. [JARKABI FACT REQUIRED]",
+      "Un responsable des soins examine les détails.",
+      "Nous travaillons vers une résolution en langage clair.",
+      "Si vous n'êtes pas satisfait, nous expliquons les options restantes."
+    ],
+    "responseNote": "[REVIEW REQUIRED]",
+    "formTitle": "Envoyez-nous un message",
+    "formLead": "Pour les urgences cliniques, appelez-nous. En cas d'urgence médicale, composez le 911."
+  },
+  "requestCarePage": {
+    "metaTitle": "Demander des soins",
+    "eyebrow": "Demander des soins",
+    "title": "Parlez-nous du soutien dont vous avez besoin",
+    "lead": "Un court formulaire suffit pour commencer.",
+    "emergencyNotice": "En cas d'urgence médicale, composez le 911.",
+    "formTitle": "Demande de soins",
+    "formLead": "Nous ne recueillons pas de renseignements médicaux détaillés par ce formulaire."
+  },
   "growingPage": {
     "metaTitle": "Notre expansion au Canada",
     "eyebrow": "Vision nationale",
     "crumb": "Notre expansion au Canada",
     "title": "Grandir au Canada sans rien céder sur la qualité",
     "lead": "Nous avons commencé à Ottawa et nous n'ouvrons une nouvelle communauté que lorsque nous pouvons y affecter du personnel répondant aux mêmes normes.",
-    "introTitle": "Une portée nationale, une responsabilité locale",
-    "introBody": "Chaque communauté que nous inscrivons est dotée du personnel nécessaire pour respecter les mêmes normes qu'à Ottawa — coordonnatrices locales, préposés locaux et disponibilité honnête sur notre page des emplacements.",
     "localTitle": "Un ancrage local, une capacité nationale",
     "localBody": "Chaque communauté présente sa propre direction, ses préposés, son numéro de téléphone et ses ressources, tout en partageant une seule marque et un seul cadre de qualité.",
     "opensTitle": "Comment une nouvelle communauté ouvre",

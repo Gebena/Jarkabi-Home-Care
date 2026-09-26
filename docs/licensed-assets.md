@@ -32,69 +32,69 @@ reusable-section component approach, and the responsive breakpoint strategy.
 Not reused: no Seniar branding, copy, imagery or Bootstrap 5 stylesheet ships. Seniar's own
 homepage layout was replaced by the Care Giver Home Page 01 layout.
 
-## Licensed template files (local — not in Git)
+## Photography
 
-| Path | Status | Action |
+The Care Giver demo photographs are supplied for preview purposes and are **not
+redistributable** under the Envato licence — templates ship them as placeholders precisely
+because the end user is expected to substitute their own. Jarkabi therefore has its own set,
+composed to match Care Giver's direction: warm, naturally lit, candid senior care.
+
+> **These are AI-generated photographs, not photographs of real people.** Nobody in them is a
+> Jarkabi client, caregiver or employee, and no scene depicted actually happened. They are
+> placeholders that look like the site's intended photography instead of looking like stock.
+> **Replace them with real, consented photography of Jarkabi clients and staff before
+> launch.** Until then, no image on this site is presented as evidence of anything — no
+> caption, testimonial, statistic or credential is attached to any face.
+
+The files live in `public/images/photography` as WebP (quality 82; 6.3 MB of source PNG
+compresses to 1.8 MB). Nothing is hotlinked from a third-party CDN, so there is no external
+dependency and no photo ID that can be retired out from under the site.
+
+All photography is wired up centrally in `src/lib/site-images.ts` — no component holds an
+image path of its own. Run `npm run verify:images` after editing it: the script checks every
+referenced file exists and flags anything in the directory nothing points at.
+
+### The set
+
+Every alt text below was written after looking at the frame, because descriptions written from
+the brief are frequently wrong — four of these were corrected on review.
+
+| File | What it shows | Where it is used |
 |---|---|---|
-| `/templates/caregiver/` | **Present** — 25 HTML demos, css/js/images/fonts (unpacked 2026-09-25) | Agent: extract permitted assets into `public/` |
-| `/templates/caregiver-icons-flat/` | **Present** — Flaticon SVG/PNG/EPS icon pack | Optional: wire icons where Care Giver uses flaticon |
-| `/templates/seniar/` | **Empty** | Owner: unzip Seniar React package here |
-| `/templates/licenses/caregiver-envato-elements.pdf` | Present | Envato Elements licence `KVZ473J956` |
+| `jarkabi-hero-care-conversation` | A care worker beside a smiling older man in his living room, hand on his shoulder | Hero slide 1 |
+| `jarkabi-hero-kitchen-tea` | A care worker pouring tea for an older woman at a kitchen counter | Hero slide 2 |
+| `jarkabi-hero-garden-walk` | A care worker steadying an older woman's walking frame on a garden path | Hero slide 3 |
+| `jarkabi-pillar-enrich` | Two women looking through a photo album on a sofa | Pillar 1 "Enrich", `/about` |
+| `jarkabi-pillar-empower` | An older man watering herbs on a windowsill, care worker alongside | Pillar 2 "Empower" |
+| `jarkabi-pillar-engage` | An older woman and a care worker laughing over a board game | Pillar 3 "Engage", `/about` |
+| `jarkabi-why-tea-conversation` | An older woman talking with a care worker across a teapot | "Here For You Always" panel, `/about` lead image |
+| `jarkabi-cta-hands` | An older woman smiling as someone holds her hands across a table | Mid-page call to action |
+| `jarkabi-page-banner-texture` | Hands resting on a knitted blanket beside a mug — no face | Banner behind every inner page title |
+| `jarkabi-location-home-visit` | A care worker greeted at a front door | Location finder collage |
+| `jarkabi-location-couple-home` | An older couple laughing over a photo album | Location finder collage |
+| `jarkabi-blog-family-planning` | A daughter and her older mother talking over a notebook | Resource card fallback |
+| `jarkabi-blog-home-safety` | A care worker fitting a grab rail while an older man looks on | Resource card fallback |
+| `jarkabi-blog-nutrition` | An older woman and a care worker chopping vegetables together | Resource card fallback |
+| `svc-personal-care` | A care worker helping an older woman fasten her cardigan | Personal care card |
+| `svc-senior-home-care` | An older woman with tea under a blanket, care worker tidying behind | Senior home care card, service fallback |
+| `svc-companion-care` | An older man laughing over tea beside a companion on a garden bench | Companion care card |
+| `svc-registered-nursing` | A nurse taking an older man's blood pressure at his table | Registered nursing card |
+| `svc-dementia-support` | A care worker and an older woman looking through old photographs | Dementia support card |
+| `svc-respite-care` | A family member handing over to a care worker at the front door | Respite care card |
+| `svc-post-hospital-care` | A care worker supporting an older man as he rises from his armchair | Post-hospital care card |
+| `svc-palliative-care` | A care worker at an older woman's bedside, holding her hand | Palliative care card |
 
-When `/templates/caregiver/` is populated, the agent will:
-
-1. Inventory every `.html` demo page and update `docs/caregiver-page-map.md`.
-2. Copy **permitted** images, icons, and fonts into `jarkabi-home-care/public/` subfolders.
-3. Register each copied file in the table below (original filename → final path → pages used).
-4. Replace AI placeholder photography where licensed demo photos are cleared for end-product use.
-
-Homepage hero, service cards, about collage, location finder, blog fallbacks, and the "Here For You Always" panel use licensed Care Giver template photos via `src/lib/site-images.ts`. The legacy AI placeholder set in `public/images/photography/` has been removed from the repository.
-
----
-
-## Template assets copied into `public/` (2026-09-25)
-
-| Source (template) | Production path | Used on |
-|---|---|---|
-| `images/background/pattern-1.png` | `public/images/caregiver-licensed/backgrounds/pattern-1.png` | Home — "Here For You Always" plum panel texture |
-| `images/background/1.png` | `public/images/caregiver-licensed/backgrounds/1.png` | Home + inner pages — mid-page CTA texture |
-| `images/background/2.png` | `public/images/caregiver-licensed/backgrounds/2.png` | Home — location finder band texture |
-| Flaticon `189-hair.svg` | `public/icons/caregiver/189-hair.svg` | Home — care tasks grid |
-| Flaticon `186-elder.svg` | `public/icons/caregiver/186-elder.svg` | Home — care tasks grid |
-| Flaticon `180-medicine.svg` | `public/icons/caregiver/180-medicine.svg` | Home — care tasks grid |
-| Flaticon `187-walk.svg` | `public/icons/caregiver/187-walk.svg` | Home — care tasks grid |
-| Flaticon `183-groceries.svg` | `public/icons/caregiver/183-groceries.svg` | Home — care tasks grid |
-| Flaticon `188-deal.svg` | `public/icons/caregiver/188-deal.svg` | Home — care tasks grid |
-
-Wiring: `src/lib/caregiver-assets.ts`.
-
-### Bulk copy (2026-09-25 — full demo pass)
-
-| Source folder | Production path | Used on |
-|---|---|---|
-| `images/background/*` | `public/images/caregiver-licensed/backgrounds/` | Page banners, CTA textures |
-| `images/gallery/*` (19 placeholders in package) | `public/images/caregiver-licensed/gallery/*.webp` | `/gallery` — real curated photography replaces grey template JPEGs |
-| `images/resource/*` (52 files) | `public/images/caregiver-licensed/resource/` | Team, testimonials, blog, service detail, how-care-works |
-| `images/main-slider/1–3.jpg` | `public/images/caregiver-licensed/main-slider/` | Homepage hero slider |
-
-Registry: `src/lib/caregiver-assets.ts`, homepage slots: `src/lib/site-images.ts`, demo copy: `src/lib/caregiver-demo-fallbacks.ts`.
-
-**Home Page 02–05:** intentionally **not** implemented — spec §32 uses Home Page 01 only. Variants remain reference-only in `/templates/caregiver/index-2.html` … `index-5.html`.
-
----
-
-## Photography (licensed Care Giver assets)
-
-Production photography comes from the licensed Care Giver template package in
-`public/images/caregiver-licensed/`, registered in `src/lib/caregiver-assets.ts` and assigned
-to page slots in `src/lib/site-images.ts`. Run `npm run verify:images` after editing either
-file.
+Service, pillar, collage and resource images sit behind headings that already name the
+subject, so they carry `alt=""` and are hidden from screen readers. The hero, the
+"Here For You Always" panel and the `/about` lead image are the ones that announce themselves,
+and their alt text is the description above.
 
 ### Outstanding
 
-- **Commission real photography.** The Care Giver Envato licence covers template demo photos for
-  the owner's deployment; replace with real, consented photography of Jarkabi clients and staff
-  when available — update paths in `site-images.ts`.
+- **Commission or licence real photography.** The owner holds the Care Giver Envato licence,
+  so the demo photographs may be used in the owner's own deployment even though they cannot be
+  redistributed through this repository — replacing the files in `public/images/photography`
+  is all that is required, since every path is resolved through `site-images.ts`.
 - **Team portraits.** Team cards render a monogram, not a face: putting a stranger's
   photograph above a real colleague's name misrepresents them. Add a per-member image field to
   the Payload team collection alongside real staff photography.
