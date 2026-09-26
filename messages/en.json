@@ -92,13 +92,13 @@
     "slide3Script": "Trusted by families",
     "slide3Title": "Your Partner in Senior Care",
     "slide3Body": "From personal care to nursing support, we build thoughtful care plans tailored to each person's needs, routines, and family goals.",
-    "eyebrow": "Compassionate Home Care in Ottawa",
-    "headline": "Exceptional Care. Right at Home.",
-    "subheadline": "Compassionate home-care and nursing services designed around the individual, the family, and the life they want to continue living.",
+    "eyebrow": "Jarkabi Home Care",
+    "headline": "Compassionate Care. Trusted Support. At Home.",
+    "subheadline": "Professional home care with a personal connection — helping your loved ones live safely, independently, and with dignity in Ottawa and surrounding communities.",
     "body": "We provide thoughtful home care and nursing services tailored to each person's needs, routines, and family goals.",
     "callAnytime": "Call anytime",
     "primaryCta": "Request Care",
-    "secondaryCta": "Explore Services",
+    "secondaryCta": "Learn More",
     "tertiaryCta": "Call Our Care Team",
     "locationNote": "Serving Ottawa and surrounding communities.",
     "badgeLicensed": "Licensed & Regulated",
@@ -432,9 +432,9 @@
     "error": "Something went wrong. Please try again or call us directly."
   },
   "cta": {
-    "title": "Ready to begin?",
-    "body": "Speak with our care team for a free, confidential consultation. We're here to help.",
-    "button": "Request Care",
+    "title": "Share Your Cares. Inspire Others.",
+    "body": "Join our movement to make the world a better place for seniors.",
+    "button": "Contact Us",
     "callButton": "Call Us Today"
   },
   "footer": {

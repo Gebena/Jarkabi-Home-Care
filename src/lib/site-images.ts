@@ -37,23 +37,26 @@ function licensed(path: string, alt: string): Photo {
 
 /** Licensed Care Giver frames keyed by template filename. */
 const library = {
-  heroSlide1: licensed(
-    "main-slider/1.jpg",
-    "A care worker with an older adult in a warm home setting",
-  ),
-  heroSlide2: licensed(
-    "main-slider/2.jpg",
-    "A caregiver supporting an older person during daily activities at home",
-  ),
-  heroSlide3: licensed(
-    "main-slider/3.jpg",
-    "Compassionate in-home care for a senior in their living room",
-  ),
+  heroSlide1: {
+    src: "/images/photography/jarkabi-hero-care-conversation.webp",
+    alt: "A care worker sitting close beside a smiling older man in his living room, her hand on his shoulder",
+  },
+  heroSlide2: {
+    src: "/images/photography/jarkabi-hero-kitchen-tea.webp",
+    alt: "A care worker pouring tea for an older woman at her kitchen counter, both laughing",
+  },
+  heroSlide3: {
+    src: "/images/photography/jarkabi-hero-garden-walk.webp",
+    alt: "A care worker walking an older woman along a garden path, steadying her walking frame",
+  },
   pillarEnrich: licensed("resource/service-1.jpg", ""),
   pillarEmpower: licensed("resource/service-2.jpg", ""),
   pillarEngage: licensed("resource/service-3.jpg", ""),
   whyPanel: licensed("resource/video-img.jpg", "Care worker with an older adult at home"),
-  ctaBackground: licensed("resource/quality-1.jpg", ""),
+  ctaBackground: {
+    src: "/images/photography/jarkabi-cta-hands.webp",
+    alt: "An older woman smiling as someone holds her hands across a table",
+  },
   pageBanner: licensed("resource/started.jpg", ""),
   locationPrint1: licensed("resource/post-1.jpg", ""),
   locationPrint2: licensed("resource/post-2.jpg", ""),
@@ -78,11 +81,11 @@ const library = {
   serviceSpecialNeeds: licensed("resource/service-21.jpg", ""),
 } as const;
 
-/** Hero slides — Care Giver `main-slider/1–3.jpg`. */
+/** Hero slides — three premium senior/caregiver photographs for one hero slider. */
 export const heroSlides: PositionedPhoto[] = [
-  { ...library.heroSlide1, position: "center center" },
-  { ...library.heroSlide2, position: "center center" },
-  { ...library.heroSlide3, position: "center center" },
+  { ...library.heroSlide1, position: "50% 45%" },
+  { ...library.heroSlide2, position: "55% 45%" },
+  { ...library.heroSlide3, position: "55% 40%" },
 ];
 
 /** Three colour-overlaid pillar blocks (also wired directly in `pillars-section.tsx`). */
@@ -101,7 +104,7 @@ export const whyChooseUsImage: PositionedPhoto = {
 /** Full-bleed mid-page call-to-action banner photograph. */
 export const ctaImage: PositionedPhoto = {
   ...library.ctaBackground,
-  position: "center center",
+  position: "50% 45%",
 };
 
 /** Banner behind inner page titles — position metadata for parallax crops. */

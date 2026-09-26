@@ -1,8 +1,8 @@
+import { PillarParallaxImage } from "@/components/home/pillar-parallax-image";
 import { caregiverPillarImages } from "@/lib/caregiver-assets";
 import { careGiverServiceMenu } from "@/lib/service-menu";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 
 type PillarsSectionProps = {
@@ -20,6 +20,8 @@ const pillarOverlays = [
   "var(--cg-pillar-brick)",
   "var(--cg-pillar-ocean)",
 ] as const;
+
+const pillarPositions = ["50% 42%", "52% 40%", "50% 45%"] as const;
 
 /**
  * Care Giver `service-block` Enrich / Empower / Engage — full-bleed photos with
@@ -48,13 +50,9 @@ export function PillarsSection({ locale }: PillarsSectionProps) {
             key={pillar.title}
             className="group relative isolate min-h-[18.5rem] overflow-hidden text-center sm:min-h-[20rem] lg:min-h-[22rem]"
           >
-            <Image
+            <PillarParallaxImage
               src={caregiverPillarImages[i]}
-              alt=""
-              aria-hidden="true"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
+              position={pillarPositions[i]}
             />
             <div
               aria-hidden="true"

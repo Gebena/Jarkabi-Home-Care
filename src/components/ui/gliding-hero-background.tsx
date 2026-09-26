@@ -17,11 +17,11 @@ type GlidingHeroBackgroundProps = {
   rtl?: boolean;
 };
 
-const TRANSITION_MS = 1400;
+const TRANSITION_MS = 1600;
 
 /**
- * Care Giver Home Page 01 hero photography — two layered frames that glide on
- * slide change: a full-bleed depth layer and a right-weighted foreground panel.
+ * Care Giver Home Page 01 hero — full-bleed depth layer crossfades while a
+ * right-weighted foreground panel glides between three premium photographs.
  */
 export function GlidingHeroBackground({
   slides,
@@ -78,15 +78,28 @@ export function GlidingHeroBackground({
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden" aria-hidden="true">
       <div className="absolute inset-0 will-change-transform" style={depthStyle}>
-        <Image
-          src={depthSlide.src}
-          alt=""
-          fill
-          priority={activeIndex === 0}
-          sizes="100vw"
-          style={{ objectPosition: depthSlide.position ?? "center center" }}
-          className={cn("object-cover transition-opacity duration-[1400ms]", depthSlide.flip && !rtl && "scale-x-[-1]")}
-        />
+        {transitioning && !reduceMotion ? (
+          <>
+            <div
+              key={`depth-out-${previousIndex}`}
+              className="absolute inset-0 animate-hero-depth-out"
+            >
+              <HeroDepthFrame slide={slides[previousIndex]!} rtl={rtl} />
+            </div>
+            <div
+              key={`depth-in-${displayIndex}`}
+              className="absolute inset-0 animate-hero-depth-in"
+            >
+              <HeroDepthFrame
+                slide={slides[displayIndex]!}
+                rtl={rtl}
+                priority={activeIndex === 0}
+              />
+            </div>
+          </>
+        ) : (
+          <HeroDepthFrame slide={depthSlide} rtl={rtl} priority={activeIndex === 0} />
+        )}
       </div>
 
       <div
@@ -114,12 +127,22 @@ export function GlidingHeroBackground({
                 rtl ? "animate-hero-glide-in-rtl" : "animate-hero-glide-in",
               )}
             >
-              <HeroGlideFrame slide={slides[displayIndex]!} rtl={rtl} priority={activeIndex === 0} />
+              <HeroGlideFrame
+                slide={slides[displayIndex]!}
+                rtl={rtl}
+                priority={activeIndex === 0}
+                eager={activeIndex <= 1}
+              />
             </div>
           </>
         ) : (
           <div className="absolute inset-0">
-            <HeroGlideFrame slide={slides[displayIndex]!} rtl={rtl} priority={activeIndex === 0} />
+            <HeroGlideFrame
+              slide={slides[displayIndex]!}
+              rtl={rtl}
+              priority={activeIndex === 0}
+              eager={displayIndex <= 1}
+            />
           </div>
         )}
 
@@ -134,7 +157,7 @@ export function GlidingHeroBackground({
   );
 }
 
-function HeroGlideFrame({
+function HeroDepthFrame({
   slide,
   rtl,
   priority = false,
@@ -149,6 +172,31 @@ function HeroGlideFrame({
       alt=""
       fill
       priority={priority}
+      sizes="100vw"
+      style={{ objectPosition: slide.position ?? "center center" }}
+      className={cn("object-cover", slide.flip && !rtl && "scale-x-[-1]")}
+    />
+  );
+}
+
+function HeroGlideFrame({
+  slide,
+  rtl,
+  priority = false,
+  eager = false,
+}: {
+  slide: GlidingHeroSlide;
+  rtl: boolean;
+  priority?: boolean;
+  eager?: boolean;
+}) {
+  return (
+    <Image
+      src={slide.src}
+      alt=""
+      fill
+      priority={priority}
+      loading={eager ? "eager" : "lazy"}
       sizes="(max-width: 1024px) 64vw, 52vw"
       style={{ objectPosition: slide.position ?? "center center" }}
       className={cn("object-cover", slide.flip && !rtl && "scale-x-[-1]")}

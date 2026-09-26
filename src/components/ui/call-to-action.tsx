@@ -1,35 +1,31 @@
+"use client";
+
+import { ParallaxBackground } from "@/components/ui/parallax-background";
 import { isRtlLocale, mirrorObjectPosition } from "@/lib/direction";
 import { caregiverBackgrounds } from "@/lib/caregiver-assets";
 import { ctaImage } from "@/lib/site-images";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
 
 /**
- * Care Giver Home Page 01 mid-page banner ("Share Your Cares. Inspire Others."):
- * a full-bleed photograph under a dark wash with a serif headline and a solid
- * white button.
+ * Care Giver "Share Your Cares. Inspire Others." — full-bleed photograph with
+ * scroll parallax, dark gradient wash, serif headline, white CTA button.
  */
 export function CallToAction({ locale }: { locale: string }) {
   const t = useTranslations("cta");
   const rtl = isRtlLocale(locale);
+  const objectPosition = rtl ? mirrorObjectPosition(ctaImage.position) : ctaImage.position;
 
   return (
     <section className="relative isolate overflow-hidden">
-      <Image
+      <ParallaxBackground
         src={ctaImage.src}
         alt=""
-        aria-hidden="true"
-        fill
-        sizes="100vw"
-        style={{
-          objectPosition: rtl ? mirrorObjectPosition(ctaImage.position) : ctaImage.position,
-        }}
-        className={cn(
-          "absolute inset-0 -z-20 object-cover",
-          Boolean(ctaImage.flip) !== rtl && "scale-x-[-1]",
-        )}
+        objectPosition={objectPosition}
+        strength={0.14}
+        flip={Boolean(ctaImage.flip) !== rtl}
+        className="-z-20"
       />
       <div
         aria-hidden="true"

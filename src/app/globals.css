@@ -458,6 +458,36 @@ html { scroll-behavior: auto; }
   }
 }
 
+@keyframes hero-depth-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-depth-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+.animate-hero-depth-in {
+  animation: hero-depth-in 1.6s ease-out forwards;
+}
+
+.animate-hero-depth-out {
+  animation: hero-depth-out 1.6s ease-out forwards;
+}
+
 .animate-hero-glide-in {
   animation: hero-glide-in 1.4s ease-out forwards;
 }
@@ -475,6 +505,8 @@ html { scroll-behavior: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-hero-depth-in,
+  .animate-hero-depth-out,
   .animate-hero-glide-in,
   .animate-hero-glide-out,
   .animate-hero-glide-in-rtl,

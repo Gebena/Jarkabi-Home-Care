@@ -91,13 +91,13 @@
     "slide3Script": "La confiance des familles",
     "slide3Title": "Votre partenaire en soins aux personnes âgées",
     "slide3Body": "Des soins personnels au soutien infirmier, nous élaborons des plans adaptés aux besoins et aux objectifs de chaque famille.",
-    "eyebrow": "Soins à domicile compatissants à Ottawa",
-    "headline": "Des soins exceptionnels. Chez vous.",
-    "subheadline": "Des soins professionnels avec une connexion personnelle — pour que vos proches vivent en sécurité et en toute indépendance.",
+    "eyebrow": "Jarkabi Home Care",
+    "headline": "Des soins compatissants. Un soutien de confiance. À domicile.",
+    "subheadline": "Des soins professionnels avec une connexion personnelle — pour que vos proches vivent en sécurité et en toute indépendance à Ottawa et dans les environs.",
     "body": "Nous offrons des services de soins à domicile et de soins infirmiers adaptés aux besoins, aux routines et aux objectifs familiaux de chaque personne.",
     "callAnytime": "Appelez à tout moment",
     "primaryCta": "Demander des soins",
-    "secondaryCta": "Nos services",
+    "secondaryCta": "En savoir plus",
     "tertiaryCta": "Appeler notre équipe",
     "locationNote": "Fièrement au service d'Ottawa et des communautés environnantes, avec une expansion réfléchie à travers le Canada.",
     "badgeLicensed": "Licencié et réglementé",
@@ -330,9 +330,9 @@
     "a5": "Les coûts varient selon le type et la fréquence des soins. Nous fournissons une tarification transparente lors de votre consultation gratuite."
   },
   "cta": {
-    "title": "Prêt à commencer?",
-    "body": "Parlez avec notre équipe pour une consultation gratuite et confidentielle. Nous sommes là pour vous aider.",
-    "button": "Demander des soins",
+    "title": "Partagez vos soins. Inspirez les autres.",
+    "body": "Rejoignez notre mouvement pour améliorer la vie des aînés.",
+    "button": "Nous contacter",
     "callButton": "Appelez-nous"
   },
   "footer": {
